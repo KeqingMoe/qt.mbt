@@ -31,9 +31,7 @@ struct qt
     }
 
     template <typename U>
-        requires requires(QSharedPointer<T> p) {
-            { p.template objectCast<U>() } -> std::same_as<QSharedPointer<U>>;
-        }
+        requires std::derived_from<T, U>
     auto cast() -> qt<U>
     {
         return {.repr = qt<U>::repr_type::make(repr->template objectCast<U>())};

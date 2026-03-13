@@ -1,0 +1,13 @@
+import {
+  "KeqingMoe/qt",
+  "moonbitlang/core/env",
+}
+
+options(
+  "is-main": true,
+  link: {
+    "native": {
+      "cc-link-flags": "-lc++ -lqt_mbt_stub -F/opt/homebrew/lib -framework QtGui -framework QtWidgets -framework QtCore",
+    },
+  },
+)

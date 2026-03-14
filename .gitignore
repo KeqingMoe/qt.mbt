@@ -2,6 +2,7 @@
 _build/
 .mooncakes/
 .moonagent/
+target
 
 .xmake
 build

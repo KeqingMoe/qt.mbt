@@ -24,12 +24,12 @@ fn main {
   })
 
   let layout = QHBoxLayout::new()
-  layout.addWidget(button.as_QWidget())
-  layout.addWidget(label.as_QWidget())
+  layout.addWidget(button)
+  layout.addWidget(label)
 
   let window = QWidget::new()
   window.setWindowTitle("Counter")
-  window.setLayout(layout.as_QLayout())
+  window.setLayout(layout)
   window.show()
 
   let _ = app.exec()

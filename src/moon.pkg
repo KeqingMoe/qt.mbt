@@ -1,0 +1,4 @@
+import {
+  "KeqingMoe/qt/core",
+  "KeqingMoe/qt/widgets",
+}

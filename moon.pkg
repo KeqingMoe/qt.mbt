@@ -1,8 +1,0 @@
-options(
-  link: {
-    "native": {
-      "cc": "clang",
-      "cc-link-flags": "-lc++ -lqt_mbt_stub",
-    },
-  },
-)

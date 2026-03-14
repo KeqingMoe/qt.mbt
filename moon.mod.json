@@ -13,5 +13,6 @@
     "C++"
   ],
   "description": "Qt MoonBit Binding",
-  "preferred-target": "native"
+  "preferred-target": "native",
+  "source": "src"
 }

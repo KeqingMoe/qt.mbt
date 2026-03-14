@@ -1,0 +1,9 @@
+{
+  "name": "examples",
+  "preferred-target": "native",
+  "deps": {
+    "KeqingMoe/qt": {
+      "path": ".."
+    }
+  }
+}

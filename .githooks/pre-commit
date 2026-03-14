@@ -2,3 +2,7 @@
 
 moon check --target native
 moon fmt --check
+
+cd examples
+moon check --target native
+moon fmt --check

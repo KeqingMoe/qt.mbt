@@ -1,23 +1,14 @@
 #include <QPushButton>
 #include <qt.hpp>
 
-class Clicked : public Signal<Bool>
-{
-public:
-    QSharedPointer<QPushButton> sender;
-    Clicked(QSharedPointer<QPushButton> sender) : sender{std::move(sender)} {}
-
-    auto connect(Slot<Bool> slot) -> Connection override
-    {
-        return Connection::make(QObject::connect( //
-            sender.get(),
-            &QPushButton::clicked,
-            [slot = own{slot}](bool x) -> void {
-                slot.repr(Bool::make(x));
-            }) //
-        );
-    }
-};
+using Clicked = SignalAdapter< //
+    QPushButton,
+    &QPushButton::clicked,
+    Bool,
+    [](bool x) {
+        return Bool::make(x);
+    } //
+    >;
 
 extern "C"
 {

@@ -1,5 +1,5 @@
 ///|
-pub using @core {type QObject, trait AsObject}
+pub using @core {type QObject, trait AsObject, type Signal, type Connection}
 
 ///|
 pub using @widgets {

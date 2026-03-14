@@ -4,6 +4,7 @@
 
 #include "box.hpp"    // IWYU pragma: keep
 #include "string.hpp" // IWYU pragma: keep
+#include "signal.hpp" // IWYU pragma: keep
 
 using namespace mbt::types;
 namespace ffi = mbt::ffi;

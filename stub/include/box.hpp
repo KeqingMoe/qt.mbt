@@ -5,7 +5,12 @@
 #include <QSharedPointer>
 #include <moonbridge.hpp>
 
-// 用于将 Qt 类型传递给 Moonbit，底层表示为 box<QSharedPointer<T>>
+// 用于将 Qt 类型传递给 MoonBit。
+// 其目的并非生命周期管理（已有 MoonBit 对象模型代劳），
+// 而是用来实现协变。协变后产生的新指针指向基类子对象，
+// 而引用计数控制块仍和原对象共享。
+// 使用 QSharedPointer 是为了稳妥，降低复杂性，
+// 因为我并不太熟悉 MoonBit 对象模型。以后可能会替换实现。
 template <typename T>
 struct qt
 {

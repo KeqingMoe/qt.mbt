@@ -11,3 +11,7 @@ target("qt_mbt_stub")
     add_includedirs("include")
     add_files("**/*.cpp")
     add_frameworks("QtGui", "QtWidgets")
+    
+    after_build(function (target)
+        print("XMAKE_TARGETDIR=%s", path.absolute(target:targetdir()))
+    end)

@@ -14,5 +14,6 @@
   ],
   "description": "Qt MoonBit Binding",
   "preferred-target": "native",
-  "source": "src"
+  "source": "src",
+  "--moonbit-unstable-prebuild": "scripts/build.js"
 }

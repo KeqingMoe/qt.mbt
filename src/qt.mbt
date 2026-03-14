@@ -10,5 +10,6 @@ pub using @widgets {
   type QLabel,
   type QLayout,
   type QPushButton,
+  type QVBoxLayout,
   type QWidget,
 }

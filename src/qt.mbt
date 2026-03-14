@@ -9,6 +9,7 @@ pub using @widgets {
   type QHBoxLayout,
   type QLabel,
   type QLayout,
+  type QLineEdit,
   type QPushButton,
   type QVBoxLayout,
   type QWidget,

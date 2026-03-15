@@ -8,8 +8,8 @@ extern "C"
         return qt<QVBoxLayout>::make();
     }
 
-    auto QVBoxLayout_as_QLayout(qt<QVBoxLayout> self) -> qt<QLayout>
+    auto QVBoxLayout_as_QBoxLayout(qt<QVBoxLayout> self) -> qt<QBoxLayout>
     {
-        return self.cast<QLayout>();
+        return self.cast<QBoxLayout>();
     }
 }

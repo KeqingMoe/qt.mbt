@@ -8,8 +8,8 @@ extern "C"
         return qt<QHBoxLayout>::make();
     }
 
-    auto QHBoxLayout_as_QLayout(qt<QHBoxLayout> self) -> qt<QLayout>
+    auto QHBoxLayout_as_QBoxLayout(qt<QHBoxLayout> self) -> qt<QBoxLayout>
     {
-        return self.cast<QLayout>();
+        return self.cast<QBoxLayout>();
     }
 }

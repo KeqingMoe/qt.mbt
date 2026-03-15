@@ -13,5 +13,10 @@ pub impl AsObject for QHBoxLayout with as_object(self) {
 
 ///|
 pub impl AsLayout for QHBoxLayout with as_layout(self) {
-  @ffi._QHBoxLayout_as_QLayout(self.0)
+  self.as_box_layout().as_layout()
+}
+
+///|
+pub impl AsBoxLayout for QHBoxLayout with as_box_layout(self) {
+  @ffi._QHBoxLayout_as_QBoxLayout(self.0)
 }

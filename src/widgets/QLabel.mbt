@@ -10,8 +10,8 @@ pub extern "C" fn QLabel::new() -> Self = "QLabel_new"
 pub extern "C" fn QLabel::setText(self : Self, text : String) = "QLabel_setText"
 
 ///|
-#borrow(self)
-pub extern "C" fn QLabel::as_QWidget(self : Self) -> QWidget = "QLabel_as_QWidget"
+#borrow(widget)
+extern "C" fn _QLabel_as_QWidget(widget : QLabel) -> QWidget = "QLabel_as_QWidget"
 
 ///|
 pub impl AsObject for QLabel with as_object(self) {
@@ -20,5 +20,5 @@ pub impl AsObject for QLabel with as_object(self) {
 
 ///|
 pub impl AsWidget for QLabel with as_widget(self) {
-  self.as_QWidget()
+  _QLabel_as_QWidget(self)
 }

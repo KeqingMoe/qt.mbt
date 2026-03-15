@@ -18,8 +18,8 @@ pub extern "C" fn QLineEdit::text(self : Self) -> String = "QLineEdit_text"
 pub extern "C" fn QLineEdit::textChanged(self : Self) -> Signal[String] = "QLineEdit_textChanged"
 
 ///|
-#borrow(self)
-pub extern "C" fn QLineEdit::as_QWidget(self : Self) -> QWidget = "QLineEdit_as_QWidget"
+#borrow(widget)
+extern "C" fn _QLineEdit_as_QWidget(widget : QLineEdit) -> QWidget = "QLineEdit_as_QWidget"
 
 ///|
 pub impl AsObject for QLineEdit with as_object(self) {
@@ -28,5 +28,5 @@ pub impl AsObject for QLineEdit with as_object(self) {
 
 ///|
 pub impl AsWidget for QLineEdit with as_widget(self) {
-  self.as_QWidget()
+  _QLineEdit_as_QWidget(self)
 }

@@ -20,8 +20,8 @@ pub extern "C" fn QPushButton::on_clicked(self : Self, cb : () -> Unit) = "QPush
 pub extern "C" fn QPushButton::clicked(self : Self) -> Signal[Bool] = "QPushButton_clicked"
 
 ///|
-#borrow(self)
-pub extern "C" fn QPushButton::as_QWidget(self : Self) -> QWidget = "QPushButton_as_QWidget"
+#borrow(widget)
+extern "C" fn _QPushButton_as_QWidget(widget : QPushButton) -> QWidget = "QPushButton_as_QWidget"
 
 ///|
 pub impl AsObject for QPushButton with as_object(self) {
@@ -30,5 +30,5 @@ pub impl AsObject for QPushButton with as_object(self) {
 
 ///|
 pub impl AsWidget for QPushButton with as_widget(self) {
-  self.as_QWidget()
+  _QPushButton_as_QWidget(self)
 }

@@ -8,4 +8,9 @@ extern "C"
     {
         return self.cast<QObject>();
     }
+
+    auto QLayout_addWidget(qt<QLayout> self, qt<QWidget> widget) -> void
+    {
+        self->addWidget(widget.get());
+    }
 }

@@ -14,14 +14,6 @@
 ## 示例
 
 ```mbt check
-using @qt {
-  type QApplication,
-  type QWidget,
-  type QHBoxLayout,
-  type QPushButton,
-  type QLabel,
-}
-
 fn main {
   let app = QApplication::new(@env.args())
 
@@ -33,17 +25,10 @@ fn main {
   let button = QPushButton::new()
   button.setText("Click me!")
 
-  let mut conn : Connection? = None
-  let connection = QObject::connect(button.clicked(), fn(x : Bool) {
+  let _ = QObject::connect(button.clicked(), fn(_) {
     count += 1
     label.setText("Count: \{count}")
-    let conn = conn.unwrap()
-    println("clicked: \{x}, connection valid: \{conn.is_valid()}")
-    if count > 10 {
-      let _ = conn.disconnect()
-    }
   })
-  conn = Some(connection)
 
   let layout = QHBoxLayout::new()
   layout.addWidget(button)

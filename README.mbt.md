@@ -58,14 +58,14 @@ fn main {
 }
 ```
 
-完整示例见 [`src/example/counter/main.mbt`](./src/example/counter/main.mbt)。
+完整示例见 [`examples/counter/main.mbt`](./examples/counter/main.mbt)。
 
 ## 项目结构
 
+- `examples/`：示例应用
 - `scripts/`：构建脚本
 - `src/core/`：Qt Core 模块绑定
 - `src/widgets/`：Qt Widgets 模块绑定
-- `src/example/`：示例应用
 - `stub/`：C++ 胶水代码
 
 ## 构建说明
@@ -98,7 +98,8 @@ fn main {
 ## 运行示例
 
 ```sh
-moon run src/example/counter
+cd examples
+moon run counter # 或其他示例
 ```
 
 这会触发 prebuild 脚本，先用 `xmake` 构建 Qt stub，再链接最终的 native

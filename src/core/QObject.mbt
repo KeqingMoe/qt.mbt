@@ -4,24 +4,20 @@ pub(open) trait AsObject {
 }
 
 ///|
-#external
-pub type QObject
-
-///|
-#borrow(signal)
-#owned(slot)
-extern "C" fn _QObject_connect(signal : &Any, slot : &Any) -> Connection = "QObject_connect"
+pub(all) struct QObject(@ffi.QObject)
 
 ///|
 pub fn[T] QObject::connect(
   signal : Signal[T],
   slot : (T) -> Unit,
 ) -> Connection {
-  _QObject_connect(Itself(signal), Itself(slot))
+  @ffi._QObject_connect(@ffi.Itself(signal.0), @ffi.Itself(slot))
 }
 
 ///|
-pub extern "C" fn QObject::disconnect(connection : Connection) -> Bool = "QObject_disconnect"
+pub fn QObject::disconnect(connection : Connection) -> Bool {
+  @ffi._QObject_disconnect(connection.0)
+}
 
 ///|
 pub impl AsObject for QObject with as_object(self) {

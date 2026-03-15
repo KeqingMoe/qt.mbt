@@ -1,15 +1,8 @@
 ///|
-priv trait Any {}
+pub(all) struct Signal[A](@ffi.Signal[A])
 
 ///|
-pub struct Itself[T](T)
-
-///|
-impl[T] Any for Itself[T]
-
-///|
-#external
-pub type Signal[_]
+pub struct Connection(@ffi.Connection)
 
 ///|
 pub fn[A] Signal::connect(self : Self[A], slot : (A) -> Unit) -> Connection {
@@ -17,13 +10,11 @@ pub fn[A] Signal::connect(self : Self[A], slot : (A) -> Unit) -> Connection {
 }
 
 ///|
-#external
-pub type Connection
-
-///|
 pub fn Connection::disconnect(self : Self) -> Bool {
   QObject::disconnect(self)
 }
 
 ///|
-pub extern "C" fn Connection::is_valid(self : Self) -> Bool = "Connection_is_valid"
+pub fn Connection::is_valid(self : Self) -> Bool {
+  @ffi._Connection_is_valid(self.0)
+}

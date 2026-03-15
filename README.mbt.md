@@ -64,8 +64,9 @@ fn main {
 
 - `examples/`：示例应用
 - `scripts/`：构建脚本
-- `src/core/`：Qt Core 模块绑定
-- `src/widgets/`：Qt Widgets 模块绑定
+- `src/internal/`：Qt FFI
+- `src/core/`：Qt Core Wrapper
+- `src/widgets/`：Qt Widgets Wrapper
 - `stub/`：C++ 胶水代码
 
 ## 构建说明

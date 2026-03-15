@@ -1,3 +1,4 @@
 import {
+  "KeqingMoe/qt/internal/widgets" @ffi,
   "KeqingMoe/qt/core",
 }

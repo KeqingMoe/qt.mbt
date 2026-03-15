@@ -1,17 +1,15 @@
 ///|
-#external
-pub type QLabel
+pub(all) struct QLabel(@ffi.QLabel)
 
 ///|
-pub extern "C" fn QLabel::new() -> Self = "QLabel_new"
+pub fn QLabel::new() -> Self {
+  @ffi._QLabel_new()
+}
 
 ///|
-#borrow(self, text)
-pub extern "C" fn QLabel::setText(self : Self, text : String) = "QLabel_setText"
-
-///|
-#borrow(widget)
-extern "C" fn _QLabel_as_QWidget(widget : QLabel) -> QWidget = "QLabel_as_QWidget"
+pub fn QLabel::setText(self : Self, text : String) -> Unit {
+  @ffi._QLabel_setText(self.0, text)
+}
 
 ///|
 pub impl AsObject for QLabel with as_object(self) {
@@ -20,5 +18,5 @@ pub impl AsObject for QLabel with as_object(self) {
 
 ///|
 pub impl AsWidget for QLabel with as_widget(self) {
-  _QLabel_as_QWidget(self)
+  @ffi._QLabel_as_QWidget(self.0)
 }

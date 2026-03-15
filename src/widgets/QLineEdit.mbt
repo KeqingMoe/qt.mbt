@@ -1,25 +1,25 @@
 ///|
-#external
-pub type QLineEdit
+pub(all) struct QLineEdit(@ffi.QLineEdit)
 
 ///|
-pub extern "C" fn QLineEdit::new() -> Self = "QLineEdit_new"
+pub fn QLineEdit::new() -> Self {
+  @ffi._QLineEdit_new()
+}
 
 ///|
-#borrow(self, text)
-pub extern "C" fn QLineEdit::setText(self : Self, text : String) = "QLineEdit_setText"
+pub fn QLineEdit::setText(self : Self, text : String) -> Unit {
+  @ffi._QLineEdit_setText(self.0, text)
+}
 
 ///|
-#borrow(self)
-pub extern "C" fn QLineEdit::text(self : Self) -> String = "QLineEdit_text"
+pub fn QLineEdit::text(self : Self) -> String {
+  @ffi._QLineEdit_text(self.0)
+}
 
 ///|
-#borrow(self)
-pub extern "C" fn QLineEdit::textChanged(self : Self) -> Signal[String] = "QLineEdit_textChanged"
-
-///|
-#borrow(widget)
-extern "C" fn _QLineEdit_as_QWidget(widget : QLineEdit) -> QWidget = "QLineEdit_as_QWidget"
+pub fn QLineEdit::textChanged(self : Self) -> Signal[String] {
+  @ffi._QLineEdit_textChanged(self.0)
+}
 
 ///|
 pub impl AsObject for QLineEdit with as_object(self) {
@@ -28,5 +28,5 @@ pub impl AsObject for QLineEdit with as_object(self) {
 
 ///|
 pub impl AsWidget for QLineEdit with as_widget(self) {
-  _QLineEdit_as_QWidget(self)
+  @ffi._QLineEdit_as_QWidget(self.0)
 }

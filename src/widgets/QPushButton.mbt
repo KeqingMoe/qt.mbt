@@ -7,19 +7,9 @@ pub fn QPushButton::new() -> Self {
 }
 
 ///|
-pub fn QPushButton::setText(self : Self, text : String) -> Unit {
-  @ffi._QPushButton_setText(self.0, text)
-}
-
-///|
 #deprecated("已有新版信号槽 API")
 pub fn QPushButton::on_clicked(self : Self, cb : () -> Unit) -> Unit {
   @ffi._QPushButton_on_clicked(self.0, cb)
-}
-
-///|
-pub fn QPushButton::clicked(self : Self) -> Signal[Bool] {
-  @ffi._QPushButton_clicked(self.0)
 }
 
 ///|
@@ -29,5 +19,10 @@ pub impl AsObject for QPushButton with as_object(self) {
 
 ///|
 pub impl AsWidget for QPushButton with as_widget(self) {
-  @ffi._QPushButton_as_QWidget(self.0)
+  self.as_abstract_button().as_widget()
+}
+
+///|
+pub impl AsAbstractButton for QPushButton with as_abstract_button(self) {
+  @ffi._QPushButton_as_QAbstractButton(self.0)
 }

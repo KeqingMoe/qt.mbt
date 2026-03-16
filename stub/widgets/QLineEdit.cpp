@@ -1,4 +1,3 @@
-#include "QDebug"
 #include <QLineEdit>
 #include <qt.hpp>
 

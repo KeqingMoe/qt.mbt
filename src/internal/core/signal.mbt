@@ -1,9 +1,7 @@
 ///|
-#external
 pub type Signal[_]
 
 ///|
-#external
 pub type Connection
 
 ///|

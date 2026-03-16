@@ -1,5 +1,4 @@
 ///|
-#external
 pub type QLabel
 
 ///|

@@ -51,7 +51,7 @@
 本项目有三个明确层次：
 
 1. `src/internal/`  
-  这一层只放原始 FFI 声明和 `#external` 类型，不承载用户语义。
+  这一层只放原始 FFI 声明和抽象类型，不承载用户语义。
 
 2. `src/core/`、`src/widgets/`  
   这一层是 public wrapper。负责：
@@ -195,7 +195,7 @@ AI 在新增一个 Qt 类时，应按下面顺序工作：
 
 1. 先查清 Qt 文档中的真实继承链。
 2. 如果中间基类还没绑定，先补中间基类。
-3. 在 `src/internal/...` 中增加原始 `#external` 类型和 extern 声明。
+3. 在 `src/internal/...` 中增加抽象类型 `type T` 和 extern 声明。
 4. 在 `src/widgets/...` 或 `src/core/...` 中增加 public wrapper。
 5. 把方法放到“最高但仍正确”的 trait 层级，而不是直接塞给叶子类。
 6. 在 `stub/` 中实现对应的 C++ 导出函数。

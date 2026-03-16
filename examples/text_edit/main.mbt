@@ -20,7 +20,7 @@ fn LengthComputer::new() -> Self {
   label.setText("Text length: 0")
 
   let line_edit = QLineEdit::new()
-  let _ = QObject::connect(line_edit.textChanged(), fn(text) {
+  let _ = QObject::connect(line_edit.textChanged(), text => {
     label.setText("Text length: \{text.char_length()}")
   })
 

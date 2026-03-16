@@ -25,7 +25,7 @@ fn main {
   let button = QPushButton::new()
   button.setText("Click me!")
 
-  let _ = QObject::connect(button.clicked(), fn(_) {
+  let _ = QObject::connect(button.clicked(), _ => {
     count += 1
     label.setText("Count: \{count}")
   })

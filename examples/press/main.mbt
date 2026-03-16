@@ -18,10 +18,10 @@ fn main {
   let button = QPushButton::new()
   button.setText("Click me!")
 
-  let _ = QObject::connect(button.pressed(), fn(_) {
+  let _ = QObject::connect(button.pressed(), _ => {
     label.setText("Button Pressed!")
   })
-  let _ = QObject::connect(button.released(), fn(_) {
+  let _ = QObject::connect(button.released(), _ => {
     label.setText("Button Released!")
   })
 

@@ -65,7 +65,7 @@ public:
                                                       Arg,                                                             \
                                                       Converter /**/                                                   \
                                                       >;                                                               \
-    auto Sender##_##Signal(qt<Sender> self) -> box<SIGNAL_TYPE(Sender, Signal)>                                           \
+    extern "C" auto Sender##_##Signal(qt<Sender> self) -> box<SIGNAL_TYPE(Sender, Signal)>                             \
     {                                                                                                                  \
         return box<SIGNAL_TYPE(Sender, Signal)>::make(*self.repr);                                                     \
     }

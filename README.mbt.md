@@ -53,6 +53,7 @@ fn main {
 - `src/core/`：Qt Core Wrapper
 - `src/widgets/`：Qt Widgets Wrapper
 - `stub/`：C++ 胶水代码
+- `AI_BINDING_GUIDE.md`：供 AI 继续生成绑定代码时遵循的规范文档
 
 ## 构建说明
 

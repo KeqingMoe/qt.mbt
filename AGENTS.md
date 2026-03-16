@@ -2,6 +2,8 @@
 
 This is a [MoonBit](https://docs.moonbitlang.com) project.
 
+For AI-generated Qt binding code, also follow [AI_BINDING_GUIDE.md](./AI_BINDING_GUIDE.md).
+
 You can browse and install extra skills here:
 <https://github.com/moonbitlang/skills>
 

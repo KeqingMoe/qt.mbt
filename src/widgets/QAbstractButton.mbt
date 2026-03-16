@@ -3,6 +3,9 @@ pub(open) trait AsAbstractButton: AsWidget {
   as_abstract_button(Self) -> QAbstractButton
   setText(Self, text : String) -> Unit = _
   clicked(Self) -> Signal[Bool] = _
+  pressed(Self) -> Signal[Unit] = _
+  released(Self) -> Signal[Unit] = _
+  toggled(Self) -> Signal[Bool] = _
 }
 
 ///|
@@ -13,6 +16,21 @@ impl AsAbstractButton with setText(self, text) {
 ///|
 impl AsAbstractButton with clicked(self) {
   @ffi._QAbstractButton_clicked(self.as_abstract_button().0)
+}
+
+///|
+impl AsAbstractButton with pressed(self) {
+  @ffi._QAbstractButton_pressed(self.as_abstract_button().0)
+}
+
+///|
+impl AsAbstractButton with released(self) {
+  @ffi._QAbstractButton_released(self.as_abstract_button().0)
+}
+
+///|
+impl AsAbstractButton with toggled(self) {
+  @ffi._QAbstractButton_toggled(self.as_abstract_button().0)
 }
 
 ///|

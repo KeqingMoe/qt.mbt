@@ -3,7 +3,7 @@
 
 extern "C"
 {
-    auto QBoxLayout_addLayout(qt<QBoxLayout> self, qt<QLayout> layout) -> void
+    QMETHOD(QBoxLayout, addLayout, qt<QLayout> layout)->void
     {
         self->addLayout(layout.get());
     }

@@ -3,7 +3,7 @@
 
 extern "C"
 {
-    auto QVBoxLayout_new() -> qt<QVBoxLayout>
+    QSTATIC(QVBoxLayout, new)-> qt<QVBoxLayout>
     {
         return qt<QVBoxLayout>::make();
     }

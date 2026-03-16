@@ -3,22 +3,22 @@
 
 extern "C"
 {
-    auto QWidget_new() -> qt<QWidget>
+    QSTATIC(QWidget, new)->qt<QWidget>
     {
         return qt<QWidget>::make();
     }
 
-    auto QWidget_show(qt<QWidget> self) -> void
+    QMETHOD(QWidget, show)->void
     {
         self->show();
     }
 
-    auto QWidget_setWindowTitle(qt<QWidget> self, String title) -> void
+    QMETHOD(QWidget, setWindowTitle, String title)->void
     {
         self->setWindowTitle(str::mbt_to_qt(title));
     }
 
-    auto QWidget_setLayout(qt<QWidget> self, qt<QLayout> layout)
+    QMETHOD(QWidget, setLayout, qt<QLayout> layout)->void
     {
         self->setLayout(layout.get());
     }

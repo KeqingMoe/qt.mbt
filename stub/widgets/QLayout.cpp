@@ -4,7 +4,7 @@
 
 extern "C"
 {
-    auto QLayout_addWidget(qt<QLayout> self, qt<QWidget> widget) -> void
+    QMETHOD(QLayout, addWidget, qt<QWidget> widget)->void
     {
         self->addWidget(widget.get());
     }

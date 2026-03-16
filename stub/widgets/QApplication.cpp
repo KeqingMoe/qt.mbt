@@ -3,7 +3,7 @@
 
 extern "C"
 {
-    auto QApplication_new(Array<String> args) -> qt<QApplication>
+    QSTATIC(QApplication, new, Array<String> args)->qt<QApplication>
     {
         // 只能创建一个 Application 对象
         // argc 和 argv 必须可变全程存活
@@ -34,7 +34,7 @@ extern "C"
         return qt<QApplication>::make(argc, argv);
     }
 
-    auto QApplication_exec(qt<QApplication> self) -> Int
+    QMETHOD(QApplication, exec)->Int
     {
         return self->exec();
     }

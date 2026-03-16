@@ -3,7 +3,7 @@
 
 extern "C"
 {
-    auto QAbstractButton_setText(qt<QAbstractButton> self, String text) -> void
+    QMETHOD(QAbstractButton, setText, String text)->void
     {
         self->setText(str::mbt_to_qt(text));
     }

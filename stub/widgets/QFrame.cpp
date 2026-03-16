@@ -3,7 +3,7 @@
 
 extern "C"
 {
-    auto QFrame_new() -> qt<QFrame>
+    QSTATIC(QFrame, new)->qt<QFrame>
     {
         return qt<QFrame>::make();
     }

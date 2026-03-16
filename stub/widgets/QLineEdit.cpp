@@ -2,15 +2,6 @@
 #include <QLineEdit>
 #include <qt.hpp>
 
-using TextChanged = SignalAdapter< //
-    QLineEdit,
-    &QLineEdit::textChanged,
-    String,
-    [](const QString& text) {
-        return str::qt_to_mbt(text);
-    } //
-    >;
-
 extern "C"
 {
     auto QLineEdit_new() -> qt<QLineEdit>
@@ -28,10 +19,7 @@ extern "C"
         return str::qt_to_mbt(self->text());
     }
 
-    auto QLineEdit_textChanged(qt<QLineEdit> self) -> box<TextChanged>
-    {
-        return box<TextChanged>::make(*self.repr);
-    }
+    SIGNAL_DEF(QLineEdit, textChanged, String, str::qt_to_mbt)
 
     auto QLineEdit_as_QWidget(qt<QLineEdit> self) -> qt<QWidget>
     {

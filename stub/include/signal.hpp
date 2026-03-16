@@ -56,6 +56,20 @@ public:
     }
 };
 
+#define SIGNAL_TYPE(Sender, Signal) Signal_##Sender##Signal
+
+#define SIGNAL_DEF(Sender, Signal, Arg, Converter)                                                                     \
+    using SIGNAL_TYPE(Sender, Signal) = SignalAdapter</**/                                                             \
+                                                      Sender,                                                          \
+                                                      &Sender::Signal,                                                 \
+                                                      Arg,                                                             \
+                                                      Converter /**/                                                   \
+                                                      >;                                                               \
+    auto Sender##_##Signal(qt<Sender> self) -> box<SIGNAL_TYPE(Sender, Signal)>                                           \
+    {                                                                                                                  \
+        return box<SIGNAL_TYPE(Sender, Signal)>::make(*self.repr);                                                     \
+    }
+
 extern "C"
 {
     auto QObject_connect(ErasedSignal signal, ErasedSlot slot) -> Connection;

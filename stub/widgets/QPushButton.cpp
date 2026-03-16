@@ -15,8 +15,5 @@ extern "C"
         });
     }
 
-    auto QPushButton_as_QAbstractButton(qt<QPushButton> self) -> qt<QAbstractButton>
-    {
-        return self.cast<QAbstractButton>();
-    }
+    COVARIANT(QPushButton, QAbstractButton)
 }

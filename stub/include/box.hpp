@@ -48,4 +48,10 @@ struct qt
     }
 };
 
+#define COVARIANT(Derived, Base)                                                                                       \
+    auto Derived##_as_##Base(qt<Derived> self) -> qt<Base>                                                             \
+    {                                                                                                                  \
+        return self.cast<Base>();                                                                                      \
+    }
+
 #endif

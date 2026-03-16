@@ -8,8 +8,5 @@ extern "C"
         return qt<QFrame>::make();
     }
 
-    auto QFrame_as_QWidget(qt<QFrame> self) -> qt<QWidget>
-    {
-        return self.cast<QWidget>();
-    }
+    COVARIANT(QFrame, QWidget)
 }

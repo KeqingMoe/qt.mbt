@@ -39,8 +39,5 @@ extern "C"
         return self->exec();
     }
 
-    auto QApplication_as_QObject(qt<QApplication> self) -> qt<QObject>
-    {
-        return self.cast<QObject>();
-    }
+    COVARIANT(QApplication, QObject)
 }

@@ -21,8 +21,5 @@ extern "C"
 
     SIGNAL_DEF(QLineEdit, textChanged, String, str::qt_to_mbt)
 
-    auto QLineEdit_as_QWidget(qt<QLineEdit> self) -> qt<QWidget>
-    {
-        return self.cast<QWidget>();
-    }
+    COVARIANT(QLineEdit, QWidget)
 }

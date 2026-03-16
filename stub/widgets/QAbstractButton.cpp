@@ -16,8 +16,5 @@ extern "C"
 
     SIGNAL_DEF(QAbstractButton, toggled, Bool, Bool::make)
 
-    auto QAbstractButton_as_QWidget(qt<QAbstractButton> self) -> qt<QWidget>
-    {
-        return self.cast<QWidget>();
-    }
+    COVARIANT(QAbstractButton, QWidget)
 }

@@ -18,13 +18,10 @@ extern "C"
         self->setWindowTitle(str::mbt_to_qt(title));
     }
 
-    auto QWidget_as_QObject(qt<QWidget> self) -> qt<QObject>
-    {
-        return self.cast<QObject>();
-    }
-
     auto QWidget_setLayout(qt<QWidget> self, qt<QLayout> layout)
     {
         self->setLayout(layout.get());
     }
+
+    COVARIANT(QWidget, QObject)
 }

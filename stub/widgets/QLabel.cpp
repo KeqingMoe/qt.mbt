@@ -13,8 +13,5 @@ extern "C"
         self->setText(str::mbt_to_qt(text));
     }
 
-    auto QLabel_as_QFrame(qt<QLabel> self) -> qt<QFrame>
-    {
-        return self.cast<QFrame>();
-    }
+    COVARIANT(QLabel, QFrame)
 }

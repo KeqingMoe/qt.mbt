@@ -18,5 +18,10 @@ pub impl AsObject for QLabel with as_object(self) {
 
 ///|
 pub impl AsWidget for QLabel with as_widget(self) {
-  @ffi._QLabel_as_QWidget(self.0)
+  self.as_frame().as_widget()
+}
+
+///|
+pub impl AsFrame for QLabel with as_frame(self) {
+  @ffi._QLabel_as_QFrame(self.0)
 }

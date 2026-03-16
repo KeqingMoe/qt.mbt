@@ -13,8 +13,8 @@ extern "C"
         self->setText(str::mbt_to_qt(text));
     }
 
-    auto QLabel_as_QWidget(qt<QLabel> self) -> qt<QWidget>
+    auto QLabel_as_QFrame(qt<QLabel> self) -> qt<QFrame>
     {
-        return self.cast<QWidget>();
+        return self.cast<QFrame>();
     }
 }

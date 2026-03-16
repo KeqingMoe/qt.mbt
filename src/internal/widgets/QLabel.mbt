@@ -11,4 +11,4 @@ pub extern "C" fn _QLabel_setText(this : QLabel, text : String) = "QLabel_setTex
 
 ///|
 #borrow(this)
-pub extern "C" fn _QLabel_as_QWidget(this : QLabel) -> QWidget = "QLabel_as_QWidget"
+pub extern "C" fn _QLabel_as_QFrame(this : QLabel) -> QFrame = "QLabel_as_QFrame"

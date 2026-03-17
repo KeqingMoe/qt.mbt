@@ -6,11 +6,6 @@ extern "C" fn _QPushButton_new() -> QPushButton = "QPushButton_new"
 
 ///|
 #borrow(this)
-#owned(cb)
-extern "C" fn _QPushButton_on_clicked(this : QPushButton, cb : () -> Unit) = "QPushButton_on_clicked"
-
-///|
-#borrow(this)
 extern "C" fn _QPushButton_as_QAbstractButton(
   this : QPushButton,
 ) -> QAbstractButton = "QPushButton_as_QAbstractButton"
@@ -18,12 +13,6 @@ extern "C" fn _QPushButton_as_QAbstractButton(
 ///|
 pub fn QPushButton::new() -> Self {
   _QPushButton_new()
-}
-
-///|
-#deprecated("已有新版信号槽 API")
-pub fn QPushButton::on_clicked(self : Self, cb : () -> Unit) -> Unit {
-  _QPushButton_on_clicked(self, cb)
 }
 
 ///|

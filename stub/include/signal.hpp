@@ -4,7 +4,6 @@
 
 #include <QMetaObject>
 #include <QObject>
-#include <QSharedPointer>
 #include <moonbridge.hpp>
 
 template <mbt::moonbit T>
@@ -40,9 +39,9 @@ template <typename Sender, auto Signal, mbt::moonbit Arg, auto Converter>
 class SignalAdapter : public ::Signal<Arg>
 {
 public:
-    QSharedPointer<Sender> sender;
+    QPointer<Sender> sender;
 
-    explicit SignalAdapter(QSharedPointer<Sender> sender) : sender(std::move(sender)) {}
+    explicit SignalAdapter(QPointer<Sender> sender) : sender(std::move(sender)) {}
 
     auto connect(Slot<Arg> slot) -> Connection override
     {

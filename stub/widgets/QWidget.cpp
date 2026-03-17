@@ -1,4 +1,5 @@
 #include <QWidget>
+#include <QLayout>
 #include <qt.hpp>
 
 QSTATIC(QWidget, new)->qt<QWidget>

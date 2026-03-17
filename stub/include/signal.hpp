@@ -55,7 +55,7 @@ public:
     }
 };
 
-#define SIGNAL_TYPE(Sender, Signal) Signal_##Sender##Signal
+#define SIGNAL_TYPE(Sender, Signal) Signal_##Sender##_##Signal
 
 #define SIGNAL_DEF(Sender, Signal, Arg, Converter)                                                                     \
     using SIGNAL_TYPE(Sender, Signal) = SignalAdapter</**/                                                             \

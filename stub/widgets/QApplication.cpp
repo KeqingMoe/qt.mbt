@@ -21,9 +21,10 @@ QSTATIC(QApplication, new, Array<String> args)->qt<QApplication>
     Args.argc = args.size();
     for (auto arg : args) {
         auto u16s = str::mbt_to_qt(arg);
-        auto u8s  = u16s.toStdString();
-        Args.argarr.push_back(std::move(u8s));
-        Args.argv.push_back(Args.argarr.back().data());
+        Args.argarr.push_back(u16s.toStdString());
+    }
+    for (auto&& arg : Args.argarr) {
+        Args.argv.push_back(arg.data());
     }
     Args.argv.push_back(nullptr);
 

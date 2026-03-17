@@ -4,7 +4,10 @@ pub type QObject
 ///|
 #borrow(signal)
 #owned(slot)
-extern "C" fn _QObject_connect(signal : &Any, slot : &Any) -> Connection = "QObject_connect"
+extern "C" fn _QObject_connect(
+  signal : &@internal.Any,
+  slot : &@internal.Any,
+) -> Connection = "QObject_connect"
 
 ///|
 #borrow(this)
@@ -30,7 +33,7 @@ pub fn[T] QObject::connect(
   signal : Signal[T],
   slot : (T) -> Unit,
 ) -> Connection {
-  _QObject_connect(Itself(signal), Itself(slot))
+  _QObject_connect(@internal.Itself(signal), @internal.Itself(slot))
 }
 
 ///|

@@ -1,15 +1,29 @@
 ///|
-pub(all) struct QPushButton(@ffi.QPushButton)
+pub type QPushButton
+
+///|
+extern "C" fn _QPushButton_new() -> QPushButton = "QPushButton_new"
+
+///|
+#borrow(this)
+#owned(cb)
+extern "C" fn _QPushButton_on_clicked(this : QPushButton, cb : () -> Unit) = "QPushButton_on_clicked"
+
+///|
+#borrow(this)
+extern "C" fn _QPushButton_as_QAbstractButton(
+  this : QPushButton,
+) -> QAbstractButton = "QPushButton_as_QAbstractButton"
 
 ///|
 pub fn QPushButton::new() -> Self {
-  @ffi._QPushButton_new()
+  _QPushButton_new()
 }
 
 ///|
 #deprecated("已有新版信号槽 API")
 pub fn QPushButton::on_clicked(self : Self, cb : () -> Unit) -> Unit {
-  @ffi._QPushButton_on_clicked(self.0, cb)
+  _QPushButton_on_clicked(self, cb)
 }
 
 ///|
@@ -24,5 +38,5 @@ pub impl AsWidget for QPushButton with as_widget(self) {
 
 ///|
 pub impl AsAbstractButton for QPushButton with as_abstract_button(self) {
-  @ffi._QPushButton_as_QAbstractButton(self.0)
+  _QPushButton_as_QAbstractButton(self)
 }

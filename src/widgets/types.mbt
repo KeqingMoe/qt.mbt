@@ -1,2 +1,2 @@
 ///|
-using @core {trait AsObject, type Signal}
+using @core {trait AsObject, type Signal, type QObject}

@@ -1,14 +1,25 @@
 ///|
-pub(all) struct QLabel(@ffi.QLabel)
+pub type QLabel
+
+///|
+extern "C" fn _QLabel_new() -> QLabel = "QLabel_new"
+
+///|
+#borrow(this, text)
+extern "C" fn _QLabel_setText(this : QLabel, text : String) = "QLabel_setText"
+
+///|
+#borrow(this)
+extern "C" fn _QLabel_as_QFrame(this : QLabel) -> QFrame = "QLabel_as_QFrame"
 
 ///|
 pub fn QLabel::new() -> Self {
-  @ffi._QLabel_new()
+  _QLabel_new()
 }
 
 ///|
 pub fn QLabel::setText(self : Self, text : String) -> Unit {
-  @ffi._QLabel_setText(self.0, text)
+  _QLabel_setText(self, text)
 }
 
 ///|
@@ -23,5 +34,5 @@ pub impl AsWidget for QLabel with as_widget(self) {
 
 ///|
 pub impl AsFrame for QLabel with as_frame(self) {
-  @ffi._QLabel_as_QFrame(self.0)
+  _QLabel_as_QFrame(self)
 }

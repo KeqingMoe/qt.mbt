@@ -1,4 +1,15 @@
 ///|
+pub type QBoxLayout
+
+///|
+#borrow(this, layout)
+extern "C" fn _QBoxLayout_addLayout(this : QBoxLayout, layout : QLayout) = "QBoxLayout_addLayout"
+
+///|
+#borrow(this)
+extern "C" fn _QBoxLayout_as_QLayout(this : QBoxLayout) -> QLayout = "QBoxLayout_as_QLayout"
+
+///|
 pub(open) trait AsBoxLayout: AsLayout {
   as_box_layout(Self) -> QBoxLayout
   addLayout(Self, layout : &AsLayout) -> Unit = _
@@ -6,11 +17,8 @@ pub(open) trait AsBoxLayout: AsLayout {
 
 ///|
 impl AsBoxLayout with addLayout(self, layout) {
-  @ffi._QBoxLayout_addLayout(self.as_box_layout().0, layout.as_layout().0)
+  _QBoxLayout_addLayout(self.as_box_layout(), layout.as_layout())
 }
-
-///|
-pub(all) struct QBoxLayout(@ffi.QBoxLayout)
 
 ///|
 impl AsObject for QBoxLayout with as_object(self) {
@@ -19,5 +27,5 @@ impl AsObject for QBoxLayout with as_object(self) {
 
 ///|
 impl AsLayout for QBoxLayout with as_layout(self) {
-  @ffi._QBoxLayout_as_QLayout(self.0)
+  _QBoxLayout_as_QLayout(self)
 }

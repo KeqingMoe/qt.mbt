@@ -1,10 +1,14 @@
 ///|
+pub type QFrame
+
+///|
+#borrow(this)
+extern "C" fn _QFrame_as_QWidget(this : QFrame) -> QWidget = "QFrame_as_QWidget"
+
+///|
 pub(open) trait AsFrame: AsWidget {
   as_frame(Self) -> QFrame
 }
-
-///|
-pub struct QFrame(@ffi.QFrame)
 
 ///|
 pub impl AsObject for QFrame with as_object(self) {
@@ -13,7 +17,7 @@ pub impl AsObject for QFrame with as_object(self) {
 
 ///|
 pub impl AsWidget for QFrame with as_widget(self) {
-  @ffi._QFrame_as_QWidget(self.0)
+  _QFrame_as_QWidget(self)
 }
 
 ///|

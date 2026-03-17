@@ -1,8 +1,12 @@
 ///|
-pub(all) struct Signal[A](@ffi.Signal[A])
+pub type Signal[_]
 
 ///|
-pub struct Connection(@ffi.Connection)
+pub type Connection
+
+///|
+#borrow(this)
+extern "C" fn _Connection_is_valid(this : Connection) -> Bool = "Connection_is_valid"
 
 ///|
 pub fn[A] Signal::connect(self : Self[A], slot : (A) -> Unit) -> Connection {
@@ -16,5 +20,5 @@ pub fn Connection::disconnect(self : Self) -> Bool {
 
 ///|
 pub fn Connection::is_valid(self : Self) -> Bool {
-  @ffi._Connection_is_valid(self.0)
+  _Connection_is_valid(self)
 }

@@ -1,4 +1,20 @@
 ///|
+pub type QObject
+
+///|
+#borrow(signal)
+#owned(slot)
+extern "C" fn _QObject_connect(signal : &Any, slot : &Any) -> Connection = "QObject_connect"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_disconnect(this : Connection) -> Bool = "QObject_disconnect"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_is_null(this : QObject) -> Bool = "QObject_is_null"
+
+///|
 pub(open) trait AsObject {
   as_object(Self) -> QObject
   is_null(Self) -> Bool = _
@@ -6,23 +22,20 @@ pub(open) trait AsObject {
 
 ///|
 impl AsObject with is_null(self) {
-  @ffi._QObject_is_null(self.as_object().0)
+  _QObject_is_null(self.as_object())
 }
-
-///|
-pub(all) struct QObject(@ffi.QObject)
 
 ///|
 pub fn[T] QObject::connect(
   signal : Signal[T],
   slot : (T) -> Unit,
 ) -> Connection {
-  @ffi._QObject_connect(@ffi.Itself(signal.0), @ffi.Itself(slot))
+  _QObject_connect(Itself(signal), Itself(slot))
 }
 
 ///|
 pub fn QObject::disconnect(connection : Connection) -> Bool {
-  @ffi._QObject_disconnect(connection.0)
+  _QObject_disconnect(connection)
 }
 
 ///|

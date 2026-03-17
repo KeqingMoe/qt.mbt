@@ -1,4 +1,15 @@
 ///|
+pub type QLayout
+
+///|
+#borrow(this, widget)
+extern "C" fn _QLayout_addWidget(this : QLayout, widget : QWidget) = "QLayout_addWidget"
+
+///|
+#borrow(this)
+extern "C" fn _QLayout_as_QObject(this : QLayout) -> QObject = "QLayout_as_QObject"
+
+///|
 pub(open) trait AsLayout: AsObject {
   as_layout(Self) -> QLayout
   addWidget(Self, widget : &AsWidget) -> Unit = _
@@ -6,15 +17,12 @@ pub(open) trait AsLayout: AsObject {
 
 ///|
 impl AsLayout with addWidget(self, widget) {
-  @ffi._QLayout_addWidget(self.as_layout().0, widget.as_widget().0)
+  _QLayout_addWidget(self.as_layout(), widget.as_widget())
 }
 
 ///|
-pub(all) struct QLayout(@ffi.QLayout)
-
-///|
 pub impl AsObject for QLayout with as_object(self) {
-  @ffi._QLayout_as_QObject(self.0)
+  _QLayout_as_QObject(self)
 }
 
 ///|

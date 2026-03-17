@@ -1,9 +1,16 @@
 ///|
-pub(all) struct QVBoxLayout(@ffi.QVBoxLayout)
+pub type QVBoxLayout
+
+///|
+extern "C" fn _QVBoxLayout_new() -> QVBoxLayout = "QVBoxLayout_new"
+
+///|
+#borrow(this)
+extern "C" fn _QVBoxLayout_as_QBoxLayout(this : QVBoxLayout) -> QBoxLayout = "QVBoxLayout_as_QBoxLayout"
 
 ///|
 pub fn QVBoxLayout::new() -> Self {
-  @ffi._QVBoxLayout_new()
+  _QVBoxLayout_new()
 }
 
 ///|
@@ -18,5 +25,5 @@ pub impl AsLayout for QVBoxLayout with as_layout(self) {
 
 ///|
 pub impl AsBoxLayout for QVBoxLayout with as_box_layout(self) {
-  @ffi._QVBoxLayout_as_QBoxLayout(self.0)
+  _QVBoxLayout_as_QBoxLayout(self)
 }

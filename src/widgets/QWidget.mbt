@@ -1,4 +1,26 @@
 ///|
+pub type QWidget
+
+///|
+extern "C" fn _QWidget_new() -> QWidget = "QWidget_new"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_show(this : QWidget) = "QWidget_show"
+
+///|
+#borrow(this, title)
+extern "C" fn _QWidget_setWindowTitle(this : QWidget, title : String) = "QWidget_setWindowTitle"
+
+///|
+#borrow(this, layout)
+extern "C" fn _QWidget_setLayout(this : QWidget, layout : QLayout) = "QWidget_setLayout"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_as_QObject(this : QWidget) -> QObject = "QWidget_as_QObject"
+
+///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
   show(Self) -> Unit = _
@@ -8,30 +30,27 @@ pub(open) trait AsWidget: AsObject {
 
 ///|
 impl AsWidget with show(self) {
-  @ffi._QWidget_show(self.as_widget().0)
+  _QWidget_show(self.as_widget())
 }
 
 ///|
 impl AsWidget with setWindowTitle(self, title) {
-  @ffi._QWidget_setWindowTitle(self.as_widget().0, title)
+  _QWidget_setWindowTitle(self.as_widget(), title)
 }
 
 ///|
 impl AsWidget with setLayout(self, layout) {
-  @ffi._QWidget_setLayout(self.as_widget().0, layout.as_layout().0)
+  _QWidget_setLayout(self.as_widget(), layout.as_layout())
 }
 
 ///|
-pub(all) struct QWidget(@ffi.QWidget)
-
-///|
 pub fn QWidget::new() -> QWidget {
-  @ffi._QWidget_new()
+  _QWidget_new()
 }
 
 ///|
 pub impl AsObject for QWidget with as_object(self) {
-  @ffi._QWidget_as_QObject(self.0)
+  _QWidget_as_QObject(self)
 }
 
 ///|

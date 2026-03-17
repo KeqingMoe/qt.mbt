@@ -1,9 +1,16 @@
 ///|
-pub(all) struct QHBoxLayout(@ffi.QHBoxLayout)
+pub type QHBoxLayout
+
+///|
+extern "C" fn _QHBoxLayout_new() -> QHBoxLayout = "QHBoxLayout_new"
+
+///|
+#borrow(this)
+extern "C" fn _QHBoxLayout_as_QBoxLayout(this : QHBoxLayout) -> QBoxLayout = "QHBoxLayout_as_QBoxLayout"
 
 ///|
 pub fn QHBoxLayout::new() -> Self {
-  @ffi._QHBoxLayout_new()
+  _QHBoxLayout_new()
 }
 
 ///|
@@ -18,5 +25,5 @@ pub impl AsLayout for QHBoxLayout with as_layout(self) {
 
 ///|
 pub impl AsBoxLayout for QHBoxLayout with as_box_layout(self) {
-  @ffi._QHBoxLayout_as_QBoxLayout(self.0)
+  _QHBoxLayout_as_QBoxLayout(self)
 }

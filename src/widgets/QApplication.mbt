@@ -1,17 +1,29 @@
 ///|
-pub(all) struct QApplication(@ffi.QApplication)
+pub type QApplication
+
+///|
+#borrow(args)
+extern "C" fn _QApplication_new(args : Array[String]) -> QApplication = "QApplication_new"
+
+///|
+#borrow(this)
+extern "C" fn _QApplication_exec(this : QApplication) -> Int = "QApplication_exec"
+
+///|
+#borrow(this)
+extern "C" fn _QApplication_as_QObject(this : QApplication) -> QObject = "QApplication_as_QObject"
 
 ///|
 pub fn QApplication::new(args : Array[String]) -> QApplication {
-  @ffi._QApplication_new(args)
+  _QApplication_new(args)
 }
 
 ///|
 pub fn QApplication::exec(self : Self) -> Int {
-  @ffi._QApplication_exec(self.0)
+  _QApplication_exec(self)
 }
 
 ///|
 pub impl AsObject for QApplication with as_object(self) {
-  @ffi._QApplication_as_QObject(self.0)
+  _QApplication_as_QObject(self)
 }

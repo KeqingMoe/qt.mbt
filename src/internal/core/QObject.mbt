@@ -9,3 +9,7 @@ pub extern "C" fn _QObject_connect(signal : &Any, slot : &Any) -> Connection = "
 ///|
 #borrow(this)
 pub extern "C" fn _QObject_disconnect(this : Connection) -> Bool = "QObject_disconnect"
+
+///|
+#borrow(this)
+pub extern "C" fn _QObject_is_null(this : QObject) -> Bool = "QObject_is_null"

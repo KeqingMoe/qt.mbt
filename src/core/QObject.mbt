@@ -1,6 +1,12 @@
 ///|
 pub(open) trait AsObject {
   as_object(Self) -> QObject
+  is_null(Self) -> Bool = _
+}
+
+///|
+impl AsObject with is_null(self) {
+  @ffi._QObject_is_null(self.as_object().0)
 }
 
 ///|

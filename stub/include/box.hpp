@@ -12,7 +12,7 @@
 template <typename T>
 struct qt
 {
-    using Self = qt;
+    using Self      = qt;
     using repr_type = mbt::box<QPointer<T>>;
     repr_type repr;
 
@@ -43,6 +43,11 @@ struct qt
     auto get() const -> T*
     {
         return repr->get();
+    }
+
+    auto is_null() const -> bool
+    {
+        return repr->isNull();
     }
 };
 

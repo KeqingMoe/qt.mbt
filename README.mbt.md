@@ -14,7 +14,7 @@
 ## 示例
 
 ```mbt check
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let mut count = 0
@@ -27,7 +27,7 @@ fn main {
 
   let _ = QObject::connect(button.clicked(), _ => {
     count += 1
-    label.setText("Count: \{count}")
+    try! label.setText("Count: \{count}")
   })
 
   let layout = QHBoxLayout::new()

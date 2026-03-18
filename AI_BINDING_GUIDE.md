@@ -172,6 +172,14 @@ stub 层优先使用这些宏：
 
 不要在各个 `.cpp` 文件里重复手写 `QString` / `String` 转换逻辑。
 
+### Qt 枚举映射
+
+- 如果 Qt API 使用的是具名枚举类型，而该枚举在 MoonBit 侧值得直接表达语义，则应在 MoonBit public 层定义对应的常量枚举，而不是把 public API 退化成 `Int`。
+- 这类 MoonBit 常量枚举应尽量保持 Qt 原始枚举项的语义和数值，例如 `Qt::CheckState` 对应 `Unchecked = 0`、`PartiallyChecked = 1`、`Checked = 2`。
+- MoonBit internal/public 的 `extern "C"` 声明可以直接使用这种常量枚举作为参数和返回值。按照 MoonBit FFI 约定，常量枚举会按整数传递，无需额外桥接层。
+- stub 层可以继续把这类参数和返回值写成 `Int`，并在需要时显式转换到 Qt 枚举，例如 `static_cast<Qt::CheckState>(state)`。
+- 信号也遵循同样规则：如果 Qt 信号参数本质上是这类枚举，则 MoonBit 侧信号类型应写成对应枚举类型，而不是 `Signal[Int]`。
+
 ### 布尔转换
 
 - 从 C++ `bool` 到 MoonBit `Bool`：使用 `Bool::make(...)`

@@ -74,42 +74,59 @@ pub fn QProgressBar::new() -> Self {
 }
 
 ///|
-pub fn QProgressBar::format(self : Self) -> String {
+pub fn QProgressBar::format(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_format(self)
 }
 
 ///|
-pub fn QProgressBar::isTextVisible(self : Self) -> Bool {
+pub fn QProgressBar::isTextVisible(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_isTextVisible(self)
 }
 
 ///|
-pub fn QProgressBar::maximum(self : Self) -> Int {
+pub fn QProgressBar::maximum(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_maximum(self)
 }
 
 ///|
-pub fn QProgressBar::minimum(self : Self) -> Int {
+pub fn QProgressBar::minimum(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_minimum(self)
 }
 
 ///|
-pub fn QProgressBar::reset(self : Self) -> Unit {
+pub fn QProgressBar::reset(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_reset(self)
 }
 
 ///|
-pub fn QProgressBar::setFormat(self : Self, format : String) -> Unit {
+pub fn QProgressBar::setFormat(
+  self : Self,
+  format : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setFormat(self, format)
 }
 
 ///|
-pub fn QProgressBar::setMaximum(self : Self, maximum : Int) -> Unit {
+pub fn QProgressBar::setMaximum(
+  self : Self,
+  maximum : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setMaximum(self, maximum)
 }
 
 ///|
-pub fn QProgressBar::setMinimum(self : Self, minimum : Int) -> Unit {
+pub fn QProgressBar::setMinimum(
+  self : Self,
+  minimum : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setMinimum(self, minimum)
 }
 
@@ -118,32 +135,46 @@ pub fn QProgressBar::setRange(
   self : Self,
   minimum : Int,
   maximum : Int,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setRange(self, minimum, maximum)
 }
 
 ///|
-pub fn QProgressBar::setTextVisible(self : Self, visible : Bool) -> Unit {
+pub fn QProgressBar::setTextVisible(
+  self : Self,
+  visible : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setTextVisible(self, visible)
 }
 
 ///|
-pub fn QProgressBar::setValue(self : Self, value : Int) -> Unit {
+pub fn QProgressBar::setValue(
+  self : Self,
+  value : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_setValue(self, value)
 }
 
 ///|
-pub fn QProgressBar::text(self : Self) -> String {
+pub fn QProgressBar::text(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_text(self)
 }
 
 ///|
-pub fn QProgressBar::value(self : Self) -> Int {
+pub fn QProgressBar::value(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_value(self)
 }
 
 ///|
-pub fn QProgressBar::valueChanged(self : Self) -> Signal[Int] {
+pub fn QProgressBar::valueChanged(
+  self : Self,
+) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QProgressBar_valueChanged(self)
 }
 

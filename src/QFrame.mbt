@@ -24,29 +24,33 @@ extern "C" fn _QFrame_as_QWidget(this : QFrame) -> QWidget = "QFrame_as_QWidget"
 ///|
 pub(open) trait AsFrame: AsWidget {
   as_frame(Self) -> QFrame
-  frameShadow(Self) -> FrameShadow = _
-  frameShape(Self) -> FrameShape = _
-  setFrameShadow(Self, shadow : FrameShadow) -> Unit = _
-  setFrameShape(Self, shape : FrameShape) -> Unit = _
+  frameShadow(Self) -> FrameShadow raise NullptrError = _
+  frameShape(Self) -> FrameShape raise NullptrError = _
+  setFrameShadow(Self, shadow : FrameShadow) -> Unit raise NullptrError = _
+  setFrameShape(Self, shape : FrameShape) -> Unit raise NullptrError = _
 }
 
 ///|
 impl AsFrame with frameShadow(self) {
+  ensure_not_nullptr(self)
   _QFrame_frameShadow(self.as_frame())
 }
 
 ///|
 impl AsFrame with frameShape(self) {
+  ensure_not_nullptr(self)
   _QFrame_frameShape(self.as_frame())
 }
 
 ///|
 impl AsFrame with setFrameShadow(self, shadow) {
+  ensure_not_nullptr(self)
   _QFrame_setFrameShadow(self.as_frame(), shadow)
 }
 
 ///|
 impl AsFrame with setFrameShape(self, shape) {
+  ensure_not_nullptr(self)
   _QFrame_setFrameShape(self.as_frame(), shape)
 }
 

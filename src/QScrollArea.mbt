@@ -60,7 +60,8 @@ pub fn QScrollArea::ensureVisible(
   y : Int,
   xMargin? : Int = 50,
   yMargin? : Int = 50,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_ensureVisible(self, x, y, xMargin, yMargin)
 }
 
@@ -70,27 +71,38 @@ pub fn QScrollArea::ensureWidgetVisible(
   widget : &AsWidget,
   xMargin? : Int = 50,
   yMargin? : Int = 50,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_ensureWidgetVisible(self, widget.as_widget(), xMargin, yMargin)
 }
 
 ///|
-pub fn QScrollArea::setWidget(self : Self, widget : &AsWidget) -> Unit {
+pub fn QScrollArea::setWidget(
+  self : Self,
+  widget : &AsWidget,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_setWidget(self, widget.as_widget())
 }
 
 ///|
-pub fn QScrollArea::setWidgetResizable(self : Self, resizable : Bool) -> Unit {
+pub fn QScrollArea::setWidgetResizable(
+  self : Self,
+  resizable : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_setWidgetResizable(self, resizable)
 }
 
 ///|
-pub fn QScrollArea::widget(self : Self) -> QWidget {
+pub fn QScrollArea::widget(self : Self) -> QWidget raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_widget(self)
 }
 
 ///|
-pub fn QScrollArea::widgetResizable(self : Self) -> Bool {
+pub fn QScrollArea::widgetResizable(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QScrollArea_widgetResizable(self)
 }
 

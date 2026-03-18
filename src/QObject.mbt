@@ -80,20 +80,20 @@ extern "C" fn _QObject_signalsBlocked(this : QObject) -> Bool = "QObject_signals
 pub(open) trait AsObject {
   as_object(Self) -> QObject
   is_null(Self) -> Bool = _
-  blockSignals(Self, block : Bool) -> Bool = _
-  deleteLater(Self) -> Unit = _
-  destroyed(Self) -> Signal[QObject] = _
-  dumpObjectInfo(Self) -> Unit = _
-  dumpObjectTree(Self) -> Unit = _
-  inherits(Self, className : String) -> Bool = _
-  isWidgetType(Self) -> Bool = _
-  isWindowType(Self) -> Bool = _
-  objectName(Self) -> String = _
-  objectNameChanged(Self) -> Signal[String] = _
-  parent(Self) -> QObject = _
-  setObjectName(Self, name : String) -> Unit = _
-  setParent(Self, parent : &AsObject) -> Unit = _
-  signalsBlocked(Self) -> Bool = _
+  blockSignals(Self, block : Bool) -> Bool raise NullptrError = _
+  deleteLater(Self) -> Unit raise NullptrError = _
+  destroyed(Self) -> Signal[QObject] raise NullptrError = _
+  dumpObjectInfo(Self) -> Unit raise NullptrError = _
+  dumpObjectTree(Self) -> Unit raise NullptrError = _
+  inherits(Self, className : String) -> Bool raise NullptrError = _
+  isWidgetType(Self) -> Bool raise NullptrError = _
+  isWindowType(Self) -> Bool raise NullptrError = _
+  objectName(Self) -> String raise NullptrError = _
+  objectNameChanged(Self) -> Signal[String] raise NullptrError = _
+  parent(Self) -> QObject raise NullptrError = _
+  setObjectName(Self, name : String) -> Unit raise NullptrError = _
+  setParent(Self, parent : &AsObject) -> Unit raise NullptrError = _
+  signalsBlocked(Self) -> Bool raise NullptrError = _
 }
 
 ///|
@@ -103,71 +103,85 @@ impl AsObject with is_null(self) {
 
 ///|
 impl AsObject with blockSignals(self, block) {
+  ensure_not_nullptr(self)
   _QObject_blockSignals(self.as_object(), block)
 }
 
 ///|
 impl AsObject with deleteLater(self) {
+  ensure_not_nullptr(self)
   _QObject_deleteLater(self.as_object())
 }
 
 ///|
 impl AsObject with destroyed(self) {
+  ensure_not_nullptr(self)
   _QObject_destroyed(self.as_object())
 }
 
 ///|
 impl AsObject with dumpObjectInfo(self) {
+  ensure_not_nullptr(self)
   _QObject_dumpObjectInfo(self.as_object())
 }
 
 ///|
 impl AsObject with dumpObjectTree(self) {
+  ensure_not_nullptr(self)
   _QObject_dumpObjectTree(self.as_object())
 }
 
 ///|
 impl AsObject with inherits(self, className) {
+  ensure_not_nullptr(self)
   _QObject_inherits(self.as_object(), className)
 }
 
 ///|
 impl AsObject with isWidgetType(self) {
+  ensure_not_nullptr(self)
   _QObject_isWidgetType(self.as_object())
 }
 
 ///|
 impl AsObject with isWindowType(self) {
+  ensure_not_nullptr(self)
   _QObject_isWindowType(self.as_object())
 }
 
 ///|
 impl AsObject with objectName(self) {
+  ensure_not_nullptr(self)
   _QObject_objectName(self.as_object())
 }
 
 ///|
 impl AsObject with objectNameChanged(self) {
+  ensure_not_nullptr(self)
   _QObject_objectNameChanged(self.as_object())
 }
 
 ///|
 impl AsObject with parent(self) {
+  ensure_not_nullptr(self)
   _QObject_parent(self.as_object())
 }
 
 ///|
 impl AsObject with setObjectName(self, name) {
+  ensure_not_nullptr(self)
   _QObject_setObjectName(self.as_object(), name)
 }
 
 ///|
 impl AsObject with setParent(self, parent) {
+  ensure_not_nullptr(self)
   _QObject_setParent(self.as_object(), parent.as_object())
 }
 
 ///|
 impl AsObject with signalsBlocked(self) {
+  ensure_not_nullptr(self)
   _QObject_signalsBlocked(self.as_object())
 }
 

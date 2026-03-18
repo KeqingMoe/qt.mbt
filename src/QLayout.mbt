@@ -69,83 +69,96 @@ extern "C" fn _QLayout_as_QObject(this : QLayout) -> QObject = "QLayout_as_QObje
 ///|
 pub(open) trait AsLayout: AsObject {
   as_layout(Self) -> QLayout
-  addWidget(Self, widget : &AsWidget) -> Unit = _
-  count(Self) -> Int = _
-  indexOf(Self, widget : &AsWidget) -> Int = _
-  isEnabled(Self) -> Bool = _
-  removeWidget(Self, widget : &AsWidget) -> Unit = _
-  setContentsMargins(Self, left : Int, top : Int, right : Int, bottom : Int) -> Unit = _
-  setEnabled(Self, value : Bool) -> Unit = _
-  setSizeConstraint(Self, constraint : SizeConstraint) -> Unit = _
-  setSpacing(Self, spacing : Int) -> Unit = _
-  sizeConstraint(Self) -> SizeConstraint = _
-  spacing(Self) -> Int = _
-  unsetContentsMargins(Self) -> Unit = _
-  update(Self) -> Unit = _
+  addWidget(Self, widget : &AsWidget) -> Unit raise NullptrError = _
+  count(Self) -> Int raise NullptrError = _
+  indexOf(Self, widget : &AsWidget) -> Int raise NullptrError = _
+  isEnabled(Self) -> Bool raise NullptrError = _
+  removeWidget(Self, widget : &AsWidget) -> Unit raise NullptrError = _
+  setContentsMargins(Self, left : Int, top : Int, right : Int, bottom : Int) -> Unit raise NullptrError = _
+  setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
+  setSizeConstraint(Self, constraint : SizeConstraint) -> Unit raise NullptrError = _
+  setSpacing(Self, spacing : Int) -> Unit raise NullptrError = _
+  sizeConstraint(Self) -> SizeConstraint raise NullptrError = _
+  spacing(Self) -> Int raise NullptrError = _
+  unsetContentsMargins(Self) -> Unit raise NullptrError = _
+  update(Self) -> Unit raise NullptrError = _
 }
 
 ///|
 impl AsLayout with addWidget(self, widget) {
+  ensure_not_nullptr(self)
   _QLayout_addWidget(self.as_layout(), widget.as_widget())
 }
 
 ///|
 impl AsLayout with count(self) {
+  ensure_not_nullptr(self)
   _QLayout_count(self.as_layout())
 }
 
 ///|
 impl AsLayout with indexOf(self, widget) {
+  ensure_not_nullptr(self)
   _QLayout_indexOf(self.as_layout(), widget.as_widget())
 }
 
 ///|
 impl AsLayout with isEnabled(self) {
+  ensure_not_nullptr(self)
   _QLayout_isEnabled(self.as_layout())
 }
 
 ///|
 impl AsLayout with removeWidget(self, widget) {
+  ensure_not_nullptr(self)
   _QLayout_removeWidget(self.as_layout(), widget.as_widget())
 }
 
 ///|
 impl AsLayout with setContentsMargins(self, left, top, right, bottom) {
+  ensure_not_nullptr(self)
   _QLayout_setContentsMargins(self.as_layout(), left, top, right, bottom)
 }
 
 ///|
 impl AsLayout with setEnabled(self, value) {
+  ensure_not_nullptr(self)
   _QLayout_setEnabled(self.as_layout(), value)
 }
 
 ///|
 impl AsLayout with setSizeConstraint(self, constraint) {
+  ensure_not_nullptr(self)
   _QLayout_setSizeConstraint(self.as_layout(), constraint)
 }
 
 ///|
 impl AsLayout with setSpacing(self, spacing) {
+  ensure_not_nullptr(self)
   _QLayout_setSpacing(self.as_layout(), spacing)
 }
 
 ///|
 impl AsLayout with sizeConstraint(self) {
+  ensure_not_nullptr(self)
   _QLayout_sizeConstraint(self.as_layout())
 }
 
 ///|
 impl AsLayout with spacing(self) {
+  ensure_not_nullptr(self)
   _QLayout_spacing(self.as_layout())
 }
 
 ///|
 impl AsLayout with unsetContentsMargins(self) {
+  ensure_not_nullptr(self)
   _QLayout_unsetContentsMargins(self.as_layout())
 }
 
 ///|
 impl AsLayout with update(self) {
+  ensure_not_nullptr(self)
   _QLayout_update(self.as_layout())
 }
 

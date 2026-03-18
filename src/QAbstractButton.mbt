@@ -117,143 +117,166 @@ extern "C" fn _QAbstractButton_as_QWidget(this : QAbstractButton) -> QWidget = "
 ///|
 pub(open) trait AsAbstractButton: AsWidget {
   as_abstract_button(Self) -> QAbstractButton
-  animateClick(Self) -> Unit = _
-  autoExclusive(Self) -> Bool = _
-  autoRepeat(Self) -> Bool = _
-  autoRepeatDelay(Self) -> Int = _
-  autoRepeatInterval(Self) -> Int = _
-  click(Self) -> Unit = _
-  isCheckable(Self) -> Bool = _
-  isChecked(Self) -> Bool = _
-  isDown(Self) -> Bool = _
-  setAutoExclusive(Self, value : Bool) -> Unit = _
-  setAutoRepeat(Self, value : Bool) -> Unit = _
-  setAutoRepeatDelay(Self, delay : Int) -> Unit = _
-  setAutoRepeatInterval(Self, interval : Int) -> Unit = _
-  setCheckable(Self, value : Bool) -> Unit = _
-  setChecked(Self, value : Bool) -> Unit = _
-  setDown(Self, value : Bool) -> Unit = _
-  setText(Self, text : String) -> Unit = _
-  text(Self) -> String = _
-  toggle(Self) -> Unit = _
-  clicked(Self) -> Signal[Bool] = _
-  pressed(Self) -> Signal[Unit] = _
-  released(Self) -> Signal[Unit] = _
-  toggled(Self) -> Signal[Bool] = _
+  animateClick(Self) -> Unit raise NullptrError = _
+  autoExclusive(Self) -> Bool raise NullptrError = _
+  autoRepeat(Self) -> Bool raise NullptrError = _
+  autoRepeatDelay(Self) -> Int raise NullptrError = _
+  autoRepeatInterval(Self) -> Int raise NullptrError = _
+  click(Self) -> Unit raise NullptrError = _
+  isCheckable(Self) -> Bool raise NullptrError = _
+  isChecked(Self) -> Bool raise NullptrError = _
+  isDown(Self) -> Bool raise NullptrError = _
+  setAutoExclusive(Self, value : Bool) -> Unit raise NullptrError = _
+  setAutoRepeat(Self, value : Bool) -> Unit raise NullptrError = _
+  setAutoRepeatDelay(Self, delay : Int) -> Unit raise NullptrError = _
+  setAutoRepeatInterval(Self, interval : Int) -> Unit raise NullptrError = _
+  setCheckable(Self, value : Bool) -> Unit raise NullptrError = _
+  setChecked(Self, value : Bool) -> Unit raise NullptrError = _
+  setDown(Self, value : Bool) -> Unit raise NullptrError = _
+  setText(Self, text : String) -> Unit raise NullptrError = _
+  text(Self) -> String raise NullptrError = _
+  toggle(Self) -> Unit raise NullptrError = _
+  clicked(Self) -> Signal[Bool] raise NullptrError = _
+  pressed(Self) -> Signal[Unit] raise NullptrError = _
+  released(Self) -> Signal[Unit] raise NullptrError = _
+  toggled(Self) -> Signal[Bool] raise NullptrError = _
 }
 
 ///|
 impl AsAbstractButton with animateClick(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_animateClick(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with autoExclusive(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_autoExclusive(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with autoRepeat(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_autoRepeat(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with autoRepeatDelay(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_autoRepeatDelay(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with autoRepeatInterval(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_autoRepeatInterval(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with click(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_click(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with clicked(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_clicked(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with isCheckable(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_isCheckable(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with isChecked(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_isChecked(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with isDown(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_isDown(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with pressed(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_pressed(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with released(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_released(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with setAutoExclusive(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setAutoExclusive(self.as_abstract_button(), value)
 }
 
 ///|
 impl AsAbstractButton with setAutoRepeat(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setAutoRepeat(self.as_abstract_button(), value)
 }
 
 ///|
 impl AsAbstractButton with setAutoRepeatDelay(self, delay) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setAutoRepeatDelay(self.as_abstract_button(), delay)
 }
 
 ///|
 impl AsAbstractButton with setAutoRepeatInterval(self, interval) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setAutoRepeatInterval(self.as_abstract_button(), interval)
 }
 
 ///|
 impl AsAbstractButton with setCheckable(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setCheckable(self.as_abstract_button(), value)
 }
 
 ///|
 impl AsAbstractButton with setChecked(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setChecked(self.as_abstract_button(), value)
 }
 
 ///|
 impl AsAbstractButton with setDown(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setDown(self.as_abstract_button(), value)
 }
 
 ///|
 impl AsAbstractButton with setText(self, text) {
+  ensure_not_nullptr(self)
   _QAbstractButton_setText(self.as_abstract_button(), text)
 }
 
 ///|
 impl AsAbstractButton with text(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_text(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with toggle(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_toggle(self.as_abstract_button())
 }
 
 ///|
 impl AsAbstractButton with toggled(self) {
+  ensure_not_nullptr(self)
   _QAbstractButton_toggled(self.as_abstract_button())
 }
 

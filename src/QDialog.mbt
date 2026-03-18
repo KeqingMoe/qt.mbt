@@ -50,47 +50,56 @@ pub fn QDialog::new() -> Self {
 }
 
 ///|
-pub fn QDialog::accept(self : Self) -> Unit {
+pub fn QDialog::accept(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_accept(self)
 }
 
 ///|
-pub fn QDialog::accepted(self : Self) -> Signal[Unit] {
+pub fn QDialog::accepted(self : Self) -> Signal[Unit] raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_accepted(self)
 }
 
 ///|
-pub fn QDialog::done(self : Self, result : Int) -> Unit {
+pub fn QDialog::done(self : Self, result : Int) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_done(self, result)
 }
 
 ///|
-pub fn QDialog::finished(self : Self) -> Signal[Int] {
+pub fn QDialog::finished(self : Self) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_finished(self)
 }
 
 ///|
-pub fn QDialog::isModal(self : Self) -> Bool {
+pub fn QDialog::isModal(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_isModal(self)
 }
 
 ///|
-pub fn QDialog::reject(self : Self) -> Unit {
+pub fn QDialog::reject(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_reject(self)
 }
 
 ///|
-pub fn QDialog::rejected(self : Self) -> Signal[Unit] {
+pub fn QDialog::rejected(self : Self) -> Signal[Unit] raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_rejected(self)
 }
 
 ///|
-pub fn QDialog::result(self : Self) -> Int {
+pub fn QDialog::result(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_result(self)
 }
 
 ///|
-pub fn QDialog::setModal(self : Self, modal : Bool) -> Unit {
+pub fn QDialog::setModal(self : Self, modal : Bool) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialog_setModal(self, modal)
 }
 

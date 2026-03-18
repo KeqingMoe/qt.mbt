@@ -165,173 +165,201 @@ extern "C" fn _QAbstractSlider_as_QWidget(this : QAbstractSlider) -> QWidget = "
 ///|
 pub(open) trait AsAbstractSlider: AsWidget {
   as_abstract_slider(Self) -> QAbstractSlider
-  hasTracking(Self) -> Bool = _
-  invertedAppearance(Self) -> Bool = _
-  invertedControls(Self) -> Bool = _
-  isSliderDown(Self) -> Bool = _
-  maximum(Self) -> Int = _
-  minimum(Self) -> Int = _
-  orientation(Self) -> Orientation = _
-  pageStep(Self) -> Int = _
-  setInvertedAppearance(Self, value : Bool) -> Unit = _
-  setInvertedControls(Self, value : Bool) -> Unit = _
-  setMaximum(Self, maximum : Int) -> Unit = _
-  setMinimum(Self, minimum : Int) -> Unit = _
-  setOrientation(Self, orientation : Orientation) -> Unit = _
-  setPageStep(Self, step : Int) -> Unit = _
-  setRange(Self, minimum : Int, maximum : Int) -> Unit = _
-  setSingleStep(Self, value : Int) -> Unit = _
-  setSliderDown(Self, value : Bool) -> Unit = _
-  setSliderPosition(Self, position : Int) -> Unit = _
-  setTracking(Self, enable : Bool) -> Unit = _
-  setValue(Self, value : Int) -> Unit = _
-  singleStep(Self) -> Int = _
-  sliderPosition(Self) -> Int = _
-  value(Self) -> Int = _
-  actionTriggered(Self) -> Signal[Int] = _
-  sliderMoved(Self) -> Signal[Int] = _
-  sliderPressed(Self) -> Signal[Unit] = _
-  sliderReleased(Self) -> Signal[Unit] = _
-  valueChanged(Self) -> Signal[Int] = _
+  hasTracking(Self) -> Bool raise NullptrError = _
+  invertedAppearance(Self) -> Bool raise NullptrError = _
+  invertedControls(Self) -> Bool raise NullptrError = _
+  isSliderDown(Self) -> Bool raise NullptrError = _
+  maximum(Self) -> Int raise NullptrError = _
+  minimum(Self) -> Int raise NullptrError = _
+  orientation(Self) -> Orientation raise NullptrError = _
+  pageStep(Self) -> Int raise NullptrError = _
+  setInvertedAppearance(Self, value : Bool) -> Unit raise NullptrError = _
+  setInvertedControls(Self, value : Bool) -> Unit raise NullptrError = _
+  setMaximum(Self, maximum : Int) -> Unit raise NullptrError = _
+  setMinimum(Self, minimum : Int) -> Unit raise NullptrError = _
+  setOrientation(Self, orientation : Orientation) -> Unit raise NullptrError = _
+  setPageStep(Self, step : Int) -> Unit raise NullptrError = _
+  setRange(Self, minimum : Int, maximum : Int) -> Unit raise NullptrError = _
+  setSingleStep(Self, value : Int) -> Unit raise NullptrError = _
+  setSliderDown(Self, value : Bool) -> Unit raise NullptrError = _
+  setSliderPosition(Self, position : Int) -> Unit raise NullptrError = _
+  setTracking(Self, enable : Bool) -> Unit raise NullptrError = _
+  setValue(Self, value : Int) -> Unit raise NullptrError = _
+  singleStep(Self) -> Int raise NullptrError = _
+  sliderPosition(Self) -> Int raise NullptrError = _
+  value(Self) -> Int raise NullptrError = _
+  actionTriggered(Self) -> Signal[Int] raise NullptrError = _
+  sliderMoved(Self) -> Signal[Int] raise NullptrError = _
+  sliderPressed(Self) -> Signal[Unit] raise NullptrError = _
+  sliderReleased(Self) -> Signal[Unit] raise NullptrError = _
+  valueChanged(Self) -> Signal[Int] raise NullptrError = _
 }
 
 ///|
 impl AsAbstractSlider with actionTriggered(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_actionTriggered(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with hasTracking(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_hasTracking(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with invertedAppearance(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_invertedAppearance(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with invertedControls(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_invertedControls(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with isSliderDown(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_isSliderDown(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with maximum(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_maximum(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with minimum(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_minimum(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with orientation(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_orientation(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with pageStep(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_pageStep(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with setInvertedAppearance(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setInvertedAppearance(self.as_abstract_slider(), value)
 }
 
 ///|
 impl AsAbstractSlider with setInvertedControls(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setInvertedControls(self.as_abstract_slider(), value)
 }
 
 ///|
 impl AsAbstractSlider with setMaximum(self, maximum) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setMaximum(self.as_abstract_slider(), maximum)
 }
 
 ///|
 impl AsAbstractSlider with setMinimum(self, minimum) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setMinimum(self.as_abstract_slider(), minimum)
 }
 
 ///|
 impl AsAbstractSlider with setOrientation(self, orientation) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setOrientation(self.as_abstract_slider(), orientation)
 }
 
 ///|
 impl AsAbstractSlider with setPageStep(self, step) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setPageStep(self.as_abstract_slider(), step)
 }
 
 ///|
 impl AsAbstractSlider with setRange(self, minimum, maximum) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setRange(self.as_abstract_slider(), minimum, maximum)
 }
 
 ///|
 impl AsAbstractSlider with setSingleStep(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setSingleStep(self.as_abstract_slider(), value)
 }
 
 ///|
 impl AsAbstractSlider with setSliderDown(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setSliderDown(self.as_abstract_slider(), value)
 }
 
 ///|
 impl AsAbstractSlider with setSliderPosition(self, position) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setSliderPosition(self.as_abstract_slider(), position)
 }
 
 ///|
 impl AsAbstractSlider with setTracking(self, enable) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setTracking(self.as_abstract_slider(), enable)
 }
 
 ///|
 impl AsAbstractSlider with setValue(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_setValue(self.as_abstract_slider(), value)
 }
 
 ///|
 impl AsAbstractSlider with singleStep(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_singleStep(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with sliderMoved(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_sliderMoved(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with sliderPosition(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_sliderPosition(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with sliderPressed(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_sliderPressed(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with sliderReleased(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_sliderReleased(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with value(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_value(self.as_abstract_slider())
 }
 
 ///|
 impl AsAbstractSlider with valueChanged(self) {
+  ensure_not_nullptr(self)
   _QAbstractSlider_valueChanged(self.as_abstract_slider())
 }
 

@@ -70,72 +70,105 @@ pub fn QComboBox::new() -> Self {
 }
 
 ///|
-pub fn QComboBox::activated(self : Self) -> Signal[Int] {
+pub fn QComboBox::activated(self : Self) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_activated(self)
 }
 
 ///|
-pub fn QComboBox::addItem(self : Self, text : String) -> Unit {
+pub fn QComboBox::addItem(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_addItem(self, text)
 }
 
 ///|
-pub fn QComboBox::clear(self : Self) -> Unit {
+pub fn QComboBox::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_clear(self)
 }
 
 ///|
-pub fn QComboBox::count(self : Self) -> Int {
+pub fn QComboBox::count(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_count(self)
 }
 
 ///|
-pub fn QComboBox::currentIndex(self : Self) -> Int {
+pub fn QComboBox::currentIndex(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_currentIndex(self)
 }
 
 ///|
-pub fn QComboBox::currentIndexChanged(self : Self) -> Signal[Int] {
+pub fn QComboBox::currentIndexChanged(
+  self : Self,
+) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_currentIndexChanged(self)
 }
 
 ///|
-pub fn QComboBox::currentText(self : Self) -> String {
+pub fn QComboBox::currentText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_currentText(self)
 }
 
 ///|
-pub fn QComboBox::currentTextChanged(self : Self) -> Signal[String] {
+pub fn QComboBox::currentTextChanged(
+  self : Self,
+) -> Signal[String] raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_currentTextChanged(self)
 }
 
 ///|
-pub fn QComboBox::isEditable(self : Self) -> Bool {
+pub fn QComboBox::isEditable(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_isEditable(self)
 }
 
 ///|
-pub fn QComboBox::placeholderText(self : Self) -> String {
+pub fn QComboBox::placeholderText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_placeholderText(self)
 }
 
 ///|
-pub fn QComboBox::setCurrentIndex(self : Self, index : Int) -> Unit {
+pub fn QComboBox::setCurrentIndex(
+  self : Self,
+  index : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_setCurrentIndex(self, index)
 }
 
 ///|
-pub fn QComboBox::setCurrentText(self : Self, text : String) -> Unit {
+pub fn QComboBox::setCurrentText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_setCurrentText(self, text)
 }
 
 ///|
-pub fn QComboBox::setEditable(self : Self, editable : Bool) -> Unit {
+pub fn QComboBox::setEditable(
+  self : Self,
+  editable : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_setEditable(self, editable)
 }
 
 ///|
-pub fn QComboBox::setPlaceholderText(self : Self, text : String) -> Unit {
+pub fn QComboBox::setPlaceholderText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QComboBox_setPlaceholderText(self, text)
 }
 

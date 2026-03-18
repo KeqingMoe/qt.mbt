@@ -38,32 +38,44 @@ pub fn QLabel::new() -> Self {
 }
 
 ///|
-pub fn QLabel::setText(self : Self, text : String) -> Unit {
+pub fn QLabel::setText(self : Self, text : String) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_setText(self, text)
 }
 
 ///|
-pub fn QLabel::setTextFormat(self : Self, format : TextFormat) -> Unit {
+pub fn QLabel::setTextFormat(
+  self : Self,
+  format : TextFormat,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_setTextFormat(self, format)
 }
 
 ///|
-pub fn QLabel::setWordWrap(self : Self, wordWrap : Bool) -> Unit {
+pub fn QLabel::setWordWrap(
+  self : Self,
+  wordWrap : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_setWordWrap(self, wordWrap)
 }
 
 ///|
-pub fn QLabel::text(self : Self) -> String {
+pub fn QLabel::text(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_text(self)
 }
 
 ///|
-pub fn QLabel::textFormat(self : Self) -> TextFormat {
+pub fn QLabel::textFormat(self : Self) -> TextFormat raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_textFormat(self)
 }
 
 ///|
-pub fn QLabel::wordWrap(self : Self) -> Bool {
+pub fn QLabel::wordWrap(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLabel_wordWrap(self)
 }
 

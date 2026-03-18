@@ -19,7 +19,8 @@ pub fn QApplication::new(args : Array[String]) -> QApplication {
 }
 
 ///|
-pub fn QApplication::exec(self : Self) -> Int {
+pub fn QApplication::exec(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QApplication_exec(self)
 }
 

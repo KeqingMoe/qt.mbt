@@ -88,92 +88,132 @@ pub fn QSpinBox::new() -> Self {
 }
 
 ///|
-pub fn QSpinBox::cleanText(self : Self) -> String {
+pub fn QSpinBox::cleanText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_cleanText(self)
 }
 
 ///|
-pub fn QSpinBox::displayIntegerBase(self : Self) -> Int {
+pub fn QSpinBox::displayIntegerBase(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_displayIntegerBase(self)
 }
 
 ///|
-pub fn QSpinBox::maximum(self : Self) -> Int {
+pub fn QSpinBox::maximum(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_maximum(self)
 }
 
 ///|
-pub fn QSpinBox::minimum(self : Self) -> Int {
+pub fn QSpinBox::minimum(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_minimum(self)
 }
 
 ///|
-pub fn QSpinBox::prefix(self : Self) -> String {
+pub fn QSpinBox::prefix(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_prefix(self)
 }
 
 ///|
-pub fn QSpinBox::setDisplayIntegerBase(self : Self, base : Int) -> Unit {
+pub fn QSpinBox::setDisplayIntegerBase(
+  self : Self,
+  base : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setDisplayIntegerBase(self, base)
 }
 
 ///|
-pub fn QSpinBox::setMaximum(self : Self, maximum : Int) -> Unit {
+pub fn QSpinBox::setMaximum(
+  self : Self,
+  maximum : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setMaximum(self, maximum)
 }
 
 ///|
-pub fn QSpinBox::setMinimum(self : Self, minimum : Int) -> Unit {
+pub fn QSpinBox::setMinimum(
+  self : Self,
+  minimum : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setMinimum(self, minimum)
 }
 
 ///|
-pub fn QSpinBox::setPrefix(self : Self, prefix : String) -> Unit {
+pub fn QSpinBox::setPrefix(
+  self : Self,
+  prefix : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setPrefix(self, prefix)
 }
 
 ///|
-pub fn QSpinBox::setRange(self : Self, minimum : Int, maximum : Int) -> Unit {
+pub fn QSpinBox::setRange(
+  self : Self,
+  minimum : Int,
+  maximum : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setRange(self, minimum, maximum)
 }
 
 ///|
-pub fn QSpinBox::setSingleStep(self : Self, step : Int) -> Unit {
+pub fn QSpinBox::setSingleStep(
+  self : Self,
+  step : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setSingleStep(self, step)
 }
 
 ///|
-pub fn QSpinBox::setSuffix(self : Self, suffix : String) -> Unit {
+pub fn QSpinBox::setSuffix(
+  self : Self,
+  suffix : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setSuffix(self, suffix)
 }
 
 ///|
-pub fn QSpinBox::setValue(self : Self, value : Int) -> Unit {
+pub fn QSpinBox::setValue(self : Self, value : Int) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_setValue(self, value)
 }
 
 ///|
-pub fn QSpinBox::singleStep(self : Self) -> Int {
+pub fn QSpinBox::singleStep(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_singleStep(self)
 }
 
 ///|
-pub fn QSpinBox::suffix(self : Self) -> String {
+pub fn QSpinBox::suffix(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_suffix(self)
 }
 
 ///|
-pub fn QSpinBox::textChanged(self : Self) -> Signal[String] {
+pub fn QSpinBox::textChanged(self : Self) -> Signal[String] raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_textChanged(self)
 }
 
 ///|
-pub fn QSpinBox::value(self : Self) -> Int {
+pub fn QSpinBox::value(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_value(self)
 }
 
 ///|
-pub fn QSpinBox::valueChanged(self : Self) -> Signal[Int] {
+pub fn QSpinBox::valueChanged(self : Self) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QSpinBox_valueChanged(self)
 }
 

@@ -42,32 +42,48 @@ pub fn QCheckBox::new() -> Self {
 }
 
 ///|
-pub fn QCheckBox::checkState(self : Self) -> CheckState {
+pub fn QCheckBox::checkState(self : Self) -> CheckState raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_checkState(self)
 }
 
 ///|
-pub fn QCheckBox::checkStateChanged(self : Self) -> Signal[CheckState] {
+pub fn QCheckBox::checkStateChanged(
+  self : Self,
+) -> Signal[CheckState] raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_checkStateChanged(self)
 }
 
 ///|
-pub fn QCheckBox::isTristate(self : Self) -> Bool {
+pub fn QCheckBox::isTristate(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_isTristate(self)
 }
 
 ///|
-pub fn QCheckBox::setCheckState(self : Self, state : CheckState) -> Unit {
+pub fn QCheckBox::setCheckState(
+  self : Self,
+  state : CheckState,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_setCheckState(self, state)
 }
 
 ///|
-pub fn QCheckBox::setTristate(self : Self, tristate? : Bool = true) -> Unit {
+pub fn QCheckBox::setTristate(
+  self : Self,
+  tristate? : Bool = true,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_setTristate(self, tristate)
 }
 
 ///|
-pub fn QCheckBox::stateChanged(self : Self) -> Signal[CheckState] {
+pub fn QCheckBox::stateChanged(
+  self : Self,
+) -> Signal[CheckState] raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_stateChanged(self)
 }
 

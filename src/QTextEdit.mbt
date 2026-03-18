@@ -80,82 +80,113 @@ pub fn QTextEdit::new() -> Self {
 }
 
 ///|
-pub fn QTextEdit::acceptRichText(self : Self) -> Bool {
+pub fn QTextEdit::acceptRichText(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_acceptRichText(self)
 }
 
 ///|
-pub fn QTextEdit::append(self : Self, text : String) -> Unit {
+pub fn QTextEdit::append(self : Self, text : String) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_append(self, text)
 }
 
 ///|
-pub fn QTextEdit::clear(self : Self) -> Unit {
+pub fn QTextEdit::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_clear(self)
 }
 
 ///|
-pub fn QTextEdit::isReadOnly(self : Self) -> Bool {
+pub fn QTextEdit::isReadOnly(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_isReadOnly(self)
 }
 
 ///|
-pub fn QTextEdit::placeholderText(self : Self) -> String {
+pub fn QTextEdit::placeholderText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_placeholderText(self)
 }
 
 ///|
-pub fn QTextEdit::redo(self : Self) -> Unit {
+pub fn QTextEdit::redo(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_redo(self)
 }
 
 ///|
-pub fn QTextEdit::selectAll(self : Self) -> Unit {
+pub fn QTextEdit::selectAll(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_selectAll(self)
 }
 
 ///|
-pub fn QTextEdit::setAcceptRichText(self : Self, value : Bool) -> Unit {
+pub fn QTextEdit::setAcceptRichText(
+  self : Self,
+  value : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_setAcceptRichText(self, value)
 }
 
 ///|
-pub fn QTextEdit::setMarkdown(self : Self, text : String) -> Unit {
+pub fn QTextEdit::setMarkdown(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_setMarkdown(self, text)
 }
 
 ///|
-pub fn QTextEdit::setPlainText(self : Self, text : String) -> Unit {
+pub fn QTextEdit::setPlainText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_setPlainText(self, text)
 }
 
 ///|
-pub fn QTextEdit::setPlaceholderText(self : Self, text : String) -> Unit {
+pub fn QTextEdit::setPlaceholderText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_setPlaceholderText(self, text)
 }
 
 ///|
-pub fn QTextEdit::setReadOnly(self : Self, value : Bool) -> Unit {
+pub fn QTextEdit::setReadOnly(
+  self : Self,
+  value : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_setReadOnly(self, value)
 }
 
 ///|
-pub fn QTextEdit::textChanged(self : Self) -> Signal[Unit] {
+pub fn QTextEdit::textChanged(self : Self) -> Signal[Unit] raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_textChanged(self)
 }
 
 ///|
-pub fn QTextEdit::toMarkdown(self : Self) -> String {
+pub fn QTextEdit::toMarkdown(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_toMarkdown(self)
 }
 
 ///|
-pub fn QTextEdit::toPlainText(self : Self) -> String {
+pub fn QTextEdit::toPlainText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_toPlainText(self)
 }
 
 ///|
-pub fn QTextEdit::undo(self : Self) -> Unit {
+pub fn QTextEdit::undo(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTextEdit_undo(self)
 }
 

@@ -50,47 +50,65 @@ pub fn QGroupBox::new() -> Self {
 }
 
 ///|
-pub fn QGroupBox::isCheckable(self : Self) -> Bool {
+pub fn QGroupBox::isCheckable(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_isCheckable(self)
 }
 
 ///|
-pub fn QGroupBox::isChecked(self : Self) -> Bool {
+pub fn QGroupBox::isChecked(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_isChecked(self)
 }
 
 ///|
-pub fn QGroupBox::isFlat(self : Self) -> Bool {
+pub fn QGroupBox::isFlat(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_isFlat(self)
 }
 
 ///|
-pub fn QGroupBox::setCheckable(self : Self, checkable : Bool) -> Unit {
+pub fn QGroupBox::setCheckable(
+  self : Self,
+  checkable : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_setCheckable(self, checkable)
 }
 
 ///|
-pub fn QGroupBox::setChecked(self : Self, checked : Bool) -> Unit {
+pub fn QGroupBox::setChecked(
+  self : Self,
+  checked : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_setChecked(self, checked)
 }
 
 ///|
-pub fn QGroupBox::setFlat(self : Self, flat : Bool) -> Unit {
+pub fn QGroupBox::setFlat(self : Self, flat : Bool) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_setFlat(self, flat)
 }
 
 ///|
-pub fn QGroupBox::setTitle(self : Self, title : String) -> Unit {
+pub fn QGroupBox::setTitle(
+  self : Self,
+  title : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_setTitle(self, title)
 }
 
 ///|
-pub fn QGroupBox::title(self : Self) -> String {
+pub fn QGroupBox::title(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_title(self)
 }
 
 ///|
-pub fn QGroupBox::toggled(self : Self) -> Signal[Bool] {
+pub fn QGroupBox::toggled(self : Self) -> Signal[Bool] raise NullptrError {
+  ensure_not_nullptr(self)
   _QGroupBox_toggled(self)
 }
 

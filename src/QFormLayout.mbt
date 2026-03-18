@@ -80,32 +80,48 @@ pub fn QFormLayout::addRow(
   self : Self,
   label : &AsWidget,
   field : &AsWidget,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_addRow(self, label.as_widget(), field.as_widget())
 }
 
 ///|
-pub fn QFormLayout::addRowLayout(self : Self, layout : &AsLayout) -> Unit {
+pub fn QFormLayout::addRowLayout(
+  self : Self,
+  layout : &AsLayout,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_addRowLayout(self, layout.as_layout())
 }
 
 ///|
-pub fn QFormLayout::addRowWidget(self : Self, widget : &AsWidget) -> Unit {
+pub fn QFormLayout::addRowWidget(
+  self : Self,
+  widget : &AsWidget,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_addRowWidget(self, widget.as_widget())
 }
 
 ///|
-pub fn QFormLayout::fieldGrowthPolicy(self : Self) -> FieldGrowthPolicy {
+pub fn QFormLayout::fieldGrowthPolicy(
+  self : Self,
+) -> FieldGrowthPolicy raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_fieldGrowthPolicy(self)
 }
 
 ///|
-pub fn QFormLayout::rowCount(self : Self) -> Int {
+pub fn QFormLayout::rowCount(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_rowCount(self)
 }
 
 ///|
-pub fn QFormLayout::rowWrapPolicy(self : Self) -> RowWrapPolicy {
+pub fn QFormLayout::rowWrapPolicy(
+  self : Self,
+) -> RowWrapPolicy raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_rowWrapPolicy(self)
 }
 
@@ -113,7 +129,8 @@ pub fn QFormLayout::rowWrapPolicy(self : Self) -> RowWrapPolicy {
 pub fn QFormLayout::setFieldGrowthPolicy(
   self : Self,
   policy : FieldGrowthPolicy,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_setFieldGrowthPolicy(self, policy)
 }
 
@@ -123,7 +140,8 @@ pub fn QFormLayout::setRowLayout(
   row : Int,
   role : ItemRole,
   layout : &AsLayout,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_setRowLayout(self, row, role, layout.as_layout())
 }
 
@@ -131,7 +149,8 @@ pub fn QFormLayout::setRowLayout(
 pub fn QFormLayout::setRowWrapPolicy(
   self : Self,
   policy : RowWrapPolicy,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_setRowWrapPolicy(self, policy)
 }
 
@@ -141,7 +160,8 @@ pub fn QFormLayout::setRowWidget(
   row : Int,
   role : ItemRole,
   widget : &AsWidget,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QFormLayout_setRowWidget(self, row, role, widget.as_widget())
 }
 

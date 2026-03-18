@@ -98,107 +98,143 @@ pub fn QLineEdit::new() -> Self {
 }
 
 ///|
-pub fn QLineEdit::clear(self : Self) -> Unit {
+pub fn QLineEdit::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_clear(self)
 }
 
 ///|
-pub fn QLineEdit::copy(self : Self) -> Unit {
+pub fn QLineEdit::copy(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_copy(self)
 }
 
 ///|
-pub fn QLineEdit::cut(self : Self) -> Unit {
+pub fn QLineEdit::cut(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_cut(self)
 }
 
 ///|
-pub fn QLineEdit::echoMode(self : Self) -> EchoMode {
+pub fn QLineEdit::echoMode(self : Self) -> EchoMode raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_echoMode(self)
 }
 
 ///|
-pub fn QLineEdit::hasSelectedText(self : Self) -> Bool {
+pub fn QLineEdit::hasSelectedText(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_hasSelectedText(self)
 }
 
 ///|
-pub fn QLineEdit::isModified(self : Self) -> Bool {
+pub fn QLineEdit::isModified(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_isModified(self)
 }
 
 ///|
-pub fn QLineEdit::isReadOnly(self : Self) -> Bool {
+pub fn QLineEdit::isReadOnly(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_isReadOnly(self)
 }
 
 ///|
-pub fn QLineEdit::isRedoAvailable(self : Self) -> Bool {
+pub fn QLineEdit::isRedoAvailable(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_isRedoAvailable(self)
 }
 
 ///|
-pub fn QLineEdit::isUndoAvailable(self : Self) -> Bool {
+pub fn QLineEdit::isUndoAvailable(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_isUndoAvailable(self)
 }
 
 ///|
-pub fn QLineEdit::placeholderText(self : Self) -> String {
+pub fn QLineEdit::placeholderText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_placeholderText(self)
 }
 
 ///|
-pub fn QLineEdit::redo(self : Self) -> Unit {
+pub fn QLineEdit::redo(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_redo(self)
 }
 
 ///|
-pub fn QLineEdit::selectAll(self : Self) -> Unit {
+pub fn QLineEdit::selectAll(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_selectAll(self)
 }
 
 ///|
-pub fn QLineEdit::selectedText(self : Self) -> String {
+pub fn QLineEdit::selectedText(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_selectedText(self)
 }
 
 ///|
-pub fn QLineEdit::setEchoMode(self : Self, mode : EchoMode) -> Unit {
+pub fn QLineEdit::setEchoMode(
+  self : Self,
+  mode : EchoMode,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_setEchoMode(self, mode)
 }
 
 ///|
-pub fn QLineEdit::setModified(self : Self, modified : Bool) -> Unit {
+pub fn QLineEdit::setModified(
+  self : Self,
+  modified : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_setModified(self, modified)
 }
 
 ///|
-pub fn QLineEdit::setPlaceholderText(self : Self, text : String) -> Unit {
+pub fn QLineEdit::setPlaceholderText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_setPlaceholderText(self, text)
 }
 
 ///|
-pub fn QLineEdit::setReadOnly(self : Self, readOnly : Bool) -> Unit {
+pub fn QLineEdit::setReadOnly(
+  self : Self,
+  readOnly : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_setReadOnly(self, readOnly)
 }
 
 ///|
-pub fn QLineEdit::setText(self : Self, text : String) -> Unit {
+pub fn QLineEdit::setText(
+  self : Self,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_setText(self, text)
 }
 
 ///|
-pub fn QLineEdit::text(self : Self) -> String {
+pub fn QLineEdit::text(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_text(self)
 }
 
 ///|
-pub fn QLineEdit::undo(self : Self) -> Unit {
+pub fn QLineEdit::undo(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_undo(self)
 }
 
 ///|
-pub fn QLineEdit::textChanged(self : Self) -> Signal[String] {
+pub fn QLineEdit::textChanged(self : Self) -> Signal[String] raise NullptrError {
+  ensure_not_nullptr(self)
   _QLineEdit_textChanged(self)
 }
 

@@ -49,7 +49,10 @@ pub fn QDialogButtonBox::new() -> Self {
 }
 
 ///|
-pub fn QDialogButtonBox::accepted(self : Self) -> Signal[Unit] {
+pub fn QDialogButtonBox::accepted(
+  self : Self,
+) -> Signal[Unit] raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_accepted(self)
 }
 
@@ -58,27 +61,37 @@ pub fn QDialogButtonBox::addButton(
   self : Self,
   button : &AsAbstractButton,
   role : ButtonRole,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_addButton(self, button.as_abstract_button(), role)
 }
 
 ///|
-pub fn QDialogButtonBox::centerButtons(self : Self) -> Bool {
+pub fn QDialogButtonBox::centerButtons(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_centerButtons(self)
 }
 
 ///|
-pub fn QDialogButtonBox::clear(self : Self) -> Unit {
+pub fn QDialogButtonBox::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_clear(self)
 }
 
 ///|
-pub fn QDialogButtonBox::rejected(self : Self) -> Signal[Unit] {
+pub fn QDialogButtonBox::rejected(
+  self : Self,
+) -> Signal[Unit] raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_rejected(self)
 }
 
 ///|
-pub fn QDialogButtonBox::setCenterButtons(self : Self, value : Bool) -> Unit {
+pub fn QDialogButtonBox::setCenterButtons(
+  self : Self,
+  value : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QDialogButtonBox_setCenterButtons(self, value)
 }
 

@@ -42,20 +42,22 @@ extern "C" fn _QAbstractScrollArea_as_QFrame(
 ///|
 pub(open) trait AsAbstractScrollArea: AsFrame {
   as_abstract_scroll_area(Self) -> QAbstractScrollArea
-  horizontalScrollBarPolicy(Self) -> ScrollBarPolicy = _
-  setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit = _
-  setVerticalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit = _
-  verticalScrollBarPolicy(Self) -> ScrollBarPolicy = _
-  viewport(Self) -> QWidget = _
+  horizontalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
+  setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
+  setVerticalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
+  verticalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
+  viewport(Self) -> QWidget raise NullptrError = _
 }
 
 ///|
 impl AsAbstractScrollArea with horizontalScrollBarPolicy(self) {
+  ensure_not_nullptr(self)
   _QAbstractScrollArea_horizontalScrollBarPolicy(self.as_abstract_scroll_area())
 }
 
 ///|
 impl AsAbstractScrollArea with setHorizontalScrollBarPolicy(self, policy) {
+  ensure_not_nullptr(self)
   _QAbstractScrollArea_setHorizontalScrollBarPolicy(
     self.as_abstract_scroll_area(),
     policy,
@@ -64,11 +66,13 @@ impl AsAbstractScrollArea with setHorizontalScrollBarPolicy(self, policy) {
 
 ///|
 impl AsAbstractScrollArea with verticalScrollBarPolicy(self) {
+  ensure_not_nullptr(self)
   _QAbstractScrollArea_verticalScrollBarPolicy(self.as_abstract_scroll_area())
 }
 
 ///|
 impl AsAbstractScrollArea with setVerticalScrollBarPolicy(self, policy) {
+  ensure_not_nullptr(self)
   _QAbstractScrollArea_setVerticalScrollBarPolicy(
     self.as_abstract_scroll_area(),
     policy,
@@ -77,6 +81,7 @@ impl AsAbstractScrollArea with setVerticalScrollBarPolicy(self, policy) {
 
 ///|
 impl AsAbstractScrollArea with viewport(self) {
+  ensure_not_nullptr(self)
   _QAbstractScrollArea_viewport(self.as_abstract_scroll_area())
 }
 

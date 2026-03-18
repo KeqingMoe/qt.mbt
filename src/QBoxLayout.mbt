@@ -69,39 +69,44 @@ extern "C" fn _QBoxLayout_as_QLayout(this : QBoxLayout) -> QLayout = "QBoxLayout
 ///|
 pub(open) trait AsBoxLayout: AsLayout {
   as_box_layout(Self) -> QBoxLayout
-  addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit = _
-  addSpacing(Self, spacing : Int) -> Unit = _
-  addStretch(Self, stretch? : Int) -> Unit = _
-  direction(Self) -> Direction = _
-  insertLayout(Self, index : Int, layout : &AsLayout, stretch? : Int) -> Unit = _
-  insertSpacing(Self, index : Int, spacing : Int) -> Unit = _
-  insertStretch(Self, index : Int, stretch? : Int) -> Unit = _
-  insertWidget(Self, index : Int, widget : &AsWidget, stretch? : Int) -> Unit = _
-  setDirection(Self, direction : Direction) -> Unit = _
+  addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit raise NullptrError = _
+  addSpacing(Self, spacing : Int) -> Unit raise NullptrError = _
+  addStretch(Self, stretch? : Int) -> Unit raise NullptrError = _
+  direction(Self) -> Direction raise NullptrError = _
+  insertLayout(Self, index : Int, layout : &AsLayout, stretch? : Int) -> Unit raise NullptrError = _
+  insertSpacing(Self, index : Int, spacing : Int) -> Unit raise NullptrError = _
+  insertStretch(Self, index : Int, stretch? : Int) -> Unit raise NullptrError = _
+  insertWidget(Self, index : Int, widget : &AsWidget, stretch? : Int) -> Unit raise NullptrError = _
+  setDirection(Self, direction : Direction) -> Unit raise NullptrError = _
 }
 
 ///|
 impl AsBoxLayout with addLayout(self, layout, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_addLayout(self.as_box_layout(), layout.as_layout(), stretch)
 }
 
 ///|
 impl AsBoxLayout with addSpacing(self, spacing) {
+  ensure_not_nullptr(self)
   _QBoxLayout_addSpacing(self.as_box_layout(), spacing)
 }
 
 ///|
 impl AsBoxLayout with addStretch(self, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_addStretch(self.as_box_layout(), stretch)
 }
 
 ///|
 impl AsBoxLayout with direction(self) {
+  ensure_not_nullptr(self)
   _QBoxLayout_direction(self.as_box_layout())
 }
 
 ///|
 impl AsBoxLayout with insertLayout(self, index, layout, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_insertLayout(
     self.as_box_layout(),
     index,
@@ -112,16 +117,19 @@ impl AsBoxLayout with insertLayout(self, index, layout, stretch? = 0) {
 
 ///|
 impl AsBoxLayout with insertSpacing(self, index, spacing) {
+  ensure_not_nullptr(self)
   _QBoxLayout_insertSpacing(self.as_box_layout(), index, spacing)
 }
 
 ///|
 impl AsBoxLayout with insertStretch(self, index, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_insertStretch(self.as_box_layout(), index, stretch)
 }
 
 ///|
 impl AsBoxLayout with insertWidget(self, index, widget, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_insertWidget(
     self.as_box_layout(),
     index,
@@ -132,6 +140,7 @@ impl AsBoxLayout with insertWidget(self, index, widget, stretch? = 0) {
 
 ///|
 impl AsBoxLayout with setDirection(self, direction) {
+  ensure_not_nullptr(self)
   _QBoxLayout_setDirection(self.as_box_layout(), direction)
 }
 

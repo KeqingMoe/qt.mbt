@@ -79,95 +79,110 @@ extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTi
 ///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
-  hide(Self) -> Unit = _
-  isEnabled(Self) -> Bool = _
-  isHidden(Self) -> Bool = _
-  isVisible(Self) -> Bool = _
-  moveTo(Self, x : Int, y : Int) -> Unit = _
-  resize(Self, width : Int, height : Int) -> Unit = _
-  setEnabled(Self, value : Bool) -> Unit = _
-  setFixedSize(Self, width : Int, height : Int) -> Unit = _
-  setLayout(Self, layout : &AsLayout) -> Unit = _
-  setMaximumSize(Self, width : Int, height : Int) -> Unit = _
-  setMinimumSize(Self, width : Int, height : Int) -> Unit = _
-  setVisible(Self, value : Bool) -> Unit = _
-  setWindowTitle(Self, title : String) -> Unit = _
-  show(Self) -> Unit = _
-  windowTitle(Self) -> String = _
+  hide(Self) -> Unit raise NullptrError = _
+  isEnabled(Self) -> Bool raise NullptrError = _
+  isHidden(Self) -> Bool raise NullptrError = _
+  isVisible(Self) -> Bool raise NullptrError = _
+  moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
+  resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
+  setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
+  setMaximumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setMinimumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setVisible(Self, value : Bool) -> Unit raise NullptrError = _
+  setWindowTitle(Self, title : String) -> Unit raise NullptrError = _
+  show(Self) -> Unit raise NullptrError = _
+  windowTitle(Self) -> String raise NullptrError = _
 }
 
 ///|
 impl AsWidget with hide(self) {
+  ensure_not_nullptr(self)
   _QWidget_hide(self.as_widget())
 }
 
 ///|
 impl AsWidget with isEnabled(self) {
+  ensure_not_nullptr(self)
   _QWidget_isEnabled(self.as_widget())
 }
 
 ///|
 impl AsWidget with isHidden(self) {
+  ensure_not_nullptr(self)
   _QWidget_isHidden(self.as_widget())
 }
 
 ///|
 impl AsWidget with isVisible(self) {
+  ensure_not_nullptr(self)
   _QWidget_isVisible(self.as_widget())
 }
 
 ///|
 impl AsWidget with moveTo(self, x, y) {
+  ensure_not_nullptr(self)
   _QWidget_move(self.as_widget(), x, y)
 }
 
 ///|
 impl AsWidget with resize(self, width, height) {
+  ensure_not_nullptr(self)
   _QWidget_resize(self.as_widget(), width, height)
 }
 
 ///|
 impl AsWidget with setEnabled(self, value) {
+  ensure_not_nullptr(self)
   _QWidget_setEnabled(self.as_widget(), value)
 }
 
 ///|
 impl AsWidget with setFixedSize(self, width, height) {
+  ensure_not_nullptr(self)
   _QWidget_setFixedSize(self.as_widget(), width, height)
 }
 
 ///|
 impl AsWidget with setLayout(self, layout) {
+  ensure_not_nullptr(self)
   _QWidget_setLayout(self.as_widget(), layout.as_layout())
 }
 
 ///|
 impl AsWidget with setMaximumSize(self, width, height) {
+  ensure_not_nullptr(self)
   _QWidget_setMaximumSize(self.as_widget(), width, height)
 }
 
 ///|
 impl AsWidget with setMinimumSize(self, width, height) {
+  ensure_not_nullptr(self)
   _QWidget_setMinimumSize(self.as_widget(), width, height)
 }
 
 ///|
 impl AsWidget with setVisible(self, value) {
+  ensure_not_nullptr(self)
   _QWidget_setVisible(self.as_widget(), value)
 }
 
 ///|
 impl AsWidget with setWindowTitle(self, title) {
+  ensure_not_nullptr(self)
   _QWidget_setWindowTitle(self.as_widget(), title)
 }
 
 ///|
 impl AsWidget with show(self) {
+  ensure_not_nullptr(self)
   _QWidget_show(self.as_widget())
 }
 
 ///|
 impl AsWidget with windowTitle(self) {
+  ensure_not_nullptr(self)
   _QWidget_windowTitle(self.as_widget())
 }
 

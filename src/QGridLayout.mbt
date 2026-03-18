@@ -105,7 +105,8 @@ pub fn QGridLayout::addLayout(
   column : Int,
   rowSpan? : Int = 1,
   columnSpan? : Int = 1,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_addLayout(
     self,
     layout.as_layout(),
@@ -124,7 +125,8 @@ pub fn QGridLayout::addWidget(
   column : Int,
   rowSpan? : Int = 1,
   columnSpan? : Int = 1,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_addWidget(
     self,
     widget.as_widget(),
@@ -136,12 +138,14 @@ pub fn QGridLayout::addWidget(
 }
 
 ///|
-pub fn QGridLayout::horizontalSpacing(self : Self) -> Int {
+pub fn QGridLayout::horizontalSpacing(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_horizontalSpacing(self)
 }
 
 ///|
-pub fn QGridLayout::originCorner(self : Self) -> Corner {
+pub fn QGridLayout::originCorner(self : Self) -> Corner raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_originCorner(self)
 }
 
@@ -150,7 +154,8 @@ pub fn QGridLayout::setColumnMinimumWidth(
   self : Self,
   column : Int,
   minSize : Int,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setColumnMinimumWidth(self, column, minSize)
 }
 
@@ -159,7 +164,8 @@ pub fn QGridLayout::setColumnStretch(
   self : Self,
   column : Int,
   stretch : Int,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setColumnStretch(self, column, stretch)
 }
 
@@ -168,7 +174,8 @@ pub fn QGridLayout::setRowMinimumHeight(
   self : Self,
   row : Int,
   minSize : Int,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setRowMinimumHeight(self, row, minSize)
 }
 
@@ -177,27 +184,41 @@ pub fn QGridLayout::setRowStretch(
   self : Self,
   row : Int,
   stretch : Int,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setRowStretch(self, row, stretch)
 }
 
 ///|
-pub fn QGridLayout::setHorizontalSpacing(self : Self, spacing : Int) -> Unit {
+pub fn QGridLayout::setHorizontalSpacing(
+  self : Self,
+  spacing : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setHorizontalSpacing(self, spacing)
 }
 
 ///|
-pub fn QGridLayout::setOriginCorner(self : Self, corner : Corner) -> Unit {
+pub fn QGridLayout::setOriginCorner(
+  self : Self,
+  corner : Corner,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setOriginCorner(self, corner)
 }
 
 ///|
-pub fn QGridLayout::setVerticalSpacing(self : Self, spacing : Int) -> Unit {
+pub fn QGridLayout::setVerticalSpacing(
+  self : Self,
+  spacing : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_setVerticalSpacing(self, spacing)
 }
 
 ///|
-pub fn QGridLayout::verticalSpacing(self : Self) -> Int {
+pub fn QGridLayout::verticalSpacing(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QGridLayout_verticalSpacing(self)
 }
 

@@ -86,95 +86,110 @@ extern "C" fn _QAbstractSpinBox_as_QWidget(this : QAbstractSpinBox) -> QWidget =
 ///|
 pub(open) trait AsAbstractSpinBox: AsWidget {
   as_abstract_spin_box(Self) -> QAbstractSpinBox
-  clear(Self) -> Unit = _
-  hasAcceptableInput(Self) -> Bool = _
-  hasFrame(Self) -> Bool = _
-  isAccelerated(Self) -> Bool = _
-  isReadOnly(Self) -> Bool = _
-  isWrapping(Self) -> Bool = _
-  selectAll(Self) -> Unit = _
-  setAccelerated(Self, value : Bool) -> Unit = _
-  setFrame(Self, value : Bool) -> Unit = _
-  setReadOnly(Self, value : Bool) -> Unit = _
-  setSpecialValueText(Self, text : String) -> Unit = _
-  setWrapping(Self, value : Bool) -> Unit = _
-  specialValueText(Self) -> String = _
-  text(Self) -> String = _
-  editingFinished(Self) -> Signal[Unit] = _
+  clear(Self) -> Unit raise NullptrError = _
+  hasAcceptableInput(Self) -> Bool raise NullptrError = _
+  hasFrame(Self) -> Bool raise NullptrError = _
+  isAccelerated(Self) -> Bool raise NullptrError = _
+  isReadOnly(Self) -> Bool raise NullptrError = _
+  isWrapping(Self) -> Bool raise NullptrError = _
+  selectAll(Self) -> Unit raise NullptrError = _
+  setAccelerated(Self, value : Bool) -> Unit raise NullptrError = _
+  setFrame(Self, value : Bool) -> Unit raise NullptrError = _
+  setReadOnly(Self, value : Bool) -> Unit raise NullptrError = _
+  setSpecialValueText(Self, text : String) -> Unit raise NullptrError = _
+  setWrapping(Self, value : Bool) -> Unit raise NullptrError = _
+  specialValueText(Self) -> String raise NullptrError = _
+  text(Self) -> String raise NullptrError = _
+  editingFinished(Self) -> Signal[Unit] raise NullptrError = _
 }
 
 ///|
 impl AsAbstractSpinBox with clear(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_clear(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with editingFinished(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_editingFinished(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with hasAcceptableInput(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_hasAcceptableInput(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with hasFrame(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_hasFrame(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with isAccelerated(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_isAccelerated(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with isReadOnly(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_isReadOnly(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with isWrapping(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_isWrapping(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with selectAll(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_selectAll(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with setAccelerated(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_setAccelerated(self.as_abstract_spin_box(), value)
 }
 
 ///|
 impl AsAbstractSpinBox with setFrame(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_setFrame(self.as_abstract_spin_box(), value)
 }
 
 ///|
 impl AsAbstractSpinBox with setReadOnly(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_setReadOnly(self.as_abstract_spin_box(), value)
 }
 
 ///|
 impl AsAbstractSpinBox with setSpecialValueText(self, text) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_setSpecialValueText(self.as_abstract_spin_box(), text)
 }
 
 ///|
 impl AsAbstractSpinBox with setWrapping(self, value) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_setWrapping(self.as_abstract_spin_box(), value)
 }
 
 ///|
 impl AsAbstractSpinBox with specialValueText(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_specialValueText(self.as_abstract_spin_box())
 }
 
 ///|
 impl AsAbstractSpinBox with text(self) {
+  ensure_not_nullptr(self)
   _QAbstractSpinBox_text(self.as_abstract_spin_box())
 }
 

@@ -53,32 +53,46 @@ pub fn QStackedWidget::new() -> Self {
 }
 
 ///|
-pub fn QStackedWidget::addWidget(self : Self, widget : &AsWidget) -> Int {
+pub fn QStackedWidget::addWidget(
+  self : Self,
+  widget : &AsWidget,
+) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_addWidget(self, widget.as_widget())
 }
 
 ///|
-pub fn QStackedWidget::count(self : Self) -> Int {
+pub fn QStackedWidget::count(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_count(self)
 }
 
 ///|
-pub fn QStackedWidget::currentChanged(self : Self) -> Signal[Int] {
+pub fn QStackedWidget::currentChanged(
+  self : Self,
+) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_currentChanged(self)
 }
 
 ///|
-pub fn QStackedWidget::currentIndex(self : Self) -> Int {
+pub fn QStackedWidget::currentIndex(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_currentIndex(self)
 }
 
 ///|
-pub fn QStackedWidget::currentWidget(self : Self) -> QWidget {
+pub fn QStackedWidget::currentWidget(self : Self) -> QWidget raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_currentWidget(self)
 }
 
 ///|
-pub fn QStackedWidget::setCurrentIndex(self : Self, index : Int) -> Unit {
+pub fn QStackedWidget::setCurrentIndex(
+  self : Self,
+  index : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_setCurrentIndex(self, index)
 }
 
@@ -86,7 +100,8 @@ pub fn QStackedWidget::setCurrentIndex(self : Self, index : Int) -> Unit {
 pub fn QStackedWidget::setCurrentWidget(
   self : Self,
   widget : &AsWidget,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QStackedWidget_setCurrentWidget(self, widget.as_widget())
 }
 

@@ -74,47 +74,68 @@ pub fn QTabWidget::addTab(
   self : Self,
   widget : &AsWidget,
   text : String,
-) -> Int {
+) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_addTab(self, widget.as_widget(), text)
 }
 
 ///|
-pub fn QTabWidget::clear(self : Self) -> Unit {
+pub fn QTabWidget::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_clear(self)
 }
 
 ///|
-pub fn QTabWidget::count(self : Self) -> Int {
+pub fn QTabWidget::count(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_count(self)
 }
 
 ///|
-pub fn QTabWidget::currentChanged(self : Self) -> Signal[Int] {
+pub fn QTabWidget::currentChanged(
+  self : Self,
+) -> Signal[Int] raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_currentChanged(self)
 }
 
 ///|
-pub fn QTabWidget::currentIndex(self : Self) -> Int {
+pub fn QTabWidget::currentIndex(self : Self) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_currentIndex(self)
 }
 
 ///|
-pub fn QTabWidget::currentWidget(self : Self) -> QWidget {
+pub fn QTabWidget::currentWidget(self : Self) -> QWidget raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_currentWidget(self)
 }
 
 ///|
-pub fn QTabWidget::removeTab(self : Self, index : Int) -> Unit {
+pub fn QTabWidget::removeTab(
+  self : Self,
+  index : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_removeTab(self, index)
 }
 
 ///|
-pub fn QTabWidget::setCurrentIndex(self : Self, index : Int) -> Unit {
+pub fn QTabWidget::setCurrentIndex(
+  self : Self,
+  index : Int,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_setCurrentIndex(self, index)
 }
 
 ///|
-pub fn QTabWidget::setTabText(self : Self, index : Int, text : String) -> Unit {
+pub fn QTabWidget::setTabText(
+  self : Self,
+  index : Int,
+  text : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_setTabText(self, index, text)
 }
 
@@ -123,12 +144,17 @@ pub fn QTabWidget::setTabToolTip(
   self : Self,
   index : Int,
   text : String,
-) -> Unit {
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_setTabToolTip(self, index, text)
 }
 
 ///|
-pub fn QTabWidget::tabText(self : Self, index : Int) -> String {
+pub fn QTabWidget::tabText(
+  self : Self,
+  index : Int,
+) -> String raise NullptrError {
+  ensure_not_nullptr(self)
   _QTabWidget_tabText(self, index)
 }
 

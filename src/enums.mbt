@@ -18,26 +18,6 @@ pub(all) enum ButtonRole {
   ApplyRole = 8
 }
 
-// ///|
-// pub fn ButtonRole::acceptRole() -> ButtonRole {
-//   AcceptRole
-// }
-
-// ///|
-// pub fn ButtonRole::actionRole() -> ButtonRole {
-//   ActionRole
-// }
-
-// ///|
-// pub fn ButtonRole::applyRole() -> ButtonRole {
-//   ApplyRole
-// }
-
-// ///|
-// pub fn ButtonRole::rejectRole() -> ButtonRole {
-//   RejectRole
-// }
-
 ///|
 pub enum Corner {
   TopLeftCorner = 0x00000
@@ -113,21 +93,6 @@ pub enum ScrollBarPolicy {
   ScrollBarAlwaysOff = 1
   ScrollBarAlwaysOn = 2
 }
-
-// ///|
-// pub fn ScrollBarPolicy::alwaysOff() -> ScrollBarPolicy {
-//   ScrollBarAlwaysOff
-// }
-
-// ///|
-// pub fn ScrollBarPolicy::alwaysOn() -> ScrollBarPolicy {
-//   ScrollBarAlwaysOn
-// }
-
-// ///|
-// pub fn ScrollBarPolicy::asNeeded() -> ScrollBarPolicy {
-//   ScrollBarAsNeeded
-// }
 
 ///|
 pub enum SizeConstraint {

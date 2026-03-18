@@ -32,6 +32,10 @@ extern "C" fn _QGridLayout_horizontalSpacing(this : QGridLayout) -> Int = "QGrid
 
 ///|
 #borrow(this)
+extern "C" fn _QGridLayout_originCorner(this : QGridLayout) -> Corner = "QGridLayout_originCorner"
+
+///|
+#borrow(this)
 extern "C" fn _QGridLayout_verticalSpacing(this : QGridLayout) -> Int = "QGridLayout_verticalSpacing"
 
 ///|
@@ -72,6 +76,10 @@ extern "C" fn _QGridLayout_setHorizontalSpacing(
   this : QGridLayout,
   spacing : Int,
 ) = "QGridLayout_setHorizontalSpacing"
+
+///|
+#borrow(this, corner)
+extern "C" fn _QGridLayout_setOriginCorner(this : QGridLayout, corner : Corner) = "QGridLayout_setOriginCorner"
 
 ///|
 #borrow(this, spacing)
@@ -133,6 +141,11 @@ pub fn QGridLayout::horizontalSpacing(self : Self) -> Int {
 }
 
 ///|
+pub fn QGridLayout::originCorner(self : Self) -> Corner {
+  _QGridLayout_originCorner(self)
+}
+
+///|
 pub fn QGridLayout::setColumnMinimumWidth(
   self : Self,
   column : Int,
@@ -171,6 +184,11 @@ pub fn QGridLayout::setRowStretch(
 ///|
 pub fn QGridLayout::setHorizontalSpacing(self : Self, spacing : Int) -> Unit {
   _QGridLayout_setHorizontalSpacing(self, spacing)
+}
+
+///|
+pub fn QGridLayout::setOriginCorner(self : Self, corner : Corner) -> Unit {
+  _QGridLayout_setOriginCorner(self, corner)
 }
 
 ///|

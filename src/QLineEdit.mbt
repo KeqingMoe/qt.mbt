@@ -22,6 +22,10 @@ extern "C" fn _QLineEdit_hasSelectedText(this : QLineEdit) -> Bool = "QLineEdit_
 
 ///|
 #borrow(this)
+extern "C" fn _QLineEdit_echoMode(this : QLineEdit) -> EchoMode = "QLineEdit_echoMode"
+
+///|
+#borrow(this)
 extern "C" fn _QLineEdit_isModified(this : QLineEdit) -> Bool = "QLineEdit_isModified"
 
 ///|
@@ -51,6 +55,10 @@ extern "C" fn _QLineEdit_selectAll(this : QLineEdit) = "QLineEdit_selectAll"
 ///|
 #borrow(this)
 extern "C" fn _QLineEdit_selectedText(this : QLineEdit) -> String = "QLineEdit_selectedText"
+
+///|
+#borrow(this, mode)
+extern "C" fn _QLineEdit_setEchoMode(this : QLineEdit, mode : EchoMode) = "QLineEdit_setEchoMode"
 
 ///|
 #borrow(this, modified)
@@ -105,6 +113,11 @@ pub fn QLineEdit::cut(self : Self) -> Unit {
 }
 
 ///|
+pub fn QLineEdit::echoMode(self : Self) -> EchoMode {
+  _QLineEdit_echoMode(self)
+}
+
+///|
 pub fn QLineEdit::hasSelectedText(self : Self) -> Bool {
   _QLineEdit_hasSelectedText(self)
 }
@@ -147,6 +160,11 @@ pub fn QLineEdit::selectAll(self : Self) -> Unit {
 ///|
 pub fn QLineEdit::selectedText(self : Self) -> String {
   _QLineEdit_selectedText(self)
+}
+
+///|
+pub fn QLineEdit::setEchoMode(self : Self, mode : EchoMode) -> Unit {
+  _QLineEdit_setEchoMode(self, mode)
 }
 
 ///|

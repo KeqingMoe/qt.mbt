@@ -9,12 +9,20 @@ extern "C" fn _QLabel_new() -> QLabel = "QLabel_new"
 extern "C" fn _QLabel_setText(this : QLabel, text : String) = "QLabel_setText"
 
 ///|
+#borrow(this, format)
+extern "C" fn _QLabel_setTextFormat(this : QLabel, format : TextFormat) = "QLabel_setTextFormat"
+
+///|
 #borrow(this, wordWrap)
 extern "C" fn _QLabel_setWordWrap(this : QLabel, wordWrap : Bool) = "QLabel_setWordWrap"
 
 ///|
 #borrow(this)
 extern "C" fn _QLabel_text(this : QLabel) -> String = "QLabel_text"
+
+///|
+#borrow(this)
+extern "C" fn _QLabel_textFormat(this : QLabel) -> TextFormat = "QLabel_textFormat"
 
 ///|
 #borrow(this)
@@ -35,6 +43,11 @@ pub fn QLabel::setText(self : Self, text : String) -> Unit {
 }
 
 ///|
+pub fn QLabel::setTextFormat(self : Self, format : TextFormat) -> Unit {
+  _QLabel_setTextFormat(self, format)
+}
+
+///|
 pub fn QLabel::setWordWrap(self : Self, wordWrap : Bool) -> Unit {
   _QLabel_setWordWrap(self, wordWrap)
 }
@@ -42,6 +55,11 @@ pub fn QLabel::setWordWrap(self : Self, wordWrap : Bool) -> Unit {
 ///|
 pub fn QLabel::text(self : Self) -> String {
   _QLabel_text(self)
+}
+
+///|
+pub fn QLabel::textFormat(self : Self) -> TextFormat {
+  _QLabel_textFormat(self)
 }
 
 ///|

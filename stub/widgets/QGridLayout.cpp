@@ -22,6 +22,11 @@ QMETHOD(QGridLayout, horizontalSpacing)->Int
     return self->horizontalSpacing();
 }
 
+QMETHOD(QGridLayout, originCorner)->Int
+{
+    return self->originCorner();
+}
+
 QMETHOD(QGridLayout, setColumnMinimumWidth, Int column, Int minSize)->void
 {
     self->setColumnMinimumWidth(column, minSize);
@@ -35,6 +40,11 @@ QMETHOD(QGridLayout, setColumnStretch, Int column, Int stretch)->void
 QMETHOD(QGridLayout, setHorizontalSpacing, Int spacing)->void
 {
     self->setHorizontalSpacing(spacing);
+}
+
+QMETHOD(QGridLayout, setOriginCorner, Int corner)->void
+{
+    self->setOriginCorner(static_cast<Qt::Corner>(corner));
 }
 
 QMETHOD(QGridLayout, setRowMinimumHeight, Int row, Int minSize)->void

@@ -3,11 +3,51 @@ pub type QFrame
 
 ///|
 #borrow(this)
+extern "C" fn _QFrame_frameShadow(this : QFrame) -> FrameShadow = "QFrame_frameShadow"
+
+///|
+#borrow(this)
+extern "C" fn _QFrame_frameShape(this : QFrame) -> FrameShape = "QFrame_frameShape"
+
+///|
+#borrow(this, shadow)
+extern "C" fn _QFrame_setFrameShadow(this : QFrame, shadow : FrameShadow) = "QFrame_setFrameShadow"
+
+///|
+#borrow(this, shape)
+extern "C" fn _QFrame_setFrameShape(this : QFrame, shape : FrameShape) = "QFrame_setFrameShape"
+
+///|
+#borrow(this)
 extern "C" fn _QFrame_as_QWidget(this : QFrame) -> QWidget = "QFrame_as_QWidget"
 
 ///|
 pub(open) trait AsFrame: AsWidget {
   as_frame(Self) -> QFrame
+  frameShadow(Self) -> FrameShadow = _
+  frameShape(Self) -> FrameShape = _
+  setFrameShadow(Self, shadow : FrameShadow) -> Unit = _
+  setFrameShape(Self, shape : FrameShape) -> Unit = _
+}
+
+///|
+impl AsFrame with frameShadow(self) {
+  _QFrame_frameShadow(self.as_frame())
+}
+
+///|
+impl AsFrame with frameShape(self) {
+  _QFrame_frameShape(self.as_frame())
+}
+
+///|
+impl AsFrame with setFrameShadow(self, shadow) {
+  _QFrame_setFrameShadow(self.as_frame(), shadow)
+}
+
+///|
+impl AsFrame with setFrameShape(self, shape) {
+  _QFrame_setFrameShape(self.as_frame(), shape)
 }
 
 ///|

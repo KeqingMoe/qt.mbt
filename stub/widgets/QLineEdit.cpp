@@ -21,6 +21,11 @@ QMETHOD(QLineEdit, cut)->void
     self->cut();
 }
 
+QMETHOD(QLineEdit, echoMode)->Int
+{
+    return self->echoMode();
+}
+
 QMETHOD(QLineEdit, hasSelectedText)->Bool
 {
     return Bool::make(self->hasSelectedText());
@@ -64,6 +69,11 @@ QMETHOD(QLineEdit, selectAll)->void
 QMETHOD(QLineEdit, selectedText)->String
 {
     return str::qt_to_mbt(self->selectedText());
+}
+
+QMETHOD(QLineEdit, setEchoMode, Int mode)->void
+{
+    self->setEchoMode(static_cast<QLineEdit::EchoMode>(mode));
 }
 
 QMETHOD(QLineEdit, setModified, Bool modified)->void

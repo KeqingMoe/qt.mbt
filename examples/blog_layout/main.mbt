@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QLabel,
   type QHBoxLayout,
@@ -14,7 +15,7 @@ using @qt {
 struct Blog(QLabel)
 
 ///|
-fn Blog::new(text : String) -> Self {
+fn Blog::new(text : String) -> Self raise NullptrError {
   let label = QLabel::new()
   label.setText(text)
   label
@@ -33,7 +34,7 @@ fn BlogLayout::new() -> Self {
 }
 
 ///|
-fn BlogLayout::add_new_row(self : Self) -> QHBoxLayout {
+fn BlogLayout::add_new_row(self : Self) -> QHBoxLayout raise NullptrError {
   let row = QHBoxLayout::new()
   self.layout.addLayout(row)
   row
@@ -60,7 +61,7 @@ impl AsLayout for BlogLayout with addWidget(self, widget) {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = QWidget::new()

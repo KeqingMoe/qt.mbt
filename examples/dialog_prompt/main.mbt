@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QDialog,
   type QLabel,
@@ -13,7 +14,7 @@ using @qt {
 }
 
 ///|
-fn paragraph(text : String) -> QLabel {
+fn paragraph(text : String) -> QLabel raise NullptrError {
   let label = QLabel::new()
   label.setText(text)
   label.setWordWrap(true)
@@ -24,7 +25,7 @@ fn paragraph(text : String) -> QLabel {
 struct DialogPrompt(QWidget)
 
 ///|
-fn DialogPrompt::new() -> Self {
+fn DialogPrompt::new() -> Self raise NullptrError {
   let dialog = QDialog::new()
   dialog.setModal(true)
   dialog.setWindowTitle("Release Notes")
@@ -77,20 +78,22 @@ fn DialogPrompt::new() -> Self {
   reject.setText("Reject")
 
   let _ = QObject::connect(open.clicked(), _ => {
-    dialog.show()
-    scroll.ensureVisible(0, 0)
+    try! ({
+      dialog.show()
+      scroll.ensureVisible(0, 0)
+    })
   })
-  let _ = QObject::connect(accept.clicked(), _ => dialog.accept())
-  let _ = QObject::connect(close.clicked(), _ => dialog.accept())
-  let _ = QObject::connect(reject.clicked(), _ => dialog.reject())
+  let _ = QObject::connect(accept.clicked(), _ => try! dialog.accept())
+  let _ = QObject::connect(close.clicked(), _ => try! dialog.accept())
+  let _ = QObject::connect(reject.clicked(), _ => try! dialog.reject())
   let _ = QObject::connect(dialog.accepted(), _ => {
-    title.setText("Dialog result: accepted")
+    try! title.setText("Dialog result: accepted")
   })
   let _ = QObject::connect(dialog.rejected(), _ => {
-    title.setText("Dialog result: rejected")
+    try! title.setText("Dialog result: rejected")
   })
   let _ = QObject::connect(dialog.finished(), result => {
-    title.setText("Dialog result: \{result}")
+    try! title.setText("Dialog result: \{result}")
   })
 
   let layout = QVBoxLayout::new()
@@ -107,7 +110,7 @@ fn DialogPrompt::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = DialogPrompt::new()

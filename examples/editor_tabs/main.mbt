@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QCheckBox,
   type QLabel,
@@ -13,7 +14,10 @@ using @qt {
 }
 
 ///|
-fn new_editor(placeholder : String, text : String) -> QTextEdit {
+fn new_editor(
+  placeholder : String,
+  text : String,
+) -> QTextEdit raise NullptrError {
   let editor = QTextEdit::new()
   editor.setAcceptRichText(false)
   editor.setPlaceholderText(placeholder)
@@ -25,7 +29,7 @@ fn new_editor(placeholder : String, text : String) -> QTextEdit {
 struct EditorTabs(QWidget)
 
 ///|
-fn EditorTabs::new() -> Self {
+fn EditorTabs::new() -> Self raise NullptrError {
   let draft = new_editor(
     "Write the first draft here", "# Draft\n\n- Ship text editing\n- Add richer containers\n",
   )
@@ -70,13 +74,13 @@ fn EditorTabs::new() -> Self {
     refresh_status()
   }
 
-  let _ = QObject::connect(draft.textChanged(), _ => refresh_status())
-  let _ = QObject::connect(changelog.textChanged(), _ => refresh_status())
-  let _ = QObject::connect(notes.textChanged(), _ => refresh_status())
+  let _ = QObject::connect(draft.textChanged(), _ => try! refresh_status())
+  let _ = QObject::connect(changelog.textChanged(), _ => try! refresh_status())
+  let _ = QObject::connect(notes.textChanged(), _ => try! refresh_status())
   let _ = QObject::connect(read_only.toggled(), value => {
-    set_all_read_only(value)
+    try! set_all_read_only(value)
   })
-  let _ = QObject::connect(tabs.currentChanged(), _ => refresh_status())
+  let _ = QObject::connect(tabs.currentChanged(), _ => try! refresh_status())
 
   refresh_status()
 
@@ -93,7 +97,7 @@ fn EditorTabs::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = EditorTabs::new()

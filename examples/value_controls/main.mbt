@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QCheckBox,
   type QLabel,
@@ -14,7 +15,7 @@ using @qt {
 }
 
 ///|
-fn named_label(text : String) -> QLabel {
+fn named_label(text : String) -> QLabel raise NullptrError {
   let label = QLabel::new()
   label.setText(text)
   label
@@ -24,7 +25,7 @@ fn named_label(text : String) -> QLabel {
 struct ValueControls(QWidget)
 
 ///|
-fn ValueControls::new() -> Self {
+fn ValueControls::new() -> Self raise NullptrError {
   let slider = QSlider::new()
   slider.setRange(0, 100)
   slider.setPageStep(10)
@@ -70,19 +71,29 @@ fn ValueControls::new() -> Self {
     refresh_summary()
   }
 
-  let _ = QObject::connect(slider.valueChanged(), value => sync_slider(value))
-  let _ = QObject::connect(spin_box.valueChanged(), value => sync_slider(value))
+  let _ = QObject::connect(slider.valueChanged(), value => {
+    try! sync_slider(value)
+  })
+  let _ = QObject::connect(spin_box.valueChanged(), value => {
+    try! sync_slider(value)
+  })
   let _ = QObject::connect(live_preview.toggled(), enabled => {
-    slider.setTracking(enabled)
-    refresh_summary()
+    try! ({
+      slider.setTracking(enabled)
+      refresh_summary()
+    })
   })
   let _ = QObject::connect(wrapping.toggled(), enabled => {
-    spin_box.setWrapping(enabled)
-    refresh_summary()
+    try! ({
+      spin_box.setWrapping(enabled)
+      refresh_summary()
+    })
   })
   let _ = QObject::connect(compact.toggled(), enabled => {
-    spin_box.setFrame(if enabled { false } else { true })
-    refresh_summary()
+    try! ({
+      spin_box.setFrame(if enabled { false } else { true })
+      refresh_summary()
+    })
   })
 
   refresh_summary()
@@ -106,7 +117,7 @@ fn ValueControls::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = ValueControls::new()

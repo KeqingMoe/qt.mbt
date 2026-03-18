@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QComboBox,
   type QLabel,
@@ -16,7 +17,7 @@ using @qt {
 struct ProgressForm(QWidget)
 
 ///|
-fn ProgressForm::new() -> Self {
+fn ProgressForm::new() -> Self raise NullptrError {
   let preset = QComboBox::new()
   preset.setPlaceholderText("Choose a task preset")
   preset.addItem("Sync notes")
@@ -50,14 +51,14 @@ fn ProgressForm::new() -> Self {
       "Publish release" => 80
       _ => 0
     }
-    refresh()
+    try! refresh()
   })
 
   let _ = QObject::connect(advance.clicked(), _ => {
     if value < 100 {
       value += 10
     }
-    refresh()
+    try! refresh()
   })
 
   let layout = QVBoxLayout::new()
@@ -74,7 +75,7 @@ fn ProgressForm::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = ProgressForm::new()

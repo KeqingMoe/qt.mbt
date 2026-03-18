@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QCheckBox,
   type QFormLayout,
@@ -15,7 +16,7 @@ using @qt {
 }
 
 ///|
-fn named_label(text : String) -> QLabel {
+fn named_label(text : String) -> QLabel raise NullptrError {
   let label = QLabel::new()
   label.setText(text)
   label
@@ -28,7 +29,7 @@ struct ProfileModeBox(QGroupBox)
 fn ProfileModeBox::new(
   public_profile : QRadioButton,
   private_profile : QRadioButton,
-) -> Self {
+) -> Self raise NullptrError {
   let group = QGroupBox::new()
   group.setTitle("Profile visibility")
 
@@ -44,7 +45,7 @@ fn ProfileModeBox::new(
 struct SettingsForm(QWidget)
 
 ///|
-fn SettingsForm::new() -> Self {
+fn SettingsForm::new() -> Self raise NullptrError {
   let username = QLineEdit::new()
   username.setPlaceholderText("moonbit_user")
 
@@ -76,17 +77,17 @@ fn SettingsForm::new() -> Self {
     footer.setText("Updates: \{updates_text} | Profile: \{mode_text}")
   }
 
-  let _ = QObject::connect(updates.toggled(), _ => refresh_footer())
+  let _ = QObject::connect(updates.toggled(), _ => try! refresh_footer())
   let _ = QObject::connect(public_profile.toggled(), checked => {
     if checked {
       mode_text = "Public"
-      refresh_footer()
+      try! refresh_footer()
     }
   })
   let _ = QObject::connect(private_profile.toggled(), checked => {
     if checked {
       mode_text = "Private"
-      refresh_footer()
+      try! refresh_footer()
     }
   })
 
@@ -109,7 +110,7 @@ fn SettingsForm::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = SettingsForm::new()

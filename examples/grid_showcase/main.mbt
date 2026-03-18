@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QGridLayout,
   type QLabel,
@@ -13,7 +14,7 @@ using @qt {
 struct Card(QWidget)
 
 ///|
-fn Card::new(title : String, body : String) -> Self {
+fn Card::new(title : String, body : String) -> Self raise NullptrError {
   let card = QWidget::new()
   card.setMinimumSize(180, 90)
 
@@ -39,7 +40,7 @@ fn Card::new(title : String, body : String) -> Self {
 struct DashboardLayout(QGridLayout)
 
 ///|
-fn DashboardLayout::new() -> Self {
+fn DashboardLayout::new() -> Self raise NullptrError {
   let grid = QGridLayout::new()
   grid.setColumnStretch(0, 1)
   grid.setColumnStretch(1, 1)
@@ -71,7 +72,7 @@ fn DashboardLayout::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let layout = DashboardLayout::new()

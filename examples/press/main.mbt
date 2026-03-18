@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QObject,
   type QApplication,
   type QWidget,
@@ -9,7 +10,7 @@ using @qt {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let label = QLabel::new()
@@ -19,10 +20,10 @@ fn main {
   button.setText("Click me!")
 
   let _ = QObject::connect(button.pressed(), _ => {
-    label.setText("Button Pressed!")
+    try! label.setText("Button Pressed!")
   })
   let _ = QObject::connect(button.released(), _ => {
-    label.setText("Button Released!")
+    try! label.setText("Button Released!")
   })
 
   let layout = QHBoxLayout::new()

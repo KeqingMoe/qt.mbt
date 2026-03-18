@@ -1,5 +1,6 @@
 ///|
 using @qt {
+  type NullptrError,
   type QApplication,
   type QLineEdit,
   type QLabel,
@@ -15,13 +16,13 @@ using @qt {
 struct LengthComputer(QWidget)
 
 ///|
-fn LengthComputer::new() -> Self {
+fn LengthComputer::new() -> Self raise NullptrError {
   let label = QLabel::new()
   label.setText("Text length: 0")
 
   let line_edit = QLineEdit::new()
   let _ = QObject::connect(line_edit.textChanged(), text => {
-    label.setText("Text length: \{text.char_length()}")
+    try! label.setText("Text length: \{text.char_length()}")
   })
 
   let layout = QHBoxLayout::new()
@@ -35,7 +36,7 @@ fn LengthComputer::new() -> Self {
 }
 
 ///|
-fn main {
+fn main raise NullptrError {
   let app = QApplication::new(@env.args())
 
   let window = QWidget::new()

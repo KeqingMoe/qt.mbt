@@ -1,0 +1,86 @@
+#include <QTextEdit>
+#include <qt.hpp>
+
+QSTATIC(QTextEdit, new)->qt<QTextEdit>
+{
+    return qt<QTextEdit>::make();
+}
+
+QMETHOD(QTextEdit, acceptRichText)->Bool
+{
+    return Bool::make(self->acceptRichText());
+}
+
+QMETHOD(QTextEdit, append, String text)->void
+{
+    self->append(str::mbt_to_qt(text));
+}
+
+QMETHOD(QTextEdit, clear)->void
+{
+    self->clear();
+}
+
+QMETHOD(QTextEdit, isReadOnly)->Bool
+{
+    return Bool::make(self->isReadOnly());
+}
+
+QMETHOD(QTextEdit, placeholderText)->String
+{
+    return str::qt_to_mbt(self->placeholderText());
+}
+
+QMETHOD(QTextEdit, redo)->void
+{
+    self->redo();
+}
+
+QMETHOD(QTextEdit, selectAll)->void
+{
+    self->selectAll();
+}
+
+QMETHOD(QTextEdit, setAcceptRichText, Bool value)->void
+{
+    self->setAcceptRichText(value);
+}
+
+QMETHOD(QTextEdit, setMarkdown, String text)->void
+{
+    self->setMarkdown(str::mbt_to_qt(text));
+}
+
+QMETHOD(QTextEdit, setPlainText, String text)->void
+{
+    self->setPlainText(str::mbt_to_qt(text));
+}
+
+QMETHOD(QTextEdit, setPlaceholderText, String text)->void
+{
+    self->setPlaceholderText(str::mbt_to_qt(text));
+}
+
+QMETHOD(QTextEdit, setReadOnly, Bool value)->void
+{
+    self->setReadOnly(value);
+}
+
+QMETHOD(QTextEdit, toMarkdown)->String
+{
+    return str::qt_to_mbt(self->toMarkdown());
+}
+
+QMETHOD(QTextEdit, toPlainText)->String
+{
+    return str::qt_to_mbt(self->toPlainText());
+}
+
+QMETHOD(QTextEdit, undo)->void
+{
+    self->undo();
+}
+
+SIGNAL_DEF(QTextEdit, textChanged, Unit, Unit::make)
+
+COVARIANT(QTextEdit, QAbstractScrollArea)

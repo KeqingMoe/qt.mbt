@@ -12,9 +12,9 @@ QSTATIC(QObject, disconnect, Connection connection)->Bool
     return Bool::make(flag);
 }
 
-QMETHOD(QObject, is_null)->bool
+QMETHOD(QObject, is_null)->Bool
 {
-    return self.is_null();
+    return Bool::make(self.is_null());
 }
 
 QSTATIC(QObject, new)->qt<QObject>

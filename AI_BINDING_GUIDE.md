@@ -94,6 +94,39 @@ FFI 名称遵循：
 extern "C" fn _QWidget_show(this : QWidget) = "QWidget_show"
 ```
 
+### NullptrError
+
+本项目中的 Qt wrapper 类型（如 `QObject`、`QWidget` 等）本身具有可空语义。此外，由于 Qt 对象可能在对象树或其他 Qt 生命周期机制下被销毁，原本可用的句柄也可能在后续调用时失效并变为空。因此，应遵循以下规则：
+
+1. 对应 C++ stub 侧成员函数的方法需要空指针检查
+2. 空指针检查应在 MoonBit 侧 public 接口中，而不是在 `extern "C"` 函数或 stub 中
+3. `as_` 系列函数和 `AsObject::is_null` 无需检查
+4. 参数不用检查
+
+对 trait 方法，空指针检查如下：
+
+```mbt
+pub(open) trait AsWidget: AsObject {
+  as_widget(Self) -> QWidget
+  show(Self) -> Unit raise NullptrError = _
+  // ...
+}
+
+impl AsWidget with show(self) {
+  ensure_not_nullptr(self)
+  _QWidget_show(self.as_widget())
+}
+```
+
+对普通方法，空指针检查如下：
+
+```mbt
+pub fn QComboBox::clear(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QComboBox_clear(self)
+}
+```
+
 ### As trait 设计
 
 - As trait 用于表达 Qt 的继承/子类型关系。
@@ -115,11 +148,12 @@ extern "C" fn _QWidget_show(this : QWidget) = "QWidget_show"
 ```mbt
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
-  show(Self) -> Unit = _
+  show(Self) -> Unit raise NullptrError = _
   // ...
 }
 
 impl AsWidget with show(self) {
+  ensure_not_nullptr(self)
   _QWidget_show(self.as_widget())
 }
 ```
@@ -196,11 +230,12 @@ stub 层优先使用这些宏：
 ```mbt
 pub(open) trait AsBoxLayout: AsLayout {
   as_box_layout(Self) -> QBoxLayout
-  addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit = _
+  addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit raise NullptrError = _
   // ...
 }
 
 impl AsBoxLayout with addLayout(self, layout, stretch? = 0) {
+  ensure_not_nullptr(self)
   _QBoxLayout_addLayout(self.as_box_layout(), layout.as_layout(), stretch)
 }
 ```
@@ -208,7 +243,8 @@ impl AsBoxLayout with addLayout(self, layout, stretch? = 0) {
 普通方法的默认参数写法：
 
 ```mbt
-pub fn QCheckBox::setTristate(self : Self, tristate? : Bool = true) -> Unit {
+pub fn QCheckBox::setTristate(self : Self, tristate? : Bool = true) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
   _QCheckBox_setTristate(self, tristate)
 }
 ```

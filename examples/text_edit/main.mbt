@@ -55,7 +55,7 @@ fn main {
 
 ///|
 impl AsObject for LengthComputer with as_object(self) {
-  self.as_object()
+  self.0.as_object()
 }
 
 ///|

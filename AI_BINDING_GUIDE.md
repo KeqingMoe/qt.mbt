@@ -180,6 +180,39 @@ stub 层优先使用这些宏：
 - stub 层可以继续把这类参数和返回值写成 `Int`，并在需要时显式转换到 Qt 枚举，例如 `static_cast<Qt::CheckState>(state)`。
 - 信号也遵循同样规则：如果 Qt 信号参数本质上是这类枚举，则 MoonBit 侧信号类型应写成对应枚举类型，而不是 `Signal[Int]`。
 
+### 默认参数映射
+
+- 如果 Qt 方法带有默认参数，应优先在 MoonBit public 层表达默认参数，而不是为了省事把该参数直接删掉，或额外发明多个 ad-hoc 重载。
+- 这种情况下，stub 层和 MoonBit `extern "C"` 声明应保留完整签名，显式写出所有参数；默认值只放在 public wrapper 或 trait 默认实现这一层。
+- 也就是说：
+  - C++ stub：绑定真实 Qt 方法的完整参数列表
+  - MoonBit `extern "C"`：与 stub 保持一一对应的完整参数列表
+  - MoonBit public API：使用 `arg? : T = default_value` 承接 Qt 默认参数
+- 例如 `QBoxLayout::addLayout(QLayout *layout, int stretch = 0)`，stub 和 `extern "C"` 都应保留 `stretch : Int`，而 MoonBit public 层再写成 `stretch? : Int = 0`。
+- 只有当 Qt 默认参数对应的能力明确不打算暴露，且这种裁剪是用户确认过的设计决定时，才可以不映射该参数。
+
+在 As trait 中的默认参数写法：
+
+```mbt
+pub(open) trait AsBoxLayout: AsLayout {
+  as_box_layout(Self) -> QBoxLayout
+  addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit = _
+  // ...
+}
+
+impl AsBoxLayout with addLayout(self, layout, stretch? = 0) {
+  _QBoxLayout_addLayout(self.as_box_layout(), layout.as_layout(), stretch)
+}
+```
+
+普通方法的默认参数写法：
+
+```mbt
+pub fn QCheckBox::setTristate(self : Self, tristate? : Bool = true) -> Unit {
+  _QCheckBox_setTristate(self, tristate)
+}
+```
+
 ### 布尔转换
 
 - 从 C++ `bool` 到 MoonBit `Bool`：使用 `Bool::make(...)`

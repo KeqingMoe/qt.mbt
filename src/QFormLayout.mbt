@@ -50,21 +50,21 @@ extern "C" fn _QFormLayout_setRowWrapPolicy(
 
 ///|
 #borrow(this, row, role, layout)
-extern "C" fn _QFormLayout_setRowLayout(
+extern "C" fn _QFormLayout_setLayout(
   this : QFormLayout,
   row : Int,
   role : ItemRole,
   layout : QLayout,
-) = "QFormLayout_setRowLayout"
+) = "QFormLayout_setLayout"
 
 ///|
 #borrow(this, row, role, widget)
-extern "C" fn _QFormLayout_setRowWidget(
+extern "C" fn _QFormLayout_setWidget(
   this : QFormLayout,
   row : Int,
   role : ItemRole,
   widget : QWidget,
-) = "QFormLayout_setRowWidget"
+) = "QFormLayout_setWidget"
 
 ///|
 #borrow(this)
@@ -135,14 +135,14 @@ pub fn QFormLayout::setFieldGrowthPolicy(
 }
 
 ///|
-pub fn QFormLayout::setRowLayout(
+pub fn QFormLayout::setLayout(
   self : Self,
   row : Int,
   role : ItemRole,
   layout : &AsLayout,
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
-  _QFormLayout_setRowLayout(self, row, role, layout.as_layout())
+  _QFormLayout_setLayout(self, row, role, layout.as_layout())
 }
 
 ///|
@@ -155,14 +155,14 @@ pub fn QFormLayout::setRowWrapPolicy(
 }
 
 ///|
-pub fn QFormLayout::setRowWidget(
+pub fn QFormLayout::setWidget(
   self : Self,
   row : Int,
   role : ItemRole,
   widget : &AsWidget,
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
-  _QFormLayout_setRowWidget(self, row, role, widget.as_widget())
+  _QFormLayout_setWidget(self, row, role, widget.as_widget())
 }
 
 ///|

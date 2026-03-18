@@ -48,12 +48,12 @@ QMETHOD(QFormLayout, setRowWrapPolicy, Int policy)->void
     self->setRowWrapPolicy(static_cast<QFormLayout::RowWrapPolicy>(policy));
 }
 
-QMETHOD(QFormLayout, setRowLayout, Int row, Int role, qt<QLayout> layout)->void
+QMETHOD(QFormLayout, setLayout, Int row, Int role, qt<QLayout> layout)->void
 {
     self->setLayout(row, static_cast<QFormLayout::ItemRole>(role), layout.get());
 }
 
-QMETHOD(QFormLayout, setRowWidget, Int row, Int role, qt<QWidget> widget)->void
+QMETHOD(QFormLayout, setWidget, Int row, Int role, qt<QWidget> widget)->void
 {
     self->setWidget(row, static_cast<QFormLayout::ItemRole>(role), widget.get());
 }

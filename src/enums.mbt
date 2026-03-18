@@ -6,6 +6,39 @@ pub enum CheckState {
 }
 
 ///|
+pub(all) enum ButtonRole {
+  AcceptRole = 0
+  RejectRole = 1
+  DestructiveRole = 2
+  ActionRole = 3
+  HelpRole = 4
+  YesRole = 5
+  NoRole = 6
+  ResetRole = 7
+  ApplyRole = 8
+}
+
+// ///|
+// pub fn ButtonRole::acceptRole() -> ButtonRole {
+//   AcceptRole
+// }
+
+// ///|
+// pub fn ButtonRole::actionRole() -> ButtonRole {
+//   ActionRole
+// }
+
+// ///|
+// pub fn ButtonRole::applyRole() -> ButtonRole {
+//   ApplyRole
+// }
+
+// ///|
+// pub fn ButtonRole::rejectRole() -> ButtonRole {
+//   RejectRole
+// }
+
+///|
 pub enum Corner {
   TopLeftCorner = 0x00000
   TopRightCorner = 0x00001
@@ -73,6 +106,28 @@ pub enum RowWrapPolicy {
   WrapLongRows = 1
   WrapAllRows = 2
 }
+
+///|
+pub enum ScrollBarPolicy {
+  ScrollBarAsNeeded = 0
+  ScrollBarAlwaysOff = 1
+  ScrollBarAlwaysOn = 2
+}
+
+// ///|
+// pub fn ScrollBarPolicy::alwaysOff() -> ScrollBarPolicy {
+//   ScrollBarAlwaysOff
+// }
+
+// ///|
+// pub fn ScrollBarPolicy::alwaysOn() -> ScrollBarPolicy {
+//   ScrollBarAlwaysOn
+// }
+
+// ///|
+// pub fn ScrollBarPolicy::asNeeded() -> ScrollBarPolicy {
+//   ScrollBarAsNeeded
+// }
 
 ///|
 pub enum SizeConstraint {

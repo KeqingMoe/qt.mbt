@@ -5,26 +5,26 @@ pub type QAbstractScrollArea
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_horizontalScrollBarPolicy(
   this : QAbstractScrollArea,
-) -> Int = "QAbstractScrollArea_horizontalScrollBarPolicy"
+) -> ScrollBarPolicy = "QAbstractScrollArea_horizontalScrollBarPolicy"
 
 ///|
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_setHorizontalScrollBarPolicy(
   this : QAbstractScrollArea,
-  policy : Int,
+  policy : ScrollBarPolicy,
 ) = "QAbstractScrollArea_setHorizontalScrollBarPolicy"
 
 ///|
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_verticalScrollBarPolicy(
   this : QAbstractScrollArea,
-) -> Int = "QAbstractScrollArea_verticalScrollBarPolicy"
+) -> ScrollBarPolicy = "QAbstractScrollArea_verticalScrollBarPolicy"
 
 ///|
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_setVerticalScrollBarPolicy(
   this : QAbstractScrollArea,
-  policy : Int,
+  policy : ScrollBarPolicy,
 ) = "QAbstractScrollArea_setVerticalScrollBarPolicy"
 
 ///|
@@ -42,10 +42,10 @@ extern "C" fn _QAbstractScrollArea_as_QFrame(
 ///|
 pub(open) trait AsAbstractScrollArea: AsFrame {
   as_abstract_scroll_area(Self) -> QAbstractScrollArea
-  horizontalScrollBarPolicy(Self) -> Int = _
-  setHorizontalScrollBarPolicy(Self, policy : Int) -> Unit = _
-  setVerticalScrollBarPolicy(Self, policy : Int) -> Unit = _
-  verticalScrollBarPolicy(Self) -> Int = _
+  horizontalScrollBarPolicy(Self) -> ScrollBarPolicy = _
+  setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit = _
+  setVerticalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit = _
+  verticalScrollBarPolicy(Self) -> ScrollBarPolicy = _
   viewport(Self) -> QWidget = _
 }
 

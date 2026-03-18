@@ -1,5 +1,5 @@
 ///|
-pub enum CheckState {
+pub(all) enum CheckState {
   Unchecked = 0
   PartiallyChecked = 1
   Checked = 2
@@ -7,27 +7,27 @@ pub enum CheckState {
 
 ///|
 pub(all) enum ButtonRole {
-  AcceptRole = 0
-  RejectRole = 1
-  DestructiveRole = 2
-  ActionRole = 3
-  HelpRole = 4
-  YesRole = 5
-  NoRole = 6
-  ResetRole = 7
-  ApplyRole = 8
+  Accept = 0
+  Reject = 1
+  Destructive = 2
+  Action = 3
+  Help = 4
+  Yes = 5
+  No = 6
+  Reset = 7
+  Apply = 8
 }
 
 ///|
-pub enum Corner {
-  TopLeftCorner = 0x00000
-  TopRightCorner = 0x00001
-  BottomLeftCorner = 0x00002
-  BottomRightCorner = 0x00003
+pub(all) enum Corner {
+  TopLeft = 0x00000
+  TopRight = 0x00001
+  BottomLeft = 0x00002
+  BottomRight = 0x00003
 }
 
 ///|
-pub enum Direction {
+pub(all) enum Direction {
   LeftToRight = 0
   RightToLeft = 1
   TopToBottom = 2
@@ -35,7 +35,7 @@ pub enum Direction {
 }
 
 ///|
-pub enum EchoMode {
+pub(all) enum EchoMode {
   Normal = 0
   NoEcho = 1
   Password = 2
@@ -43,21 +43,21 @@ pub enum EchoMode {
 }
 
 ///|
-pub enum FieldGrowthPolicy {
-  FieldsStayAtSizeHint = 0
-  ExpandingFieldsGrow = 1
-  AllNonFixedFieldsGrow = 2
+pub(all) enum FieldGrowthPolicy {
+  StayAtSizeHint = 0
+  Expanding = 1
+  AllNonFixed = 2
 }
 
 ///|
-pub enum FrameShadow {
+pub(all) enum FrameShadow {
   Plain = 0x0010
   Raised = 0x0020
   Sunken = 0x0030
 }
 
 ///|
-pub enum FrameShape {
+pub(all) enum FrameShape {
   NoFrame = 0
   Box = 0x0001
   Panel = 0x0002
@@ -68,46 +68,46 @@ pub enum FrameShape {
 }
 
 ///|
-pub enum ItemRole {
-  LabelRole = 0
-  FieldRole = 1
-  SpanningRole = 2
+pub(all) enum ItemRole {
+  Label = 0
+  Field = 1
+  Spanning = 2
 }
 
 ///|
-pub enum Orientation {
+pub(all) enum Orientation {
   Horizontal = 0x1
   Vertical = 0x2
 }
 
 ///|
-pub enum RowWrapPolicy {
-  DontWrapRows = 0
-  WrapLongRows = 1
-  WrapAllRows = 2
+pub(all) enum RowWrapPolicy {
+  Dont = 0
+  Long = 1
+  All = 2
 }
 
 ///|
-pub enum ScrollBarPolicy {
-  ScrollBarAsNeeded = 0
-  ScrollBarAlwaysOff = 1
-  ScrollBarAlwaysOn = 2
+pub(all) enum ScrollBarPolicy {
+  AsNeeded = 0
+  AlwaysOff = 1
+  AlwaysOn = 2
 }
 
 ///|
-pub enum SizeConstraint {
-  SetDefaultConstraint = 0
-  SetNoConstraint = 1
-  SetMinimumSize = 2
-  SetFixedSize = 3
-  SetMaximumSize = 4
-  SetMinAndMaxSize = 5
+pub(all) enum SizeConstraint {
+  DefaultConstraint = 0
+  NoConstraint = 1
+  MinimumSize = 2
+  FixedSize = 3
+  MaximumSize = 4
+  MinAndMaxSize = 5
 }
 
 ///|
-pub enum TextFormat {
-  PlainText = 0
-  RichText = 1
-  AutoText = 2
-  MarkdownText = 3
+pub(all) enum TextFormat {
+  Plain = 0
+  Rich = 1
+  Auto = 2
+  Markdown = 3
 }

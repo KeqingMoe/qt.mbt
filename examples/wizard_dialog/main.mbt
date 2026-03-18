@@ -1,7 +1,6 @@
 ///|
 using @qt {
   type NullptrError,
-  type ButtonRole,
   type QApplication,
   type QLabel,
   type QObject,
@@ -64,19 +63,19 @@ fn WizardDialogDemo::new() -> Self raise NullptrError {
 
   let back = QPushButton::new()
   back.setText("Back")
-  box.addButton(back, ButtonRole::ActionRole)
+  box.addButton(back, Action)
 
   let next = QPushButton::new()
   next.setText("Next")
-  box.addButton(next, ButtonRole::ActionRole)
+  box.addButton(next, Action)
 
   let cancel = QPushButton::new()
   cancel.setText("Cancel")
-  box.addButton(cancel, ButtonRole::RejectRole)
+  box.addButton(cancel, Reject)
 
   let finish = QPushButton::new()
   finish.setText("Finish")
-  box.addButton(finish, ButtonRole::ApplyRole)
+  box.addButton(finish, Apply)
 
   let dialog_layout = QVBoxLayout::new()
   dialog_layout.addWidget(pages)

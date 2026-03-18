@@ -2,6 +2,9 @@
 pub type QObject
 
 ///|
+extern "C" fn _QObject_new() -> QObject = "QObject_new"
+
+///|
 #borrow(signal)
 #owned(slot)
 extern "C" fn _QObject_connect(
@@ -18,14 +21,154 @@ extern "C" fn _QObject_disconnect(this : Connection) -> Bool = "QObject_disconne
 extern "C" fn _QObject_is_null(this : QObject) -> Bool = "QObject_is_null"
 
 ///|
+#borrow(this, block)
+extern "C" fn _QObject_blockSignals(this : QObject, block : Bool) -> Bool = "QObject_blockSignals"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_deleteLater(this : QObject) = "QObject_deleteLater"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_destroyed(this : QObject) -> Signal[QObject] = "QObject_destroyed"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_dumpObjectInfo(this : QObject) = "QObject_dumpObjectInfo"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_dumpObjectTree(this : QObject) = "QObject_dumpObjectTree"
+
+///|
+#borrow(this, className)
+extern "C" fn _QObject_inherits(this : QObject, className : String) -> Bool = "QObject_inherits"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_isWidgetType(this : QObject) -> Bool = "QObject_isWidgetType"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_isWindowType(this : QObject) -> Bool = "QObject_isWindowType"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_objectName(this : QObject) -> String = "QObject_objectName"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_objectNameChanged(this : QObject) -> Signal[String] = "QObject_objectNameChanged"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_parent(this : QObject) -> QObject = "QObject_parent"
+
+///|
+#borrow(this, name)
+extern "C" fn _QObject_setObjectName(this : QObject, name : String) = "QObject_setObjectName"
+
+///|
+#borrow(this, parent)
+extern "C" fn _QObject_setParent(this : QObject, parent : QObject) = "QObject_setParent"
+
+///|
+#borrow(this)
+extern "C" fn _QObject_signalsBlocked(this : QObject) -> Bool = "QObject_signalsBlocked"
+
+///|
 pub(open) trait AsObject {
   as_object(Self) -> QObject
   is_null(Self) -> Bool = _
+  blockSignals(Self, block : Bool) -> Bool = _
+  deleteLater(Self) -> Unit = _
+  destroyed(Self) -> Signal[QObject] = _
+  dumpObjectInfo(Self) -> Unit = _
+  dumpObjectTree(Self) -> Unit = _
+  inherits(Self, className : String) -> Bool = _
+  isWidgetType(Self) -> Bool = _
+  isWindowType(Self) -> Bool = _
+  objectName(Self) -> String = _
+  objectNameChanged(Self) -> Signal[String] = _
+  parent(Self) -> QObject = _
+  setObjectName(Self, name : String) -> Unit = _
+  setParent(Self, parent : &AsObject) -> Unit = _
+  signalsBlocked(Self) -> Bool = _
 }
 
 ///|
 impl AsObject with is_null(self) {
   _QObject_is_null(self.as_object())
+}
+
+///|
+impl AsObject with blockSignals(self, block) {
+  _QObject_blockSignals(self.as_object(), block)
+}
+
+///|
+impl AsObject with deleteLater(self) {
+  _QObject_deleteLater(self.as_object())
+}
+
+///|
+impl AsObject with destroyed(self) {
+  _QObject_destroyed(self.as_object())
+}
+
+///|
+impl AsObject with dumpObjectInfo(self) {
+  _QObject_dumpObjectInfo(self.as_object())
+}
+
+///|
+impl AsObject with dumpObjectTree(self) {
+  _QObject_dumpObjectTree(self.as_object())
+}
+
+///|
+impl AsObject with inherits(self, className) {
+  _QObject_inherits(self.as_object(), className)
+}
+
+///|
+impl AsObject with isWidgetType(self) {
+  _QObject_isWidgetType(self.as_object())
+}
+
+///|
+impl AsObject with isWindowType(self) {
+  _QObject_isWindowType(self.as_object())
+}
+
+///|
+impl AsObject with objectName(self) {
+  _QObject_objectName(self.as_object())
+}
+
+///|
+impl AsObject with objectNameChanged(self) {
+  _QObject_objectNameChanged(self.as_object())
+}
+
+///|
+impl AsObject with parent(self) {
+  _QObject_parent(self.as_object())
+}
+
+///|
+impl AsObject with setObjectName(self, name) {
+  _QObject_setObjectName(self.as_object(), name)
+}
+
+///|
+impl AsObject with setParent(self, parent) {
+  _QObject_setParent(self.as_object(), parent.as_object())
+}
+
+///|
+impl AsObject with signalsBlocked(self) {
+  _QObject_signalsBlocked(self.as_object())
 }
 
 ///|
@@ -39,6 +182,11 @@ pub fn[T] QObject::connect(
 ///|
 pub fn QObject::disconnect(connection : Connection) -> Bool {
   _QObject_disconnect(connection)
+}
+
+///|
+pub fn QObject::new() -> QObject {
+  _QObject_new()
 }
 
 ///|

@@ -33,6 +33,11 @@ struct qt
         return {.repr = repr_type::make(new T(std::forward<Args>(args)...))};
     }
 
+    static auto from_raw(T* ptr) noexcept -> Self
+    {
+        return {.repr = repr_type::make(ptr)};
+    }
+
     template <typename U>
         requires std::derived_from<T, U>
     auto cast() -> qt<U>

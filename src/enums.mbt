@@ -62,6 +62,12 @@ pub enum ItemRole {
 }
 
 ///|
+pub enum Orientation {
+  Horizontal = 0x1
+  Vertical = 0x2
+}
+
+///|
 pub enum RowWrapPolicy {
   DontWrapRows = 0
   WrapLongRows = 1

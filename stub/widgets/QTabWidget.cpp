@@ -28,7 +28,7 @@ QMETHOD(QTabWidget, currentIndex)->Int
 
 QMETHOD(QTabWidget, currentWidget)->qt<QWidget>
 {
-    return qt<QWidget>::make(self->currentWidget());
+    return qt<QWidget>::from_raw(self->currentWidget());
 }
 
 QMETHOD(QTabWidget, removeTab, Int index)->void

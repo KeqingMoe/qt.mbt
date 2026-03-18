@@ -23,7 +23,7 @@ QMETHOD(QStackedWidget, currentIndex)->Int
 
 QMETHOD(QStackedWidget, currentWidget)->qt<QWidget>
 {
-    return qt<QWidget>::make(self->currentWidget());
+    return qt<QWidget>::from_raw(self->currentWidget());
 }
 
 QMETHOD(QStackedWidget, setCurrentIndex, Int index)->void

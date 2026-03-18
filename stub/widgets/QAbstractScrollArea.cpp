@@ -23,7 +23,7 @@ QMETHOD(QAbstractScrollArea, verticalScrollBarPolicy)->Int
 
 QMETHOD(QAbstractScrollArea, viewport)->qt<QWidget>
 {
-    return qt<QWidget>::make(self->viewport());
+    return qt<QWidget>::from_raw(self->viewport());
 }
 
 COVARIANT(QAbstractScrollArea, QFrame)

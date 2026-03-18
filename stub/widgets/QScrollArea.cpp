@@ -28,7 +28,7 @@ QMETHOD(QScrollArea, setWidgetResizable, Bool resizable)->void
 
 QMETHOD(QScrollArea, widget)->qt<QWidget>
 {
-    return qt<QWidget>::make(self->widget());
+    return qt<QWidget>::from_raw(self->widget());
 }
 
 QMETHOD(QScrollArea, widgetResizable)->Bool

@@ -1,6 +1,6 @@
 # KeqingMoe/qt
 
-`KeqingMoe/qt` 是一个面向 Qt Widgets 的 MoonBit 绑定。目前它覆盖了 Qt 对象模型里[一小部分但已经可用的接口](./src/qt.mbt)。
+`KeqingMoe/qt` 是一个面向 Qt Widgets 的 MoonBit 绑定。目前它覆盖了 Qt 对象模型里一小部分但已经可用的接口。
 
 这个项目的目标不只是暴露几个 Qt API，还希望在 MoonBit 侧尽量保留 Qt
 原本的基本子类型关系，让代码风格尽可能接近原生 Qt 的编程模型。
@@ -49,9 +49,7 @@ fn main {
 
 - `examples/`：示例应用
 - `scripts/`：构建脚本
-- `src/internal/`：Qt FFI
-- `src/core/`：Qt Core Wrapper
-- `src/widgets/`：Qt Widgets Wrapper
+- `src/`：Qt Binding
 - `stub/`：C++ 胶水代码
 - `AI_BINDING_GUIDE.md`：供 AI 继续生成绑定代码时遵循的规范文档
 
@@ -94,7 +92,7 @@ moon run counter # 或其他示例
 
 ## API 形状
 
-对外公开的 MoonBit API 由 [`src/qt.mbt`](./src/qt.mbt) 统一导出。
+对外公开的 MoonBit API 由 `src/*.mbt` 导出。
 
 其中 `AsWidget`、`AsLayout` 等 trait 用来在 MoonBit 中表达 Qt
 的基本子类型关系。

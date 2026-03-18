@@ -7,9 +7,64 @@ QSTATIC(QWidget, new)->qt<QWidget>
     return qt<QWidget>::make();
 }
 
-QMETHOD(QWidget, show)->void
+QMETHOD(QWidget, hide)->void
 {
-    self->show();
+    self->hide();
+}
+
+QMETHOD(QWidget, isEnabled)->Bool
+{
+    return Bool::make(self->isEnabled());
+}
+
+QMETHOD(QWidget, isHidden)->Bool
+{
+    return Bool::make(self->isHidden());
+}
+
+QMETHOD(QWidget, isVisible)->Bool
+{
+    return Bool::make(self->isVisible());
+}
+
+QMETHOD(QWidget, move, Int x, Int y)->void
+{
+    self->move(x, y);
+}
+
+QMETHOD(QWidget, resize, Int width, Int height)->void
+{
+    self->resize(width, height);
+}
+
+QMETHOD(QWidget, setEnabled, Bool value)->void
+{
+    self->setEnabled(value);
+}
+
+QMETHOD(QWidget, setFixedSize, Int width, Int height)->void
+{
+    self->setFixedSize(width, height);
+}
+
+QMETHOD(QWidget, setLayout, qt<QLayout> layout)->void
+{
+    self->setLayout(layout.get());
+}
+
+QMETHOD(QWidget, setMaximumSize, Int width, Int height)->void
+{
+    self->setMaximumSize(width, height);
+}
+
+QMETHOD(QWidget, setMinimumSize, Int width, Int height)->void
+{
+    self->setMinimumSize(width, height);
+}
+
+QMETHOD(QWidget, setVisible, Bool value)->void
+{
+    self->setVisible(value);
 }
 
 QMETHOD(QWidget, setWindowTitle, String title)->void
@@ -17,9 +72,14 @@ QMETHOD(QWidget, setWindowTitle, String title)->void
     self->setWindowTitle(str::mbt_to_qt(title));
 }
 
-QMETHOD(QWidget, setLayout, qt<QLayout> layout)->void
+QMETHOD(QWidget, show)->void
 {
-    self->setLayout(layout.get());
+    self->show();
+}
+
+QMETHOD(QWidget, windowTitle)->String
+{
+    return str::qt_to_mbt(self->windowTitle());
 }
 
 COVARIANT(QWidget, QObject)

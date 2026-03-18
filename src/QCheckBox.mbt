@@ -2,13 +2,6 @@
 pub type QCheckBox
 
 ///|
-pub enum CheckState {
-  Unchecked = 0
-  PartiallyChecked = 1
-  Checked = 2
-}
-
-///|
 extern "C" fn _QCheckBox_new() -> QCheckBox = "QCheckBox_new"
 
 ///|

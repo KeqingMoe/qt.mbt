@@ -2,16 +2,6 @@
 pub type QLayout
 
 ///|
-pub enum SizeConstraint {
-  SetDefaultConstraint = 0
-  SetNoConstraint = 1
-  SetMinimumSize = 2
-  SetFixedSize = 3
-  SetMaximumSize = 4
-  SetMinAndMaxSize = 5
-}
-
-///|
 #borrow(this, widget)
 extern "C" fn _QLayout_addWidget(this : QLayout, widget : QWidget) = "QLayout_addWidget"
 

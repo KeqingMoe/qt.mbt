@@ -5,6 +5,13 @@ pub(all) enum ActionPosition {
 }
 
 ///|
+pub(all) enum AspectRatioMode {
+  Ignore = 0
+  Keep = 1
+  KeepByExpanding = 2
+}
+
+///|
 pub(all) enum CheckState {
   Unchecked = 0
   PartiallyChecked = 1

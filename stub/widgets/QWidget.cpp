@@ -7,6 +7,11 @@ QSTATIC(QWidget, new)->qt<QWidget>
     return qt<QWidget>::make();
 }
 
+QMETHOD(QWidget, contextMenuPolicy)->Enum<Qt::ContextMenuPolicy>
+{
+    return {self->contextMenuPolicy()};
+}
+
 QMETHOD(QWidget, hide)->void
 {
     self->hide();
@@ -45,6 +50,11 @@ QMETHOD(QWidget, resize, Int width, Int height)->void
 QMETHOD(QWidget, setEnabled, Bool value)->void
 {
     self->setEnabled(value);
+}
+
+QMETHOD(QWidget, setContextMenuPolicy, Enum<Qt::ContextMenuPolicy> policy)->void
+{
+    self->setContextMenuPolicy(policy);
 }
 
 QMETHOD(QWidget, setFixedSize, Int width, Int height)->void

@@ -46,6 +46,15 @@ pub(all) enum CorrectionMode {
 }
 
 ///|
+pub(all) enum ContextMenuPolicy {
+  No = 0
+  Default = 1
+  Actions = 2
+  Custom = 3
+  Prevent = 4
+}
+
+///|
 pub(all) enum CursorMoveStyle {
   Logical = 0
   Visual = 1

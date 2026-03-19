@@ -6,6 +6,10 @@ extern "C" fn _QWidget_new() -> QWidget = "QWidget_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_contextMenuPolicy(this : QWidget) -> ContextMenuPolicy = "QWidget_contextMenuPolicy"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_hide(this : QWidget) = "QWidget_hide"
 
 ///|
@@ -35,6 +39,13 @@ extern "C" fn _QWidget_resize(this : QWidget, width : Int, height : Int) = "QWid
 ///|
 #borrow(this, value)
 extern "C" fn _QWidget_setEnabled(this : QWidget, value : Bool) = "QWidget_setEnabled"
+
+///|
+#borrow(this, policy)
+extern "C" fn _QWidget_setContextMenuPolicy(
+  this : QWidget,
+  policy : ContextMenuPolicy,
+) = "QWidget_setContextMenuPolicy"
 
 ///|
 #borrow(this, width, height)
@@ -87,6 +98,7 @@ extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTi
 ///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
+  contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
   hide(Self) -> Unit raise NullptrError = _
   inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
@@ -94,6 +106,7 @@ pub(open) trait AsWidget: AsObject {
   isVisible(Self) -> Bool raise NullptrError = _
   moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
   setInputMethodHints(Self, hints : InputMethodHints) -> Unit raise NullptrError = _
@@ -110,6 +123,12 @@ pub(open) trait AsWidget: AsObject {
 impl AsWidget with hide(self) {
   ensure_not_nullptr(self)
   _QWidget_hide(self.as_widget())
+}
+
+///|
+impl AsWidget with contextMenuPolicy(self) {
+  ensure_not_nullptr(self)
+  _QWidget_contextMenuPolicy(self.as_widget())
 }
 
 ///|
@@ -146,6 +165,12 @@ impl AsWidget with moveTo(self, x, y) {
 impl AsWidget with resize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_resize(self.as_widget(), width, height)
+}
+
+///|
+impl AsWidget with setContextMenuPolicy(self, policy) {
+  ensure_not_nullptr(self)
+  _QWidget_setContextMenuPolicy(self.as_widget(), policy)
 }
 
 ///|

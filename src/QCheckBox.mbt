@@ -28,10 +28,6 @@ extern "C" fn _QCheckBox_setTristate(this : QCheckBox, tristate : Bool) = "QChec
 
 ///|
 #borrow(this)
-extern "C" fn _QCheckBox_stateChanged(this : QCheckBox) -> Signal[CheckState] = "QCheckBox_stateChanged"
-
-///|
-#borrow(this)
 extern "C" fn _QCheckBox_as_QAbstractButton(
   this : QCheckBox,
 ) -> QAbstractButton = "QCheckBox_as_QAbstractButton"
@@ -77,14 +73,6 @@ pub fn QCheckBox::setTristate(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QCheckBox_setTristate(self, tristate)
-}
-
-///|
-pub fn QCheckBox::stateChanged(
-  self : Self,
-) -> Signal[CheckState] raise NullptrError {
-  ensure_not_nullptr(self)
-  _QCheckBox_stateChanged(self)
 }
 
 ///|

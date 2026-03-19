@@ -28,6 +28,4 @@ QMETHOD(QCheckBox, setTristate, Bool tristate)->void
 
 SIGNAL_DEF(QCheckBox, checkStateChanged, Int, [](auto state) { return state; })
 
-SIGNAL_DEF(QCheckBox, stateChanged, Int, [](auto state) { return state; })
-
 COVARIANT(QCheckBox, QAbstractButton)

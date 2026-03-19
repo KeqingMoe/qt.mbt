@@ -7,6 +7,10 @@ extern "C" fn _QLayout_addWidget(this : QLayout, widget : QWidget) = "QLayout_ad
 
 ///|
 #borrow(this)
+extern "C" fn _QLayout_controlTypes(this : QLayout) -> QFlag = "QLayout_controlTypes"
+
+///|
+#borrow(this)
 extern "C" fn _QLayout_count(this : QLayout) -> Int = "QLayout_count"
 
 ///|
@@ -86,6 +90,7 @@ extern "C" fn _QLayout_as_QObject(this : QLayout) -> QObject = "QLayout_as_QObje
 pub(open) trait AsLayout: AsObject {
   as_layout(Self) -> QLayout
   addWidget(Self, widget : &AsWidget) -> Unit raise NullptrError = _
+  controlTypes(Self) -> ControlTypes raise NullptrError = _
   count(Self) -> Int raise NullptrError = _
   indexOf(Self, widget : &AsWidget) -> Int raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
@@ -106,6 +111,12 @@ pub(open) trait AsLayout: AsObject {
 impl AsLayout with addWidget(self, widget) {
   ensure_not_nullptr(self)
   _QLayout_addWidget(self.as_layout(), widget.as_widget())
+}
+
+///|
+impl AsLayout with controlTypes(self) {
+  ensure_not_nullptr(self)
+  _QLayout_controlTypes(self.as_layout()).to_flag()
 }
 
 ///|

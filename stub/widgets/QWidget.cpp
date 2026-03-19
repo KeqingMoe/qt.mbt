@@ -1,5 +1,6 @@
 #include <QWidget>
 #include <QLayout>
+#include <QSizePolicy>
 #include <qt.hpp>
 
 QSTATIC(QWidget, new)->qt<QWidget>
@@ -92,6 +93,11 @@ QMETHOD(QWidget, setMinimumSize, Int width, Int height)->void
     self->setMinimumSize(width, height);
 }
 
+QMETHOD(QWidget, setSizePolicy, box<QSizePolicy> policy)->void
+{
+    self->setSizePolicy(*policy);
+}
+
 QMETHOD(QWidget, setVisible, Bool value)->void
 {
     self->setVisible(value);
@@ -105,6 +111,11 @@ QMETHOD(QWidget, setWindowTitle, String title)->void
 QMETHOD(QWidget, show)->void
 {
     self->show();
+}
+
+QMETHOD(QWidget, sizePolicy)->box<QSizePolicy>
+{
+    return box<QSizePolicy>::make(self->sizePolicy());
 }
 
 QMETHOD(QWidget, windowTitle)->String

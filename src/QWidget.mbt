@@ -84,6 +84,10 @@ extern "C" fn _QWidget_setMinimumSize(
 ) = "QWidget_setMinimumSize"
 
 ///|
+#borrow(this, policy)
+extern "C" fn _QWidget_setSizePolicy(this : QWidget, policy : QSizePolicy) = "QWidget_setSizePolicy"
+
+///|
 #borrow(this, value)
 extern "C" fn _QWidget_setVisible(this : QWidget, value : Bool) = "QWidget_setVisible"
 
@@ -98,6 +102,10 @@ extern "C" fn _QWidget_as_QObject(this : QWidget) -> QObject = "QWidget_as_QObje
 ///|
 #borrow(this)
 extern "C" fn _QWidget_show(this : QWidget) = "QWidget_show"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_sizePolicy(this : QWidget) -> QSizePolicy = "QWidget_sizePolicy"
 
 ///|
 #borrow(this)
@@ -123,9 +131,11 @@ pub(open) trait AsWidget: AsObject {
   setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
   setMaximumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
   setMinimumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setSizePolicy(Self, policy : QSizePolicy) -> Unit raise NullptrError = _
   setVisible(Self, value : Bool) -> Unit raise NullptrError = _
   setWindowTitle(Self, title : String) -> Unit raise NullptrError = _
   show(Self) -> Unit raise NullptrError = _
+  sizePolicy(Self) -> QSizePolicy raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
 }
 
@@ -232,6 +242,12 @@ impl AsWidget with setMinimumSize(self, width, height) {
 }
 
 ///|
+impl AsWidget with setSizePolicy(self, policy) {
+  ensure_not_nullptr(self)
+  _QWidget_setSizePolicy(self.as_widget(), policy)
+}
+
+///|
 impl AsWidget with setVisible(self, value) {
   ensure_not_nullptr(self)
   _QWidget_setVisible(self.as_widget(), value)
@@ -247,6 +263,12 @@ impl AsWidget with setWindowTitle(self, title) {
 impl AsWidget with show(self) {
   ensure_not_nullptr(self)
   _QWidget_show(self.as_widget())
+}
+
+///|
+impl AsWidget with sizePolicy(self) {
+  ensure_not_nullptr(self)
+  _QWidget_sizePolicy(self.as_widget())
 }
 
 ///|

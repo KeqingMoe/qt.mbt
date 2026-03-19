@@ -137,6 +137,25 @@ pub(all) enum Orientation {
 }
 
 ///|
+pub(all) enum Policy {
+  Fixed = 0
+  Minimum = 0x1
+  Maximum = 0x4
+  Preferred = 0x5
+  MinimumExpanding = 0x3
+  Expanding = 0x7
+  Ignored = 0xd
+}
+
+///|
+pub(all) enum PolicyFlag {
+  Grow = 0x1
+  Expand = 0x2
+  Shrink = 0x4
+  Ignore = 0x8
+}
+
+///|
 pub(all) enum RowWrapPolicy {
   Dont = 0
   Long = 1

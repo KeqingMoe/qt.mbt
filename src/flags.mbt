@@ -106,6 +106,134 @@ impl Flag for Alignment with to_bits(self) {
 }
 
 ///|
+pub(all) struct ControlTypes {
+  default : Bool
+  buttonBox : Bool
+  checkBox : Bool
+  comboBox : Bool
+  frame : Bool
+  groupBox : Bool
+  label : Bool
+  line : Bool
+  lineEdit : Bool
+  pushButton : Bool
+  radioButton : Bool
+  slider : Bool
+  spinBox : Bool
+  tabWidget : Bool
+  toolButton : Bool
+}
+
+///|
+pub fn ControlTypes::new(
+  default? : Bool = false,
+  buttonBox? : Bool = false,
+  checkBox? : Bool = false,
+  comboBox? : Bool = false,
+  frame? : Bool = false,
+  groupBox? : Bool = false,
+  label? : Bool = false,
+  line? : Bool = false,
+  lineEdit? : Bool = false,
+  pushButton? : Bool = false,
+  radioButton? : Bool = false,
+  slider? : Bool = false,
+  spinBox? : Bool = false,
+  tabWidget? : Bool = false,
+  toolButton? : Bool = false,
+) -> Self {
+  {
+    default,
+    buttonBox,
+    checkBox,
+    comboBox,
+    frame,
+    groupBox,
+    label,
+    line,
+    lineEdit,
+    pushButton,
+    radioButton,
+    slider,
+    spinBox,
+    tabWidget,
+    toolButton,
+  }
+}
+
+///|
+impl Flag for ControlTypes with to_bits(self) {
+  let mut bits : UInt64 = 0
+  if self.default {
+    bits = bits | 0x00000001
+  }
+  if self.buttonBox {
+    bits = bits | 0x00000002
+  }
+  if self.checkBox {
+    bits = bits | 0x00000004
+  }
+  if self.comboBox {
+    bits = bits | 0x00000008
+  }
+  if self.frame {
+    bits = bits | 0x00000010
+  }
+  if self.groupBox {
+    bits = bits | 0x00000020
+  }
+  if self.label {
+    bits = bits | 0x00000040
+  }
+  if self.line {
+    bits = bits | 0x00000080
+  }
+  if self.lineEdit {
+    bits = bits | 0x00000100
+  }
+  if self.pushButton {
+    bits = bits | 0x00000200
+  }
+  if self.radioButton {
+    bits = bits | 0x00000400
+  }
+  if self.slider {
+    bits = bits | 0x00000800
+  }
+  if self.spinBox {
+    bits = bits | 0x00001000
+  }
+  if self.tabWidget {
+    bits = bits | 0x00002000
+  }
+  if self.toolButton {
+    bits = bits | 0x00004000
+  }
+  bits
+}
+
+///|
+impl Flag for ControlTypes with from_bits(bits) {
+  {
+    default: (bits & 0x00000001) != 0,
+    buttonBox: (bits & 0x00000002) != 0,
+    checkBox: (bits & 0x00000004) != 0,
+    comboBox: (bits & 0x00000008) != 0,
+    frame: (bits & 0x00000010) != 0,
+    groupBox: (bits & 0x00000020) != 0,
+    label: (bits & 0x00000040) != 0,
+    line: (bits & 0x00000080) != 0,
+    lineEdit: (bits & 0x00000100) != 0,
+    pushButton: (bits & 0x00000200) != 0,
+    radioButton: (bits & 0x00000400) != 0,
+    slider: (bits & 0x00000800) != 0,
+    spinBox: (bits & 0x00001000) != 0,
+    tabWidget: (bits & 0x00002000) != 0,
+    toolButton: (bits & 0x00004000) != 0,
+  }
+}
+
+///|
 pub(all) struct InputMethodHints {
   hiddenText : Bool
   sensitiveData : Bool

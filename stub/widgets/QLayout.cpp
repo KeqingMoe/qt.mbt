@@ -7,6 +7,11 @@ QMETHOD(QLayout, addWidget, qt<QWidget> widget)->void
     self->addWidget(widget.get());
 }
 
+QMETHOD(QLayout, controlTypes)->UInt64
+{
+    return self->controlTypes().toInt();
+}
+
 QMETHOD(QLayout, count)->Int
 {
     return self->count();

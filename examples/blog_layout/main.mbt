@@ -2,9 +2,8 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QLabel,
-  type QHBoxLayout,
-  type QVBoxLayout,
   type QWidget,
   type Alignment,
   trait AsWidget,
@@ -24,19 +23,23 @@ fn Blog::new(text : String) -> Self raise NullptrError {
 
 ///|
 struct BlogLayout {
-  layout : QVBoxLayout
-  mut last_row : QHBoxLayout?
+  layout : QBoxLayout
+  mut last_row : QBoxLayout?
   mut last_row_has : Int
 }
 
 ///|
 fn BlogLayout::new() -> Self {
-  BlogLayout::{ layout: QVBoxLayout::new(), last_row: None, last_row_has: 0 }
+  BlogLayout::{
+    layout: QBoxLayout::vertical(),
+    last_row: None,
+    last_row_has: 0,
+  }
 }
 
 ///|
-fn BlogLayout::add_new_row(self : Self) -> QHBoxLayout raise NullptrError {
-  let row = QHBoxLayout::new()
+fn BlogLayout::add_new_row(self : Self) -> QBoxLayout raise NullptrError {
+  let row = QBoxLayout::horizontal()
   self.layout.addLayout(row)
   row
 }

@@ -2,6 +2,11 @@
 #include <QWidget>
 #include <qt.hpp>
 
+QSTATIC(QBoxLayout, new, Enum<QBoxLayout::Direction> direction)->qt<QBoxLayout>
+{
+    return qt<QBoxLayout>::make(direction);
+}
+
 QMETHOD(QBoxLayout, addLayout, qt<QLayout> layout, Int stretch)->void
 {
     self->addLayout(layout.get(), stretch);

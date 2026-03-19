@@ -4,7 +4,7 @@ using @qt {
   type QObject,
   type QApplication,
   type QWidget,
-  type QHBoxLayout,
+  type QBoxLayout,
   type QPushButton,
   type QLabel,
 }
@@ -26,7 +26,7 @@ fn main raise NullptrError {
     try! label.setText("Button Released!")
   })
 
-  let layout = QHBoxLayout::new()
+  let layout = QBoxLayout::horizontal()
   layout.addWidget(button)
   layout.addWidget(label)
 

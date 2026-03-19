@@ -3,11 +3,11 @@ using @qt {
   type NullptrError,
   type QApplication,
   type QCheckBox,
+  type QBoxLayout,
   type QLabel,
   type QObject,
   type QTabWidget,
   type QTextEdit,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -84,7 +84,7 @@ fn EditorTabs::new() -> Self raise NullptrError {
 
   refresh_status()
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(read_only)
   layout.addWidget(tabs)
   layout.addWidget(status)

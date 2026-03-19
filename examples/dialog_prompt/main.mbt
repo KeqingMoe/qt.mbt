@@ -2,12 +2,12 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QDialog,
   type QLabel,
   type QObject,
   type QPushButton,
   type QScrollArea,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -31,7 +31,7 @@ fn DialogPrompt::new() -> Self raise NullptrError {
   dialog.setWindowTitle("Release Notes")
 
   let content = QWidget::new()
-  let content_layout = QVBoxLayout::new()
+  let content_layout = QBoxLayout::vertical()
   content_layout.addWidget(
     paragraph("This dialog is backed by QDialog and QScrollArea bindings."),
   )
@@ -59,7 +59,7 @@ fn DialogPrompt::new() -> Self raise NullptrError {
   let close = QPushButton::new()
   close.setText("Close dialog")
 
-  let dialog_layout = QVBoxLayout::new()
+  let dialog_layout = QBoxLayout::vertical()
   dialog_layout.addWidget(scroll)
   dialog_layout.addWidget(close)
   dialog.setMinimumSize(360, 260)
@@ -96,7 +96,7 @@ fn DialogPrompt::new() -> Self raise NullptrError {
     try! title.setText("Dialog result: \{result}")
   })
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(title)
   layout.addWidget(open)
   layout.addWidget(accept)

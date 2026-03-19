@@ -2,12 +2,12 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QComboBox,
   type QLabel,
   type QObject,
   type QProgressBar,
   type QPushButton,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -61,7 +61,7 @@ fn ProgressForm::new() -> Self raise NullptrError {
     try! refresh()
   })
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(preset)
   layout.addWidget(progress)
   layout.addWidget(status)

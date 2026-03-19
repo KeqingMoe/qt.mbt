@@ -2,6 +2,7 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QLabel,
   type QObject,
   type QDialog,
@@ -9,7 +10,6 @@ using @qt {
   type QPlainTextEdit,
   type QPushButton,
   type QStackedWidget,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -25,7 +25,7 @@ fn page(title : String, body : String) -> QWidget raise NullptrError {
   body_edit.setPlainText(body)
   body_edit.setReadOnly(true)
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(title_label)
   layout.addWidget(body_edit)
 
@@ -77,7 +77,7 @@ fn WizardDialogDemo::new() -> Self raise NullptrError {
   finish.setText("Finish")
   box.addButton(finish, Apply)
 
-  let dialog_layout = QVBoxLayout::new()
+  let dialog_layout = QBoxLayout::vertical()
   dialog_layout.addWidget(pages)
   dialog_layout.addWidget(box)
   dialog.setLayout(dialog_layout)
@@ -137,7 +137,7 @@ fn WizardDialogDemo::new() -> Self raise NullptrError {
 
   update_buttons()
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(status)
   layout.addWidget(open)
 

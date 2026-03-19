@@ -2,11 +2,10 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QLineEdit,
   type QLabel,
   type QObject,
-  type QHBoxLayout,
-  type QVBoxLayout,
   type QWidget,
   trait AsWidget,
   trait AsObject,
@@ -25,7 +24,7 @@ fn LengthComputer::new() -> Self raise NullptrError {
     try! label.setText("Text length: \{text.char_length()}")
   })
 
-  let layout = QHBoxLayout::new()
+  let layout = QBoxLayout::horizontal()
   layout.addWidget(line_edit)
   layout.addWidget(label)
 
@@ -42,7 +41,7 @@ fn main raise NullptrError {
   let window = QWidget::new()
   window.setWindowTitle("Text Edit")
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
 
   layout.addWidget(LengthComputer::new())
   layout.addWidget(LengthComputer::new())

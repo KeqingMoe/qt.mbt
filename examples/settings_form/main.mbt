@@ -2,6 +2,7 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QCheckBox,
   type QFormLayout,
   type QGroupBox,
@@ -9,7 +10,6 @@ using @qt {
   type QLineEdit,
   type QObject,
   type QRadioButton,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -33,7 +33,7 @@ fn ProfileModeBox::new(
   let group = QGroupBox::new()
   group.setTitle("Profile visibility")
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addWidget(public_profile)
   layout.addWidget(private_profile)
   group.setLayout(layout)
@@ -101,7 +101,7 @@ fn SettingsForm::new() -> Self raise NullptrError {
   let root = QWidget::new()
   root.setMinimumSize(440, 260)
 
-  let outer = QVBoxLayout::new()
+  let outer = QBoxLayout::vertical()
   outer.addLayout(form)
   outer.addWidget(footer)
   root.setLayout(outer)

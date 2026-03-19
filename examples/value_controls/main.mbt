@@ -2,13 +2,13 @@
 using @qt {
   type NullptrError,
   type QApplication,
+  type QBoxLayout,
   type QCheckBox,
   type QLabel,
   type QObject,
   type QFormLayout,
   type QSlider,
   type QSpinBox,
-  type QVBoxLayout,
   type QWidget,
   trait AsObject,
   trait AsWidget,
@@ -105,7 +105,7 @@ fn ValueControls::new() -> Self raise NullptrError {
   form.addRowWidget(live_preview)
   form.addRowWidget(compact)
 
-  let layout = QVBoxLayout::new()
+  let layout = QBoxLayout::vertical()
   layout.addLayout(form)
   layout.addWidget(summary)
 

@@ -10,6 +10,10 @@ extern "C" fn _QWidget_hide(this : QWidget) = "QWidget_hide"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_inputMethodHints(this : QWidget) -> QFlag = "QWidget_inputMethodHints"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_isEnabled(this : QWidget) -> Bool = "QWidget_isEnabled"
 
 ///|
@@ -39,6 +43,10 @@ extern "C" fn _QWidget_setFixedSize(this : QWidget, width : Int, height : Int) =
 ///|
 #borrow(this, layout)
 extern "C" fn _QWidget_setLayout(this : QWidget, layout : QLayout) = "QWidget_setLayout"
+
+///|
+#borrow(this, hints)
+extern "C" fn _QWidget_setInputMethodHints(this : QWidget, hints : QFlag) = "QWidget_setInputMethodHints"
 
 ///|
 #borrow(this, width, height)
@@ -80,6 +88,7 @@ extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTi
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
   hide(Self) -> Unit raise NullptrError = _
+  inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
   isHidden(Self) -> Bool raise NullptrError = _
   isVisible(Self) -> Bool raise NullptrError = _
@@ -87,6 +96,7 @@ pub(open) trait AsWidget: AsObject {
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setInputMethodHints(Self, hints : InputMethodHints) -> Unit raise NullptrError = _
   setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
   setMaximumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
   setMinimumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
@@ -100,6 +110,12 @@ pub(open) trait AsWidget: AsObject {
 impl AsWidget with hide(self) {
   ensure_not_nullptr(self)
   _QWidget_hide(self.as_widget())
+}
+
+///|
+impl AsWidget with inputMethodHints(self) {
+  ensure_not_nullptr(self)
+  _QWidget_inputMethodHints(self.as_widget()).to_flag()
 }
 
 ///|
@@ -142,6 +158,12 @@ impl AsWidget with setEnabled(self, value) {
 impl AsWidget with setFixedSize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_setFixedSize(self.as_widget(), width, height)
+}
+
+///|
+impl AsWidget with setInputMethodHints(self, hints) {
+  ensure_not_nullptr(self)
+  _QWidget_setInputMethodHints(self.as_widget(), hints.to_flag())
 }
 
 ///|

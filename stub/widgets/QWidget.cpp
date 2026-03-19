@@ -12,6 +12,11 @@ QMETHOD(QWidget, hide)->void
     self->hide();
 }
 
+QMETHOD(QWidget, inputMethodHints)->UInt64
+{
+    return self->inputMethodHints().toInt();
+}
+
 QMETHOD(QWidget, isEnabled)->Bool
 {
     return Bool::make(self->isEnabled());
@@ -45,6 +50,11 @@ QMETHOD(QWidget, setEnabled, Bool value)->void
 QMETHOD(QWidget, setFixedSize, Int width, Int height)->void
 {
     self->setFixedSize(width, height);
+}
+
+QMETHOD(QWidget, setInputMethodHints, UInt64 hints)->void
+{
+    self->setInputMethodHints(Qt::InputMethodHints(std::in_place, hints));
 }
 
 QMETHOD(QWidget, setLayout, qt<QLayout> layout)->void

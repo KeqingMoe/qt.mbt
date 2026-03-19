@@ -3,7 +3,19 @@ pub type QAbstractSpinBox
 
 ///|
 #borrow(this)
+extern "C" fn _QAbstractSpinBox_buttonSymbols(
+  this : QAbstractSpinBox,
+) -> ButtonSymbols = "QAbstractSpinBox_buttonSymbols"
+
+///|
+#borrow(this)
 extern "C" fn _QAbstractSpinBox_clear(this : QAbstractSpinBox) = "QAbstractSpinBox_clear"
+
+///|
+#borrow(this)
+extern "C" fn _QAbstractSpinBox_correctionMode(
+  this : QAbstractSpinBox,
+) -> CorrectionMode = "QAbstractSpinBox_correctionMode"
 
 ///|
 #borrow(this)
@@ -37,6 +49,20 @@ extern "C" fn _QAbstractSpinBox_setAccelerated(
   this : QAbstractSpinBox,
   value : Bool,
 ) = "QAbstractSpinBox_setAccelerated"
+
+///|
+#borrow(this, value)
+extern "C" fn _QAbstractSpinBox_setButtonSymbols(
+  this : QAbstractSpinBox,
+  value : ButtonSymbols,
+) = "QAbstractSpinBox_setButtonSymbols"
+
+///|
+#borrow(this, value)
+extern "C" fn _QAbstractSpinBox_setCorrectionMode(
+  this : QAbstractSpinBox,
+  value : CorrectionMode,
+) = "QAbstractSpinBox_setCorrectionMode"
 
 ///|
 #borrow(this, value)
@@ -86,7 +112,9 @@ extern "C" fn _QAbstractSpinBox_as_QWidget(this : QAbstractSpinBox) -> QWidget =
 ///|
 pub(open) trait AsAbstractSpinBox: AsWidget {
   as_abstract_spin_box(Self) -> QAbstractSpinBox
+  buttonSymbols(Self) -> ButtonSymbols raise NullptrError = _
   clear(Self) -> Unit raise NullptrError = _
+  correctionMode(Self) -> CorrectionMode raise NullptrError = _
   hasAcceptableInput(Self) -> Bool raise NullptrError = _
   hasFrame(Self) -> Bool raise NullptrError = _
   isAccelerated(Self) -> Bool raise NullptrError = _
@@ -94,6 +122,8 @@ pub(open) trait AsAbstractSpinBox: AsWidget {
   isWrapping(Self) -> Bool raise NullptrError = _
   selectAll(Self) -> Unit raise NullptrError = _
   setAccelerated(Self, value : Bool) -> Unit raise NullptrError = _
+  setButtonSymbols(Self, value : ButtonSymbols) -> Unit raise NullptrError = _
+  setCorrectionMode(Self, value : CorrectionMode) -> Unit raise NullptrError = _
   setFrame(Self, value : Bool) -> Unit raise NullptrError = _
   setReadOnly(Self, value : Bool) -> Unit raise NullptrError = _
   setSpecialValueText(Self, text : String) -> Unit raise NullptrError = _
@@ -104,9 +134,21 @@ pub(open) trait AsAbstractSpinBox: AsWidget {
 }
 
 ///|
+impl AsAbstractSpinBox with buttonSymbols(self) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_buttonSymbols(self.as_abstract_spin_box())
+}
+
+///|
 impl AsAbstractSpinBox with clear(self) {
   ensure_not_nullptr(self)
   _QAbstractSpinBox_clear(self.as_abstract_spin_box())
+}
+
+///|
+impl AsAbstractSpinBox with correctionMode(self) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_correctionMode(self.as_abstract_spin_box())
 }
 
 ///|
@@ -155,6 +197,18 @@ impl AsAbstractSpinBox with selectAll(self) {
 impl AsAbstractSpinBox with setAccelerated(self, value) {
   ensure_not_nullptr(self)
   _QAbstractSpinBox_setAccelerated(self.as_abstract_spin_box(), value)
+}
+
+///|
+impl AsAbstractSpinBox with setButtonSymbols(self, value) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_setButtonSymbols(self.as_abstract_spin_box(), value)
+}
+
+///|
+impl AsAbstractSpinBox with setCorrectionMode(self, value) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_setCorrectionMode(self.as_abstract_spin_box(), value)
 }
 
 ///|

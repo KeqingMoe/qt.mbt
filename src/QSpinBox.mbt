@@ -49,6 +49,10 @@ extern "C" fn _QSpinBox_setRange(this : QSpinBox, minimum : Int, maximum : Int) 
 extern "C" fn _QSpinBox_setSingleStep(this : QSpinBox, step : Int) = "QSpinBox_setSingleStep"
 
 ///|
+#borrow(this, stepType)
+extern "C" fn _QSpinBox_setStepType(this : QSpinBox, stepType : StepType) = "QSpinBox_setStepType"
+
+///|
 #borrow(this, suffix)
 extern "C" fn _QSpinBox_setSuffix(this : QSpinBox, suffix : String) = "QSpinBox_setSuffix"
 
@@ -59,6 +63,10 @@ extern "C" fn _QSpinBox_setValue(this : QSpinBox, value : Int) = "QSpinBox_setVa
 ///|
 #borrow(this)
 extern "C" fn _QSpinBox_singleStep(this : QSpinBox) -> Int = "QSpinBox_singleStep"
+
+///|
+#borrow(this)
+extern "C" fn _QSpinBox_stepType(this : QSpinBox) -> StepType = "QSpinBox_stepType"
 
 ///|
 #borrow(this)
@@ -173,6 +181,15 @@ pub fn QSpinBox::setSingleStep(
 }
 
 ///|
+pub fn QSpinBox::setStepType(
+  self : Self,
+  stepType : StepType,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QSpinBox_setStepType(self, stepType)
+}
+
+///|
 pub fn QSpinBox::setSuffix(
   self : Self,
   suffix : String,
@@ -191,6 +208,12 @@ pub fn QSpinBox::setValue(self : Self, value : Int) -> Unit raise NullptrError {
 pub fn QSpinBox::singleStep(self : Self) -> Int raise NullptrError {
   ensure_not_nullptr(self)
   _QSpinBox_singleStep(self)
+}
+
+///|
+pub fn QSpinBox::stepType(self : Self) -> StepType raise NullptrError {
+  ensure_not_nullptr(self)
+  _QSpinBox_stepType(self)
 }
 
 ///|

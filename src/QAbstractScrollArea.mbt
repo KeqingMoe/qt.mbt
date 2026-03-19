@@ -16,6 +16,19 @@ extern "C" fn _QAbstractScrollArea_setHorizontalScrollBarPolicy(
 
 ///|
 #borrow(this)
+extern "C" fn _QAbstractScrollArea_setSizeAdjustPolicy(
+  this : QAbstractScrollArea,
+  policy : SizeAdjustPolicy,
+) = "QAbstractScrollArea_setSizeAdjustPolicy"
+
+///|
+#borrow(this)
+extern "C" fn _QAbstractScrollArea_sizeAdjustPolicy(
+  this : QAbstractScrollArea,
+) -> SizeAdjustPolicy = "QAbstractScrollArea_sizeAdjustPolicy"
+
+///|
+#borrow(this)
 extern "C" fn _QAbstractScrollArea_verticalScrollBarPolicy(
   this : QAbstractScrollArea,
 ) -> ScrollBarPolicy = "QAbstractScrollArea_verticalScrollBarPolicy"
@@ -44,7 +57,9 @@ pub(open) trait AsAbstractScrollArea: AsFrame {
   as_abstract_scroll_area(Self) -> QAbstractScrollArea
   horizontalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
   setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
+  setSizeAdjustPolicy(Self, policy : SizeAdjustPolicy) -> Unit raise NullptrError = _
   setVerticalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
+  sizeAdjustPolicy(Self) -> SizeAdjustPolicy raise NullptrError = _
   verticalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
   viewport(Self) -> QWidget raise NullptrError = _
 }
@@ -62,6 +77,21 @@ impl AsAbstractScrollArea with setHorizontalScrollBarPolicy(self, policy) {
     self.as_abstract_scroll_area(),
     policy,
   )
+}
+
+///|
+impl AsAbstractScrollArea with setSizeAdjustPolicy(self, policy) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_setSizeAdjustPolicy(
+    self.as_abstract_scroll_area(),
+    policy,
+  )
+}
+
+///|
+impl AsAbstractScrollArea with sizeAdjustPolicy(self) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_sizeAdjustPolicy(self.as_abstract_scroll_area())
 }
 
 ///|

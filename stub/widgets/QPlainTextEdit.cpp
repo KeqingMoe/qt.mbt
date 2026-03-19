@@ -21,6 +21,11 @@ QMETHOD(QPlainTextEdit, isReadOnly)->Bool
     return Bool::make(self->isReadOnly());
 }
 
+QMETHOD(QPlainTextEdit, lineWrapMode)->QPlainTextEdit::LineWrapMode
+{
+    return self->lineWrapMode();
+}
+
 QMETHOD(QPlainTextEdit, placeholderText)->String
 {
     return str::qt_to_mbt(self->placeholderText());
@@ -34,6 +39,11 @@ QMETHOD(QPlainTextEdit, redo)->void
 QMETHOD(QPlainTextEdit, selectAll)->void
 {
     self->selectAll();
+}
+
+QMETHOD(QPlainTextEdit, setLineWrapMode, Int mode)->void
+{
+    self->setLineWrapMode(static_cast<QPlainTextEdit::LineWrapMode>(mode));
 }
 
 QMETHOD(QPlainTextEdit, setPlaceholderText, String text)->void

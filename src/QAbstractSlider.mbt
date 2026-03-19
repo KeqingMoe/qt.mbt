@@ -125,6 +125,13 @@ extern "C" fn _QAbstractSlider_singleStep(this : QAbstractSlider) -> Int = "QAbs
 extern "C" fn _QAbstractSlider_sliderPosition(this : QAbstractSlider) -> Int = "QAbstractSlider_sliderPosition"
 
 ///|
+#borrow(this, action)
+extern "C" fn _QAbstractSlider_triggerAction(
+  this : QAbstractSlider,
+  action : SliderAction,
+) = "QAbstractSlider_triggerAction"
+
+///|
 #borrow(this)
 extern "C" fn _QAbstractSlider_value(this : QAbstractSlider) -> Int = "QAbstractSlider_value"
 
@@ -187,6 +194,7 @@ pub(open) trait AsAbstractSlider: AsWidget {
   setValue(Self, value : Int) -> Unit raise NullptrError = _
   singleStep(Self) -> Int raise NullptrError = _
   sliderPosition(Self) -> Int raise NullptrError = _
+  triggerAction(Self, action : SliderAction) -> Unit raise NullptrError = _
   value(Self) -> Int raise NullptrError = _
   actionTriggered(Self) -> Signal[Int] raise NullptrError = _
   sliderMoved(Self) -> Signal[Int] raise NullptrError = _
@@ -349,6 +357,12 @@ impl AsAbstractSlider with sliderPressed(self) {
 impl AsAbstractSlider with sliderReleased(self) {
   ensure_not_nullptr(self)
   _QAbstractSlider_sliderReleased(self.as_abstract_slider())
+}
+
+///|
+impl AsAbstractSlider with triggerAction(self, action) {
+  ensure_not_nullptr(self)
+  _QAbstractSlider_triggerAction(self.as_abstract_slider(), action)
 }
 
 ///|

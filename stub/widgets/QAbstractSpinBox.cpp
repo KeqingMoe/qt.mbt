@@ -1,9 +1,19 @@
 #include <QAbstractSpinBox>
 #include <qt.hpp>
 
+QMETHOD(QAbstractSpinBox, buttonSymbols)->Int
+{
+    return self->buttonSymbols();
+}
+
 QMETHOD(QAbstractSpinBox, clear)->void
 {
     self->clear();
+}
+
+QMETHOD(QAbstractSpinBox, correctionMode)->Int
+{
+    return self->correctionMode();
 }
 
 QMETHOD(QAbstractSpinBox, hasAcceptableInput)->Bool
@@ -39,6 +49,16 @@ QMETHOD(QAbstractSpinBox, selectAll)->void
 QMETHOD(QAbstractSpinBox, setAccelerated, Bool value)->void
 {
     self->setAccelerated(value);
+}
+
+QMETHOD(QAbstractSpinBox, setButtonSymbols, Int value)->void
+{
+    self->setButtonSymbols(static_cast<QAbstractSpinBox::ButtonSymbols>(value));
+}
+
+QMETHOD(QAbstractSpinBox, setCorrectionMode, Int value)->void
+{
+    self->setCorrectionMode(static_cast<QAbstractSpinBox::CorrectionMode>(value));
 }
 
 QMETHOD(QAbstractSpinBox, setFrame, Bool value)->void

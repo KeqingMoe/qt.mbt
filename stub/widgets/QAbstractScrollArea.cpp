@@ -11,9 +11,19 @@ QMETHOD(QAbstractScrollArea, setHorizontalScrollBarPolicy, Int policy)->void
     self->setHorizontalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(policy));
 }
 
+QMETHOD(QAbstractScrollArea, setSizeAdjustPolicy, Int policy)->void
+{
+    self->setSizeAdjustPolicy(static_cast<QAbstractScrollArea::SizeAdjustPolicy>(policy));
+}
+
 QMETHOD(QAbstractScrollArea, setVerticalScrollBarPolicy, Int policy)->void
 {
     self->setVerticalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(policy));
+}
+
+QMETHOD(QAbstractScrollArea, sizeAdjustPolicy)->Int
+{
+    return self->sizeAdjustPolicy();
 }
 
 QMETHOD(QAbstractScrollArea, verticalScrollBarPolicy)->Int

@@ -1,4 +1,10 @@
 ///|
+pub(all) enum ActionPosition {
+  Leading = 0
+  Trailing = 1
+}
+
+///|
 pub(all) enum CheckState {
   Unchecked = 0
   PartiallyChecked = 1
@@ -19,11 +25,24 @@ pub(all) enum ButtonRole {
 }
 
 ///|
+pub(all) enum ButtonSymbols {
+  UpDownArrows = 0
+  PlusMinus = 1
+  NoButtons = 2
+}
+
+///|
 pub(all) enum Corner {
   TopLeft = 0x00000
   TopRight = 0x00001
   BottomLeft = 0x00002
   BottomRight = 0x00003
+}
+
+///|
+pub(all) enum CorrectionMode {
+  PreviousValue = 0
+  NearestValue = 1
 }
 
 ///|
@@ -75,6 +94,12 @@ pub(all) enum ItemRole {
 }
 
 ///|
+pub(all) enum LineWrapMode {
+  NoWrap = 0
+  WidgetWidth = 1
+}
+
+///|
 pub(all) enum Orientation {
   Horizontal = 0x1
   Vertical = 0x2
@@ -95,6 +120,13 @@ pub(all) enum ScrollBarPolicy {
 }
 
 ///|
+pub(all) enum SizeAdjustPolicy {
+  Ignored = 0
+  Contents = 1
+  OnFirstShow = 2
+}
+
+///|
 pub(all) enum SizeConstraint {
   DefaultConstraint = 0
   NoConstraint = 1
@@ -105,9 +137,56 @@ pub(all) enum SizeConstraint {
 }
 
 ///|
+pub(all) enum SliderAction {
+  NoAction = 0
+  SingleStepAdd = 1
+  SingleStepSub = 2
+  PageStepAdd = 3
+  PageStepSub = 4
+  ToMinimum = 5
+  ToMaximum = 6
+  Move = 7
+}
+
+///|
+pub(all) enum StepEnabledFlag {
+  None = 0x00
+  Up = 0x01
+  Down = 0x02
+}
+
+///|
+pub(all) enum StepType {
+  Default = 0
+  AdaptiveDecimal = 1
+}
+
+///|
 pub(all) enum TextFormat {
   Plain = 0
   Rich = 1
   Auto = 2
   Markdown = 3
+}
+
+///|
+pub(all) enum TabPosition {
+  Top = 0
+  Bottom = 1
+  Left = 2
+  Right = 3
+}
+
+///|
+pub(all) enum TabShape {
+  Rounded = 0
+  Triangular = 1
+}
+
+///|
+pub(all) enum TickPosition {
+  NoTicks = 0
+  BothSides = 1
+  AboveOrLeft = 2
+  BelowOrRight = 3
 }

@@ -41,6 +41,16 @@ QMETHOD(QTabWidget, setCurrentIndex, Int index)->void
     self->setCurrentIndex(index);
 }
 
+QMETHOD(QTabWidget, setTabPosition, Int position)->void
+{
+    self->setTabPosition(static_cast<QTabWidget::TabPosition>(position));
+}
+
+QMETHOD(QTabWidget, setTabShape, Int shape)->void
+{
+    self->setTabShape(static_cast<QTabWidget::TabShape>(shape));
+}
+
 QMETHOD(QTabWidget, setTabText, Int index, String text)->void
 {
     self->setTabText(index, str::mbt_to_qt(text));
@@ -49,6 +59,16 @@ QMETHOD(QTabWidget, setTabText, Int index, String text)->void
 QMETHOD(QTabWidget, setTabToolTip, Int index, String text)->void
 {
     self->setTabToolTip(index, str::mbt_to_qt(text));
+}
+
+QMETHOD(QTabWidget, tabPosition)->Int
+{
+    return self->tabPosition();
+}
+
+QMETHOD(QTabWidget, tabShape)->Int
+{
+    return self->tabShape();
 }
 
 QMETHOD(QTabWidget, tabText, Int index)->String

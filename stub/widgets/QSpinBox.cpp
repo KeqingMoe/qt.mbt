@@ -61,6 +61,11 @@ QMETHOD(QSpinBox, setSingleStep, Int step)->void
     self->setSingleStep(step);
 }
 
+QMETHOD(QSpinBox, setStepType, Int stepType)->void
+{
+    self->setStepType(static_cast<QAbstractSpinBox::StepType>(stepType));
+}
+
 QMETHOD(QSpinBox, setSuffix, String suffix)->void
 {
     self->setSuffix(str::mbt_to_qt(suffix));
@@ -74,6 +79,11 @@ QMETHOD(QSpinBox, setValue, Int value)->void
 QMETHOD(QSpinBox, singleStep)->Int
 {
     return self->singleStep();
+}
+
+QMETHOD(QSpinBox, stepType)->Int
+{
+    return self->stepType();
 }
 
 QMETHOD(QSpinBox, suffix)->String

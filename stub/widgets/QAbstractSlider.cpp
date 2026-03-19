@@ -111,6 +111,11 @@ QMETHOD(QAbstractSlider, sliderPosition)->Int
     return self->sliderPosition();
 }
 
+QMETHOD(QAbstractSlider, triggerAction, Int action)->void
+{
+    return self->triggerAction(static_cast<QAbstractSlider::SliderAction>(action));
+}
+
 QMETHOD(QAbstractSlider, value)->Int
 {
     return self->value();

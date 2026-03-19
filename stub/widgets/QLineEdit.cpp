@@ -26,6 +26,11 @@ QMETHOD(QLineEdit, cut)->void
     self->cut();
 }
 
+QMETHOD(QLineEdit, cursorMoveStyle)->Enum<Qt::CursorMoveStyle>
+{
+    return {self->cursorMoveStyle()};
+}
+
 QMETHOD(QLineEdit, echoMode)->Enum<QLineEdit::EchoMode>
 {
     return {self->echoMode()};
@@ -84,6 +89,11 @@ QMETHOD(QLineEdit, setEchoMode, Enum<QLineEdit::EchoMode> mode)->void
 QMETHOD(QLineEdit, setAlignment, UInt64 alignment)->void
 {
     self->setAlignment(Qt::Alignment(std::in_place, alignment));
+}
+
+QMETHOD(QLineEdit, setCursorMoveStyle, Enum<Qt::CursorMoveStyle> style)->void
+{
+    self->setCursorMoveStyle(style);
 }
 
 QMETHOD(QLineEdit, setModified, Bool modified)->void

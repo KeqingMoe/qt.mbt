@@ -46,6 +46,12 @@ pub(all) enum CorrectionMode {
 }
 
 ///|
+pub(all) enum CursorMoveStyle {
+  Logical = 0
+  Visual = 1
+}
+
+///|
 pub(all) enum Direction {
   LeftToRight = 0
   RightToLeft = 1

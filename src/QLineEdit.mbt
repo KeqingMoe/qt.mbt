@@ -22,6 +22,10 @@ extern "C" fn _QLineEdit_cut(this : QLineEdit) = "QLineEdit_cut"
 
 ///|
 #borrow(this)
+extern "C" fn _QLineEdit_cursorMoveStyle(this : QLineEdit) -> CursorMoveStyle = "QLineEdit_cursorMoveStyle"
+
+///|
+#borrow(this)
 extern "C" fn _QLineEdit_hasSelectedText(this : QLineEdit) -> Bool = "QLineEdit_hasSelectedText"
 
 ///|
@@ -67,6 +71,13 @@ extern "C" fn _QLineEdit_setEchoMode(this : QLineEdit, mode : EchoMode) = "QLine
 ///|
 #borrow(this, alignment)
 extern "C" fn _QLineEdit_setAlignment(this : QLineEdit, alignment : QFlag) = "QLineEdit_setAlignment"
+
+///|
+#borrow(this, style)
+extern "C" fn _QLineEdit_setCursorMoveStyle(
+  this : QLineEdit,
+  style : CursorMoveStyle,
+) = "QLineEdit_setCursorMoveStyle"
 
 ///|
 #borrow(this, modified)
@@ -127,6 +138,14 @@ pub fn QLineEdit::copy(self : Self) -> Unit raise NullptrError {
 pub fn QLineEdit::cut(self : Self) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QLineEdit_cut(self)
+}
+
+///|
+pub fn QLineEdit::cursorMoveStyle(
+  self : Self,
+) -> CursorMoveStyle raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLineEdit_cursorMoveStyle(self)
 }
 
 ///|
@@ -205,6 +224,15 @@ pub fn QLineEdit::setAlignment(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QLineEdit_setAlignment(self, alignment.to_flag())
+}
+
+///|
+pub fn QLineEdit::setCursorMoveStyle(
+  self : Self,
+  style : CursorMoveStyle,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLineEdit_setCursorMoveStyle(self, style)
 }
 
 ///|

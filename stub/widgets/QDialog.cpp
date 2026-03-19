@@ -38,7 +38,7 @@ QMETHOD(QDialog, setModal, Bool modal)->void
 
 SIGNAL_DEF(QDialog, accepted, Unit, Unit::make)
 
-SIGNAL_DEF(QDialog, finished, Int, [](auto result) { return result; })
+SIGNAL_DEF(QDialog, finished, Int, std::identity{})
 
 SIGNAL_DEF(QDialog, rejected, Unit, Unit::make)
 

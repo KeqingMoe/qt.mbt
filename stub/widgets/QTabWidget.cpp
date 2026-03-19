@@ -76,6 +76,6 @@ QMETHOD(QTabWidget, tabText, Int index)->String
     return str::qt_to_mbt(self->tabText(index));
 }
 
-SIGNAL_DEF(QTabWidget, currentChanged, Int, [](auto index) { return index; })
+SIGNAL_DEF(QTabWidget, currentChanged, Int, std::identity{})
 
 COVARIANT(QTabWidget, QWidget)

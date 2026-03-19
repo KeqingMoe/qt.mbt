@@ -98,6 +98,6 @@ QMETHOD(QSpinBox, value)->Int
 
 SIGNAL_DEF(QSpinBox, textChanged, String, str::qt_to_mbt)
 
-SIGNAL_DEF(QSpinBox, valueChanged, Int, [](auto value) { return value; })
+SIGNAL_DEF(QSpinBox, valueChanged, Int, std::identity{})
 
 COVARIANT(QSpinBox, QAbstractSpinBox)

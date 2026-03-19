@@ -36,6 +36,6 @@ QMETHOD(QStackedWidget, setCurrentWidget, qt<QWidget> widget)->void
     self->setCurrentWidget(widget.get());
 }
 
-SIGNAL_DEF(QStackedWidget, currentChanged, Int, [](auto index) { return index; })
+SIGNAL_DEF(QStackedWidget, currentChanged, Int, std::identity{})
 
 COVARIANT(QStackedWidget, QFrame)

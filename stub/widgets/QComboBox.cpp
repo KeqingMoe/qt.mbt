@@ -61,9 +61,9 @@ QMETHOD(QComboBox, setPlaceholderText, String text)->void
     self->setPlaceholderText(str::mbt_to_qt(text));
 }
 
-SIGNAL_DEF(QComboBox, activated, Int, [](auto index) { return index; })
+SIGNAL_DEF(QComboBox, activated, Int, std::identity{})
 
-SIGNAL_DEF(QComboBox, currentIndexChanged, Int, [](auto index) { return index; })
+SIGNAL_DEF(QComboBox, currentIndexChanged, Int, std::identity{})
 
 SIGNAL_DEF(QComboBox, currentTextChanged, String, str::qt_to_mbt)
 

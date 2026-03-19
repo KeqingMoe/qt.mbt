@@ -121,20 +121,14 @@ QMETHOD(QAbstractSlider, value)->Int
     return self->value();
 }
 
-SIGNAL_DEF(QAbstractSlider, actionTriggered, Int, [](auto action) {
-    return action;
-})
+SIGNAL_DEF(QAbstractSlider, actionTriggered, Int, std::identity{})
 
-SIGNAL_DEF(QAbstractSlider, sliderMoved, Int, [](auto value) {
-    return value;
-})
+SIGNAL_DEF(QAbstractSlider, sliderMoved, Int, std::identity{})
 
 SIGNAL_DEF(QAbstractSlider, sliderPressed, Unit, Unit::make)
 
 SIGNAL_DEF(QAbstractSlider, sliderReleased, Unit, Unit::make)
 
-SIGNAL_DEF(QAbstractSlider, valueChanged, Int, [](auto value) {
-    return value;
-})
+SIGNAL_DEF(QAbstractSlider, valueChanged, Int, std::identity{})
 
 COVARIANT(QAbstractSlider, QWidget)

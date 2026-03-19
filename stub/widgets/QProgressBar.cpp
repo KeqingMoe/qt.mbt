@@ -71,6 +71,6 @@ QMETHOD(QProgressBar, value)->Int
     return self->value();
 }
 
-SIGNAL_DEF(QProgressBar, valueChanged, Int, [](auto value) { return value; })
+SIGNAL_DEF(QProgressBar, valueChanged, Int, std::identity{})
 
 COVARIANT(QProgressBar, QWidget)

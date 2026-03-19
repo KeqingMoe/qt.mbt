@@ -37,9 +37,9 @@ QMETHOD(QLayout, setEnabled, Bool value)->void
     self->setEnabled(value);
 }
 
-QMETHOD(QLayout, setSizeConstraint, Int constraint)->void
+QMETHOD(QLayout, setSizeConstraint, Enum<QLayout::SizeConstraint> constraint)->void
 {
-    self->setSizeConstraint(static_cast<QLayout::SizeConstraint>(constraint));
+    self->setSizeConstraint(constraint);
 }
 
 QMETHOD(QLayout, setSpacing, Int spacing)->void
@@ -47,9 +47,9 @@ QMETHOD(QLayout, setSpacing, Int spacing)->void
     self->setSpacing(spacing);
 }
 
-QMETHOD(QLayout, sizeConstraint)->Int
+QMETHOD(QLayout, sizeConstraint)->Enum<QLayout::SizeConstraint>
 {
-    return self->sizeConstraint();
+    return {self->sizeConstraint()};
 }
 
 QMETHOD(QLayout, spacing)->Int

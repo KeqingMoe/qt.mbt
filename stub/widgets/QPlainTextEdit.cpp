@@ -21,9 +21,9 @@ QMETHOD(QPlainTextEdit, isReadOnly)->Bool
     return Bool::make(self->isReadOnly());
 }
 
-QMETHOD(QPlainTextEdit, lineWrapMode)->QPlainTextEdit::LineWrapMode
+QMETHOD(QPlainTextEdit, lineWrapMode)->Enum<QPlainTextEdit::LineWrapMode>
 {
-    return self->lineWrapMode();
+    return {self->lineWrapMode()};
 }
 
 QMETHOD(QPlainTextEdit, placeholderText)->String
@@ -41,9 +41,9 @@ QMETHOD(QPlainTextEdit, selectAll)->void
     self->selectAll();
 }
 
-QMETHOD(QPlainTextEdit, setLineWrapMode, Int mode)->void
+QMETHOD(QPlainTextEdit, setLineWrapMode, Enum<QPlainTextEdit::LineWrapMode> mode)->void
 {
-    self->setLineWrapMode(static_cast<QPlainTextEdit::LineWrapMode>(mode));
+    self->setLineWrapMode(mode);
 }
 
 QMETHOD(QPlainTextEdit, setPlaceholderText, String text)->void

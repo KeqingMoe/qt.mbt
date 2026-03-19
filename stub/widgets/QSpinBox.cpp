@@ -61,9 +61,9 @@ QMETHOD(QSpinBox, setSingleStep, Int step)->void
     self->setSingleStep(step);
 }
 
-QMETHOD(QSpinBox, setStepType, Int stepType)->void
+QMETHOD(QSpinBox, setStepType, Enum<QAbstractSpinBox::StepType> stepType)->void
 {
-    self->setStepType(static_cast<QAbstractSpinBox::StepType>(stepType));
+    self->setStepType(stepType);
 }
 
 QMETHOD(QSpinBox, setSuffix, String suffix)->void
@@ -81,9 +81,9 @@ QMETHOD(QSpinBox, singleStep)->Int
     return self->singleStep();
 }
 
-QMETHOD(QSpinBox, stepType)->Int
+QMETHOD(QSpinBox, stepType)->Enum<QAbstractSpinBox::StepType>
 {
-    return self->stepType();
+    return {self->stepType()};
 }
 
 QMETHOD(QSpinBox, suffix)->String

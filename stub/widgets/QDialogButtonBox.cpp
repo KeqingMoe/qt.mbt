@@ -8,9 +8,9 @@ QSTATIC(QDialogButtonBox, new)->qt<QDialogButtonBox>
     return qt<QDialogButtonBox>::make();
 }
 
-QMETHOD(QDialogButtonBox, addButton, qt<QAbstractButton> button, Int role)->void
+QMETHOD(QDialogButtonBox, addButton, qt<QAbstractButton> button, Enum<QDialogButtonBox::ButtonRole> role)->void
 {
-    self->addButton(button.get(), static_cast<QDialogButtonBox::ButtonRole>(role));
+    self->addButton(button.get(), role);
 }
 
 QMETHOD(QDialogButtonBox, centerButtons)->Bool

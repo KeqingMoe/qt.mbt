@@ -6,9 +6,9 @@ QSTATIC(QCheckBox, new)->qt<QCheckBox>
     return qt<QCheckBox>::make();
 }
 
-QMETHOD(QCheckBox, checkState)->Int
+QMETHOD(QCheckBox, checkState)->Enum<Qt::CheckState>
 {
-    return self->checkState();
+    return {self->checkState()};
 }
 
 QMETHOD(QCheckBox, isTristate)->Bool
@@ -16,9 +16,9 @@ QMETHOD(QCheckBox, isTristate)->Bool
     return Bool::make(self->isTristate());
 }
 
-QMETHOD(QCheckBox, setCheckState, Int state)->void
+QMETHOD(QCheckBox, setCheckState, Enum<Qt::CheckState> state)->void
 {
-    self->setCheckState(static_cast<Qt::CheckState>(state));
+    self->setCheckState(state);
 }
 
 QMETHOD(QCheckBox, setTristate, Bool tristate)->void
@@ -26,6 +26,6 @@ QMETHOD(QCheckBox, setTristate, Bool tristate)->void
     self->setTristate(tristate);
 }
 
-SIGNAL_DEF(QCheckBox, checkStateChanged, Int, [](auto state) { return state; })
+SIGNAL_DEF(QCheckBox, checkStateChanged, Enum<Qt::CheckState>, Enum<Qt::CheckState>::make)
 
 COVARIANT(QCheckBox, QAbstractButton)

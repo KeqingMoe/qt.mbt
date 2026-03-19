@@ -31,9 +31,9 @@ QMETHOD(QAbstractSlider, minimum)->Int
     return self->minimum();
 }
 
-QMETHOD(QAbstractSlider, orientation)->Int
+QMETHOD(QAbstractSlider, orientation)->Enum<Qt::Orientation>
 {
-    return self->orientation();
+    return {self->orientation()};
 }
 
 QMETHOD(QAbstractSlider, pageStep)->Int
@@ -61,9 +61,9 @@ QMETHOD(QAbstractSlider, setMinimum, Int minimum)->void
     self->setMinimum(minimum);
 }
 
-QMETHOD(QAbstractSlider, setOrientation, Int orientation)->void
+QMETHOD(QAbstractSlider, setOrientation, Enum<Qt::Orientation> orientation)->void
 {
-    self->setOrientation(static_cast<Qt::Orientation>(orientation));
+    self->setOrientation(orientation);
 }
 
 QMETHOD(QAbstractSlider, setPageStep, Int step)->void
@@ -111,9 +111,9 @@ QMETHOD(QAbstractSlider, sliderPosition)->Int
     return self->sliderPosition();
 }
 
-QMETHOD(QAbstractSlider, triggerAction, Int action)->void
+QMETHOD(QAbstractSlider, triggerAction, Enum<QAbstractSlider::SliderAction> action)->void
 {
-    return self->triggerAction(static_cast<QAbstractSlider::SliderAction>(action));
+    return self->triggerAction(action);
 }
 
 QMETHOD(QAbstractSlider, value)->Int
@@ -121,14 +121,20 @@ QMETHOD(QAbstractSlider, value)->Int
     return self->value();
 }
 
-SIGNAL_DEF(QAbstractSlider, actionTriggered, Int, [](auto action) { return action; })
+SIGNAL_DEF(QAbstractSlider, actionTriggered, Int, [](auto action) {
+    return action;
+})
 
-SIGNAL_DEF(QAbstractSlider, sliderMoved, Int, [](auto value) { return value; })
+SIGNAL_DEF(QAbstractSlider, sliderMoved, Int, [](auto value) {
+    return value;
+})
 
 SIGNAL_DEF(QAbstractSlider, sliderPressed, Unit, Unit::make)
 
 SIGNAL_DEF(QAbstractSlider, sliderReleased, Unit, Unit::make)
 
-SIGNAL_DEF(QAbstractSlider, valueChanged, Int, [](auto value) { return value; })
+SIGNAL_DEF(QAbstractSlider, valueChanged, Int, [](auto value) {
+    return value;
+})
 
 COVARIANT(QAbstractSlider, QWidget)

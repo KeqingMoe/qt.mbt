@@ -1,9 +1,9 @@
 #include <QAbstractSpinBox>
 #include <qt.hpp>
 
-QMETHOD(QAbstractSpinBox, buttonSymbols)->Int
+QMETHOD(QAbstractSpinBox, buttonSymbols)->Enum<QAbstractSpinBox::ButtonSymbols>
 {
-    return self->buttonSymbols();
+    return {self->buttonSymbols()};
 }
 
 QMETHOD(QAbstractSpinBox, clear)->void
@@ -11,9 +11,9 @@ QMETHOD(QAbstractSpinBox, clear)->void
     self->clear();
 }
 
-QMETHOD(QAbstractSpinBox, correctionMode)->Int
+QMETHOD(QAbstractSpinBox, correctionMode)->Enum<QAbstractSpinBox::CorrectionMode>
 {
-    return self->correctionMode();
+    return {self->correctionMode()};
 }
 
 QMETHOD(QAbstractSpinBox, hasAcceptableInput)->Bool
@@ -51,14 +51,14 @@ QMETHOD(QAbstractSpinBox, setAccelerated, Bool value)->void
     self->setAccelerated(value);
 }
 
-QMETHOD(QAbstractSpinBox, setButtonSymbols, Int value)->void
+QMETHOD(QAbstractSpinBox, setButtonSymbols, Enum<QAbstractSpinBox::ButtonSymbols> value)->void
 {
-    self->setButtonSymbols(static_cast<QAbstractSpinBox::ButtonSymbols>(value));
+    self->setButtonSymbols(value);
 }
 
-QMETHOD(QAbstractSpinBox, setCorrectionMode, Int value)->void
+QMETHOD(QAbstractSpinBox, setCorrectionMode, Enum<QAbstractSpinBox::CorrectionMode> value)->void
 {
-    self->setCorrectionMode(static_cast<QAbstractSpinBox::CorrectionMode>(value));
+    self->setCorrectionMode(value);
 }
 
 QMETHOD(QAbstractSpinBox, setFrame, Bool value)->void

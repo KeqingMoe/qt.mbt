@@ -17,9 +17,9 @@ QMETHOD(QBoxLayout, addStretch, Int stretch)->void
     self->addStretch(stretch);
 }
 
-QMETHOD(QBoxLayout, direction)->Int
+QMETHOD(QBoxLayout, direction)->Enum<QBoxLayout::Direction>
 {
-    return self->direction();
+    return {self->direction()};
 }
 
 QMETHOD(QBoxLayout, insertLayout, Int index, qt<QLayout> layout, Int stretch)->void
@@ -42,9 +42,9 @@ QMETHOD(QBoxLayout, insertWidget, Int index, qt<QWidget> widget, Int stretch)->v
     self->insertWidget(index, widget.get(), stretch);
 }
 
-QMETHOD(QBoxLayout, setDirection, Int direction)->void
+QMETHOD(QBoxLayout, setDirection, Enum<QBoxLayout::Direction> direction)->void
 {
-    self->setDirection(static_cast<QBoxLayout::Direction>(direction));
+    self->setDirection(direction);
 }
 
 COVARIANT(QBoxLayout, QLayout)

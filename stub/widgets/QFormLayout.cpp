@@ -28,34 +28,34 @@ QMETHOD(QFormLayout, rowCount)->Int
     return self->rowCount();
 }
 
-QMETHOD(QFormLayout, fieldGrowthPolicy)->Int
+QMETHOD(QFormLayout, fieldGrowthPolicy)->Enum<QFormLayout::FieldGrowthPolicy>
 {
-    return self->fieldGrowthPolicy();
+    return {self->fieldGrowthPolicy()};
 }
 
-QMETHOD(QFormLayout, rowWrapPolicy)->Int
+QMETHOD(QFormLayout, rowWrapPolicy)->Enum<QFormLayout::RowWrapPolicy>
 {
-    return self->rowWrapPolicy();
+    return {self->rowWrapPolicy()};
 }
 
-QMETHOD(QFormLayout, setFieldGrowthPolicy, Int policy)->void
+QMETHOD(QFormLayout, setFieldGrowthPolicy, Enum<QFormLayout::FieldGrowthPolicy> policy)->void
 {
-    self->setFieldGrowthPolicy(static_cast<QFormLayout::FieldGrowthPolicy>(policy));
+    self->setFieldGrowthPolicy(policy);
 }
 
-QMETHOD(QFormLayout, setRowWrapPolicy, Int policy)->void
+QMETHOD(QFormLayout, setRowWrapPolicy, Enum<QFormLayout::RowWrapPolicy> policy)->void
 {
-    self->setRowWrapPolicy(static_cast<QFormLayout::RowWrapPolicy>(policy));
+    self->setRowWrapPolicy(policy);
 }
 
-QMETHOD(QFormLayout, setLayout, Int row, Int role, qt<QLayout> layout)->void
+QMETHOD(QFormLayout, setLayout, Int row, Enum<QFormLayout::ItemRole> role, qt<QLayout> layout)->void
 {
-    self->setLayout(row, static_cast<QFormLayout::ItemRole>(role), layout.get());
+    self->setLayout(row, role, layout.get());
 }
 
-QMETHOD(QFormLayout, setWidget, Int row, Int role, qt<QWidget> widget)->void
+QMETHOD(QFormLayout, setWidget, Int row, Enum<QFormLayout::ItemRole> role, qt<QWidget> widget)->void
 {
-    self->setWidget(row, static_cast<QFormLayout::ItemRole>(role), widget.get());
+    self->setWidget(row, role, widget.get());
 }
 
 COVARIANT(QFormLayout, QLayout)

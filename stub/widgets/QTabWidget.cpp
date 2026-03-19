@@ -41,14 +41,14 @@ QMETHOD(QTabWidget, setCurrentIndex, Int index)->void
     self->setCurrentIndex(index);
 }
 
-QMETHOD(QTabWidget, setTabPosition, Int position)->void
+QMETHOD(QTabWidget, setTabPosition, Enum<QTabWidget::TabPosition> position)->void
 {
-    self->setTabPosition(static_cast<QTabWidget::TabPosition>(position));
+    self->setTabPosition(position);
 }
 
-QMETHOD(QTabWidget, setTabShape, Int shape)->void
+QMETHOD(QTabWidget, setTabShape, Enum<QTabWidget::TabShape> shape)->void
 {
-    self->setTabShape(static_cast<QTabWidget::TabShape>(shape));
+    self->setTabShape(shape);
 }
 
 QMETHOD(QTabWidget, setTabText, Int index, String text)->void
@@ -61,14 +61,14 @@ QMETHOD(QTabWidget, setTabToolTip, Int index, String text)->void
     self->setTabToolTip(index, str::mbt_to_qt(text));
 }
 
-QMETHOD(QTabWidget, tabPosition)->Int
+QMETHOD(QTabWidget, tabPosition)->Enum<QTabWidget::TabPosition>
 {
-    return self->tabPosition();
+    return {self->tabPosition()};
 }
 
-QMETHOD(QTabWidget, tabShape)->Int
+QMETHOD(QTabWidget, tabShape)->Enum<QTabWidget::TabShape>
 {
-    return self->tabShape();
+    return {self->tabShape()};
 }
 
 QMETHOD(QTabWidget, tabText, Int index)->String

@@ -22,9 +22,9 @@ QMETHOD(QGridLayout, horizontalSpacing)->Int
     return self->horizontalSpacing();
 }
 
-QMETHOD(QGridLayout, originCorner)->Int
+QMETHOD(QGridLayout, originCorner)->Enum<Qt::Corner>
 {
-    return self->originCorner();
+    return {self->originCorner()};
 }
 
 QMETHOD(QGridLayout, setColumnMinimumWidth, Int column, Int minSize)->void
@@ -42,9 +42,9 @@ QMETHOD(QGridLayout, setHorizontalSpacing, Int spacing)->void
     self->setHorizontalSpacing(spacing);
 }
 
-QMETHOD(QGridLayout, setOriginCorner, Int corner)->void
+QMETHOD(QGridLayout, setOriginCorner, Enum<Qt::Corner> corner)->void
 {
-    self->setOriginCorner(static_cast<Qt::Corner>(corner));
+    self->setOriginCorner(corner);
 }
 
 QMETHOD(QGridLayout, setRowMinimumHeight, Int row, Int minSize)->void

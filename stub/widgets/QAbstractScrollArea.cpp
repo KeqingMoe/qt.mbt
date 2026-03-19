@@ -1,34 +1,34 @@
 #include <QAbstractScrollArea>
 #include <qt.hpp>
 
-QMETHOD(QAbstractScrollArea, horizontalScrollBarPolicy)->Int
+QMETHOD(QAbstractScrollArea, horizontalScrollBarPolicy)->Enum<Qt::ScrollBarPolicy>
 {
-    return self->horizontalScrollBarPolicy();
+    return {self->horizontalScrollBarPolicy()};
 }
 
-QMETHOD(QAbstractScrollArea, setHorizontalScrollBarPolicy, Int policy)->void
+QMETHOD(QAbstractScrollArea, setHorizontalScrollBarPolicy, Enum<Qt::ScrollBarPolicy> policy)->void
 {
-    self->setHorizontalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(policy));
+    self->setHorizontalScrollBarPolicy(policy);
 }
 
-QMETHOD(QAbstractScrollArea, setSizeAdjustPolicy, Int policy)->void
+QMETHOD(QAbstractScrollArea, setSizeAdjustPolicy, Enum<QAbstractScrollArea::SizeAdjustPolicy> policy)->void
 {
-    self->setSizeAdjustPolicy(static_cast<QAbstractScrollArea::SizeAdjustPolicy>(policy));
+    self->setSizeAdjustPolicy(policy);
 }
 
-QMETHOD(QAbstractScrollArea, setVerticalScrollBarPolicy, Int policy)->void
+QMETHOD(QAbstractScrollArea, setVerticalScrollBarPolicy, Enum<Qt::ScrollBarPolicy> policy)->void
 {
-    self->setVerticalScrollBarPolicy(static_cast<Qt::ScrollBarPolicy>(policy));
+    self->setVerticalScrollBarPolicy(policy);
 }
 
-QMETHOD(QAbstractScrollArea, sizeAdjustPolicy)->Int
+QMETHOD(QAbstractScrollArea, sizeAdjustPolicy)->Enum<QAbstractScrollArea::SizeAdjustPolicy>
 {
-    return self->sizeAdjustPolicy();
+    return {self->sizeAdjustPolicy()};
 }
 
-QMETHOD(QAbstractScrollArea, verticalScrollBarPolicy)->Int
+QMETHOD(QAbstractScrollArea, verticalScrollBarPolicy)->Enum<Qt::ScrollBarPolicy>
 {
-    return self->verticalScrollBarPolicy();
+    return {self->verticalScrollBarPolicy()};
 }
 
 QMETHOD(QAbstractScrollArea, viewport)->qt<QWidget>

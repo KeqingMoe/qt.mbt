@@ -1,19 +1,19 @@
 #include <QSlider>
 #include <qt.hpp>
 
-QSTATIC(QSlider, new, Int orientation)->qt<QSlider>
+QSTATIC(QSlider, new, Enum<Qt::Orientation> orientation)->qt<QSlider>
 {
-    return qt<QSlider>::make(static_cast<Qt::Orientation>(orientation));
+    return qt<QSlider>::make(orientation);
 }
 
-QMETHOD(QSlider, setTickPosition, Int position)->void
+QMETHOD(QSlider, setTickPosition, Enum<QSlider::TickPosition> position)->void
 {
-    self->setTickPosition(static_cast<QSlider::TickPosition>(position));
+    self->setTickPosition(position);
 }
 
-QMETHOD(QSlider, tickPosition)->Int
+QMETHOD(QSlider, tickPosition)->Enum<QSlider::TickPosition>
 {
-    return self->tickPosition();
+    return {self->tickPosition()};
 }
 
 COVARIANT(QSlider, QAbstractSlider)

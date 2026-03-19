@@ -6,24 +6,24 @@ QSTATIC(QFrame, new)->qt<QFrame>
     return qt<QFrame>::make();
 }
 
-QMETHOD(QFrame, frameShadow)->Int
+QMETHOD(QFrame, frameShadow)->Enum<QFrame::Shadow>
 {
-    return self->frameShadow();
+    return {self->frameShadow()};
 }
 
-QMETHOD(QFrame, frameShape)->Int
+QMETHOD(QFrame, frameShape)->Enum<QFrame::Shape>
 {
-    return self->frameShape();
+    return {self->frameShape()};
 }
 
-QMETHOD(QFrame, setFrameShadow, Int shadow)->void
+QMETHOD(QFrame, setFrameShadow, Enum<QFrame::Shadow> shadow)->void
 {
-    self->setFrameShadow(static_cast<QFrame::Shadow>(shadow));
+    self->setFrameShadow(shadow);
 }
 
-QMETHOD(QFrame, setFrameShape, Int shape)->void
+QMETHOD(QFrame, setFrameShape, Enum<QFrame::Shape> shape)->void
 {
-    self->setFrameShape(static_cast<QFrame::Shape>(shape));
+    self->setFrameShape(shape);
 }
 
 COVARIANT(QFrame, QWidget)

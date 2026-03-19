@@ -69,6 +69,15 @@ pub(all) enum Direction {
 }
 
 ///|
+pub(all) enum FocusPolicy {
+  No = 0
+  Tab = 0x1
+  Click = 0x2
+  Strong = 0xb
+  Wheel = 0xf
+}
+
+///|
 pub(all) enum EchoMode {
   Normal = 0
   NoEcho = 1

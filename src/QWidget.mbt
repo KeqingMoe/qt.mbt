@@ -10,6 +10,10 @@ extern "C" fn _QWidget_contextMenuPolicy(this : QWidget) -> ContextMenuPolicy = 
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_focusPolicy(this : QWidget) -> FocusPolicy = "QWidget_focusPolicy"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_hide(this : QWidget) = "QWidget_hide"
 
 ///|
@@ -46,6 +50,10 @@ extern "C" fn _QWidget_setContextMenuPolicy(
   this : QWidget,
   policy : ContextMenuPolicy,
 ) = "QWidget_setContextMenuPolicy"
+
+///|
+#borrow(this, policy)
+extern "C" fn _QWidget_setFocusPolicy(this : QWidget, policy : FocusPolicy) = "QWidget_setFocusPolicy"
 
 ///|
 #borrow(this, width, height)
@@ -99,6 +107,7 @@ extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTi
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
   contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
+  focusPolicy(Self) -> FocusPolicy raise NullptrError = _
   hide(Self) -> Unit raise NullptrError = _
   inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
@@ -109,6 +118,7 @@ pub(open) trait AsWidget: AsObject {
   setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setFocusPolicy(Self, policy : FocusPolicy) -> Unit raise NullptrError = _
   setInputMethodHints(Self, hints : InputMethodHints) -> Unit raise NullptrError = _
   setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
   setMaximumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
@@ -129,6 +139,12 @@ impl AsWidget with hide(self) {
 impl AsWidget with contextMenuPolicy(self) {
   ensure_not_nullptr(self)
   _QWidget_contextMenuPolicy(self.as_widget())
+}
+
+///|
+impl AsWidget with focusPolicy(self) {
+  ensure_not_nullptr(self)
+  _QWidget_focusPolicy(self.as_widget())
 }
 
 ///|
@@ -183,6 +199,12 @@ impl AsWidget with setEnabled(self, value) {
 impl AsWidget with setFixedSize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_setFixedSize(self.as_widget(), width, height)
+}
+
+///|
+impl AsWidget with setFocusPolicy(self, policy) {
+  ensure_not_nullptr(self)
+  _QWidget_setFocusPolicy(self.as_widget(), policy)
 }
 
 ///|

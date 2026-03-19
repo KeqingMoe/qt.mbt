@@ -12,6 +12,11 @@ QMETHOD(QWidget, contextMenuPolicy)->Enum<Qt::ContextMenuPolicy>
     return {self->contextMenuPolicy()};
 }
 
+QMETHOD(QWidget, focusPolicy)->Enum<Qt::FocusPolicy>
+{
+    return {self->focusPolicy()};
+}
+
 QMETHOD(QWidget, hide)->void
 {
     self->hide();
@@ -55,6 +60,11 @@ QMETHOD(QWidget, setEnabled, Bool value)->void
 QMETHOD(QWidget, setContextMenuPolicy, Enum<Qt::ContextMenuPolicy> policy)->void
 {
     self->setContextMenuPolicy(policy);
+}
+
+QMETHOD(QWidget, setFocusPolicy, Enum<Qt::FocusPolicy> policy)->void
+{
+    self->setFocusPolicy(policy);
 }
 
 QMETHOD(QWidget, setFixedSize, Int width, Int height)->void

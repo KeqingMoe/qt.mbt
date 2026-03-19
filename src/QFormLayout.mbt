@@ -32,6 +32,14 @@ extern "C" fn _QFormLayout_fieldGrowthPolicy(
 
 ///|
 #borrow(this)
+extern "C" fn _QFormLayout_formAlignment(this : QFormLayout) -> QFlag = "QFormLayout_formAlignment"
+
+///|
+#borrow(this)
+extern "C" fn _QFormLayout_labelAlignment(this : QFormLayout) -> QFlag = "QFormLayout_labelAlignment"
+
+///|
+#borrow(this)
 extern "C" fn _QFormLayout_rowWrapPolicy(this : QFormLayout) -> RowWrapPolicy = "QFormLayout_rowWrapPolicy"
 
 ///|
@@ -42,11 +50,25 @@ extern "C" fn _QFormLayout_setFieldGrowthPolicy(
 ) = "QFormLayout_setFieldGrowthPolicy"
 
 ///|
+#borrow(this, alignment)
+extern "C" fn _QFormLayout_setFormAlignment(
+  this : QFormLayout,
+  alignment : QFlag,
+) = "QFormLayout_setFormAlignment"
+
+///|
 #borrow(this, policy)
 extern "C" fn _QFormLayout_setRowWrapPolicy(
   this : QFormLayout,
   policy : RowWrapPolicy,
 ) = "QFormLayout_setRowWrapPolicy"
+
+///|
+#borrow(this, alignment)
+extern "C" fn _QFormLayout_setLabelAlignment(
+  this : QFormLayout,
+  alignment : QFlag,
+) = "QFormLayout_setLabelAlignment"
 
 ///|
 #borrow(this, row, role, layout)
@@ -112,6 +134,18 @@ pub fn QFormLayout::fieldGrowthPolicy(
 }
 
 ///|
+pub fn QFormLayout::formAlignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QFormLayout_formAlignment(self).to_flag()
+}
+
+///|
+pub fn QFormLayout::labelAlignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QFormLayout_labelAlignment(self).to_flag()
+}
+
+///|
 pub fn QFormLayout::rowCount(self : Self) -> Int raise NullptrError {
   ensure_not_nullptr(self)
   _QFormLayout_rowCount(self)
@@ -132,6 +166,24 @@ pub fn QFormLayout::setFieldGrowthPolicy(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QFormLayout_setFieldGrowthPolicy(self, policy)
+}
+
+///|
+pub fn QFormLayout::setFormAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QFormLayout_setFormAlignment(self, alignment.to_flag())
+}
+
+///|
+pub fn QFormLayout::setLabelAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QFormLayout_setLabelAlignment(self, alignment.to_flag())
 }
 
 ///|

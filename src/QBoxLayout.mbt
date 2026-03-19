@@ -10,6 +10,15 @@ extern "C" fn _QBoxLayout_addLayout(
 ) = "QBoxLayout_addLayout"
 
 ///|
+#borrow(this, widget, stretch, alignment)
+extern "C" fn _QBoxLayout_addWidget(
+  this : QBoxLayout,
+  widget : QWidget,
+  stretch : Int,
+  alignment : QFlag,
+) = "QBoxLayout_addWidget"
+
+///|
 #borrow(this, spacing)
 extern "C" fn _QBoxLayout_addSpacing(this : QBoxLayout, spacing : Int) = "QBoxLayout_addSpacing"
 
@@ -47,12 +56,13 @@ extern "C" fn _QBoxLayout_insertStretch(
 ) = "QBoxLayout_insertStretch"
 
 ///|
-#borrow(this, index, widget)
+#borrow(this, index, widget, stretch, alignment)
 extern "C" fn _QBoxLayout_insertWidget(
   this : QBoxLayout,
   index : Int,
   widget : QWidget,
   stretch : Int,
+  alignment : QFlag,
 ) = "QBoxLayout_insertWidget"
 
 ///|
@@ -70,13 +80,20 @@ extern "C" fn _QBoxLayout_as_QLayout(this : QBoxLayout) -> QLayout = "QBoxLayout
 pub(open) trait AsBoxLayout: AsLayout {
   as_box_layout(Self) -> QBoxLayout
   addLayout(Self, layout : &AsLayout, stretch? : Int) -> Unit raise NullptrError = _
+  addWidget(Self, widget : &AsWidget, stretch? : Int, alignment? : Alignment) -> Unit raise NullptrError = _
   addSpacing(Self, spacing : Int) -> Unit raise NullptrError = _
   addStretch(Self, stretch? : Int) -> Unit raise NullptrError = _
   direction(Self) -> Direction raise NullptrError = _
   insertLayout(Self, index : Int, layout : &AsLayout, stretch? : Int) -> Unit raise NullptrError = _
   insertSpacing(Self, index : Int, spacing : Int) -> Unit raise NullptrError = _
   insertStretch(Self, index : Int, stretch? : Int) -> Unit raise NullptrError = _
-  insertWidget(Self, index : Int, widget : &AsWidget, stretch? : Int) -> Unit raise NullptrError = _
+  insertWidget(
+    Self,
+    index : Int,
+    widget : &AsWidget,
+    stretch? : Int,
+    alignment? : Alignment,
+  ) -> Unit raise NullptrError = _
   setDirection(Self, direction : Direction) -> Unit raise NullptrError = _
 }
 
@@ -84,6 +101,22 @@ pub(open) trait AsBoxLayout: AsLayout {
 impl AsBoxLayout with addLayout(self, layout, stretch? = 0) {
   ensure_not_nullptr(self)
   _QBoxLayout_addLayout(self.as_box_layout(), layout.as_layout(), stretch)
+}
+
+///|
+impl AsBoxLayout with addWidget(
+  self,
+  widget,
+  stretch? = 0,
+  alignment? = Alignment::default(),
+) {
+  ensure_not_nullptr(self)
+  _QBoxLayout_addWidget(
+    self.as_box_layout(),
+    widget.as_widget(),
+    stretch,
+    alignment.to_flag(),
+  )
 }
 
 ///|
@@ -128,13 +161,20 @@ impl AsBoxLayout with insertStretch(self, index, stretch? = 0) {
 }
 
 ///|
-impl AsBoxLayout with insertWidget(self, index, widget, stretch? = 0) {
+impl AsBoxLayout with insertWidget(
+  self,
+  index,
+  widget,
+  stretch? = 0,
+  alignment? = Alignment::default(),
+) {
   ensure_not_nullptr(self)
   _QBoxLayout_insertWidget(
     self.as_box_layout(),
     index,
     widget.as_widget(),
     stretch,
+    alignment.to_flag(),
   )
 }
 

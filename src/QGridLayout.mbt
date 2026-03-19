@@ -5,7 +5,7 @@ pub type QGridLayout
 extern "C" fn _QGridLayout_new() -> QGridLayout = "QGridLayout_new"
 
 ///|
-#borrow(this, layout, row, column)
+#borrow(this, layout, row, column, alignment)
 extern "C" fn _QGridLayout_addLayout(
   this : QGridLayout,
   layout : QLayout,
@@ -13,10 +13,11 @@ extern "C" fn _QGridLayout_addLayout(
   column : Int,
   rowSpan : Int,
   columnSpan : Int,
+  alignment : QFlag,
 ) = "QGridLayout_addLayout"
 
 ///|
-#borrow(this, widget, row, column)
+#borrow(this, widget, row, column, alignment)
 extern "C" fn _QGridLayout_addWidget(
   this : QGridLayout,
   widget : QWidget,
@@ -24,6 +25,7 @@ extern "C" fn _QGridLayout_addWidget(
   column : Int,
   rowSpan : Int,
   columnSpan : Int,
+  alignment : QFlag,
 ) = "QGridLayout_addWidget"
 
 ///|
@@ -105,6 +107,7 @@ pub fn QGridLayout::addLayout(
   column : Int,
   rowSpan? : Int = 1,
   columnSpan? : Int = 1,
+  alignment? : Alignment = Alignment::default(),
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QGridLayout_addLayout(
@@ -114,6 +117,7 @@ pub fn QGridLayout::addLayout(
     column,
     rowSpan,
     columnSpan,
+    alignment.to_flag(),
   )
 }
 
@@ -125,6 +129,7 @@ pub fn QGridLayout::addWidget(
   column : Int,
   rowSpan? : Int = 1,
   columnSpan? : Int = 1,
+  alignment? : Alignment = Alignment::default(),
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QGridLayout_addWidget(
@@ -134,6 +139,7 @@ pub fn QGridLayout::addWidget(
     column,
     rowSpan,
     columnSpan,
+    alignment.to_flag(),
   )
 }
 

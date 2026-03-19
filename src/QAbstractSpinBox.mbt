@@ -3,6 +3,10 @@ pub type QAbstractSpinBox
 
 ///|
 #borrow(this)
+extern "C" fn _QAbstractSpinBox_alignment(this : QAbstractSpinBox) -> QFlag = "QAbstractSpinBox_alignment"
+
+///|
+#borrow(this)
 extern "C" fn _QAbstractSpinBox_buttonSymbols(
   this : QAbstractSpinBox,
 ) -> ButtonSymbols = "QAbstractSpinBox_buttonSymbols"
@@ -49,6 +53,13 @@ extern "C" fn _QAbstractSpinBox_setAccelerated(
   this : QAbstractSpinBox,
   value : Bool,
 ) = "QAbstractSpinBox_setAccelerated"
+
+///|
+#borrow(this, value)
+extern "C" fn _QAbstractSpinBox_setAlignment(
+  this : QAbstractSpinBox,
+  value : QFlag,
+) = "QAbstractSpinBox_setAlignment"
 
 ///|
 #borrow(this, value)
@@ -112,6 +123,7 @@ extern "C" fn _QAbstractSpinBox_as_QWidget(this : QAbstractSpinBox) -> QWidget =
 ///|
 pub(open) trait AsAbstractSpinBox: AsWidget {
   as_abstract_spin_box(Self) -> QAbstractSpinBox
+  alignment(Self) -> Alignment raise NullptrError = _
   buttonSymbols(Self) -> ButtonSymbols raise NullptrError = _
   clear(Self) -> Unit raise NullptrError = _
   correctionMode(Self) -> CorrectionMode raise NullptrError = _
@@ -122,6 +134,7 @@ pub(open) trait AsAbstractSpinBox: AsWidget {
   isWrapping(Self) -> Bool raise NullptrError = _
   selectAll(Self) -> Unit raise NullptrError = _
   setAccelerated(Self, value : Bool) -> Unit raise NullptrError = _
+  setAlignment(Self, value : Alignment) -> Unit raise NullptrError = _
   setButtonSymbols(Self, value : ButtonSymbols) -> Unit raise NullptrError = _
   setCorrectionMode(Self, value : CorrectionMode) -> Unit raise NullptrError = _
   setFrame(Self, value : Bool) -> Unit raise NullptrError = _
@@ -137,6 +150,12 @@ pub(open) trait AsAbstractSpinBox: AsWidget {
 impl AsAbstractSpinBox with buttonSymbols(self) {
   ensure_not_nullptr(self)
   _QAbstractSpinBox_buttonSymbols(self.as_abstract_spin_box())
+}
+
+///|
+impl AsAbstractSpinBox with alignment(self) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_alignment(self.as_abstract_spin_box()).to_flag()
 }
 
 ///|
@@ -197,6 +216,12 @@ impl AsAbstractSpinBox with selectAll(self) {
 impl AsAbstractSpinBox with setAccelerated(self, value) {
   ensure_not_nullptr(self)
   _QAbstractSpinBox_setAccelerated(self.as_abstract_spin_box(), value)
+}
+
+///|
+impl AsAbstractSpinBox with setAlignment(self, value) {
+  ensure_not_nullptr(self)
+  _QAbstractSpinBox_setAlignment(self.as_abstract_spin_box(), value.to_flag())
 }
 
 ///|

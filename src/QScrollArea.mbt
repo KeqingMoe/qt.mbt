@@ -5,6 +5,10 @@ pub type QScrollArea
 extern "C" fn _QScrollArea_new() -> QScrollArea = "QScrollArea_new"
 
 ///|
+#borrow(this)
+extern "C" fn _QScrollArea_alignment(this : QScrollArea) -> QFlag = "QScrollArea_alignment"
+
+///|
 #borrow(this, x, y, xMargin, yMargin)
 extern "C" fn _QScrollArea_ensureVisible(
   this : QScrollArea,
@@ -26,6 +30,10 @@ extern "C" fn _QScrollArea_ensureWidgetVisible(
 ///|
 #borrow(this, widget)
 extern "C" fn _QScrollArea_setWidget(this : QScrollArea, widget : QWidget) = "QScrollArea_setWidget"
+
+///|
+#borrow(this, alignment)
+extern "C" fn _QScrollArea_setAlignment(this : QScrollArea, alignment : QFlag) = "QScrollArea_setAlignment"
 
 ///|
 #borrow(this, resizable)
@@ -51,6 +59,12 @@ extern "C" fn _QScrollArea_as_QAbstractScrollArea(
 ///|
 pub fn QScrollArea::new() -> Self {
   _QScrollArea_new()
+}
+
+///|
+pub fn QScrollArea::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QScrollArea_alignment(self).to_flag()
 }
 
 ///|
@@ -83,6 +97,15 @@ pub fn QScrollArea::setWidget(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QScrollArea_setWidget(self, widget.as_widget())
+}
+
+///|
+pub fn QScrollArea::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QScrollArea_setAlignment(self, alignment.to_flag())
 }
 
 ///|

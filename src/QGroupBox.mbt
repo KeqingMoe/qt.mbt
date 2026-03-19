@@ -6,6 +6,10 @@ extern "C" fn _QGroupBox_new() -> QGroupBox = "QGroupBox_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QGroupBox_alignment(this : QGroupBox) -> QFlag = "QGroupBox_alignment"
+
+///|
+#borrow(this)
 extern "C" fn _QGroupBox_isCheckable(this : QGroupBox) -> Bool = "QGroupBox_isCheckable"
 
 ///|
@@ -29,6 +33,10 @@ extern "C" fn _QGroupBox_setChecked(this : QGroupBox, checked : Bool) = "QGroupB
 extern "C" fn _QGroupBox_setFlat(this : QGroupBox, flat : Bool) = "QGroupBox_setFlat"
 
 ///|
+#borrow(this, alignment)
+extern "C" fn _QGroupBox_setAlignment(this : QGroupBox, alignment : QFlag) = "QGroupBox_setAlignment"
+
+///|
 #borrow(this, title)
 extern "C" fn _QGroupBox_setTitle(this : QGroupBox, title : String) = "QGroupBox_setTitle"
 
@@ -47,6 +55,12 @@ extern "C" fn _QGroupBox_as_QWidget(this : QGroupBox) -> QWidget = "QGroupBox_as
 ///|
 pub fn QGroupBox::new() -> Self {
   _QGroupBox_new()
+}
+
+///|
+pub fn QGroupBox::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QGroupBox_alignment(self).to_flag()
 }
 
 ///|
@@ -74,6 +88,15 @@ pub fn QGroupBox::setCheckable(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QGroupBox_setCheckable(self, checkable)
+}
+
+///|
+pub fn QGroupBox::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QGroupBox_setAlignment(self, alignment.to_flag())
 }
 
 ///|

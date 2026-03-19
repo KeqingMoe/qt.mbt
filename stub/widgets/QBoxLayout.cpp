@@ -7,6 +7,11 @@ QMETHOD(QBoxLayout, addLayout, qt<QLayout> layout, Int stretch)->void
     self->addLayout(layout.get(), stretch);
 }
 
+QMETHOD(QBoxLayout, addWidget, qt<QWidget> widget, Int stretch, UInt64 alignment)->void
+{
+    self->addWidget(widget.get(), stretch, Qt::Alignment(std::in_place, alignment));
+}
+
 QMETHOD(QBoxLayout, addSpacing, Int spacing)->void
 {
     self->addSpacing(spacing);
@@ -37,9 +42,9 @@ QMETHOD(QBoxLayout, insertStretch, Int index, Int stretch)->void
     self->insertStretch(index, stretch);
 }
 
-QMETHOD(QBoxLayout, insertWidget, Int index, qt<QWidget> widget, Int stretch)->void
+QMETHOD(QBoxLayout, insertWidget, Int index, qt<QWidget> widget, Int stretch, UInt64 alignment)->void
 {
-    self->insertWidget(index, widget.get(), stretch);
+    self->insertWidget(index, widget.get(), stretch, Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QBoxLayout, setDirection, Enum<QBoxLayout::Direction> direction)->void

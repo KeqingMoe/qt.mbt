@@ -11,6 +11,11 @@ QMETHOD(QLineEdit, clear)->void
     self->clear();
 }
 
+QMETHOD(QLineEdit, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QLineEdit, copy)->void
 {
     self->copy();
@@ -74,6 +79,11 @@ QMETHOD(QLineEdit, selectedText)->String
 QMETHOD(QLineEdit, setEchoMode, Enum<QLineEdit::EchoMode> mode)->void
 {
     self->setEchoMode(mode);
+}
+
+QMETHOD(QLineEdit, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QLineEdit, setModified, Bool modified)->void

@@ -5,8 +5,16 @@ pub type QLabel
 extern "C" fn _QLabel_new() -> QLabel = "QLabel_new"
 
 ///|
+#borrow(this)
+extern "C" fn _QLabel_alignment(this : QLabel) -> QFlag = "QLabel_alignment"
+
+///|
 #borrow(this, text)
 extern "C" fn _QLabel_setText(this : QLabel, text : String) = "QLabel_setText"
+
+///|
+#borrow(this, alignment)
+extern "C" fn _QLabel_setAlignment(this : QLabel, alignment : QFlag) = "QLabel_setAlignment"
 
 ///|
 #borrow(this, format)
@@ -35,6 +43,21 @@ extern "C" fn _QLabel_as_QFrame(this : QLabel) -> QFrame = "QLabel_as_QFrame"
 ///|
 pub fn QLabel::new() -> Self {
   _QLabel_new()
+}
+
+///|
+pub fn QLabel::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLabel_alignment(self).to_flag()
+}
+
+///|
+pub fn QLabel::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLabel_setAlignment(self, alignment.to_flag())
 }
 
 ///|

@@ -6,6 +6,11 @@ QMETHOD(QAbstractSpinBox, buttonSymbols)->Enum<QAbstractSpinBox::ButtonSymbols>
     return {self->buttonSymbols()};
 }
 
+QMETHOD(QAbstractSpinBox, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QAbstractSpinBox, clear)->void
 {
     self->clear();
@@ -49,6 +54,11 @@ QMETHOD(QAbstractSpinBox, selectAll)->void
 QMETHOD(QAbstractSpinBox, setAccelerated, Bool value)->void
 {
     self->setAccelerated(value);
+}
+
+QMETHOD(QAbstractSpinBox, setAlignment, UInt64 value)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, value));
 }
 
 QMETHOD(QAbstractSpinBox, setButtonSymbols, Enum<QAbstractSpinBox::ButtonSymbols> value)->void

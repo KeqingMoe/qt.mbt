@@ -7,14 +7,14 @@ QSTATIC(QGridLayout, new)->qt<QGridLayout>
     return qt<QGridLayout>::make();
 }
 
-QMETHOD(QGridLayout, addLayout, qt<QLayout> layout, Int row, Int column, Int rowSpan, Int columnSpan)->void
+QMETHOD(QGridLayout, addLayout, qt<QLayout> layout, Int row, Int column, Int rowSpan, Int columnSpan, UInt64 alignment)->void
 {
-    self->addLayout(layout.get(), row, column, rowSpan, columnSpan);
+    self->addLayout(layout.get(), row, column, rowSpan, columnSpan, Qt::Alignment(std::in_place, alignment));
 }
 
-QMETHOD(QGridLayout, addWidget, qt<QWidget> widget, Int row, Int column, Int rowSpan, Int columnSpan)->void
+QMETHOD(QGridLayout, addWidget, qt<QWidget> widget, Int row, Int column, Int rowSpan, Int columnSpan, UInt64 alignment)->void
 {
-    self->addWidget(widget.get(), row, column, rowSpan, columnSpan);
+    self->addWidget(widget.get(), row, column, rowSpan, columnSpan, Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QGridLayout, horizontalSpacing)->Int

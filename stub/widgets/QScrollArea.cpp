@@ -11,9 +11,19 @@ QMETHOD(QScrollArea, ensureVisible, Int x, Int y, Int xMargin, Int yMargin)->voi
     self->ensureVisible(x, y, xMargin, yMargin);
 }
 
+QMETHOD(QScrollArea, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QScrollArea, ensureWidgetVisible, qt<QWidget> widget, Int xMargin, Int yMargin)->void
 {
     self->ensureWidgetVisible(widget.get(), xMargin, yMargin);
+}
+
+QMETHOD(QScrollArea, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QScrollArea, setWidget, qt<QWidget> widget)->void

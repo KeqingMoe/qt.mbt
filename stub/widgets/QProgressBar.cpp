@@ -6,6 +6,11 @@ QSTATIC(QProgressBar, new)->qt<QProgressBar>
     return qt<QProgressBar>::make();
 }
 
+QMETHOD(QProgressBar, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QProgressBar, format)->String
 {
     return str::qt_to_mbt(self->format());
@@ -29,6 +34,11 @@ QMETHOD(QProgressBar, minimum)->Int
 QMETHOD(QProgressBar, reset)->void
 {
     self->reset();
+}
+
+QMETHOD(QProgressBar, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QProgressBar, setFormat, String format)->void

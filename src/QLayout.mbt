@@ -36,6 +36,14 @@ extern "C" fn _QLayout_setContentsMargins(
 extern "C" fn _QLayout_setEnabled(this : QLayout, value : Bool) = "QLayout_setEnabled"
 
 ///|
+#borrow(this, layout, alignment)
+extern "C" fn _QLayout_setLayoutAlignment(
+  this : QLayout,
+  layout : QLayout,
+  alignment : QFlag,
+) -> Bool = "QLayout_setLayoutAlignment"
+
+///|
 #borrow(this, spacing)
 extern "C" fn _QLayout_setSpacing(this : QLayout, spacing : Int) = "QLayout_setSpacing"
 
@@ -45,6 +53,14 @@ extern "C" fn _QLayout_setSizeConstraint(
   this : QLayout,
   constraint : SizeConstraint,
 ) = "QLayout_setSizeConstraint"
+
+///|
+#borrow(this, widget, alignment)
+extern "C" fn _QLayout_setAlignment(
+  this : QLayout,
+  widget : QWidget,
+  alignment : QFlag,
+) -> Bool = "QLayout_setAlignment"
 
 ///|
 #borrow(this)
@@ -74,8 +90,10 @@ pub(open) trait AsLayout: AsObject {
   indexOf(Self, widget : &AsWidget) -> Int raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
   removeWidget(Self, widget : &AsWidget) -> Unit raise NullptrError = _
+  setAlignment(Self, widget : &AsWidget, alignment : Alignment) -> Bool raise NullptrError = _
   setContentsMargins(Self, left : Int, top : Int, right : Int, bottom : Int) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
+  setLayoutAlignment(Self, layout : &AsLayout, alignment : Alignment) -> Bool raise NullptrError = _
   setSizeConstraint(Self, constraint : SizeConstraint) -> Unit raise NullptrError = _
   setSpacing(Self, spacing : Int) -> Unit raise NullptrError = _
   sizeConstraint(Self) -> SizeConstraint raise NullptrError = _
@@ -115,6 +133,16 @@ impl AsLayout with removeWidget(self, widget) {
 }
 
 ///|
+impl AsLayout with setAlignment(self, widget, alignment) {
+  ensure_not_nullptr(self)
+  _QLayout_setAlignment(
+    self.as_layout(),
+    widget.as_widget(),
+    alignment.to_flag(),
+  )
+}
+
+///|
 impl AsLayout with setContentsMargins(self, left, top, right, bottom) {
   ensure_not_nullptr(self)
   _QLayout_setContentsMargins(self.as_layout(), left, top, right, bottom)
@@ -124,6 +152,16 @@ impl AsLayout with setContentsMargins(self, left, top, right, bottom) {
 impl AsLayout with setEnabled(self, value) {
   ensure_not_nullptr(self)
   _QLayout_setEnabled(self.as_layout(), value)
+}
+
+///|
+impl AsLayout with setLayoutAlignment(self, layout, alignment) {
+  ensure_not_nullptr(self)
+  _QLayout_setLayoutAlignment(
+    self.as_layout(),
+    layout.as_layout(),
+    alignment.to_flag(),
+  )
 }
 
 ///|

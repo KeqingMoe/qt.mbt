@@ -21,6 +21,11 @@ QMETHOD(QGroupBox, isFlat)->Bool
     return Bool::make(self->isFlat());
 }
 
+QMETHOD(QGroupBox, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QGroupBox, setCheckable, Bool checkable)->void
 {
     self->setCheckable(checkable);
@@ -34,6 +39,11 @@ QMETHOD(QGroupBox, setChecked, Bool checked)->void
 QMETHOD(QGroupBox, setFlat, Bool flat)->void
 {
     self->setFlat(flat);
+}
+
+QMETHOD(QGroupBox, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QGroupBox, setTitle, String title)->void

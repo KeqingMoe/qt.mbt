@@ -6,9 +6,19 @@ QSTATIC(QLabel, new)->qt<QLabel>
     return qt<QLabel>::make();
 }
 
+QMETHOD(QLabel, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QLabel, setText, String text)->void
 {
     self->setText(str::mbt_to_qt(text));
+}
+
+QMETHOD(QLabel, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QLabel, setTextFormat, Enum<Qt::TextFormat> format)->void

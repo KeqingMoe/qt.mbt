@@ -6,6 +6,10 @@ extern "C" fn _QLineEdit_new() -> QLineEdit = "QLineEdit_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QLineEdit_alignment(this : QLineEdit) -> QFlag = "QLineEdit_alignment"
+
+///|
+#borrow(this)
 extern "C" fn _QLineEdit_clear(this : QLineEdit) = "QLineEdit_clear"
 
 ///|
@@ -61,6 +65,10 @@ extern "C" fn _QLineEdit_selectedText(this : QLineEdit) -> String = "QLineEdit_s
 extern "C" fn _QLineEdit_setEchoMode(this : QLineEdit, mode : EchoMode) = "QLineEdit_setEchoMode"
 
 ///|
+#borrow(this, alignment)
+extern "C" fn _QLineEdit_setAlignment(this : QLineEdit, alignment : QFlag) = "QLineEdit_setAlignment"
+
+///|
 #borrow(this, modified)
 extern "C" fn _QLineEdit_setModified(this : QLineEdit, modified : Bool) = "QLineEdit_setModified"
 
@@ -95,6 +103,12 @@ extern "C" fn _QLineEdit_as_QWidget(this : QLineEdit) -> QWidget = "QLineEdit_as
 ///|
 pub fn QLineEdit::new() -> Self {
   _QLineEdit_new()
+}
+
+///|
+pub fn QLineEdit::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLineEdit_alignment(self).to_flag()
 }
 
 ///|
@@ -182,6 +196,15 @@ pub fn QLineEdit::setEchoMode(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QLineEdit_setEchoMode(self, mode)
+}
+
+///|
+pub fn QLineEdit::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QLineEdit_setAlignment(self, alignment.to_flag())
 }
 
 ///|

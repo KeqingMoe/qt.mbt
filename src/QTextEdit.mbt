@@ -6,6 +6,10 @@ extern "C" fn _QTextEdit_new() -> QTextEdit = "QTextEdit_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QTextEdit_alignment(this : QTextEdit) -> QFlag = "QTextEdit_alignment"
+
+///|
+#borrow(this)
 extern "C" fn _QTextEdit_acceptRichText(this : QTextEdit) -> Bool = "QTextEdit_acceptRichText"
 
 ///|
@@ -31,6 +35,10 @@ extern "C" fn _QTextEdit_redo(this : QTextEdit) = "QTextEdit_redo"
 ///|
 #borrow(this, value)
 extern "C" fn _QTextEdit_setAcceptRichText(this : QTextEdit, value : Bool) = "QTextEdit_setAcceptRichText"
+
+///|
+#borrow(this, alignment)
+extern "C" fn _QTextEdit_setAlignment(this : QTextEdit, alignment : QFlag) = "QTextEdit_setAlignment"
 
 ///|
 #borrow(this, text)
@@ -77,6 +85,12 @@ extern "C" fn _QTextEdit_as_QAbstractScrollArea(
 ///|
 pub fn QTextEdit::new() -> Self {
   _QTextEdit_new()
+}
+
+///|
+pub fn QTextEdit::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_alignment(self).to_flag()
 }
 
 ///|
@@ -128,6 +142,15 @@ pub fn QTextEdit::setAcceptRichText(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QTextEdit_setAcceptRichText(self, value)
+}
+
+///|
+pub fn QTextEdit::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_setAlignment(self, alignment.to_flag())
 }
 
 ///|

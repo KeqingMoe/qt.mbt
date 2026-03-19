@@ -2,6 +2,14 @@
 pub type QAbstractScrollArea
 
 ///|
+#borrow(this, widget, alignment)
+extern "C" fn _QAbstractScrollArea_addScrollBarWidget(
+  this : QAbstractScrollArea,
+  widget : QWidget,
+  alignment : QFlag,
+) = "QAbstractScrollArea_addScrollBarWidget"
+
+///|
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_horizontalScrollBarPolicy(
   this : QAbstractScrollArea,
@@ -55,6 +63,7 @@ extern "C" fn _QAbstractScrollArea_as_QFrame(
 ///|
 pub(open) trait AsAbstractScrollArea: AsFrame {
   as_abstract_scroll_area(Self) -> QAbstractScrollArea
+  addScrollBarWidget(Self, widget : &AsWidget, alignment : Alignment) -> Unit raise NullptrError = _
   horizontalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
   setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
   setSizeAdjustPolicy(Self, policy : SizeAdjustPolicy) -> Unit raise NullptrError = _
@@ -68,6 +77,16 @@ pub(open) trait AsAbstractScrollArea: AsFrame {
 impl AsAbstractScrollArea with horizontalScrollBarPolicy(self) {
   ensure_not_nullptr(self)
   _QAbstractScrollArea_horizontalScrollBarPolicy(self.as_abstract_scroll_area())
+}
+
+///|
+impl AsAbstractScrollArea with addScrollBarWidget(self, widget, alignment) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_addScrollBarWidget(
+    self.as_abstract_scroll_area(),
+    widget.as_widget(),
+    alignment.to_flag(),
+  )
 }
 
 ///|

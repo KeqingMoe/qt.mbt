@@ -6,6 +6,7 @@ using @qt {
   type QHBoxLayout,
   type QVBoxLayout,
   type QWidget,
+  type Alignment,
   trait AsWidget,
   trait AsLayout,
   trait AsObject,
@@ -45,6 +46,7 @@ impl AsLayout for BlogLayout with addWidget(self, widget) {
   match self.last_row {
     None => {
       self.layout.addWidget(widget)
+      let _ = self.layout.setAlignment(widget, Alignment::h(Center))
       let row = self.add_new_row()
       self.last_row = Some(row)
     }

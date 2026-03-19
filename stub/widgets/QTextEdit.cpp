@@ -11,6 +11,11 @@ QMETHOD(QTextEdit, acceptRichText)->Bool
     return Bool::make(self->acceptRichText());
 }
 
+QMETHOD(QTextEdit, alignment)->UInt64
+{
+    return self->alignment().toInt();
+}
+
 QMETHOD(QTextEdit, append, String text)->void
 {
     self->append(str::mbt_to_qt(text));
@@ -44,6 +49,11 @@ QMETHOD(QTextEdit, selectAll)->void
 QMETHOD(QTextEdit, setAcceptRichText, Bool value)->void
 {
     self->setAcceptRichText(value);
+}
+
+QMETHOD(QTextEdit, setAlignment, UInt64 alignment)->void
+{
+    self->setAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QTextEdit, setMarkdown, String text)->void

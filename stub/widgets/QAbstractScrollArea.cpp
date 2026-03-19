@@ -1,6 +1,11 @@
 #include <QAbstractScrollArea>
 #include <qt.hpp>
 
+QMETHOD(QAbstractScrollArea, addScrollBarWidget, qt<QWidget> widget, UInt64 alignment)->void
+{
+    self->addScrollBarWidget(widget.get(), Qt::Alignment(std::in_place, alignment));
+}
+
 QMETHOD(QAbstractScrollArea, horizontalScrollBarPolicy)->Enum<Qt::ScrollBarPolicy>
 {
     return {self->horizontalScrollBarPolicy()};

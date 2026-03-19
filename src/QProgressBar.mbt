@@ -6,6 +6,10 @@ extern "C" fn _QProgressBar_new() -> QProgressBar = "QProgressBar_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QProgressBar_alignment(this : QProgressBar) -> QFlag = "QProgressBar_alignment"
+
+///|
+#borrow(this)
 extern "C" fn _QProgressBar_format(this : QProgressBar) -> String = "QProgressBar_format"
 
 ///|
@@ -23,6 +27,13 @@ extern "C" fn _QProgressBar_minimum(this : QProgressBar) -> Int = "QProgressBar_
 ///|
 #borrow(this)
 extern "C" fn _QProgressBar_reset(this : QProgressBar) = "QProgressBar_reset"
+
+///|
+#borrow(this, alignment)
+extern "C" fn _QProgressBar_setAlignment(
+  this : QProgressBar,
+  alignment : QFlag,
+) = "QProgressBar_setAlignment"
 
 ///|
 #borrow(this, format)
@@ -74,6 +85,12 @@ pub fn QProgressBar::new() -> Self {
 }
 
 ///|
+pub fn QProgressBar::alignment(self : Self) -> Alignment raise NullptrError {
+  ensure_not_nullptr(self)
+  _QProgressBar_alignment(self).to_flag()
+}
+
+///|
 pub fn QProgressBar::format(self : Self) -> String raise NullptrError {
   ensure_not_nullptr(self)
   _QProgressBar_format(self)
@@ -101,6 +118,15 @@ pub fn QProgressBar::minimum(self : Self) -> Int raise NullptrError {
 pub fn QProgressBar::reset(self : Self) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QProgressBar_reset(self)
+}
+
+///|
+pub fn QProgressBar::setAlignment(
+  self : Self,
+  alignment : Alignment,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QProgressBar_setAlignment(self, alignment.to_flag())
 }
 
 ///|

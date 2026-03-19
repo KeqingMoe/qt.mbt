@@ -33,6 +33,16 @@ QMETHOD(QFormLayout, fieldGrowthPolicy)->Enum<QFormLayout::FieldGrowthPolicy>
     return {self->fieldGrowthPolicy()};
 }
 
+QMETHOD(QFormLayout, formAlignment)->UInt64
+{
+    return self->formAlignment().toInt();
+}
+
+QMETHOD(QFormLayout, labelAlignment)->UInt64
+{
+    return self->labelAlignment().toInt();
+}
+
 QMETHOD(QFormLayout, rowWrapPolicy)->Enum<QFormLayout::RowWrapPolicy>
 {
     return {self->rowWrapPolicy()};
@@ -43,14 +53,24 @@ QMETHOD(QFormLayout, setFieldGrowthPolicy, Enum<QFormLayout::FieldGrowthPolicy> 
     self->setFieldGrowthPolicy(policy);
 }
 
-QMETHOD(QFormLayout, setRowWrapPolicy, Enum<QFormLayout::RowWrapPolicy> policy)->void
+QMETHOD(QFormLayout, setFormAlignment, UInt64 alignment)->void
 {
-    self->setRowWrapPolicy(policy);
+    self->setFormAlignment(Qt::Alignment(std::in_place, alignment));
+}
+
+QMETHOD(QFormLayout, setLabelAlignment, UInt64 alignment)->void
+{
+    self->setLabelAlignment(Qt::Alignment(std::in_place, alignment));
 }
 
 QMETHOD(QFormLayout, setLayout, Int row, Enum<QFormLayout::ItemRole> role, qt<QLayout> layout)->void
 {
     self->setLayout(row, role, layout.get());
+}
+
+QMETHOD(QFormLayout, setRowWrapPolicy, Enum<QFormLayout::RowWrapPolicy> policy)->void
+{
+    self->setRowWrapPolicy(policy);
 }
 
 QMETHOD(QFormLayout, setWidget, Int row, Enum<QFormLayout::ItemRole> role, qt<QWidget> widget)->void

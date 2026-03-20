@@ -1,0 +1,10 @@
+import {
+  "KeqingMoe/qt",
+  "moonbitlang/core/test",
+}
+
+warnings = "-unused_package"
+
+options(
+  link: { "native": { "cc": "clang" } },
+)

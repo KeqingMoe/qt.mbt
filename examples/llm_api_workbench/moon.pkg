@@ -1,0 +1,11 @@
+import {
+  "KeqingMoe/qt",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+options(
+  "is-main": true,
+  link: { "native": { "cc": "clang" } },
+)

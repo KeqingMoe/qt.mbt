@@ -3,6 +3,7 @@
 #define QT_MBT_STUB_QT_HPP
 
 #include "box.hpp"    // IWYU pragma: keep
+#include "bytes.hpp"  // IWYU pragma: keep
 #include "enum.hpp"   // IWYU pragma: keep
 #include "signal.hpp" // IWYU pragma: keep
 #include "string.hpp" // IWYU pragma: keep
@@ -16,5 +17,11 @@ namespace ffi = mbt::ffi;
 #define QSTATIC(Self, Method, ...) extern "C" auto Self##_##Method(__VA_ARGS__)
 #define QMETHOD(Self, Method, ...) extern "C" auto Self##_##Method(qt<Self> self __VA_OPT__(, ) __VA_ARGS__)
 #define QMETHOD2(Self, Method, ...) extern "C" auto Self##_##Method(box<Self> self __VA_OPT__(, ) __VA_ARGS__)
+
+struct NetworkProgress
+{
+    mbt::Int64 received;
+    mbt::Int64 total;
+};
 
 #endif

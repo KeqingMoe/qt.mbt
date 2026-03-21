@@ -23,6 +23,7 @@ switch (platform) {
       link_flags: [
         '-F/opt/homebrew/lib',
         '-framework', 'QtGui',
+        '-framework', 'QtNetwork',
         '-framework', 'QtWidgets',
         '-framework', 'QtCore',
       ].join(' '),

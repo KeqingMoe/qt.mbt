@@ -131,6 +131,55 @@ pub(all) enum LineWrapMode {
 }
 
 ///|
+pub(all) enum NetworkError {
+  NoError = 0
+  ConnectionRefusedError = 1
+  RemoteHostClosedError = 2
+  HostNotFoundError = 3
+  TimeoutError = 4
+  OperationCanceledError = 5
+  SslHandshakeFailedError = 6
+  TemporaryNetworkFailureError = 7
+  NetworkSessionFailedError = 8
+  BackgroundRequestNotAllowedError = 9
+  TooManyRedirectsError = 10
+  InsecureRedirectError = 11
+  UnknownNetworkError = 99
+  ProxyConnectionRefusedError = 101
+  ProxyConnectionClosedError = 102
+  ProxyNotFoundError = 103
+  ProxyTimeoutError = 104
+  ProxyAuthenticationRequiredError = 105
+  UnknownProxyError = 199
+  ContentAccessDenied = 201
+  ContentOperationNotPermittedError = 202
+  ContentNotFoundError = 203
+  AuthenticationRequiredError = 204
+  ContentReSendError = 205
+  ContentConflictError = 206
+  ContentGoneError = 207
+  UnknownContentError = 299
+  ProtocolUnknownError = 301
+  ProtocolInvalidOperationError = 302
+  ProtocolFailure = 399
+  InternalServerError = 401
+  OperationNotImplementedError = 402
+  ServiceUnavailableError = 403
+  UnknownServerError = 499
+} derive(Eq, Show)
+
+///|
+pub(all) enum NetworkOperation {
+  Unknown = 0
+  Head = 1
+  Get = 2
+  Put = 3
+  Post = 4
+  Delete = 5
+  Custom = 6
+} derive(Eq, Show)
+
+///|
 pub(all) enum Orientation {
   Horizontal = 0x1
   Vertical = 0x2
@@ -154,6 +203,21 @@ pub(all) enum PolicyFlag {
   Shrink = 0x4
   Ignore = 0x8
 }
+
+///|
+pub(all) enum Priority {
+  High = 1
+  Normal = 3
+  Low = 5
+} derive(Eq, Show)
+
+///|
+pub(all) enum RedirectPolicy {
+  Manual = 0
+  NoLessSafe = 1
+  SameOrigin = 2
+  UserVerified = 3
+} derive(Eq, Show)
 
 ///|
 pub(all) enum RowWrapPolicy {

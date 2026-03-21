@@ -10,7 +10,7 @@ target("qt_mbt_stub")
     add_packages("moonbridge")
     add_includedirs("include")
     add_files("**/*.cpp")
-    add_frameworks("QtGui", "QtWidgets")
+    add_frameworks("QtGui", "QtWidgets", "QtNetwork")
     
     after_build(function (target)
         print("XMAKE_TARGETDIR=%s", path.absolute(target:targetdir()))

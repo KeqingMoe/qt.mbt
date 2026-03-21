@@ -2,21 +2,21 @@
 pub(all) enum ActionPosition {
   Leading = 0
   Trailing = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum AspectRatioMode {
   Ignore = 0
   Keep = 1
   KeepByExpanding = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum CheckState {
   Unchecked = 0
   PartiallyChecked = 1
   Checked = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum ButtonRole {
@@ -29,14 +29,14 @@ pub(all) enum ButtonRole {
   No = 6
   Reset = 7
   Apply = 8
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum ButtonSymbols {
   UpDownArrows = 0
   PlusMinus = 1
   NoButtons = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum Corner {
@@ -44,13 +44,13 @@ pub(all) enum Corner {
   TopRight = 0x00001
   BottomLeft = 0x00002
   BottomRight = 0x00003
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum CorrectionMode {
   PreviousValue = 0
   NearestValue = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum ContextMenuPolicy {
@@ -59,13 +59,13 @@ pub(all) enum ContextMenuPolicy {
   Actions = 2
   Custom = 3
   Prevent = 4
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum CursorMoveStyle {
   Logical = 0
   Visual = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum Direction {
@@ -73,7 +73,7 @@ pub(all) enum Direction {
   RightToLeft = 1
   TopToBottom = 2
   BottomToTop = 3
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum FocusPolicy {
@@ -82,7 +82,7 @@ pub(all) enum FocusPolicy {
   Click = 0x2
   Strong = 0xb
   Wheel = 0xf
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum EchoMode {
@@ -90,21 +90,21 @@ pub(all) enum EchoMode {
   NoEcho = 1
   Password = 2
   PasswordEchoOnEdit = 3
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum FieldGrowthPolicy {
   StayAtSizeHint = 0
   Expanding = 1
   AllNonFixed = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum FrameShadow {
   Plain = 0x0010
   Raised = 0x0020
   Sunken = 0x0030
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum FrameShape {
@@ -115,20 +115,20 @@ pub(all) enum FrameShape {
   HLine = 0x0004
   VLine = 0x0005
   WinPanel = 0x0003
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum ItemRole {
   Label = 0
   Field = 1
   Spanning = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum LineWrapMode {
   NoWrap = 0
   WidgetWidth = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum NetworkError {
@@ -183,7 +183,7 @@ pub(all) enum NetworkOperation {
 pub(all) enum Orientation {
   Horizontal = 0x1
   Vertical = 0x2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum Policy {
@@ -194,7 +194,7 @@ pub(all) enum Policy {
   MinimumExpanding = 0x3
   Expanding = 0x7
   Ignored = 0xd
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum PolicyFlag {
@@ -202,7 +202,7 @@ pub(all) enum PolicyFlag {
   Expand = 0x2
   Shrink = 0x4
   Ignore = 0x8
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum Priority {
@@ -224,21 +224,21 @@ pub(all) enum RowWrapPolicy {
   Dont = 0
   Long = 1
   All = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum ScrollBarPolicy {
   AsNeeded = 0
   AlwaysOff = 1
   AlwaysOn = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum SizeAdjustPolicy {
   Ignored = 0
   Contents = 1
   OnFirstShow = 2
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum SizeConstraint {
@@ -248,7 +248,7 @@ pub(all) enum SizeConstraint {
   FixedSize = 3
   MaximumSize = 4
   MinAndMaxSize = 5
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum SliderAction {
@@ -260,20 +260,20 @@ pub(all) enum SliderAction {
   ToMinimum = 5
   ToMaximum = 6
   Move = 7
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum StepEnabledFlag {
   None = 0x00
   Up = 0x01
   Down = 0x02
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum StepType {
   Default = 0
   AdaptiveDecimal = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum TextFormat {
@@ -281,7 +281,7 @@ pub(all) enum TextFormat {
   Rich = 1
   Auto = 2
   Markdown = 3
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum TabPosition {
@@ -289,13 +289,13 @@ pub(all) enum TabPosition {
   Bottom = 1
   Left = 2
   Right = 3
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum TabShape {
   Rounded = 0
   Triangular = 1
-}
+} derive(Eq, Show)
 
 ///|
 pub(all) enum TickPosition {
@@ -303,4 +303,4 @@ pub(all) enum TickPosition {
   BothSides = 1
   AboveOrLeft = 2
   BelowOrRight = 3
-}
+} derive(Eq, Show)

@@ -38,4 +38,15 @@ QMETHOD(QApplication, exec)->Int
     return self->exec();
 }
 
+QMETHOD(QApplication, setStyleSheet, String styleSheet)->void
+{
+    self->setStyleSheet(str::mbt_to_qt(styleSheet));
+}
+
+QMETHOD(QApplication, styleSheet)->String
+{
+    return str::qt_to_mbt(self->styleSheet());
+}
+
+
 COVARIANT(QApplication, QObject)

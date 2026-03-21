@@ -1,6 +1,6 @@
-#include <QWidget>
 #include <QLayout>
 #include <QSizePolicy>
+#include <QWidget>
 #include <qt.hpp>
 
 QSTATIC(QWidget, new)->qt<QWidget>
@@ -98,6 +98,11 @@ QMETHOD(QWidget, setSizePolicy, box<QSizePolicy> policy)->void
     self->setSizePolicy(*policy);
 }
 
+QMETHOD(QWidget, setStyleSheet, String styleSheet)->void
+{
+    self->setStyleSheet(str::mbt_to_qt(styleSheet));
+}
+
 QMETHOD(QWidget, setVisible, Bool value)->void
 {
     self->setVisible(value);
@@ -116,6 +121,11 @@ QMETHOD(QWidget, show)->void
 QMETHOD(QWidget, sizePolicy)->box<QSizePolicy>
 {
     return box<QSizePolicy>::make(self->sizePolicy());
+}
+
+QMETHOD(QWidget, styleSheet)->String
+{
+    return str::qt_to_mbt(self->styleSheet());
 }
 
 QMETHOD(QWidget, windowTitle)->String

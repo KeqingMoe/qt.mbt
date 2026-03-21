@@ -10,6 +10,10 @@ extern "C" fn _QApplication_new(args : Array[String]) -> QApplication = "QApplic
 extern "C" fn _QApplication_exec(this : QApplication) -> Int = "QApplication_exec"
 
 ///|
+#borrow(this)
+extern "C" fn _QApplication_quit(this : QApplication) = "QApplication_quit"
+
+///|
 #borrow(this, styleSheet)
 extern "C" fn _QApplication_setStyleSheet(
   this : QApplication,
@@ -33,6 +37,12 @@ pub fn QApplication::new(args : Array[String]) -> QApplication {
 pub fn QApplication::exec(self : Self) -> Int raise NullptrError {
   ensure_not_nullptr(self)
   _QApplication_exec(self)
+}
+
+///|
+pub fn QApplication::quit(self : Self) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QApplication_quit(self)
 }
 
 ///|

@@ -38,6 +38,11 @@ QMETHOD(QApplication, exec)->Int
     return self->exec();
 }
 
+QMETHOD(QApplication, quit)->void
+{
+    self->quit();
+}
+
 QMETHOD(QApplication, setStyleSheet, String styleSheet)->void
 {
     self->setStyleSheet(str::mbt_to_qt(styleSheet));

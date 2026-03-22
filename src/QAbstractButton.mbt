@@ -32,6 +32,10 @@ extern "C" fn _QAbstractButton_click(this : QAbstractButton) = "QAbstractButton_
 extern "C" fn _QAbstractButton_icon(this : QAbstractButton) -> QIcon = "QAbstractButton_icon"
 
 ///|
+#borrow(this)
+extern "C" fn _QAbstractButton_iconSize(this : QAbstractButton) -> QSize = "QAbstractButton_iconSize"
+
+///|
 #borrow(this, text)
 extern "C" fn _QAbstractButton_setText(this : QAbstractButton, text : String) = "QAbstractButton_setText"
 
@@ -95,6 +99,13 @@ extern "C" fn _QAbstractButton_setDown(this : QAbstractButton, value : Bool) = "
 extern "C" fn _QAbstractButton_setIcon(this : QAbstractButton, icon : QIcon) = "QAbstractButton_setIcon"
 
 ///|
+#borrow(this, size)
+extern "C" fn _QAbstractButton_setIconSize(
+  this : QAbstractButton,
+  size : QSize,
+) = "QAbstractButton_setIconSize"
+
+///|
 #borrow(this)
 extern "C" fn _QAbstractButton_text(this : QAbstractButton) -> String = "QAbstractButton_text"
 
@@ -132,6 +143,7 @@ pub(open) trait AsAbstractButton: AsWidget {
   autoRepeatInterval(Self) -> Int raise NullptrError = _
   click(Self) -> Unit raise NullptrError = _
   icon(Self) -> QIcon raise NullptrError = _
+  iconSize(Self) -> QSize raise NullptrError = _
   isCheckable(Self) -> Bool raise NullptrError = _
   isChecked(Self) -> Bool raise NullptrError = _
   isDown(Self) -> Bool raise NullptrError = _
@@ -143,6 +155,7 @@ pub(open) trait AsAbstractButton: AsWidget {
   setChecked(Self, value : Bool) -> Unit raise NullptrError = _
   setDown(Self, value : Bool) -> Unit raise NullptrError = _
   setIcon(Self, icon : QIcon) -> Unit raise NullptrError = _
+  setIconSize(Self, size : QSize) -> Unit raise NullptrError = _
   setText(Self, text : String) -> Unit raise NullptrError = _
   text(Self) -> String raise NullptrError = _
   toggle(Self) -> Unit raise NullptrError = _
@@ -192,6 +205,12 @@ impl AsAbstractButton with click(self) {
 impl AsAbstractButton with icon(self) {
   ensure_not_nullptr(self)
   _QAbstractButton_icon(self.as_abstract_button())
+}
+
+///|
+impl AsAbstractButton with iconSize(self) {
+  ensure_not_nullptr(self)
+  _QAbstractButton_iconSize(self.as_abstract_button())
 }
 
 ///|
@@ -276,6 +295,12 @@ impl AsAbstractButton with setDown(self, value) {
 impl AsAbstractButton with setIcon(self, icon) {
   ensure_not_nullptr(self)
   _QAbstractButton_setIcon(self.as_abstract_button(), icon)
+}
+
+///|
+impl AsAbstractButton with setIconSize(self, size) {
+  ensure_not_nullptr(self)
+  _QAbstractButton_setIconSize(self.as_abstract_button(), size)
 }
 
 ///|

@@ -37,6 +37,11 @@ QMETHOD(QAbstractButton, icon)->box<QIcon>
     return box<QIcon>::make(self->icon());
 }
 
+QMETHOD(QAbstractButton, iconSize)->box<QSize>
+{
+    return box<QSize>::make(self->iconSize());
+}
+
 QMETHOD(QAbstractButton, isCheckable)->Bool
 {
     return Bool::make(self->isCheckable());
@@ -90,6 +95,11 @@ QMETHOD(QAbstractButton, setDown, Bool value)->void
 QMETHOD(QAbstractButton, setIcon, box<QIcon> icon)->void
 {
     self->setIcon(*icon);
+}
+
+QMETHOD(QAbstractButton, setIconSize, box<QSize> size)->void
+{
+    self->setIconSize(*size);
 }
 
 QMETHOD(QAbstractButton, setText, String text)->void

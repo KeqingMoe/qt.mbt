@@ -6,6 +6,14 @@ extern "C" fn _QPushButton_new() -> QPushButton = "QPushButton_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QPushButton_isFlat(this : QPushButton) -> Bool = "QPushButton_isFlat"
+
+///|
+#borrow(this, flat)
+extern "C" fn _QPushButton_setFlat(this : QPushButton, flat : Bool) = "QPushButton_setFlat"
+
+///|
+#borrow(this)
 extern "C" fn _QPushButton_as_QAbstractButton(
   this : QPushButton,
 ) -> QAbstractButton = "QPushButton_as_QAbstractButton"
@@ -13,6 +21,21 @@ extern "C" fn _QPushButton_as_QAbstractButton(
 ///|
 pub fn QPushButton::new() -> Self {
   _QPushButton_new()
+}
+
+///|
+pub fn QPushButton::isFlat(self : Self) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPushButton_isFlat(self)
+}
+
+///|
+pub fn QPushButton::setFlat(
+  self : Self,
+  flat : Bool,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPushButton_setFlat(self, flat)
 }
 
 ///|

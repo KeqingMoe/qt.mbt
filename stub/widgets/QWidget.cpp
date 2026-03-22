@@ -55,6 +55,11 @@ QMETHOD(QWidget, isVisible)->Bool
     return Bool::make(self->isVisible());
 }
 
+QMETHOD(QWidget, testAttribute, Int attribute)->Bool
+{
+    return Bool::make(self->testAttribute(static_cast<Qt::WidgetAttribute>(attribute)));
+}
+
 QMETHOD(QWidget, toolTip)->String
 {
     return str::qt_to_mbt(self->toolTip());
@@ -148,6 +153,11 @@ QMETHOD(QWidget, setToolTip, String toolTip)->void
 QMETHOD(QWidget, setVisible, Bool value)->void
 {
     self->setVisible(value);
+}
+
+QMETHOD(QWidget, setAttribute, Int attribute, Bool on)->void
+{
+    self->setAttribute(static_cast<Qt::WidgetAttribute>(attribute), on);
 }
 
 QMETHOD(QWidget, setWindowFlag, UInt64 type, Bool on)->void

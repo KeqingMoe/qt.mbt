@@ -41,6 +41,13 @@ extern "C" fn _QWidget_isMaximized(this : QWidget) -> Bool = "QWidget_isMaximize
 extern "C" fn _QWidget_isVisible(this : QWidget) -> Bool = "QWidget_isVisible"
 
 ///|
+#borrow(this, attribute)
+extern "C" fn _QWidget_testAttribute(
+  this : QWidget,
+  attribute : WidgetAttribute,
+) -> Bool = "QWidget_testAttribute"
+
+///|
 #borrow(this)
 extern "C" fn _QWidget_toolTip(this : QWidget) -> String = "QWidget_toolTip"
 
@@ -128,6 +135,14 @@ extern "C" fn _QWidget_setToolTip(this : QWidget, toolTip : String) = "QWidget_s
 extern "C" fn _QWidget_setVisible(this : QWidget, value : Bool) = "QWidget_setVisible"
 
 ///|
+#borrow(this, attribute, on)
+extern "C" fn _QWidget_setAttribute(
+  this : QWidget,
+  attribute : WidgetAttribute,
+  on : Bool,
+) = "QWidget_setAttribute"
+
+///|
 #borrow(this, flags)
 extern "C" fn _QWidget_setWindowFlags(this : QWidget, flags : QFlag) = "QWidget_setWindowFlags"
 
@@ -197,6 +212,7 @@ pub(open) trait AsWidget: AsObject {
   isVisible(Self) -> Bool raise NullptrError = _
   moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setAttribute(Self, attribute : WidgetAttribute, on? : Bool) -> Unit raise NullptrError = _
   setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
@@ -219,6 +235,7 @@ pub(open) trait AsWidget: AsObject {
   sizePolicy(Self) -> QSizePolicy raise NullptrError = _
   styleSheet(Self) -> String raise NullptrError = _
   setToolTip(Self, toolTip : String) -> Unit raise NullptrError = _
+  testAttribute(Self, attribute : WidgetAttribute) -> Bool raise NullptrError = _
   toolTip(Self) -> String raise NullptrError = _
   overrideWindowFlags(Self, flags : WindowFlags) -> Unit raise NullptrError = _
   windowFlags(Self) -> WindowFlags raise NullptrError = _
@@ -322,6 +339,12 @@ impl AsWidget with resize(self, width, height) {
 impl AsWidget with setContextMenuPolicy(self, policy) {
   ensure_not_nullptr(self)
   _QWidget_setContextMenuPolicy(self.as_widget(), policy)
+}
+
+///|
+impl AsWidget with setAttribute(self, attribute, on? = true) {
+  ensure_not_nullptr(self)
+  _QWidget_setAttribute(self.as_widget(), attribute, on)
 }
 
 ///|
@@ -454,6 +477,12 @@ impl AsWidget with sizePolicy(self) {
 impl AsWidget with styleSheet(self) {
   ensure_not_nullptr(self)
   _QWidget_styleSheet(self.as_widget())
+}
+
+///|
+impl AsWidget with testAttribute(self, attribute) {
+  ensure_not_nullptr(self)
+  _QWidget_testAttribute(self.as_widget(), attribute)
 }
 
 ///|

@@ -143,6 +143,12 @@ extern "C" fn _QAbstractSlider_actionTriggered(
 
 ///|
 #borrow(this)
+extern "C" fn _QAbstractSlider_rangeChanged(
+  this : QAbstractSlider,
+) -> Signal[SliderRange] = "QAbstractSlider_rangeChanged"
+
+///|
+#borrow(this)
 extern "C" fn _QAbstractSlider_sliderMoved(
   this : QAbstractSlider,
 ) -> Signal[Int] = "QAbstractSlider_sliderMoved"
@@ -197,6 +203,7 @@ pub(open) trait AsAbstractSlider: AsWidget {
   triggerAction(Self, action : SliderAction) -> Unit raise NullptrError = _
   value(Self) -> Int raise NullptrError = _
   actionTriggered(Self) -> Signal[Int] raise NullptrError = _
+  rangeChanged(Self) -> Signal[SliderRange] raise NullptrError = _
   sliderMoved(Self) -> Signal[Int] raise NullptrError = _
   sliderPressed(Self) -> Signal[Unit] raise NullptrError = _
   sliderReleased(Self) -> Signal[Unit] raise NullptrError = _
@@ -207,6 +214,12 @@ pub(open) trait AsAbstractSlider: AsWidget {
 impl AsAbstractSlider with actionTriggered(self) {
   ensure_not_nullptr(self)
   _QAbstractSlider_actionTriggered(self.as_abstract_slider())
+}
+
+///|
+impl AsAbstractSlider with rangeChanged(self) {
+  ensure_not_nullptr(self)
+  _QAbstractSlider_rangeChanged(self.as_abstract_slider())
 }
 
 ///|

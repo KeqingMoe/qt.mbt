@@ -123,6 +123,10 @@ QMETHOD(QAbstractSlider, value)->Int
 
 SIGNAL_DEF(QAbstractSlider, actionTriggered, Int, std::identity{})
 
+SIGNAL_DEF(QAbstractSlider, rangeChanged, box<SliderRange>, [](Int min, Int max) -> box<SliderRange> {
+    return box<SliderRange>::make(SliderRange{min, max});
+})
+
 SIGNAL_DEF(QAbstractSlider, sliderMoved, Int, std::identity{})
 
 SIGNAL_DEF(QAbstractSlider, sliderPressed, Unit, Unit::make)

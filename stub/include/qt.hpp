@@ -30,4 +30,10 @@ struct SplitterMoved
     mbt::Int index;
 };
 
+struct SliderRange
+{
+    mbt::Int min;
+    mbt::Int max;
+};
+
 #endif

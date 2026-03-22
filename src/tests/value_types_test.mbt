@@ -5,6 +5,7 @@ using @qt {
   type QSize,
   type QSizeF,
   type QSizePolicy,
+  type SliderRange,
 }
 
 ///|
@@ -397,4 +398,11 @@ test "QSizePolicy boolean setters can be toggled" {
   policy.setRetainSizeWhenHidden(false)
   assert_eq(policy.hasHeightForWidth(), false)
   assert_eq(policy.retainSizeWhenHidden(), false)
+}
+
+///|
+test "SliderRange stores minimum and maximum" {
+  let range = SliderRange::new(3, 9)
+  assert_eq(range.min(), 3)
+  assert_eq(range.max(), 9)
 }

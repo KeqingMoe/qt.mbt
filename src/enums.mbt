@@ -312,6 +312,22 @@ pub(all) enum TabShape {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum ToolButtonPopupMode {
+  Delayed = 0
+  MenuButton = 1
+  Instant = 2
+} derive(Eq, Show)
+
+///|
+pub(all) enum ToolButtonStyle {
+  IconOnly = 0
+  TextOnly = 1
+  TextBesideIcon = 2
+  TextUnderIcon = 3
+  FollowStyle = 4
+} derive(Eq, Show)
+
+///|
 pub(all) enum ThemeIcon {
   AddressBookNew = 0
   ApplicationExit = 1

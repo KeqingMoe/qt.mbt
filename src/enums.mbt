@@ -100,6 +100,12 @@ pub(all) enum FieldGrowthPolicy {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum Flow {
+  LeftToRight = 0
+  TopToBottom = 1
+} derive(Eq, Show)
+
+///|
 pub(all) enum FrameShadow {
   Plain = 0x0010
   Raised = 0x0020
@@ -139,9 +145,22 @@ pub(all) enum ItemRole {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum LayoutMode {
+  SinglePass = 0
+  Batched = 1
+} derive(Eq, Show)
+
+///|
 pub(all) enum LineWrapMode {
   NoWrap = 0
   WidgetWidth = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum Movement {
+  Static = 0
+  Free = 1
+  Snap = 2
 } derive(Eq, Show)
 
 ///|
@@ -234,6 +253,12 @@ pub(all) enum RedirectPolicy {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum ResizeMode {
+  Fixed = 0
+  Adjust = 1
+} derive(Eq, Show)
+
+///|
 pub(all) enum RowWrapPolicy {
   Dont = 0
   Long = 1
@@ -245,6 +270,28 @@ pub(all) enum ScrollBarPolicy {
   AsNeeded = 0
   AlwaysOff = 1
   AlwaysOn = 2
+} derive(Eq, Show)
+
+///|
+pub(all) enum ScrollMode {
+  PerItem = 0
+  PerPixel = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum SelectionBehavior {
+  Items = 0
+  Rows = 1
+  Columns = 2
+} derive(Eq, Show)
+
+///|
+pub(all) enum SelectionMode {
+  No = 0
+  Single = 1
+  Multi = 2
+  Extended = 3
+  Contiguous = 4
 } derive(Eq, Show)
 
 ///|
@@ -487,4 +534,10 @@ pub(all) enum TickPosition {
   BothSides = 1
   AboveOrLeft = 2
   BelowOrRight = 3
+} derive(Eq, Show)
+
+///|
+pub(all) enum ViewMode {
+  ListMode = 0
+  IconMode = 1
 } derive(Eq, Show)

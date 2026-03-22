@@ -5,6 +5,15 @@ pub type QTabWidget
 extern "C" fn _QTabWidget_new() -> QTabWidget = "QTabWidget_new"
 
 ///|
+#borrow(this, widget, icon, text)
+extern "C" fn _QTabWidget_addTabWithIcon(
+  this : QTabWidget,
+  widget : QWidget,
+  icon : QIcon,
+  text : String,
+) -> Int = "QTabWidget_addTabWithIcon"
+
+///|
 #borrow(this, widget, text)
 extern "C" fn _QTabWidget_addTab(
   this : QTabWidget,
@@ -34,11 +43,23 @@ extern "C" fn _QTabWidget_currentWidget(this : QTabWidget) -> QWidget = "QTabWid
 
 ///|
 #borrow(this, index)
+extern "C" fn _QTabWidget_tabIcon(this : QTabWidget, index : Int) -> QIcon = "QTabWidget_tabIcon"
+
+///|
+#borrow(this, index)
 extern "C" fn _QTabWidget_removeTab(this : QTabWidget, index : Int) = "QTabWidget_removeTab"
 
 ///|
 #borrow(this, index)
 extern "C" fn _QTabWidget_setCurrentIndex(this : QTabWidget, index : Int) = "QTabWidget_setCurrentIndex"
+
+///|
+#borrow(this, index, icon)
+extern "C" fn _QTabWidget_setTabIcon(
+  this : QTabWidget,
+  index : Int,
+  icon : QIcon,
+) = "QTabWidget_setTabIcon"
 
 ///|
 #borrow(this, index, text)
@@ -67,6 +88,17 @@ extern "C" fn _QTabWidget_as_QWidget(this : QTabWidget) -> QWidget = "QTabWidget
 ///|
 pub fn QTabWidget::new() -> Self {
   _QTabWidget_new()
+}
+
+///|
+pub fn QTabWidget::addTabWithIcon(
+  self : Self,
+  widget : &AsWidget,
+  icon : QIcon,
+  text : String,
+) -> Int raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTabWidget_addTabWithIcon(self, widget.as_widget(), icon, text)
 }
 
 ///|
@@ -112,6 +144,15 @@ pub fn QTabWidget::currentWidget(self : Self) -> QWidget raise NullptrError {
 }
 
 ///|
+pub fn QTabWidget::tabIcon(
+  self : Self,
+  index : Int,
+) -> QIcon raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTabWidget_tabIcon(self, index)
+}
+
+///|
 pub fn QTabWidget::removeTab(
   self : Self,
   index : Int,
@@ -127,6 +168,16 @@ pub fn QTabWidget::setCurrentIndex(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QTabWidget_setCurrentIndex(self, index)
+}
+
+///|
+pub fn QTabWidget::setTabIcon(
+  self : Self,
+  index : Int,
+  icon : QIcon,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTabWidget_setTabIcon(self, index, icon)
 }
 
 ///|

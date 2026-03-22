@@ -6,6 +6,11 @@ QSTATIC(QTabWidget, new)->qt<QTabWidget>
     return qt<QTabWidget>::make();
 }
 
+QMETHOD(QTabWidget, addTabWithIcon, qt<QWidget> widget, box<QIcon> icon, String text)->Int
+{
+    return self->addTab(widget.get(), *icon, str::mbt_to_qt(text));
+}
+
 QMETHOD(QTabWidget, addTab, qt<QWidget> widget, String text)->Int
 {
     return self->addTab(widget.get(), str::mbt_to_qt(text));
@@ -31,6 +36,11 @@ QMETHOD(QTabWidget, currentWidget)->qt<QWidget>
     return qt<QWidget>::from_raw(self->currentWidget());
 }
 
+QMETHOD(QTabWidget, tabIcon, Int index)->box<QIcon>
+{
+    return box<QIcon>::make(self->tabIcon(index));
+}
+
 QMETHOD(QTabWidget, removeTab, Int index)->void
 {
     self->removeTab(index);
@@ -39,6 +49,11 @@ QMETHOD(QTabWidget, removeTab, Int index)->void
 QMETHOD(QTabWidget, setCurrentIndex, Int index)->void
 {
     self->setCurrentIndex(index);
+}
+
+QMETHOD(QTabWidget, setTabIcon, Int index, box<QIcon> icon)->void
+{
+    self->setTabIcon(index, *icon);
 }
 
 QMETHOD(QTabWidget, setTabPosition, Enum<QTabWidget::TabPosition> position)->void

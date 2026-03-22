@@ -118,6 +118,20 @@ pub(all) enum FrameShape {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum IconMode {
+  Normal = 0
+  Disabled = 1
+  Active = 2
+  Selected = 3
+} derive(Eq, Show)
+
+///|
+pub(all) enum IconState {
+  On = 0
+  Off = 1
+} derive(Eq, Show)
+
+///|
 pub(all) enum ItemRole {
   Label = 0
   Field = 1
@@ -295,6 +309,160 @@ pub(all) enum TabPosition {
 pub(all) enum TabShape {
   Rounded = 0
   Triangular = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum ThemeIcon {
+  AddressBookNew = 0
+  ApplicationExit = 1
+  AppointmentNew = 2
+  CallStart = 3
+  CallStop = 4
+  ContactNew = 5
+  DocumentNew = 6
+  DocumentOpen = 7
+  DocumentOpenRecent = 8
+  DocumentPageSetup = 9
+  DocumentPrint = 10
+  DocumentPrintPreview = 11
+  DocumentProperties = 12
+  DocumentRevert = 13
+  DocumentSave = 14
+  DocumentSaveAs = 15
+  DocumentSend = 16
+  EditClear = 17
+  EditCopy = 18
+  EditCut = 19
+  EditDelete = 20
+  EditFind = 21
+  EditPaste = 22
+  EditRedo = 23
+  EditSelectAll = 24
+  EditUndo = 25
+  FolderNew = 26
+  FormatIndentLess = 27
+  FormatIndentMore = 28
+  FormatJustifyCenter = 29
+  FormatJustifyFill = 30
+  FormatJustifyLeft = 31
+  FormatJustifyRight = 32
+  FormatTextDirectionLtr = 33
+  FormatTextDirectionRtl = 34
+  FormatTextBold = 35
+  FormatTextItalic = 36
+  FormatTextUnderline = 37
+  FormatTextStrikethrough = 38
+  GoDown = 39
+  GoHome = 40
+  GoNext = 41
+  GoPrevious = 42
+  GoUp = 43
+  HelpAbout = 44
+  HelpFaq = 45
+  InsertImage = 46
+  InsertLink = 47
+  InsertText = 48
+  ListAdd = 49
+  ListRemove = 50
+  MailForward = 51
+  MailMarkImportant = 52
+  MailMarkRead = 53
+  MailMarkUnread = 54
+  MailMessageNew = 55
+  MailReplyAll = 56
+  MailReplySender = 57
+  MailSend = 58
+  MediaEject = 59
+  MediaPlaybackPause = 60
+  MediaPlaybackStart = 61
+  MediaPlaybackStop = 62
+  MediaRecord = 63
+  MediaSeekBackward = 64
+  MediaSeekForward = 65
+  MediaSkipBackward = 66
+  MediaSkipForward = 67
+  ObjectRotateLeft = 68
+  ObjectRotateRight = 69
+  ProcessStop = 70
+  SystemLockScreen = 71
+  SystemLogOut = 72
+  SystemSearch = 73
+  SystemReboot = 74
+  SystemShutdown = 75
+  ToolsCheckSpelling = 76
+  ViewFullscreen = 77
+  ViewRefresh = 78
+  ViewRestore = 79
+  WindowClose = 80
+  WindowNew = 81
+  ZoomFitBest = 82
+  ZoomIn = 83
+  ZoomOut = 84
+  AudioCard = 85
+  AudioInputMicrophone = 86
+  Battery = 87
+  CameraPhoto = 88
+  CameraVideo = 89
+  CameraWeb = 90
+  Computer = 91
+  DriveHarddisk = 92
+  DriveOptical = 93
+  InputGaming = 94
+  InputKeyboard = 95
+  InputMouse = 96
+  InputTablet = 97
+  MediaFlash = 98
+  MediaOptical = 99
+  MediaTape = 100
+  MultimediaPlayer = 101
+  NetworkWired = 102
+  NetworkWireless = 103
+  Phone = 104
+  Printer = 105
+  Scanner = 106
+  VideoDisplay = 107
+  AppointmentMissed = 108
+  AppointmentSoon = 109
+  AudioVolumeHigh = 110
+  AudioVolumeLow = 111
+  AudioVolumeMedium = 112
+  AudioVolumeMuted = 113
+  BatteryCaution = 114
+  BatteryLow = 115
+  DialogError = 116
+  DialogInformation = 117
+  DialogPassword = 118
+  DialogQuestion = 119
+  DialogWarning = 120
+  FolderDragAccept = 121
+  FolderOpen = 122
+  FolderVisiting = 123
+  ImageLoading = 124
+  ImageMissing = 125
+  MailAttachment = 126
+  MailUnread = 127
+  MailRead = 128
+  MailReplied = 129
+  MediaPlaylistRepeat = 130
+  MediaPlaylistShuffle = 131
+  NetworkOffline = 132
+  PrinterPrinting = 133
+  SecurityHigh = 134
+  SecurityLow = 135
+  SoftwareUpdateAvailable = 136
+  SoftwareUpdateUrgent = 137
+  SyncError = 138
+  SyncSynchronizing = 139
+  UserAvailable = 140
+  UserOffline = 141
+  WeatherClear = 142
+  WeatherClearNight = 143
+  WeatherFewClouds = 144
+  WeatherFewCloudsNight = 145
+  WeatherFog = 146
+  WeatherShowers = 147
+  WeatherSnow = 148
+  WeatherStorm = 149
 } derive(Eq, Show)
 
 ///|

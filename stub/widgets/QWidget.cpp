@@ -1,4 +1,5 @@
 #include <QLayout>
+#include <QIcon>
 #include <QSizePolicy>
 #include <QWidget>
 #include <qt.hpp>
@@ -41,6 +42,11 @@ QMETHOD(QWidget, isHidden)->Bool
 QMETHOD(QWidget, isVisible)->Bool
 {
     return Bool::make(self->isVisible());
+}
+
+QMETHOD(QWidget, windowIcon)->box<QIcon>
+{
+    return box<QIcon>::make(self->windowIcon());
 }
 
 QMETHOD(QWidget, move, Int x, Int y)->void
@@ -106,6 +112,11 @@ QMETHOD(QWidget, setStyleSheet, String styleSheet)->void
 QMETHOD(QWidget, setVisible, Bool value)->void
 {
     self->setVisible(value);
+}
+
+QMETHOD(QWidget, setWindowIcon, box<QIcon> icon)->void
+{
+    self->setWindowIcon(*icon);
 }
 
 QMETHOD(QWidget, setWindowTitle, String title)->void

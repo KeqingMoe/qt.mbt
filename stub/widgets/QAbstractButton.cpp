@@ -1,4 +1,5 @@
 #include <QAbstractButton>
+#include <QIcon>
 #include <qt.hpp>
 
 QMETHOD(QAbstractButton, animateClick)->void
@@ -29,6 +30,11 @@ QMETHOD(QAbstractButton, autoRepeatInterval)->Int
 QMETHOD(QAbstractButton, click)->void
 {
     self->click();
+}
+
+QMETHOD(QAbstractButton, icon)->box<QIcon>
+{
+    return box<QIcon>::make(self->icon());
 }
 
 QMETHOD(QAbstractButton, isCheckable)->Bool
@@ -79,6 +85,11 @@ QMETHOD(QAbstractButton, setChecked, Bool value)->void
 QMETHOD(QAbstractButton, setDown, Bool value)->void
 {
     self->setDown(value);
+}
+
+QMETHOD(QAbstractButton, setIcon, box<QIcon> icon)->void
+{
+    self->setIcon(*icon);
 }
 
 QMETHOD(QAbstractButton, setText, String text)->void

@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QIcon>
 #include <qt.hpp>
 
 QSTATIC(QApplication, new, Array<String> args)->qt<QApplication>
@@ -38,6 +39,11 @@ QMETHOD(QApplication, exec)->Int
     return self->exec();
 }
 
+QMETHOD(QApplication, windowIcon)->box<QIcon>
+{
+    return box<QIcon>::make(self->windowIcon());
+}
+
 QMETHOD(QApplication, quit)->void
 {
     self->quit();
@@ -46,6 +52,11 @@ QMETHOD(QApplication, quit)->void
 QMETHOD(QApplication, setStyleSheet, String styleSheet)->void
 {
     self->setStyleSheet(str::mbt_to_qt(styleSheet));
+}
+
+QMETHOD(QApplication, setWindowIcon, box<QIcon> icon)->void
+{
+    self->setWindowIcon(*icon);
 }
 
 QMETHOD(QApplication, styleSheet)->String

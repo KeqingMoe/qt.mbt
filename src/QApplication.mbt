@@ -11,6 +11,10 @@ extern "C" fn _QApplication_exec(this : QApplication) -> Int = "QApplication_exe
 
 ///|
 #borrow(this)
+extern "C" fn _QApplication_windowIcon(this : QApplication) -> QIcon = "QApplication_windowIcon"
+
+///|
+#borrow(this)
 extern "C" fn _QApplication_quit(this : QApplication) = "QApplication_quit"
 
 ///|
@@ -19,6 +23,10 @@ extern "C" fn _QApplication_setStyleSheet(
   this : QApplication,
   styleSheet : String,
 ) = "QApplication_setStyleSheet"
+
+///|
+#borrow(this, icon)
+extern "C" fn _QApplication_setWindowIcon(this : QApplication, icon : QIcon) = "QApplication_setWindowIcon"
 
 ///|
 #borrow(this)
@@ -40,6 +48,12 @@ pub fn QApplication::exec(self : Self) -> Int raise NullptrError {
 }
 
 ///|
+pub fn QApplication::windowIcon(self : Self) -> QIcon raise NullptrError {
+  ensure_not_nullptr(self)
+  _QApplication_windowIcon(self)
+}
+
+///|
 pub fn QApplication::quit(self : Self) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QApplication_quit(self)
@@ -52,6 +66,15 @@ pub fn QApplication::setStyleSheet(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QApplication_setStyleSheet(self, styleSheet)
+}
+
+///|
+pub fn QApplication::setWindowIcon(
+  self : Self,
+  icon : QIcon,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QApplication_setWindowIcon(self, icon)
 }
 
 ///|

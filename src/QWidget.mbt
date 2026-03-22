@@ -33,6 +33,10 @@ extern "C" fn _QWidget_isHidden(this : QWidget) -> Bool = "QWidget_isHidden"
 extern "C" fn _QWidget_isVisible(this : QWidget) -> Bool = "QWidget_isVisible"
 
 ///|
+#borrow(this)
+extern "C" fn _QWidget_windowIcon(this : QWidget) -> QIcon = "QWidget_windowIcon"
+
+///|
 #borrow(this, x, y)
 extern "C" fn _QWidget_move(this : QWidget, x : Int, y : Int) = "QWidget_move"
 
@@ -96,6 +100,10 @@ extern "C" fn _QWidget_setStyleSheet(this : QWidget, styleSheet : String) = "QWi
 extern "C" fn _QWidget_setVisible(this : QWidget, value : Bool) = "QWidget_setVisible"
 
 ///|
+#borrow(this, icon)
+extern "C" fn _QWidget_setWindowIcon(this : QWidget, icon : QIcon) = "QWidget_setWindowIcon"
+
+///|
 #borrow(this, title)
 extern "C" fn _QWidget_setWindowTitle(this : QWidget, title : String) = "QWidget_setWindowTitle"
 
@@ -142,10 +150,12 @@ pub(open) trait AsWidget: AsObject {
   setSizePolicy(Self, policy : QSizePolicy) -> Unit raise NullptrError = _
   setStyleSheet(Self, styleSheet : String) -> Unit raise NullptrError = _
   setVisible(Self, value : Bool) -> Unit raise NullptrError = _
+  setWindowIcon(Self, icon : QIcon) -> Unit raise NullptrError = _
   setWindowTitle(Self, title : String) -> Unit raise NullptrError = _
   show(Self) -> Unit raise NullptrError = _
   sizePolicy(Self) -> QSizePolicy raise NullptrError = _
   styleSheet(Self) -> String raise NullptrError = _
+  windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
 }
 
@@ -189,6 +199,12 @@ impl AsWidget with isHidden(self) {
 impl AsWidget with isVisible(self) {
   ensure_not_nullptr(self)
   _QWidget_isVisible(self.as_widget())
+}
+
+///|
+impl AsWidget with windowIcon(self) {
+  ensure_not_nullptr(self)
+  _QWidget_windowIcon(self.as_widget())
 }
 
 ///|
@@ -267,6 +283,12 @@ impl AsWidget with setStyleSheet(self, styleSheet) {
 impl AsWidget with setVisible(self, value) {
   ensure_not_nullptr(self)
   _QWidget_setVisible(self.as_widget(), value)
+}
+
+///|
+impl AsWidget with setWindowIcon(self, icon) {
+  ensure_not_nullptr(self)
+  _QWidget_setWindowIcon(self.as_widget(), icon)
 }
 
 ///|

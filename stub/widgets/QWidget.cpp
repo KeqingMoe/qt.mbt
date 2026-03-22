@@ -1,6 +1,7 @@
 #include <QLayout>
 #include <QIcon>
 #include <QSizePolicy>
+#include <QWindow>
 #include <QWidget>
 #include <qt.hpp>
 
@@ -62,6 +63,11 @@ QMETHOD(QWidget, toolTip)->String
 QMETHOD(QWidget, windowFlags)->UInt64
 {
     return static_cast<UInt64>(self->windowFlags().toInt());
+}
+
+QMETHOD(QWidget, windowHandle)->qt<QWindow>
+{
+    return qt<QWindow>::from_raw(self->windowHandle());
 }
 
 QMETHOD(QWidget, windowIcon)->box<QIcon>

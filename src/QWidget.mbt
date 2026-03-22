@@ -54,6 +54,10 @@ extern "C" fn _QWidget_windowFlags(this : QWidget) -> QFlag = "QWidget_windowFla
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_windowHandle(this : QWidget) -> QWindow = "QWidget_windowHandle"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_windowType(this : QWidget) -> WindowType = "QWidget_windowType"
 
 ///|
@@ -218,6 +222,7 @@ pub(open) trait AsWidget: AsObject {
   toolTip(Self) -> String raise NullptrError = _
   overrideWindowFlags(Self, flags : WindowFlags) -> Unit raise NullptrError = _
   windowFlags(Self) -> WindowFlags raise NullptrError = _
+  windowHandle(Self) -> QWindow raise NullptrError = _
   windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
   windowType(Self) -> WindowType raise NullptrError = _
@@ -287,6 +292,12 @@ impl AsWidget with windowIcon(self) {
 impl AsWidget with windowFlags(self) {
   ensure_not_nullptr(self)
   _QWidget_windowFlags(self.as_widget()).to_flag()
+}
+
+///|
+impl AsWidget with windowHandle(self) {
+  ensure_not_nullptr(self)
+  _QWidget_windowHandle(self.as_widget())
 }
 
 ///|

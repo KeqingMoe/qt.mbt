@@ -33,6 +33,16 @@ extern "C" fn _QWindow_positionX(this : QWindow) -> Int = "QWindow_positionX"
 extern "C" fn _QWindow_positionY(this : QWindow) -> Int = "QWindow_positionY"
 
 ///|
+#borrow(this)
+extern "C" fn _QWindow_safeAreaMargins(this : QWindow) -> QMargins = "QWindow_safeAreaMargins"
+
+///|
+#borrow(this)
+extern "C" fn _QWindow_safeAreaMarginsChanged(
+  this : QWindow,
+) -> Signal[QMargins] = "QWindow_safeAreaMarginsChanged"
+
+///|
 #borrow(this, x, y)
 extern "C" fn _QWindow_setPosition(this : QWindow, x : Int, y : Int) = "QWindow_setPosition"
 
@@ -155,6 +165,20 @@ pub fn QWindow::resize(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QWindow_resize(self, width, height)
+}
+
+///|
+pub fn QWindow::safeAreaMargins(self : Self) -> QMargins raise NullptrError {
+  ensure_not_nullptr(self)
+  _QWindow_safeAreaMargins(self)
+}
+
+///|
+pub fn QWindow::safeAreaMarginsChanged(
+  self : Self,
+) -> Signal[QMargins] raise NullptrError {
+  ensure_not_nullptr(self)
+  _QWindow_safeAreaMarginsChanged(self)
 }
 
 ///|

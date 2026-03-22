@@ -1,4 +1,5 @@
 #include <QWindow>
+#include <QMargins>
 #include <qt.hpp>
 
 QSTATIC(QWindow, new)->qt<QWindow>
@@ -39,6 +40,11 @@ QMETHOD(QWindow, positionX)->Int
 QMETHOD(QWindow, positionY)->Int
 {
     return self->y();
+}
+
+QMETHOD(QWindow, safeAreaMargins)->box<QMargins>
+{
+    return box<QMargins>::make(self->safeAreaMargins());
 }
 
 QMETHOD(QWindow, resize, Int width, Int height)->void
@@ -120,5 +126,9 @@ QMETHOD(QWindow, width)->Int
 {
     return self->width();
 }
+
+SIGNAL_DEF(QWindow, safeAreaMarginsChanged, box<QMargins>, [](const QMargins& margins, auto&&...) -> box<QMargins> {
+    return box<QMargins>::make(margins);
+})
 
 COVARIANT(QWindow, QObject)

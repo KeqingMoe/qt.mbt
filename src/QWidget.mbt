@@ -41,6 +41,14 @@ extern "C" fn _QWidget_toolTip(this : QWidget) -> String = "QWidget_toolTip"
 extern "C" fn _QWidget_windowIcon(this : QWidget) -> QIcon = "QWidget_windowIcon"
 
 ///|
+#borrow(this)
+extern "C" fn _QWidget_windowFlags(this : QWidget) -> QFlag = "QWidget_windowFlags"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_windowType(this : QWidget) -> WindowType = "QWidget_windowType"
+
+///|
 #borrow(this, x, y)
 extern "C" fn _QWidget_move(this : QWidget, x : Int, y : Int) = "QWidget_move"
 
@@ -108,12 +116,28 @@ extern "C" fn _QWidget_setToolTip(this : QWidget, toolTip : String) = "QWidget_s
 extern "C" fn _QWidget_setVisible(this : QWidget, value : Bool) = "QWidget_setVisible"
 
 ///|
+#borrow(this, flags)
+extern "C" fn _QWidget_setWindowFlags(this : QWidget, flags : QFlag) = "QWidget_setWindowFlags"
+
+///|
+#borrow(this, windowFlag, on)
+extern "C" fn _QWidget_setWindowFlag(
+  this : QWidget,
+  windowFlag : QFlag,
+  on : Bool,
+) = "QWidget_setWindowFlag"
+
+///|
 #borrow(this, icon)
 extern "C" fn _QWidget_setWindowIcon(this : QWidget, icon : QIcon) = "QWidget_setWindowIcon"
 
 ///|
 #borrow(this, title)
 extern "C" fn _QWidget_setWindowTitle(this : QWidget, title : String) = "QWidget_setWindowTitle"
+
+///|
+#borrow(this, flags)
+extern "C" fn _QWidget_overrideWindowFlags(this : QWidget, flags : QFlag) = "QWidget_overrideWindowFlags"
 
 ///|
 #borrow(this)
@@ -158,6 +182,8 @@ pub(open) trait AsWidget: AsObject {
   setSizePolicy(Self, policy : QSizePolicy) -> Unit raise NullptrError = _
   setStyleSheet(Self, styleSheet : String) -> Unit raise NullptrError = _
   setVisible(Self, value : Bool) -> Unit raise NullptrError = _
+  setWindowFlag(Self, flag : WindowFlags, on? : Bool) -> Unit raise NullptrError = _
+  setWindowFlags(Self, flags : WindowFlags) -> Unit raise NullptrError = _
   setWindowIcon(Self, icon : QIcon) -> Unit raise NullptrError = _
   setWindowTitle(Self, title : String) -> Unit raise NullptrError = _
   show(Self) -> Unit raise NullptrError = _
@@ -165,8 +191,11 @@ pub(open) trait AsWidget: AsObject {
   styleSheet(Self) -> String raise NullptrError = _
   setToolTip(Self, toolTip : String) -> Unit raise NullptrError = _
   toolTip(Self) -> String raise NullptrError = _
+  overrideWindowFlags(Self, flags : WindowFlags) -> Unit raise NullptrError = _
+  windowFlags(Self) -> WindowFlags raise NullptrError = _
   windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
+  windowType(Self) -> WindowType raise NullptrError = _
 }
 
 ///|
@@ -215,6 +244,18 @@ impl AsWidget with isVisible(self) {
 impl AsWidget with windowIcon(self) {
   ensure_not_nullptr(self)
   _QWidget_windowIcon(self.as_widget())
+}
+
+///|
+impl AsWidget with windowFlags(self) {
+  ensure_not_nullptr(self)
+  _QWidget_windowFlags(self.as_widget()).to_flag()
+}
+
+///|
+impl AsWidget with windowType(self) {
+  ensure_not_nullptr(self)
+  _QWidget_windowType(self.as_widget())
 }
 
 ///|
@@ -302,6 +343,18 @@ impl AsWidget with setVisible(self, value) {
 }
 
 ///|
+impl AsWidget with setWindowFlag(self, flag, on? = true) {
+  ensure_not_nullptr(self)
+  _QWidget_setWindowFlag(self.as_widget(), flag.to_flag(), on)
+}
+
+///|
+impl AsWidget with setWindowFlags(self, flags) {
+  ensure_not_nullptr(self)
+  _QWidget_setWindowFlags(self.as_widget(), flags.to_flag())
+}
+
+///|
 impl AsWidget with setWindowIcon(self, icon) {
   ensure_not_nullptr(self)
   _QWidget_setWindowIcon(self.as_widget(), icon)
@@ -311,6 +364,12 @@ impl AsWidget with setWindowIcon(self, icon) {
 impl AsWidget with setWindowTitle(self, title) {
   ensure_not_nullptr(self)
   _QWidget_setWindowTitle(self.as_widget(), title)
+}
+
+///|
+impl AsWidget with overrideWindowFlags(self, flags) {
+  ensure_not_nullptr(self)
+  _QWidget_overrideWindowFlags(self.as_widget(), flags.to_flag())
 }
 
 ///|

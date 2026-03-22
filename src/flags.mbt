@@ -285,6 +285,220 @@ impl Flag for ToolBarAreas with from_bits(bits) {
 }
 
 ///|
+pub(all) struct WindowFlags {
+  windowType : WindowType
+  msWindowsFixedSizeDialog : Bool
+  msWindowsOwnDC : Bool
+  bypassWindowManager : Bool
+  framelessWindow : Bool
+  windowTitle : Bool
+  windowSystemMenu : Bool
+  windowMinimizeButton : Bool
+  windowMaximizeButton : Bool
+  windowContextHelpButton : Bool
+  windowShadeButton : Bool
+  windowStaysOnTop : Bool
+  windowTransparentForInput : Bool
+  windowOverridesSystemGestures : Bool
+  windowDoesNotAcceptFocus : Bool
+  expandedClientArea : Bool
+  noTitleBarBackground : Bool
+  customizeWindow : Bool
+  windowStaysOnBottom : Bool
+  windowCloseButton : Bool
+  bypassGraphicsProxyWidget : Bool
+  noDropShadowWindow : Bool
+  windowFullscreenButton : Bool
+}
+
+///|
+pub fn WindowFlags::new(
+  windowType? : WindowType = Widget,
+  msWindowsFixedSizeDialog? : Bool = false,
+  msWindowsOwnDC? : Bool = false,
+  bypassWindowManager? : Bool = false,
+  framelessWindow? : Bool = false,
+  windowTitle? : Bool = false,
+  windowSystemMenu? : Bool = false,
+  windowMinimizeButton? : Bool = false,
+  windowMaximizeButton? : Bool = false,
+  windowContextHelpButton? : Bool = false,
+  windowShadeButton? : Bool = false,
+  windowStaysOnTop? : Bool = false,
+  windowTransparentForInput? : Bool = false,
+  windowOverridesSystemGestures? : Bool = false,
+  windowDoesNotAcceptFocus? : Bool = false,
+  expandedClientArea? : Bool = false,
+  noTitleBarBackground? : Bool = false,
+  customizeWindow? : Bool = false,
+  windowStaysOnBottom? : Bool = false,
+  windowCloseButton? : Bool = false,
+  bypassGraphicsProxyWidget? : Bool = false,
+  noDropShadowWindow? : Bool = false,
+  windowFullscreenButton? : Bool = false,
+) -> Self {
+  {
+    windowType,
+    msWindowsFixedSizeDialog,
+    msWindowsOwnDC,
+    bypassWindowManager,
+    framelessWindow,
+    windowTitle,
+    windowSystemMenu,
+    windowMinimizeButton,
+    windowMaximizeButton,
+    windowContextHelpButton,
+    windowShadeButton,
+    windowStaysOnTop,
+    windowTransparentForInput,
+    windowOverridesSystemGestures,
+    windowDoesNotAcceptFocus,
+    expandedClientArea,
+    noTitleBarBackground,
+    customizeWindow,
+    windowStaysOnBottom,
+    windowCloseButton,
+    bypassGraphicsProxyWidget,
+    noDropShadowWindow,
+    windowFullscreenButton,
+  }
+}
+
+///|
+pub fn WindowFlags::fromBits(bits : UInt64) -> Self {
+  QFlag(bits).to_flag()
+}
+
+///|
+pub fn WindowFlags::toBits(self : Self) -> UInt64 {
+  self.to_flag().0
+}
+
+///|
+impl Flag for WindowFlags with to_bits(self) {
+  let windowTypeBits : UInt64 = match self.windowType {
+    Widget => 0x00000000
+    Window => 0x00000001
+    Dialog => 0x00000003
+    Sheet => 0x00000005
+    Drawer => 0x00000007
+    Popup => 0x00000009
+    Tool => 0x0000000b
+    ToolTip => 0x0000000d
+    SplashScreen => 0x0000000f
+  }
+  let mut bits : UInt64 = windowTypeBits
+  if self.msWindowsFixedSizeDialog {
+    bits = bits | 0x00000100
+  }
+  if self.msWindowsOwnDC {
+    bits = bits | 0x00000200
+  }
+  if self.bypassWindowManager {
+    bits = bits | 0x00000400
+  }
+  if self.framelessWindow {
+    bits = bits | 0x00000800
+  }
+  if self.windowTitle {
+    bits = bits | 0x00001000
+  }
+  if self.windowSystemMenu {
+    bits = bits | 0x00002000
+  }
+  if self.windowMinimizeButton {
+    bits = bits | 0x00004000
+  }
+  if self.windowMaximizeButton {
+    bits = bits | 0x00008000
+  }
+  if self.windowContextHelpButton {
+    bits = bits | 0x00010000
+  }
+  if self.windowShadeButton {
+    bits = bits | 0x00020000
+  }
+  if self.windowStaysOnTop {
+    bits = bits | 0x00040000
+  }
+  if self.windowTransparentForInput {
+    bits = bits | 0x00080000
+  }
+  if self.windowOverridesSystemGestures {
+    bits = bits | 0x00100000
+  }
+  if self.windowDoesNotAcceptFocus {
+    bits = bits | 0x00200000
+  }
+  if self.expandedClientArea {
+    bits = bits | 0x00400000
+  }
+  if self.noTitleBarBackground {
+    bits = bits | 0x00800000
+  }
+  if self.customizeWindow {
+    bits = bits | 0x02000000
+  }
+  if self.windowStaysOnBottom {
+    bits = bits | 0x04000000
+  }
+  if self.windowCloseButton {
+    bits = bits | 0x08000000
+  }
+  if self.bypassGraphicsProxyWidget {
+    bits = bits | 0x20000000
+  }
+  if self.noDropShadowWindow {
+    bits = bits | 0x40000000
+  }
+  if self.windowFullscreenButton {
+    bits = bits | 0x80000000
+  }
+  bits
+}
+
+///|
+impl Flag for WindowFlags with from_bits(bits) {
+  let windowType = match bits & 0x000000ff {
+    0x00000000 => Widget
+    0x00000001 => Window
+    0x00000003 => Dialog
+    0x00000005 => Sheet
+    0x00000007 => Drawer
+    0x00000009 => Popup
+    0x0000000b => Tool
+    0x0000000d => ToolTip
+    0x0000000f => SplashScreen
+    _ => panic()
+  }
+  {
+    windowType,
+    msWindowsFixedSizeDialog: (bits & 0x00000100) != 0,
+    msWindowsOwnDC: (bits & 0x00000200) != 0,
+    bypassWindowManager: (bits & 0x00000400) != 0,
+    framelessWindow: (bits & 0x00000800) != 0,
+    windowTitle: (bits & 0x00001000) != 0,
+    windowSystemMenu: (bits & 0x00002000) != 0,
+    windowMinimizeButton: (bits & 0x00004000) != 0,
+    windowMaximizeButton: (bits & 0x00008000) != 0,
+    windowContextHelpButton: (bits & 0x00010000) != 0,
+    windowShadeButton: (bits & 0x00020000) != 0,
+    windowStaysOnTop: (bits & 0x00040000) != 0,
+    windowTransparentForInput: (bits & 0x00080000) != 0,
+    windowOverridesSystemGestures: (bits & 0x00100000) != 0,
+    windowDoesNotAcceptFocus: (bits & 0x00200000) != 0,
+    expandedClientArea: (bits & 0x00400000) != 0,
+    noTitleBarBackground: (bits & 0x00800000) != 0,
+    customizeWindow: (bits & 0x02000000) != 0,
+    windowStaysOnBottom: (bits & 0x04000000) != 0,
+    windowCloseButton: (bits & 0x08000000) != 0,
+    bypassGraphicsProxyWidget: (bits & 0x20000000) != 0,
+    noDropShadowWindow: (bits & 0x40000000) != 0,
+    windowFullscreenButton: (bits & 0x80000000) != 0,
+  }
+}
+
+///|
 pub(all) struct InputMethodHints {
   hiddenText : Bool
   sensitiveData : Bool

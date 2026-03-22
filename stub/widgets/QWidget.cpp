@@ -49,9 +49,19 @@ QMETHOD(QWidget, toolTip)->String
     return str::qt_to_mbt(self->toolTip());
 }
 
+QMETHOD(QWidget, windowFlags)->UInt64
+{
+    return static_cast<UInt64>(self->windowFlags().toInt());
+}
+
 QMETHOD(QWidget, windowIcon)->box<QIcon>
 {
     return box<QIcon>::make(self->windowIcon());
+}
+
+QMETHOD(QWidget, windowType)->Enum<Qt::WindowType>
+{
+    return {static_cast<Int>(self->windowType())};
 }
 
 QMETHOD(QWidget, move, Int x, Int y)->void
@@ -124,6 +134,16 @@ QMETHOD(QWidget, setVisible, Bool value)->void
     self->setVisible(value);
 }
 
+QMETHOD(QWidget, setWindowFlag, UInt64 type, Bool on)->void
+{
+    self->setWindowFlag(static_cast<Qt::WindowType>(type), on);
+}
+
+QMETHOD(QWidget, setWindowFlags, UInt64 flags)->void
+{
+    self->setWindowFlags(Qt::WindowFlags(std::in_place, flags));
+}
+
 QMETHOD(QWidget, setWindowIcon, box<QIcon> icon)->void
 {
     self->setWindowIcon(*icon);
@@ -132,6 +152,11 @@ QMETHOD(QWidget, setWindowIcon, box<QIcon> icon)->void
 QMETHOD(QWidget, setWindowTitle, String title)->void
 {
     self->setWindowTitle(str::mbt_to_qt(title));
+}
+
+QMETHOD(QWidget, overrideWindowFlags, UInt64 flags)->void
+{
+    self->overrideWindowFlags(Qt::WindowFlags(std::in_place, flags));
 }
 
 QMETHOD(QWidget, show)->void

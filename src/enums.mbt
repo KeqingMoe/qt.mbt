@@ -393,6 +393,19 @@ pub(all) enum ToolButtonStyle {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum WindowType {
+  Widget = 0x00000000
+  Window = 0x00000001
+  Dialog = 0x00000003
+  Sheet = 0x00000005
+  Drawer = 0x00000007
+  Popup = 0x00000009
+  Tool = 0x0000000b
+  ToolTip = 0x0000000d
+  SplashScreen = 0x0000000f
+} derive(Eq, Show)
+
+///|
 pub(all) enum ThemeIcon {
   AddressBookNew = 0
   ApplicationExit = 1

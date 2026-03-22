@@ -1,5 +1,6 @@
 #include <QLayout>
 #include <QIcon>
+#include <QMargins>
 #include <QSizePolicy>
 #include <QWindow>
 #include <QWidget>
@@ -18,6 +19,11 @@ QMETHOD(QWidget, close)->Bool
 QMETHOD(QWidget, contextMenuPolicy)->Enum<Qt::ContextMenuPolicy>
 {
     return {self->contextMenuPolicy()};
+}
+
+QMETHOD(QWidget, contentsMargins)->box<QMargins>
+{
+    return box<QMargins>::make(self->contentsMargins());
 }
 
 QMETHOD(QWidget, focusPolicy)->Enum<Qt::FocusPolicy>
@@ -213,6 +219,11 @@ QMETHOD(QWidget, sizePolicy)->box<QSizePolicy>
 QMETHOD(QWidget, styleSheet)->String
 {
     return str::qt_to_mbt(self->styleSheet());
+}
+
+QMETHOD(QWidget, updateGeometry)->void
+{
+    self->updateGeometry();
 }
 
 QMETHOD(QWidget, windowTitle)->String

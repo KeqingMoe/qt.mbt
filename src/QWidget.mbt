@@ -14,6 +14,10 @@ extern "C" fn _QWidget_contextMenuPolicy(this : QWidget) -> ContextMenuPolicy = 
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_contentsMargins(this : QWidget) -> QMargins = "QWidget_contentsMargins"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_focusPolicy(this : QWidget) -> FocusPolicy = "QWidget_focusPolicy"
 
 ///|
@@ -196,6 +200,10 @@ extern "C" fn _QWidget_styleSheet(this : QWidget) -> String = "QWidget_styleShee
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_updateGeometry(this : QWidget) = "QWidget_updateGeometry"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTitle"
 
 ///|
@@ -203,6 +211,7 @@ pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
   close(Self) -> Bool raise NullptrError = _
   contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
+  contentsMargins(Self) -> QMargins raise NullptrError = _
   focusPolicy(Self) -> FocusPolicy raise NullptrError = _
   hide(Self) -> Unit raise NullptrError = _
   inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
@@ -237,6 +246,7 @@ pub(open) trait AsWidget: AsObject {
   setToolTip(Self, toolTip : String) -> Unit raise NullptrError = _
   testAttribute(Self, attribute : WidgetAttribute) -> Bool raise NullptrError = _
   toolTip(Self) -> String raise NullptrError = _
+  updateGeometry(Self) -> Unit raise NullptrError = _
   overrideWindowFlags(Self, flags : WindowFlags) -> Unit raise NullptrError = _
   windowFlags(Self) -> WindowFlags raise NullptrError = _
   windowHandle(Self) -> QWindow raise NullptrError = _
@@ -261,6 +271,12 @@ impl AsWidget with hide(self) {
 impl AsWidget with contextMenuPolicy(self) {
   ensure_not_nullptr(self)
   _QWidget_contextMenuPolicy(self.as_widget())
+}
+
+///|
+impl AsWidget with contentsMargins(self) {
+  ensure_not_nullptr(self)
+  _QWidget_contentsMargins(self.as_widget())
 }
 
 ///|
@@ -489,6 +505,12 @@ impl AsWidget with testAttribute(self, attribute) {
 impl AsWidget with toolTip(self) {
   ensure_not_nullptr(self)
   _QWidget_toolTip(self.as_widget())
+}
+
+///|
+impl AsWidget with updateGeometry(self) {
+  ensure_not_nullptr(self)
+  _QWidget_updateGeometry(self.as_widget())
 }
 
 ///|

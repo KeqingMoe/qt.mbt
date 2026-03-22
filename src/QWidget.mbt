@@ -6,6 +6,10 @@ extern "C" fn _QWidget_new() -> QWidget = "QWidget_new"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_close(this : QWidget) -> Bool = "QWidget_close"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_contextMenuPolicy(this : QWidget) -> ContextMenuPolicy = "QWidget_contextMenuPolicy"
 
 ///|
@@ -27,6 +31,10 @@ extern "C" fn _QWidget_isEnabled(this : QWidget) -> Bool = "QWidget_isEnabled"
 ///|
 #borrow(this)
 extern "C" fn _QWidget_isHidden(this : QWidget) -> Bool = "QWidget_isHidden"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_isMaximized(this : QWidget) -> Bool = "QWidget_isMaximized"
 
 ///|
 #borrow(this)
@@ -149,6 +157,18 @@ extern "C" fn _QWidget_show(this : QWidget) = "QWidget_show"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_showMaximized(this : QWidget) = "QWidget_showMaximized"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_showMinimized(this : QWidget) = "QWidget_showMinimized"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_showNormal(this : QWidget) = "QWidget_showNormal"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_sizePolicy(this : QWidget) -> QSizePolicy = "QWidget_sizePolicy"
 
 ///|
@@ -162,12 +182,14 @@ extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTi
 ///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
+  close(Self) -> Bool raise NullptrError = _
   contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
   focusPolicy(Self) -> FocusPolicy raise NullptrError = _
   hide(Self) -> Unit raise NullptrError = _
   inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
   isHidden(Self) -> Bool raise NullptrError = _
+  isMaximized(Self) -> Bool raise NullptrError = _
   isVisible(Self) -> Bool raise NullptrError = _
   moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
@@ -187,6 +209,9 @@ pub(open) trait AsWidget: AsObject {
   setWindowIcon(Self, icon : QIcon) -> Unit raise NullptrError = _
   setWindowTitle(Self, title : String) -> Unit raise NullptrError = _
   show(Self) -> Unit raise NullptrError = _
+  showMaximized(Self) -> Unit raise NullptrError = _
+  showMinimized(Self) -> Unit raise NullptrError = _
+  showNormal(Self) -> Unit raise NullptrError = _
   sizePolicy(Self) -> QSizePolicy raise NullptrError = _
   styleSheet(Self) -> String raise NullptrError = _
   setToolTip(Self, toolTip : String) -> Unit raise NullptrError = _
@@ -196,6 +221,12 @@ pub(open) trait AsWidget: AsObject {
   windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
   windowType(Self) -> WindowType raise NullptrError = _
+}
+
+///|
+impl AsWidget with close(self) {
+  ensure_not_nullptr(self)
+  _QWidget_close(self.as_widget())
 }
 
 ///|
@@ -232,6 +263,12 @@ impl AsWidget with isEnabled(self) {
 impl AsWidget with isHidden(self) {
   ensure_not_nullptr(self)
   _QWidget_isHidden(self.as_widget())
+}
+
+///|
+impl AsWidget with isMaximized(self) {
+  ensure_not_nullptr(self)
+  _QWidget_isMaximized(self.as_widget())
 }
 
 ///|
@@ -376,6 +413,24 @@ impl AsWidget with overrideWindowFlags(self, flags) {
 impl AsWidget with show(self) {
   ensure_not_nullptr(self)
   _QWidget_show(self.as_widget())
+}
+
+///|
+impl AsWidget with showMaximized(self) {
+  ensure_not_nullptr(self)
+  _QWidget_showMaximized(self.as_widget())
+}
+
+///|
+impl AsWidget with showMinimized(self) {
+  ensure_not_nullptr(self)
+  _QWidget_showMinimized(self.as_widget())
+}
+
+///|
+impl AsWidget with showNormal(self) {
+  ensure_not_nullptr(self)
+  _QWidget_showNormal(self.as_widget())
 }
 
 ///|

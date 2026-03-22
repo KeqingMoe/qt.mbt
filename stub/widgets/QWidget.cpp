@@ -9,6 +9,11 @@ QSTATIC(QWidget, new)->qt<QWidget>
     return qt<QWidget>::make();
 }
 
+QMETHOD(QWidget, close)->Bool
+{
+    return Bool::make(self->close());
+}
+
 QMETHOD(QWidget, contextMenuPolicy)->Enum<Qt::ContextMenuPolicy>
 {
     return {self->contextMenuPolicy()};
@@ -37,6 +42,11 @@ QMETHOD(QWidget, isEnabled)->Bool
 QMETHOD(QWidget, isHidden)->Bool
 {
     return Bool::make(self->isHidden());
+}
+
+QMETHOD(QWidget, isMaximized)->Bool
+{
+    return Bool::make(self->isMaximized());
 }
 
 QMETHOD(QWidget, isVisible)->Bool
@@ -162,6 +172,21 @@ QMETHOD(QWidget, overrideWindowFlags, UInt64 flags)->void
 QMETHOD(QWidget, show)->void
 {
     self->show();
+}
+
+QMETHOD(QWidget, showMaximized)->void
+{
+    self->showMaximized();
+}
+
+QMETHOD(QWidget, showMinimized)->void
+{
+    self->showMinimized();
+}
+
+QMETHOD(QWidget, showNormal)->void
+{
+    self->showNormal();
 }
 
 QMETHOD(QWidget, sizePolicy)->box<QSizePolicy>

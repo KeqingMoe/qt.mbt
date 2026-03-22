@@ -1,4 +1,5 @@
 #include <QAbstractScrollArea>
+#include <QScrollBar>
 #include <qt.hpp>
 
 QMETHOD(QAbstractScrollArea, addScrollBarWidget, qt<QWidget> widget, UInt64 alignment)->void
@@ -9,6 +10,16 @@ QMETHOD(QAbstractScrollArea, addScrollBarWidget, qt<QWidget> widget, UInt64 alig
 QMETHOD(QAbstractScrollArea, horizontalScrollBarPolicy)->Enum<Qt::ScrollBarPolicy>
 {
     return {self->horizontalScrollBarPolicy()};
+}
+
+QMETHOD(QAbstractScrollArea, horizontalScrollBar)->qt<QScrollBar>
+{
+    return qt<QScrollBar>::from_raw(self->horizontalScrollBar());
+}
+
+QMETHOD(QAbstractScrollArea, setHorizontalScrollBar, qt<QScrollBar> scrollbar)->void
+{
+    self->setHorizontalScrollBar(scrollbar.get());
 }
 
 QMETHOD(QAbstractScrollArea, setHorizontalScrollBarPolicy, Enum<Qt::ScrollBarPolicy> policy)->void
@@ -26,9 +37,19 @@ QMETHOD(QAbstractScrollArea, setVerticalScrollBarPolicy, Enum<Qt::ScrollBarPolic
     self->setVerticalScrollBarPolicy(policy);
 }
 
+QMETHOD(QAbstractScrollArea, setVerticalScrollBar, qt<QScrollBar> scrollbar)->void
+{
+    self->setVerticalScrollBar(scrollbar.get());
+}
+
 QMETHOD(QAbstractScrollArea, sizeAdjustPolicy)->Enum<QAbstractScrollArea::SizeAdjustPolicy>
 {
     return {self->sizeAdjustPolicy()};
+}
+
+QMETHOD(QAbstractScrollArea, verticalScrollBar)->qt<QScrollBar>
+{
+    return qt<QScrollBar>::from_raw(self->verticalScrollBar());
 }
 
 QMETHOD(QAbstractScrollArea, verticalScrollBarPolicy)->Enum<Qt::ScrollBarPolicy>

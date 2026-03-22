@@ -17,10 +17,23 @@ extern "C" fn _QAbstractScrollArea_horizontalScrollBarPolicy(
 
 ///|
 #borrow(this)
+extern "C" fn _QAbstractScrollArea_horizontalScrollBar(
+  this : QAbstractScrollArea,
+) -> QScrollBar = "QAbstractScrollArea_horizontalScrollBar"
+
+///|
+#borrow(this)
 extern "C" fn _QAbstractScrollArea_setHorizontalScrollBarPolicy(
   this : QAbstractScrollArea,
   policy : ScrollBarPolicy,
 ) = "QAbstractScrollArea_setHorizontalScrollBarPolicy"
+
+///|
+#borrow(this, scrollbar)
+extern "C" fn _QAbstractScrollArea_setHorizontalScrollBar(
+  this : QAbstractScrollArea,
+  scrollbar : QScrollBar,
+) = "QAbstractScrollArea_setHorizontalScrollBar"
 
 ///|
 #borrow(this)
@@ -49,10 +62,23 @@ extern "C" fn _QAbstractScrollArea_setVerticalScrollBarPolicy(
 ) = "QAbstractScrollArea_setVerticalScrollBarPolicy"
 
 ///|
+#borrow(this, scrollbar)
+extern "C" fn _QAbstractScrollArea_setVerticalScrollBar(
+  this : QAbstractScrollArea,
+  scrollbar : QScrollBar,
+) = "QAbstractScrollArea_setVerticalScrollBar"
+
+///|
 #borrow(this)
 extern "C" fn _QAbstractScrollArea_viewport(
   this : QAbstractScrollArea,
 ) -> QWidget = "QAbstractScrollArea_viewport"
+
+///|
+#borrow(this)
+extern "C" fn _QAbstractScrollArea_verticalScrollBar(
+  this : QAbstractScrollArea,
+) -> QScrollBar = "QAbstractScrollArea_verticalScrollBar"
 
 ///|
 #borrow(this)
@@ -64,13 +90,23 @@ extern "C" fn _QAbstractScrollArea_as_QFrame(
 pub(open) trait AsAbstractScrollArea: AsFrame {
   as_abstract_scroll_area(Self) -> QAbstractScrollArea
   addScrollBarWidget(Self, widget : &AsWidget, alignment : Alignment) -> Unit raise NullptrError = _
+  horizontalScrollBar(Self) -> QScrollBar raise NullptrError = _
   horizontalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
+  setHorizontalScrollBar(Self, scrollbar : QScrollBar) -> Unit raise NullptrError = _
   setHorizontalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
   setSizeAdjustPolicy(Self, policy : SizeAdjustPolicy) -> Unit raise NullptrError = _
+  setVerticalScrollBar(Self, scrollbar : QScrollBar) -> Unit raise NullptrError = _
   setVerticalScrollBarPolicy(Self, policy : ScrollBarPolicy) -> Unit raise NullptrError = _
   sizeAdjustPolicy(Self) -> SizeAdjustPolicy raise NullptrError = _
+  verticalScrollBar(Self) -> QScrollBar raise NullptrError = _
   verticalScrollBarPolicy(Self) -> ScrollBarPolicy raise NullptrError = _
   viewport(Self) -> QWidget raise NullptrError = _
+}
+
+///|
+impl AsAbstractScrollArea with horizontalScrollBar(self) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_horizontalScrollBar(self.as_abstract_scroll_area())
 }
 
 ///|
@@ -99,6 +135,15 @@ impl AsAbstractScrollArea with setHorizontalScrollBarPolicy(self, policy) {
 }
 
 ///|
+impl AsAbstractScrollArea with setHorizontalScrollBar(self, scrollbar) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_setHorizontalScrollBar(
+    self.as_abstract_scroll_area(),
+    scrollbar,
+  )
+}
+
+///|
 impl AsAbstractScrollArea with setSizeAdjustPolicy(self, policy) {
   ensure_not_nullptr(self)
   _QAbstractScrollArea_setSizeAdjustPolicy(
@@ -120,12 +165,27 @@ impl AsAbstractScrollArea with verticalScrollBarPolicy(self) {
 }
 
 ///|
+impl AsAbstractScrollArea with setVerticalScrollBar(self, scrollbar) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_setVerticalScrollBar(
+    self.as_abstract_scroll_area(),
+    scrollbar,
+  )
+}
+
+///|
 impl AsAbstractScrollArea with setVerticalScrollBarPolicy(self, policy) {
   ensure_not_nullptr(self)
   _QAbstractScrollArea_setVerticalScrollBarPolicy(
     self.as_abstract_scroll_area(),
     policy,
   )
+}
+
+///|
+impl AsAbstractScrollArea with verticalScrollBar(self) {
+  ensure_not_nullptr(self)
+  _QAbstractScrollArea_verticalScrollBar(self.as_abstract_scroll_area())
 }
 
 ///|

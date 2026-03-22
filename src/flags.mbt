@@ -234,6 +234,57 @@ impl Flag for ControlTypes with from_bits(bits) {
 }
 
 ///|
+pub(all) struct ToolBarAreas {
+  left : Bool
+  right : Bool
+  top : Bool
+  bottom : Bool
+}
+
+///|
+pub fn ToolBarAreas::new(
+  left? : Bool = false,
+  right? : Bool = false,
+  top? : Bool = false,
+  bottom? : Bool = false,
+) -> Self {
+  { left, right, top, bottom }
+}
+
+///|
+pub fn ToolBarAreas::all() -> Self {
+  { left: true, right: true, top: true, bottom: true }
+}
+
+///|
+impl Flag for ToolBarAreas with to_bits(self) {
+  let mut bits : UInt64 = 0
+  if self.left {
+    bits = bits | 0x1
+  }
+  if self.right {
+    bits = bits | 0x2
+  }
+  if self.top {
+    bits = bits | 0x4
+  }
+  if self.bottom {
+    bits = bits | 0x8
+  }
+  bits
+}
+
+///|
+impl Flag for ToolBarAreas with from_bits(bits) {
+  {
+    left: (bits & 0x1) != 0,
+    right: (bits & 0x2) != 0,
+    top: (bits & 0x4) != 0,
+    bottom: (bits & 0x8) != 0,
+  }
+}
+
+///|
 pub(all) struct InputMethodHints {
   hiddenText : Bool
   sensitiveData : Bool

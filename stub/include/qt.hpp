@@ -24,4 +24,10 @@ struct NetworkProgress
     mbt::Int64 total;
 };
 
+struct SplitterMoved
+{
+    mbt::Int position;
+    mbt::Int index;
+};
+
 #endif

@@ -34,6 +34,10 @@ extern "C" fn _QWidget_isVisible(this : QWidget) -> Bool = "QWidget_isVisible"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_toolTip(this : QWidget) -> String = "QWidget_toolTip"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_windowIcon(this : QWidget) -> QIcon = "QWidget_windowIcon"
 
 ///|
@@ -96,6 +100,10 @@ extern "C" fn _QWidget_setSizePolicy(this : QWidget, policy : QSizePolicy) = "QW
 extern "C" fn _QWidget_setStyleSheet(this : QWidget, styleSheet : String) = "QWidget_setStyleSheet"
 
 ///|
+#borrow(this, toolTip)
+extern "C" fn _QWidget_setToolTip(this : QWidget, toolTip : String) = "QWidget_setToolTip"
+
+///|
 #borrow(this, value)
 extern "C" fn _QWidget_setVisible(this : QWidget, value : Bool) = "QWidget_setVisible"
 
@@ -155,6 +163,8 @@ pub(open) trait AsWidget: AsObject {
   show(Self) -> Unit raise NullptrError = _
   sizePolicy(Self) -> QSizePolicy raise NullptrError = _
   styleSheet(Self) -> String raise NullptrError = _
+  setToolTip(Self, toolTip : String) -> Unit raise NullptrError = _
+  toolTip(Self) -> String raise NullptrError = _
   windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
 }
@@ -280,6 +290,12 @@ impl AsWidget with setStyleSheet(self, styleSheet) {
 }
 
 ///|
+impl AsWidget with setToolTip(self, toolTip) {
+  ensure_not_nullptr(self)
+  _QWidget_setToolTip(self.as_widget(), toolTip)
+}
+
+///|
 impl AsWidget with setVisible(self, value) {
   ensure_not_nullptr(self)
   _QWidget_setVisible(self.as_widget(), value)
@@ -313,6 +329,12 @@ impl AsWidget with sizePolicy(self) {
 impl AsWidget with styleSheet(self) {
   ensure_not_nullptr(self)
   _QWidget_styleSheet(self.as_widget())
+}
+
+///|
+impl AsWidget with toolTip(self) {
+  ensure_not_nullptr(self)
+  _QWidget_toolTip(self.as_widget())
 }
 
 ///|

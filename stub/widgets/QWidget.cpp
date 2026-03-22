@@ -44,6 +44,11 @@ QMETHOD(QWidget, isVisible)->Bool
     return Bool::make(self->isVisible());
 }
 
+QMETHOD(QWidget, toolTip)->String
+{
+    return str::qt_to_mbt(self->toolTip());
+}
+
 QMETHOD(QWidget, windowIcon)->box<QIcon>
 {
     return box<QIcon>::make(self->windowIcon());
@@ -107,6 +112,11 @@ QMETHOD(QWidget, setSizePolicy, box<QSizePolicy> policy)->void
 QMETHOD(QWidget, setStyleSheet, String styleSheet)->void
 {
     self->setStyleSheet(str::mbt_to_qt(styleSheet));
+}
+
+QMETHOD(QWidget, setToolTip, String toolTip)->void
+{
+    self->setToolTip(str::mbt_to_qt(toolTip));
 }
 
 QMETHOD(QWidget, setVisible, Bool value)->void

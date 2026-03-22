@@ -5,6 +5,24 @@ pub(all) enum ActionPosition {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum ActionMenuRole {
+  No = 0
+  TextHeuristic = 1
+  ApplicationSpecific = 2
+  AboutQt = 3
+  About = 4
+  Preferences = 5
+  Quit = 6
+} derive(Eq, Show)
+
+///|
+pub(all) enum ActionPriority {
+  Low = 0
+  Normal = 128
+  High = 256
+} derive(Eq, Show)
+
+///|
 pub(all) enum AspectRatioMode {
   Ignore = 0
   Keep = 1

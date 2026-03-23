@@ -188,9 +188,12 @@ impl AsObject with signalsBlocked(self) {
 ///|
 pub fn[T] QObject::connect(
   signal : Signal[T],
-  slot : (T) -> Unit,
+  slot : (T) -> Unit raise NullptrError,
 ) -> Connection {
-  _QObject_connect(@internal.Itself(signal), @internal.Itself(slot))
+  _QObject_connect(
+    @internal.Itself(signal),
+    @internal.Itself(x => try! slot(x)),
+  )
 }
 
 ///|

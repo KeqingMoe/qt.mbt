@@ -9,7 +9,10 @@ pub type Connection
 extern "C" fn _Connection_is_valid(this : Connection) -> Bool = "Connection_is_valid"
 
 ///|
-pub fn[A] Signal::connect(self : Self[A], slot : (A) -> Unit) -> Connection {
+pub fn[A] Signal::connect(
+  self : Self[A],
+  slot : (A) -> Unit raise NullptrError,
+) -> Connection {
   QObject::connect(self, slot)
 }
 

@@ -22,6 +22,10 @@ extern "C" fn _QTextEdit_clear(this : QTextEdit) = "QTextEdit_clear"
 
 ///|
 #borrow(this)
+extern "C" fn _QTextEdit_document(this : QTextEdit) -> QTextDocument = "QTextEdit_document"
+
+///|
+#borrow(this)
 extern "C" fn _QTextEdit_isReadOnly(this : QTextEdit) -> Bool = "QTextEdit_isReadOnly"
 
 ///|
@@ -109,6 +113,12 @@ pub fn QTextEdit::append(self : Self, text : String) -> Unit raise NullptrError 
 pub fn QTextEdit::clear(self : Self) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QTextEdit_clear(self)
+}
+
+///|
+pub fn QTextEdit::document(self : Self) -> QTextDocument raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_document(self)
 }
 
 ///|

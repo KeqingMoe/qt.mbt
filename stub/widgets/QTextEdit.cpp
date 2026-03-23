@@ -26,6 +26,11 @@ QMETHOD(QTextEdit, clear)->void
     self->clear();
 }
 
+QMETHOD(QTextEdit, document)->qt<QTextDocument>
+{
+    return qt<QTextDocument>::from_raw(self->document());
+}
+
 QMETHOD(QTextEdit, isReadOnly)->Bool
 {
     return Bool::make(self->isReadOnly());

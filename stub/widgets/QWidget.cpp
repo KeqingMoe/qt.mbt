@@ -61,6 +61,11 @@ QMETHOD(QWidget, isVisible)->Bool
     return Bool::make(self->isVisible());
 }
 
+QMETHOD(QWidget, minimumSizeHint)->box<QSize>
+{
+    return box<QSize>::make(self->minimumSizeHint());
+}
+
 QMETHOD(QWidget, testAttribute, Int attribute)->Bool
 {
     return Bool::make(self->testAttribute(static_cast<Qt::WidgetAttribute>(attribute)));
@@ -209,6 +214,11 @@ QMETHOD(QWidget, showMinimized)->void
 QMETHOD(QWidget, showNormal)->void
 {
     self->showNormal();
+}
+
+QMETHOD(QWidget, sizeHint)->box<QSize>
+{
+    return box<QSize>::make(self->sizeHint());
 }
 
 QMETHOD(QWidget, sizePolicy)->box<QSizePolicy>

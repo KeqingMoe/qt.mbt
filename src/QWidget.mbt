@@ -45,6 +45,10 @@ extern "C" fn _QWidget_isMaximized(this : QWidget) -> Bool = "QWidget_isMaximize
 extern "C" fn _QWidget_isVisible(this : QWidget) -> Bool = "QWidget_isVisible"
 
 ///|
+#borrow(this)
+extern "C" fn _QWidget_minimumSizeHint(this : QWidget) -> QSize = "QWidget_minimumSizeHint"
+
+///|
 #borrow(this, attribute)
 extern "C" fn _QWidget_testAttribute(
   this : QWidget,
@@ -196,6 +200,10 @@ extern "C" fn _QWidget_sizePolicy(this : QWidget) -> QSizePolicy = "QWidget_size
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_sizeHint(this : QWidget) -> QSize = "QWidget_sizeHint"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_styleSheet(this : QWidget) -> String = "QWidget_styleSheet"
 
 ///|
@@ -219,8 +227,10 @@ pub(open) trait AsWidget: AsObject {
   isHidden(Self) -> Bool raise NullptrError = _
   isMaximized(Self) -> Bool raise NullptrError = _
   isVisible(Self) -> Bool raise NullptrError = _
+  minimumSizeHint(Self) -> QSize raise NullptrError = _
   moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  sizeHint(Self) -> QSize raise NullptrError = _
   setAttribute(Self, attribute : WidgetAttribute, on? : Bool) -> Unit raise NullptrError = _
   setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
@@ -313,6 +323,12 @@ impl AsWidget with isMaximized(self) {
 impl AsWidget with isVisible(self) {
   ensure_not_nullptr(self)
   _QWidget_isVisible(self.as_widget())
+}
+
+///|
+impl AsWidget with minimumSizeHint(self) {
+  ensure_not_nullptr(self)
+  _QWidget_minimumSizeHint(self.as_widget())
 }
 
 ///|
@@ -481,6 +497,12 @@ impl AsWidget with showMinimized(self) {
 impl AsWidget with showNormal(self) {
   ensure_not_nullptr(self)
   _QWidget_showNormal(self.as_widget())
+}
+
+///|
+impl AsWidget with sizeHint(self) {
+  ensure_not_nullptr(self)
+  _QWidget_sizeHint(self.as_widget())
 }
 
 ///|

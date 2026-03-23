@@ -51,14 +51,14 @@ fn ProgressForm::new() -> Self raise NullptrError {
       "Publish release" => 80
       _ => 0
     }
-    try! refresh()
+    refresh()
   })
 
   let _ = QObject::connect(advance.clicked(), _ => {
     if value < 100 {
       value += 10
     }
-    try! refresh()
+    refresh()
   })
 
   let layout = QBoxLayout::vertical()

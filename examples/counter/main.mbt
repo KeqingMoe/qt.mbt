@@ -23,7 +23,7 @@ fn main raise NullptrError {
 
   let _ = QObject::connect(button.clicked(), _ => {
     count += 1
-    try! label.setText("Count: \{count}")
+    label.setText("Count: \{count}")
   })
 
   let layout = QBoxLayout::horizontal()

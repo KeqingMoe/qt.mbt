@@ -94,45 +94,37 @@ fn WizardDialogDemo::new() -> Self raise NullptrError {
   }
 
   let _ = QObject::connect(open.clicked(), _ => {
-    try! ({
-      pages.setCurrentIndex(0)
-      update_buttons()
-      dialog.show()
-    })
+    pages.setCurrentIndex(0)
+    update_buttons()
+    dialog.show()
   })
   let _ = QObject::connect(back.clicked(), _ => {
-    try! ({
-      let current = pages.currentIndex()
-      if current > 0 {
-        pages.setCurrentIndex(current - 1)
-      }
-      update_buttons()
-    })
+    let current = pages.currentIndex()
+    if current > 0 {
+      pages.setCurrentIndex(current - 1)
+    }
+    update_buttons()
   })
   let _ = QObject::connect(next.clicked(), _ => {
-    try! ({
-      let current = pages.currentIndex()
-      if current + 1 < pages.count() {
-        pages.setCurrentIndex(current + 1)
-      }
-      update_buttons()
-    })
+    let current = pages.currentIndex()
+    if current + 1 < pages.count() {
+      pages.setCurrentIndex(current + 1)
+    }
+    update_buttons()
   })
-  let _ = QObject::connect(cancel.clicked(), _ => try! dialog.reject())
-  let _ = QObject::connect(finish.clicked(), _ => try! dialog.accept())
-  let _ = QObject::connect(box.accepted(), _ => try! dialog.accept())
-  let _ = QObject::connect(box.rejected(), _ => try! dialog.reject())
+  let _ = QObject::connect(cancel.clicked(), _ => dialog.reject())
+  let _ = QObject::connect(finish.clicked(), _ => dialog.accept())
+  let _ = QObject::connect(box.accepted(), _ => dialog.accept())
+  let _ = QObject::connect(box.rejected(), _ => dialog.reject())
   let _ = QObject::connect(dialog.accepted(), _ => {
-    try! status.setText("Wizard status: accepted")
+    status.setText("Wizard status: accepted")
   })
   let _ = QObject::connect(dialog.rejected(), _ => {
-    try! status.setText("Wizard status: rejected")
+    status.setText("Wizard status: rejected")
   })
   let _ = QObject::connect(pages.currentChanged(), index => {
-    try! ({
-      status.setText("Wizard status: step \{index + 1}")
-      update_buttons()
-    })
+    status.setText("Wizard status: step \{index + 1}")
+    update_buttons()
   })
 
   update_buttons()

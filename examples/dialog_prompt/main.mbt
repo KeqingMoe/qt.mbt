@@ -78,22 +78,20 @@ fn DialogPrompt::new() -> Self raise NullptrError {
   reject.setText("Reject")
 
   let _ = QObject::connect(open.clicked(), _ => {
-    try! ({
-      dialog.show()
-      scroll.ensureVisible(0, 0)
-    })
+    dialog.show()
+    scroll.ensureVisible(0, 0)
   })
-  let _ = QObject::connect(accept.clicked(), _ => try! dialog.accept())
-  let _ = QObject::connect(close.clicked(), _ => try! dialog.accept())
-  let _ = QObject::connect(reject.clicked(), _ => try! dialog.reject())
+  let _ = QObject::connect(accept.clicked(), _ => dialog.accept())
+  let _ = QObject::connect(close.clicked(), _ => dialog.accept())
+  let _ = QObject::connect(reject.clicked(), _ => dialog.reject())
   let _ = QObject::connect(dialog.accepted(), _ => {
-    try! title.setText("Dialog result: accepted")
+    title.setText("Dialog result: accepted")
   })
   let _ = QObject::connect(dialog.rejected(), _ => {
-    try! title.setText("Dialog result: rejected")
+    title.setText("Dialog result: rejected")
   })
   let _ = QObject::connect(dialog.finished(), result => {
-    try! title.setText("Dialog result: \{result}")
+    title.setText("Dialog result: \{result}")
   })
 
   let layout = QBoxLayout::vertical()

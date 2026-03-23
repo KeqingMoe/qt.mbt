@@ -77,17 +77,17 @@ fn SettingsForm::new() -> Self raise NullptrError {
     footer.setText("Updates: \{updates_text} | Profile: \{mode_text}")
   }
 
-  let _ = QObject::connect(updates.toggled(), _ => try! refresh_footer())
+  let _ = QObject::connect(updates.toggled(), _ => refresh_footer())
   let _ = QObject::connect(public_profile.toggled(), checked => {
     if checked {
       mode_text = "Public"
-      try! refresh_footer()
+      refresh_footer()
     }
   })
   let _ = QObject::connect(private_profile.toggled(), checked => {
     if checked {
       mode_text = "Private"
-      try! refresh_footer()
+      refresh_footer()
     }
   })
 

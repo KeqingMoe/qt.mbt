@@ -20,10 +20,10 @@ fn main raise NullptrError {
   button.setText("Click me!")
 
   let _ = QObject::connect(button.pressed(), _ => {
-    try! label.setText("Button Pressed!")
+    label.setText("Button Pressed!")
   })
   let _ = QObject::connect(button.released(), _ => {
-    try! label.setText("Button Released!")
+    label.setText("Button Released!")
   })
 
   let layout = QBoxLayout::horizontal()

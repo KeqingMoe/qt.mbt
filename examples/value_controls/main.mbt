@@ -71,29 +71,19 @@ fn ValueControls::new() -> Self raise NullptrError {
     refresh_summary()
   }
 
-  let _ = QObject::connect(slider.valueChanged(), value => {
-    try! sync_slider(value)
-  })
-  let _ = QObject::connect(spin_box.valueChanged(), value => {
-    try! sync_slider(value)
-  })
+  let _ = QObject::connect(slider.valueChanged(), value => sync_slider(value))
+  let _ = QObject::connect(spin_box.valueChanged(), value => sync_slider(value))
   let _ = QObject::connect(live_preview.toggled(), enabled => {
-    try! ({
-      slider.setTracking(enabled)
-      refresh_summary()
-    })
+    slider.setTracking(enabled)
+    refresh_summary()
   })
   let _ = QObject::connect(wrapping.toggled(), enabled => {
-    try! ({
-      spin_box.setWrapping(enabled)
-      refresh_summary()
-    })
+    spin_box.setWrapping(enabled)
+    refresh_summary()
   })
   let _ = QObject::connect(compact.toggled(), enabled => {
-    try! ({
-      spin_box.setFrame(if enabled { false } else { true })
-      refresh_summary()
-    })
+    spin_box.setFrame(if enabled { false } else { true })
+    refresh_summary()
   })
 
   refresh_summary()

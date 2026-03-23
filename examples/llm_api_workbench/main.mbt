@@ -662,24 +662,24 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
   }
 
   let refresh_mode = () => {
-    let mode_index = try! api_mode.currentIndex()
+    let mode_index = api_mode.currentIndex()
     if is_openrouter_mode(mode_index) {
-      try! reasoning_summary.setText("Enable reasoning tokens")
+      reasoning_summary.setText("Enable reasoning tokens")
     } else {
-      try! reasoning_summary.setText("Request reasoning summary when supported")
+      reasoning_summary.setText("Request reasoning summary when supported")
     }
 
-    let current = normalize_base_url(try! base_url.text())
+    let current = normalize_base_url(base_url.text())
     let openai_default = default_base_url(0)
     let openrouter_default = default_base_url(1)
     if current == "" ||
       current == openai_default ||
       current == openrouter_default {
       let next_default = default_base_url(mode_index)
-      try! base_url.setText(next_default)
-      try! base_url.setPlaceholderText(next_default)
+      base_url.setText(next_default)
+      base_url.setPlaceholderText(next_default)
     } else {
-      try! base_url.setPlaceholderText(default_base_url(mode_index))
+      base_url.setPlaceholderText(default_base_url(mode_index))
     }
   }
 
@@ -740,36 +740,36 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
   root.setLayout(outer)
 
   let _ = QObject::connect(clear.clicked(), _ => {
-    try! answer.clear()
-    try! thinking.clear()
-    try! raw.clear()
-    try! tabs.setCurrentIndex(0)
-    try! status.setText("Output cleared.")
+    answer.clear()
+    thinking.clear()
+    raw.clear()
+    tabs.setCurrentIndex(0)
+    status.setText("Output cleared.")
   })
 
   let _ = QObject::connect(send.clicked(), _ => {
-    let mode_index = try! api_mode.currentIndex()
-    let key_value = (try! api_key.text()).trim().to_string()
-    let model_value = (try! model.text()).trim().to_string()
-    let base_url_value = normalize_base_url(try! base_url.text())
-    let prompt_value = (try! prompt.toPlainText()).trim().to_string()
-    let stream_value = try! stream.isChecked()
-    let reasoning_summary_value = try! reasoning_summary.isChecked()
+    let mode_index = api_mode.currentIndex()
+    let key_value = api_key.text().trim().to_string()
+    let model_value = model.text().trim().to_string()
+    let base_url_value = normalize_base_url(base_url.text())
+    let prompt_value = prompt.toPlainText().trim().to_string()
+    let stream_value = stream.isChecked()
+    let reasoning_summary_value = reasoning_summary.isChecked()
 
     if key_value == "" {
-      try! status.setText("API Key is required.")
+      status.setText("API Key is required.")
       return
     }
     if model_value == "" {
-      try! status.setText("Model is required.")
+      status.setText("Model is required.")
       return
     }
     if base_url_value == "" {
-      try! status.setText("Base URL is required.")
+      status.setText("Base URL is required.")
       return
     }
     if prompt_value == "" {
-      try! status.setText("Prompt cannot be empty.")
+      status.setText("Prompt cannot be empty.")
       return
     }
 
@@ -798,9 +798,7 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
     let mut stream_buffer = ""
 
     let refresh_outputs = () => {
-      try! sync_outputs(
-        answer, thinking, raw, answer_text, reasoning_text, raw_text,
-      )
+      sync_outputs(answer, thinking, raw, answer_text, reasoning_text, raw_text)
     }
 
     let apply_extracted = (extracted : ExtractedContent) => {
@@ -810,15 +808,15 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
     }
 
     refresh_outputs()
-    try! tabs.setCurrentIndex(0)
-    try! send.setEnabled(false)
-    try! status.setText("Sending request to \{url} ...")
+    tabs.setCurrentIndex(0)
+    send.setEnabled(false)
+    status.setText("Sending request to \{url} ...")
 
-    let reply = try! manager.post(request, body)
+    let reply = manager.post(request, body)
 
-    let ready_read = try! reply.readyRead()
+    let ready_read = reply.readyRead()
     let _ = ready_read.connect(_ => {
-      let chunk = @utf8.decode_lossy(try! reply.readAll())
+      let chunk = @utf8.decode_lossy(reply.readAll())
       if chunk == "" {
         return
       }
@@ -833,32 +831,32 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
         }
         stream_buffer = remainder
         apply_extracted(extracted)
-        try! status.setText("Streaming response...")
+        status.setText("Streaming response...")
       } else {
-        try! sync_outputs(
+        sync_outputs(
           answer, thinking, raw, answer_text, reasoning_text, raw_text,
         )
       }
     })
 
-    let error_occurred = try! reply.errorOccurred()
+    let error_occurred = reply.errorOccurred()
     let _ = error_occurred.connect(err => {
-      let message = try! reply.errorString()
+      let message = reply.errorString()
       if message != "" {
         raw_text = append_block_value(raw_text, "[network error] \{message}")
-        try! sync_outputs(
+        sync_outputs(
           answer, thinking, raw, answer_text, reasoning_text, raw_text,
         )
       }
-      try! status.setText("Network error: \{err}")
+      status.setText("Network error: \{err}")
     })
 
-    let finished = try! reply.finished()
+    let finished = reply.finished()
     let _ = finished.connect(_ => {
-      let status_code = try! reply.httpStatusCode()
-      let reason_phrase = try! reply.httpReasonPhrase()
-      let error = try! reply.error()
-      let remaining = @utf8.decode_lossy(try! reply.readAll())
+      let status_code = reply.httpStatusCode()
+      let reason_phrase = reply.httpReasonPhrase()
+      let error = reply.error()
+      let remaining = @utf8.decode_lossy(reply.readAll())
 
       if remaining != "" {
         raw_text = append_text_value(raw_text, remaining)
@@ -901,22 +899,20 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
         reasoning_text = parsed.reasoning
       }
 
-      try! sync_outputs(
-        answer, thinking, raw, answer_text, reasoning_text, raw_text,
-      )
-      try! send.setEnabled(true)
-      try! reply.deleteLater()
+      sync_outputs(answer, thinking, raw, answer_text, reasoning_text, raw_text)
+      send.setEnabled(true)
+      reply.deleteLater()
 
       if error == NoError {
         if reason_phrase == "" {
-          try! status.setText("Done. HTTP \{status_code}")
+          status.setText("Done. HTTP \{status_code}")
         } else {
-          try! status.setText("Done. HTTP \{status_code} \{reason_phrase}")
+          status.setText("Done. HTTP \{status_code} \{reason_phrase}")
         }
       } else if reason_phrase == "" {
-        try! status.setText("Failed. HTTP \{status_code}, error: \{error}")
+        status.setText("Failed. HTTP \{status_code}, error: \{error}")
       } else {
-        try! status.setText(
+        status.setText(
           "Failed. HTTP \{status_code} \{reason_phrase}, error: \{error}",
         )
       }

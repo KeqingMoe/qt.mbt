@@ -74,13 +74,13 @@ fn EditorTabs::new() -> Self raise NullptrError {
     refresh_status()
   }
 
-  let _ = QObject::connect(draft.textChanged(), _ => try! refresh_status())
-  let _ = QObject::connect(changelog.textChanged(), _ => try! refresh_status())
-  let _ = QObject::connect(notes.textChanged(), _ => try! refresh_status())
+  let _ = QObject::connect(draft.textChanged(), _ => refresh_status())
+  let _ = QObject::connect(changelog.textChanged(), _ => refresh_status())
+  let _ = QObject::connect(notes.textChanged(), _ => refresh_status())
   let _ = QObject::connect(read_only.toggled(), value => {
-    try! set_all_read_only(value)
+    set_all_read_only(value)
   })
-  let _ = QObject::connect(tabs.currentChanged(), _ => try! refresh_status())
+  let _ = QObject::connect(tabs.currentChanged(), _ => refresh_status())
 
   refresh_status()
 

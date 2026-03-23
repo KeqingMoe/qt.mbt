@@ -172,36 +172,28 @@ fn StyleSheetShowcase::new() -> Self raise NullptrError {
   }
 
   let _ = QObject::connect(premium.toggled(), enabled => {
-    try! ({
-      launch.setText(
-        if enabled {
-          "Launch premium workspace"
-        } else {
-          "Launch workspace"
-        },
-      )
-      refresh_summary()
-    })
+    launch.setText(
+      if enabled {
+        "Launch premium workspace"
+      } else {
+        "Launch workspace"
+      },
+    )
+    refresh_summary()
   })
   let _ = QObject::connect(notifications.toggled(), enabled => {
-    try! ({
-      quiet.setEnabled(enabled)
-      refresh_summary()
-    })
+    quiet.setEnabled(enabled)
+    refresh_summary()
   })
-  let _ = QObject::connect(note.textChanged(), _ => try! refresh_summary())
+  let _ = QObject::connect(note.textChanged(), _ => refresh_summary())
   let _ = QObject::connect(launch.clicked(), _ => {
-    try! ({
-      note.append("Launch button clicked.")
-      refresh_summary()
-    })
+    note.append("Launch button clicked.")
+    refresh_summary()
   })
   let _ = QObject::connect(quiet.clicked(), _ => {
-    try! ({
-      notifications.setChecked(false)
-      note.append("Notifications muted.")
-      refresh_summary()
-    })
+    notifications.setChecked(false)
+    note.append("Notifications muted.")
+    refresh_summary()
   })
 
   quiet.setEnabled(notifications.isChecked())

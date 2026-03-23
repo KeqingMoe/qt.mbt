@@ -21,7 +21,7 @@ fn LengthComputer::new() -> Self raise NullptrError {
 
   let line_edit = QLineEdit::new()
   let _ = QObject::connect(line_edit.textChanged(), text => {
-    try! label.setText("Text length: \{text.char_length()}")
+    label.setText("Text length: \{text.char_length()}")
   })
 
   let layout = QBoxLayout::horizontal()

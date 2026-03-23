@@ -169,9 +169,17 @@ pub(all) enum LayoutMode {
 } derive(Eq, Show)
 
 ///|
-pub(all) enum LineWrapMode {
+pub(all) enum PlainTextEditLineWrapMode {
   NoWrap = 0
   WidgetWidth = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum TextEditLineWrapMode {
+  NoWrap = 0
+  WidgetWidth = 1
+  FixedPixelWidth = 2
+  FixedColumnWidth = 3
 } derive(Eq, Show)
 
 ///|

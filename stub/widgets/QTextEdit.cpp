@@ -31,6 +31,11 @@ QMETHOD(QTextEdit, document)->qt<QTextDocument>
     return qt<QTextDocument>::from_raw(self->document());
 }
 
+QMETHOD(QTextEdit, lineWrapMode)->Enum<QTextEdit::LineWrapMode>
+{
+    return {self->lineWrapMode()};
+}
+
 QMETHOD(QTextEdit, isReadOnly)->Bool
 {
     return Bool::make(self->isReadOnly());
@@ -59,6 +64,11 @@ QMETHOD(QTextEdit, setAcceptRichText, Bool value)->void
 QMETHOD(QTextEdit, setAlignment, UInt64 alignment)->void
 {
     self->setAlignment(Qt::Alignment(std::in_place, alignment));
+}
+
+QMETHOD(QTextEdit, setLineWrapMode, Enum<QTextEdit::LineWrapMode> mode)->void
+{
+    self->setLineWrapMode(mode);
 }
 
 QMETHOD(QTextEdit, setMarkdown, String text)->void

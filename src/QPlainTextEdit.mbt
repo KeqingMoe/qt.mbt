@@ -23,7 +23,7 @@ extern "C" fn _QPlainTextEdit_isReadOnly(this : QPlainTextEdit) -> Bool = "QPlai
 #borrow(this)
 extern "C" fn _QPlainTextEdit_lineWrapMode(
   this : QPlainTextEdit,
-) -> LineWrapMode = "QPlainTextEdit_lineWrapMode"
+) -> PlainTextEditLineWrapMode = "QPlainTextEdit_lineWrapMode"
 
 ///|
 #borrow(this)
@@ -37,7 +37,7 @@ extern "C" fn _QPlainTextEdit_redo(this : QPlainTextEdit) = "QPlainTextEdit_redo
 #borrow(this)
 extern "C" fn _QPlainTextEdit_setLineWrapMode(
   this : QPlainTextEdit,
-  mode : LineWrapMode,
+  mode : PlainTextEditLineWrapMode,
 ) = "QPlainTextEdit_setLineWrapMode"
 
 ///|
@@ -111,7 +111,7 @@ pub fn QPlainTextEdit::isReadOnly(self : Self) -> Bool raise NullptrError {
 ///|
 pub fn QPlainTextEdit::lineWrapMode(
   self : Self,
-) -> LineWrapMode raise NullptrError {
+) -> PlainTextEditLineWrapMode raise NullptrError {
   ensure_not_nullptr(self)
   _QPlainTextEdit_lineWrapMode(self)
 }
@@ -139,7 +139,7 @@ pub fn QPlainTextEdit::selectAll(self : Self) -> Unit raise NullptrError {
 ///|
 pub fn QPlainTextEdit::setLineWrapMode(
   self : Self,
-  mode : LineWrapMode,
+  mode : PlainTextEditLineWrapMode,
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QPlainTextEdit_setLineWrapMode(self, mode)

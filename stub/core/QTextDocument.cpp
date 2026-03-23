@@ -1,9 +1,19 @@
 #include <QTextDocument>
 #include <qt.hpp>
 
+QMETHOD(QTextDocument, documentMargin)->Double
+{
+    return self->documentMargin();
+}
+
 QMETHOD(QTextDocument, idealWidth)->Double
 {
     return self->idealWidth();
+}
+
+QMETHOD(QTextDocument, setDocumentMargin, Double margin)->void
+{
+    self->setDocumentMargin(margin);
 }
 
 QMETHOD(QTextDocument, setMarkdown, String text)->void

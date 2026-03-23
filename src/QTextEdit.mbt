@@ -26,6 +26,10 @@ extern "C" fn _QTextEdit_document(this : QTextEdit) -> QTextDocument = "QTextEdi
 
 ///|
 #borrow(this)
+extern "C" fn _QTextEdit_lineWrapMode(this : QTextEdit) -> TextEditLineWrapMode = "QTextEdit_lineWrapMode"
+
+///|
+#borrow(this)
 extern "C" fn _QTextEdit_isReadOnly(this : QTextEdit) -> Bool = "QTextEdit_isReadOnly"
 
 ///|
@@ -43,6 +47,13 @@ extern "C" fn _QTextEdit_setAcceptRichText(this : QTextEdit, value : Bool) = "QT
 ///|
 #borrow(this, alignment)
 extern "C" fn _QTextEdit_setAlignment(this : QTextEdit, alignment : QFlag) = "QTextEdit_setAlignment"
+
+///|
+#borrow(this, mode)
+extern "C" fn _QTextEdit_setLineWrapMode(
+  this : QTextEdit,
+  mode : TextEditLineWrapMode,
+) = "QTextEdit_setLineWrapMode"
 
 ///|
 #borrow(this, text)
@@ -122,6 +133,14 @@ pub fn QTextEdit::document(self : Self) -> QTextDocument raise NullptrError {
 }
 
 ///|
+pub fn QTextEdit::lineWrapMode(
+  self : Self,
+) -> TextEditLineWrapMode raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_lineWrapMode(self)
+}
+
+///|
 pub fn QTextEdit::isReadOnly(self : Self) -> Bool raise NullptrError {
   ensure_not_nullptr(self)
   _QTextEdit_isReadOnly(self)
@@ -161,6 +180,15 @@ pub fn QTextEdit::setAlignment(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QTextEdit_setAlignment(self, alignment.to_flag())
+}
+
+///|
+pub fn QTextEdit::setLineWrapMode(
+  self : Self,
+  mode : TextEditLineWrapMode,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_setLineWrapMode(self, mode)
 }
 
 ///|

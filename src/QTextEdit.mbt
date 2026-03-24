@@ -26,6 +26,10 @@ extern "C" fn _QTextEdit_document(this : QTextEdit) -> QTextDocument = "QTextEdi
 
 ///|
 #borrow(this)
+extern "C" fn _QTextEdit_documentTitle(this : QTextEdit) -> String = "QTextEdit_documentTitle"
+
+///|
+#borrow(this)
 extern "C" fn _QTextEdit_lineWrapMode(this : QTextEdit) -> TextEditLineWrapMode = "QTextEdit_lineWrapMode"
 
 ///|
@@ -47,6 +51,17 @@ extern "C" fn _QTextEdit_setAcceptRichText(this : QTextEdit, value : Bool) = "QT
 ///|
 #borrow(this, alignment)
 extern "C" fn _QTextEdit_setAlignment(this : QTextEdit, alignment : QFlag) = "QTextEdit_setAlignment"
+
+///|
+#borrow(this, document)
+extern "C" fn _QTextEdit_setDocument(
+  this : QTextEdit,
+  document : QTextDocument,
+) = "QTextEdit_setDocument"
+
+///|
+#borrow(this, title)
+extern "C" fn _QTextEdit_setDocumentTitle(this : QTextEdit, title : String) = "QTextEdit_setDocumentTitle"
 
 ///|
 #borrow(this, mode)
@@ -133,6 +148,12 @@ pub fn QTextEdit::document(self : Self) -> QTextDocument raise NullptrError {
 }
 
 ///|
+pub fn QTextEdit::documentTitle(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_documentTitle(self)
+}
+
+///|
 pub fn QTextEdit::lineWrapMode(
   self : Self,
 ) -> TextEditLineWrapMode raise NullptrError {
@@ -180,6 +201,24 @@ pub fn QTextEdit::setAlignment(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QTextEdit_setAlignment(self, alignment.to_flag())
+}
+
+///|
+pub fn QTextEdit::setDocument(
+  self : Self,
+  document : QTextDocument,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_setDocument(self, document)
+}
+
+///|
+pub fn QTextEdit::setDocumentTitle(
+  self : Self,
+  title : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextEdit_setDocumentTitle(self, title)
 }
 
 ///|

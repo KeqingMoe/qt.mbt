@@ -17,6 +17,14 @@ extern "C" fn _QPlainTextEdit_clear(this : QPlainTextEdit) = "QPlainTextEdit_cle
 
 ///|
 #borrow(this)
+extern "C" fn _QPlainTextEdit_document(this : QPlainTextEdit) -> QTextDocument = "QPlainTextEdit_document"
+
+///|
+#borrow(this)
+extern "C" fn _QPlainTextEdit_documentTitle(this : QPlainTextEdit) -> String = "QPlainTextEdit_documentTitle"
+
+///|
+#borrow(this)
 extern "C" fn _QPlainTextEdit_isReadOnly(this : QPlainTextEdit) -> Bool = "QPlainTextEdit_isReadOnly"
 
 ///|
@@ -63,6 +71,20 @@ extern "C" fn _QPlainTextEdit_setReadOnly(this : QPlainTextEdit, value : Bool) =
 extern "C" fn _QPlainTextEdit_selectAll(this : QPlainTextEdit) = "QPlainTextEdit_selectAll"
 
 ///|
+#borrow(this, document)
+extern "C" fn _QPlainTextEdit_setDocument(
+  this : QPlainTextEdit,
+  document : QTextDocument,
+) = "QPlainTextEdit_setDocument"
+
+///|
+#borrow(this, title)
+extern "C" fn _QPlainTextEdit_setDocumentTitle(
+  this : QPlainTextEdit,
+  title : String,
+) = "QPlainTextEdit_setDocumentTitle"
+
+///|
 #borrow(this)
 extern "C" fn _QPlainTextEdit_textChanged(
   this : QPlainTextEdit,
@@ -103,6 +125,20 @@ pub fn QPlainTextEdit::clear(self : Self) -> Unit raise NullptrError {
 }
 
 ///|
+pub fn QPlainTextEdit::document(
+  self : Self,
+) -> QTextDocument raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPlainTextEdit_document(self)
+}
+
+///|
+pub fn QPlainTextEdit::documentTitle(self : Self) -> String raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPlainTextEdit_documentTitle(self)
+}
+
+///|
 pub fn QPlainTextEdit::isReadOnly(self : Self) -> Bool raise NullptrError {
   ensure_not_nullptr(self)
   _QPlainTextEdit_isReadOnly(self)
@@ -134,6 +170,24 @@ pub fn QPlainTextEdit::redo(self : Self) -> Unit raise NullptrError {
 pub fn QPlainTextEdit::selectAll(self : Self) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QPlainTextEdit_selectAll(self)
+}
+
+///|
+pub fn QPlainTextEdit::setDocument(
+  self : Self,
+  document : QTextDocument,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPlainTextEdit_setDocument(self, document)
+}
+
+///|
+pub fn QPlainTextEdit::setDocumentTitle(
+  self : Self,
+  title : String,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QPlainTextEdit_setDocumentTitle(self, title)
 }
 
 ///|

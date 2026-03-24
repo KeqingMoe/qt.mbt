@@ -1,4 +1,5 @@
 #include <QTextEdit>
+#include <QTextDocument>
 #include <qt.hpp>
 
 QSTATIC(QTextEdit, new)->qt<QTextEdit>
@@ -29,6 +30,11 @@ QMETHOD(QTextEdit, clear)->void
 QMETHOD(QTextEdit, document)->qt<QTextDocument>
 {
     return qt<QTextDocument>::from_raw(self->document());
+}
+
+QMETHOD(QTextEdit, documentTitle)->String
+{
+    return str::qt_to_mbt(self->documentTitle());
 }
 
 QMETHOD(QTextEdit, lineWrapMode)->Enum<QTextEdit::LineWrapMode>
@@ -64,6 +70,16 @@ QMETHOD(QTextEdit, setAcceptRichText, Bool value)->void
 QMETHOD(QTextEdit, setAlignment, UInt64 alignment)->void
 {
     self->setAlignment(Qt::Alignment(std::in_place, alignment));
+}
+
+QMETHOD(QTextEdit, setDocument, qt<QTextDocument> document)->void
+{
+    self->setDocument(document.get());
+}
+
+QMETHOD(QTextEdit, setDocumentTitle, String title)->void
+{
+    self->setDocumentTitle(str::mbt_to_qt(title));
 }
 
 QMETHOD(QTextEdit, setLineWrapMode, Enum<QTextEdit::LineWrapMode> mode)->void

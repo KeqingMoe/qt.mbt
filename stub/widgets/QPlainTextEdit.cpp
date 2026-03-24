@@ -1,4 +1,5 @@
 #include <QPlainTextEdit>
+#include <QTextDocument>
 #include <qt.hpp>
 
 QSTATIC(QPlainTextEdit, new)->qt<QPlainTextEdit>
@@ -14,6 +15,16 @@ QMETHOD(QPlainTextEdit, appendPlainText, String text)->void
 QMETHOD(QPlainTextEdit, clear)->void
 {
     self->clear();
+}
+
+QMETHOD(QPlainTextEdit, document)->qt<QTextDocument>
+{
+    return qt<QTextDocument>::from_raw(self->document());
+}
+
+QMETHOD(QPlainTextEdit, documentTitle)->String
+{
+    return str::qt_to_mbt(self->documentTitle());
 }
 
 QMETHOD(QPlainTextEdit, isReadOnly)->Bool
@@ -39,6 +50,16 @@ QMETHOD(QPlainTextEdit, redo)->void
 QMETHOD(QPlainTextEdit, selectAll)->void
 {
     self->selectAll();
+}
+
+QMETHOD(QPlainTextEdit, setDocument, qt<QTextDocument> document)->void
+{
+    self->setDocument(document.get());
+}
+
+QMETHOD(QPlainTextEdit, setDocumentTitle, String title)->void
+{
+    self->setDocumentTitle(str::mbt_to_qt(title));
 }
 
 QMETHOD(QPlainTextEdit, setLineWrapMode, Enum<QPlainTextEdit::LineWrapMode> mode)->void

@@ -2,6 +2,8 @@
 using @qt {
   type QMargins,
   type QMarginsF,
+  type QRect,
+  type QRectF,
   type QSize,
   type QSizeF,
   type QSizePolicy,
@@ -121,6 +123,163 @@ test "QMarginsF identity roundtrip preserves values" {
   assert_eq(roundtrip.right(), 7.25)
   assert_eq(roundtrip.bottom(), 9.75)
   assert_eq(roundtrip.isNull(), false)
+}
+
+///|
+test "QRect geometry and transforms" {
+  let rect = QRect::new(10, 20, 30, 40)
+  let adjusted = rect.adjusted(1, 2, 3, 4)
+  let translated = rect.translated(-3, 5)
+  let contained = QRect::new(25, 35, 10, 10)
+  let united = rect.united(QRect::new(50, 5, 10, 10))
+
+  assert_eq(rect.x(), 10)
+  assert_eq(rect.y(), 20)
+  assert_eq(rect.width(), 30)
+  assert_eq(rect.height(), 40)
+  assert_eq(rect.left(), 10)
+  assert_eq(rect.top(), 20)
+  assert_eq(rect.right(), 39)
+  assert_eq(rect.bottom(), 59)
+  assert_eq(rect.contains(10, 20), true)
+  assert_eq(rect.contains(39, 59), true)
+  assert_eq(rect.contains(40, 60), false)
+  assert_eq(rect.intersects(contained), true)
+  assert_eq(rect.intersected(contained).width(), 10)
+  assert_eq(rect.intersected(contained).height(), 10)
+  assert_eq(rect.isEmpty(), false)
+  assert_eq(rect.isNull(), false)
+  assert_eq(rect.isValid(), true)
+  assert_eq(adjusted.left(), 11)
+  assert_eq(adjusted.top(), 22)
+  assert_eq(adjusted.right(), 42)
+  assert_eq(adjusted.bottom(), 63)
+  assert_eq(translated.x(), 7)
+  assert_eq(translated.y(), 25)
+  assert_eq(united.left(), 10)
+  assert_eq(united.top(), 5)
+  assert_eq(united.right(), 59)
+  assert_eq(united.bottom(), 59)
+}
+
+///|
+test "QRect setters and predicates" {
+  let zero = QRect::new(0, 0, 0, 0)
+  let rect = QRect::new(1, 2, 3, 4)
+
+  assert_eq(zero.isNull(), true)
+  assert_eq(zero.isEmpty(), true)
+  assert_eq(zero.isValid(), false)
+
+  rect.setX(10)
+  rect.setY(20)
+  rect.setWidth(5)
+  rect.setHeight(6)
+  rect.setLeft(8)
+  rect.setTop(19)
+  rect.setRight(20)
+  rect.setBottom(30)
+
+  assert_eq(rect.x(), 8)
+  assert_eq(rect.y(), 19)
+  assert_eq(rect.width(), 13)
+  assert_eq(rect.height(), 12)
+  assert_eq(rect.left(), 8)
+  assert_eq(rect.top(), 19)
+  assert_eq(rect.right(), 20)
+  assert_eq(rect.bottom(), 30)
+
+  rect.translate(-3, 4)
+  assert_eq(rect.x(), 5)
+  assert_eq(rect.y(), 23)
+  assert_eq(rect.right(), 17)
+  assert_eq(rect.bottom(), 34)
+
+  rect.setRect(5, 6, -2, -3)
+  assert_eq(rect.isValid(), false)
+
+  let normalized = rect.normalized()
+  assert_eq(normalized.isValid(), true)
+  assert_eq(normalized.left() <= normalized.right(), true)
+  assert_eq(normalized.top() <= normalized.bottom(), true)
+}
+
+///|
+test "QRectF geometry and transforms" {
+  let rect = QRectF::new(10.5, 20.25, 30.0, 40.5)
+  let adjusted = rect.adjusted(1.0, 2.0, 3.0, 4.0)
+  let translated = rect.translated(-3.5, 5.25)
+  let contained = QRectF::new(25.5, 35.25, 10.0, 10.0)
+  let united = rect.united(QRectF::new(50.0, 5.0, 10.0, 10.0))
+
+  assert_eq(rect.x(), 10.5)
+  assert_eq(rect.y(), 20.25)
+  assert_eq(rect.width(), 30.0)
+  assert_eq(rect.height(), 40.5)
+  assert_eq(rect.left(), 10.5)
+  assert_eq(rect.top(), 20.25)
+  assert_eq(rect.right(), 40.5)
+  assert_eq(rect.bottom(), 60.75)
+  assert_eq(rect.contains(25.5, 35.25), true)
+  assert_eq(rect.contains(100.0, 100.0), false)
+  assert_eq(rect.intersects(contained), true)
+  assert_eq(rect.intersected(contained).width(), 10.0)
+  assert_eq(rect.intersected(contained).height(), 10.0)
+  assert_eq(rect.isEmpty(), false)
+  assert_eq(rect.isNull(), false)
+  assert_eq(rect.isValid(), true)
+  assert_eq(adjusted.left(), 11.5)
+  assert_eq(adjusted.top(), 22.25)
+  assert_eq(adjusted.right(), 43.5)
+  assert_eq(adjusted.bottom(), 64.75)
+  assert_eq(translated.x(), 7.0)
+  assert_eq(translated.y(), 25.5)
+  assert_eq(united.left(), 10.5)
+  assert_eq(united.top(), 5.0)
+  assert_eq(united.right(), 60.0)
+  assert_eq(united.bottom(), 60.75)
+}
+
+///|
+test "QRectF setters and predicates" {
+  let zero = QRectF::new(0.0, 0.0, 0.0, 0.0)
+  let rect = QRectF::new(1.0, 2.0, 3.0, 4.0)
+
+  assert_eq(zero.isNull(), true)
+  assert_eq(zero.isEmpty(), true)
+  assert_eq(zero.isValid(), false)
+
+  rect.setX(10.0)
+  rect.setY(20.0)
+  rect.setWidth(5.5)
+  rect.setHeight(6.5)
+  rect.setLeft(8.0)
+  rect.setTop(19.0)
+  rect.setRight(20.5)
+  rect.setBottom(30.5)
+
+  assert_eq(rect.x(), 8.0)
+  assert_eq(rect.y(), 19.0)
+  assert_eq(rect.width(), 12.5)
+  assert_eq(rect.height(), 11.5)
+  assert_eq(rect.left(), 8.0)
+  assert_eq(rect.top(), 19.0)
+  assert_eq(rect.right(), 20.5)
+  assert_eq(rect.bottom(), 30.5)
+
+  rect.translate(-3.0, 4.5)
+  assert_eq(rect.x(), 5.0)
+  assert_eq(rect.y(), 23.5)
+  assert_eq(rect.right(), 17.5)
+  assert_eq(rect.bottom(), 35.0)
+
+  rect.setRect(5.0, 6.0, -2.0, -3.0)
+  assert_eq(rect.isValid(), false)
+
+  let normalized = rect.normalized()
+  assert_eq(normalized.isValid(), true)
+  assert_eq(normalized.left() <= normalized.right(), true)
+  assert_eq(normalized.top() <= normalized.bottom(), true)
 }
 
 ///|

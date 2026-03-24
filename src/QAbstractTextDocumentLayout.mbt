@@ -2,6 +2,13 @@
 pub type QAbstractTextDocumentLayout
 
 ///|
+#borrow(this, block)
+extern "C" fn _QAbstractTextDocumentLayout_blockBoundingRect(
+  this : QAbstractTextDocumentLayout,
+  block : QTextBlock,
+) -> QRectF = "QAbstractTextDocumentLayout_blockBoundingRect"
+
+///|
 #borrow(this)
 extern "C" fn _QAbstractTextDocumentLayout_document(
   this : QAbstractTextDocumentLayout,
@@ -36,6 +43,15 @@ extern "C" fn _QAbstractTextDocumentLayout_pageCountChanged(
 extern "C" fn _QAbstractTextDocumentLayout_as_QObject(
   this : QAbstractTextDocumentLayout,
 ) -> QObject = "QAbstractTextDocumentLayout_as_QObject"
+
+///|
+pub fn QAbstractTextDocumentLayout::blockBoundingRect(
+  self : Self,
+  block : QTextBlock,
+) -> QRectF raise NullptrError {
+  ensure_not_nullptr(self)
+  _QAbstractTextDocumentLayout_blockBoundingRect(self, block)
+}
 
 ///|
 pub fn QAbstractTextDocumentLayout::document(

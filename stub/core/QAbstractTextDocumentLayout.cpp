@@ -1,7 +1,14 @@
 #include <QAbstractTextDocumentLayout>
+#include <QRect>
 #include <QSizeF>
+#include <QTextBlock>
 #include <QTextDocument>
 #include <qt.hpp>
+
+QMETHOD(QAbstractTextDocumentLayout, blockBoundingRect, box<QTextBlock> block)->box<QRectF>
+{
+    return box<QRectF>::make(self->blockBoundingRect(*block));
+}
 
 QMETHOD(QAbstractTextDocumentLayout, document)->qt<QTextDocument>
 {

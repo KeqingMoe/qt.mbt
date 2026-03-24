@@ -16,6 +16,11 @@ QMETHOD(QFrame, frameShape)->Enum<QFrame::Shape>
     return {self->frameShape()};
 }
 
+QMETHOD(QFrame, frameWidth)->Int
+{
+    return self->frameWidth();
+}
+
 QMETHOD(QFrame, setFrameShadow, Enum<QFrame::Shadow> shadow)->void
 {
     self->setFrameShadow(shadow);

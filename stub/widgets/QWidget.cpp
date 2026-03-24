@@ -1,6 +1,7 @@
 #include <QLayout>
 #include <QIcon>
 #include <QMargins>
+#include <QSize>
 #include <QSizePolicy>
 #include <QWindow>
 #include <QWidget>
@@ -29,6 +30,11 @@ QMETHOD(QWidget, contentsMargins)->box<QMargins>
 QMETHOD(QWidget, focusPolicy)->Enum<Qt::FocusPolicy>
 {
     return {self->focusPolicy()};
+}
+
+QMETHOD(QWidget, height)->Int
+{
+    return self->height();
 }
 
 QMETHOD(QWidget, hide)->void
@@ -61,9 +67,39 @@ QMETHOD(QWidget, isVisible)->Bool
     return Bool::make(self->isVisible());
 }
 
+QMETHOD(QWidget, maximumHeight)->Int
+{
+    return self->maximumHeight();
+}
+
+QMETHOD(QWidget, maximumSize)->box<QSize>
+{
+    return box<QSize>::make(self->maximumSize());
+}
+
+QMETHOD(QWidget, maximumWidth)->Int
+{
+    return self->maximumWidth();
+}
+
+QMETHOD(QWidget, minimumHeight)->Int
+{
+    return self->minimumHeight();
+}
+
+QMETHOD(QWidget, minimumSize)->box<QSize>
+{
+    return box<QSize>::make(self->minimumSize());
+}
+
 QMETHOD(QWidget, minimumSizeHint)->box<QSize>
 {
     return box<QSize>::make(self->minimumSizeHint());
+}
+
+QMETHOD(QWidget, minimumWidth)->Int
+{
+    return self->minimumWidth();
 }
 
 QMETHOD(QWidget, testAttribute, Int attribute)->Bool
@@ -106,6 +142,11 @@ QMETHOD(QWidget, resize, Int width, Int height)->void
     self->resize(width, height);
 }
 
+QMETHOD(QWidget, size)->box<QSize>
+{
+    return box<QSize>::make(self->size());
+}
+
 QMETHOD(QWidget, setEnabled, Bool value)->void
 {
     self->setEnabled(value);
@@ -126,6 +167,16 @@ QMETHOD(QWidget, setFixedSize, Int width, Int height)->void
     self->setFixedSize(width, height);
 }
 
+QMETHOD(QWidget, setFixedHeight, Int height)->void
+{
+    self->setFixedHeight(height);
+}
+
+QMETHOD(QWidget, setFixedWidth, Int width)->void
+{
+    self->setFixedWidth(width);
+}
+
 QMETHOD(QWidget, setInputMethodHints, UInt64 hints)->void
 {
     self->setInputMethodHints(Qt::InputMethodHints(std::in_place, hints));
@@ -141,9 +192,29 @@ QMETHOD(QWidget, setMaximumSize, Int width, Int height)->void
     self->setMaximumSize(width, height);
 }
 
+QMETHOD(QWidget, setMaximumHeight, Int height)->void
+{
+    self->setMaximumHeight(height);
+}
+
+QMETHOD(QWidget, setMaximumWidth, Int width)->void
+{
+    self->setMaximumWidth(width);
+}
+
 QMETHOD(QWidget, setMinimumSize, Int width, Int height)->void
 {
     self->setMinimumSize(width, height);
+}
+
+QMETHOD(QWidget, setMinimumHeight, Int height)->void
+{
+    self->setMinimumHeight(height);
+}
+
+QMETHOD(QWidget, setMinimumWidth, Int width)->void
+{
+    self->setMinimumWidth(width);
 }
 
 QMETHOD(QWidget, setSizePolicy, box<QSizePolicy> policy)->void
@@ -239,6 +310,11 @@ QMETHOD(QWidget, updateGeometry)->void
 QMETHOD(QWidget, windowTitle)->String
 {
     return str::qt_to_mbt(self->windowTitle());
+}
+
+QMETHOD(QWidget, width)->Int
+{
+    return self->width();
 }
 
 COVARIANT(QWidget, QObject)

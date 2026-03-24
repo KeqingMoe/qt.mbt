@@ -22,6 +22,10 @@ extern "C" fn _QWidget_focusPolicy(this : QWidget) -> FocusPolicy = "QWidget_foc
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_height(this : QWidget) -> Int = "QWidget_height"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_hide(this : QWidget) = "QWidget_hide"
 
 ///|
@@ -46,7 +50,31 @@ extern "C" fn _QWidget_isVisible(this : QWidget) -> Bool = "QWidget_isVisible"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_maximumHeight(this : QWidget) -> Int = "QWidget_maximumHeight"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_maximumSize(this : QWidget) -> QSize = "QWidget_maximumSize"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_maximumWidth(this : QWidget) -> Int = "QWidget_maximumWidth"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_minimumHeight(this : QWidget) -> Int = "QWidget_minimumHeight"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_minimumSize(this : QWidget) -> QSize = "QWidget_minimumSize"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_minimumSizeHint(this : QWidget) -> QSize = "QWidget_minimumSizeHint"
+
+///|
+#borrow(this)
+extern "C" fn _QWidget_minimumWidth(this : QWidget) -> Int = "QWidget_minimumWidth"
 
 ///|
 #borrow(this, attribute)
@@ -103,6 +131,14 @@ extern "C" fn _QWidget_setFocusPolicy(this : QWidget, policy : FocusPolicy) = "Q
 extern "C" fn _QWidget_setFixedSize(this : QWidget, width : Int, height : Int) = "QWidget_setFixedSize"
 
 ///|
+#borrow(this, height)
+extern "C" fn _QWidget_setFixedHeight(this : QWidget, height : Int) = "QWidget_setFixedHeight"
+
+///|
+#borrow(this, width)
+extern "C" fn _QWidget_setFixedWidth(this : QWidget, width : Int) = "QWidget_setFixedWidth"
+
+///|
 #borrow(this, layout)
 extern "C" fn _QWidget_setLayout(this : QWidget, layout : QLayout) = "QWidget_setLayout"
 
@@ -119,12 +155,28 @@ extern "C" fn _QWidget_setMaximumSize(
 ) = "QWidget_setMaximumSize"
 
 ///|
+#borrow(this, height)
+extern "C" fn _QWidget_setMaximumHeight(this : QWidget, height : Int) = "QWidget_setMaximumHeight"
+
+///|
+#borrow(this, width)
+extern "C" fn _QWidget_setMaximumWidth(this : QWidget, width : Int) = "QWidget_setMaximumWidth"
+
+///|
 #borrow(this, width, height)
 extern "C" fn _QWidget_setMinimumSize(
   this : QWidget,
   width : Int,
   height : Int,
 ) = "QWidget_setMinimumSize"
+
+///|
+#borrow(this, height)
+extern "C" fn _QWidget_setMinimumHeight(this : QWidget, height : Int) = "QWidget_setMinimumHeight"
+
+///|
+#borrow(this, width)
+extern "C" fn _QWidget_setMinimumWidth(this : QWidget, width : Int) = "QWidget_setMinimumWidth"
 
 ///|
 #borrow(this, policy)
@@ -204,6 +256,10 @@ extern "C" fn _QWidget_sizeHint(this : QWidget) -> QSize = "QWidget_sizeHint"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_size(this : QWidget) -> QSize = "QWidget_size"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_styleSheet(this : QWidget) -> String = "QWidget_styleSheet"
 
 ///|
@@ -215,31 +271,49 @@ extern "C" fn _QWidget_updateGeometry(this : QWidget) = "QWidget_updateGeometry"
 extern "C" fn _QWidget_windowTitle(this : QWidget) -> String = "QWidget_windowTitle"
 
 ///|
+#borrow(this)
+extern "C" fn _QWidget_width(this : QWidget) -> Int = "QWidget_width"
+
+///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
   close(Self) -> Bool raise NullptrError = _
   contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
   contentsMargins(Self) -> QMargins raise NullptrError = _
   focusPolicy(Self) -> FocusPolicy raise NullptrError = _
+  height(Self) -> Int raise NullptrError = _
   hide(Self) -> Unit raise NullptrError = _
   inputMethodHints(Self) -> InputMethodHints raise NullptrError = _
   isEnabled(Self) -> Bool raise NullptrError = _
   isHidden(Self) -> Bool raise NullptrError = _
   isMaximized(Self) -> Bool raise NullptrError = _
   isVisible(Self) -> Bool raise NullptrError = _
+  maximumHeight(Self) -> Int raise NullptrError = _
+  maximumSize(Self) -> QSize raise NullptrError = _
+  maximumWidth(Self) -> Int raise NullptrError = _
+  minimumHeight(Self) -> Int raise NullptrError = _
+  minimumSize(Self) -> QSize raise NullptrError = _
   minimumSizeHint(Self) -> QSize raise NullptrError = _
+  minimumWidth(Self) -> Int raise NullptrError = _
   moveTo(Self, x : Int, y : Int) -> Unit raise NullptrError = _
   resize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  size(Self) -> QSize raise NullptrError = _
   sizeHint(Self) -> QSize raise NullptrError = _
   setAttribute(Self, attribute : WidgetAttribute, on? : Bool) -> Unit raise NullptrError = _
   setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
+  setFixedHeight(Self, height : Int) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setFixedWidth(Self, width : Int) -> Unit raise NullptrError = _
   setFocusPolicy(Self, policy : FocusPolicy) -> Unit raise NullptrError = _
   setInputMethodHints(Self, hints : InputMethodHints) -> Unit raise NullptrError = _
   setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
+  setMaximumHeight(Self, height : Int) -> Unit raise NullptrError = _
   setMaximumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setMaximumWidth(Self, width : Int) -> Unit raise NullptrError = _
+  setMinimumHeight(Self, height : Int) -> Unit raise NullptrError = _
   setMinimumSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
+  setMinimumWidth(Self, width : Int) -> Unit raise NullptrError = _
   setSizePolicy(Self, policy : QSizePolicy) -> Unit raise NullptrError = _
   setStyleSheet(Self, styleSheet : String) -> Unit raise NullptrError = _
   setVisible(Self, value : Bool) -> Unit raise NullptrError = _
@@ -263,6 +337,7 @@ pub(open) trait AsWidget: AsObject {
   windowIcon(Self) -> QIcon raise NullptrError = _
   windowTitle(Self) -> String raise NullptrError = _
   windowType(Self) -> WindowType raise NullptrError = _
+  width(Self) -> Int raise NullptrError = _
 }
 
 ///|
@@ -296,6 +371,12 @@ impl AsWidget with focusPolicy(self) {
 }
 
 ///|
+impl AsWidget with height(self) {
+  ensure_not_nullptr(self)
+  _QWidget_height(self.as_widget())
+}
+
+///|
 impl AsWidget with inputMethodHints(self) {
   ensure_not_nullptr(self)
   _QWidget_inputMethodHints(self.as_widget()).to_flag()
@@ -326,9 +407,45 @@ impl AsWidget with isVisible(self) {
 }
 
 ///|
+impl AsWidget with maximumHeight(self) {
+  ensure_not_nullptr(self)
+  _QWidget_maximumHeight(self.as_widget())
+}
+
+///|
+impl AsWidget with maximumSize(self) {
+  ensure_not_nullptr(self)
+  _QWidget_maximumSize(self.as_widget())
+}
+
+///|
+impl AsWidget with maximumWidth(self) {
+  ensure_not_nullptr(self)
+  _QWidget_maximumWidth(self.as_widget())
+}
+
+///|
+impl AsWidget with minimumHeight(self) {
+  ensure_not_nullptr(self)
+  _QWidget_minimumHeight(self.as_widget())
+}
+
+///|
+impl AsWidget with minimumSize(self) {
+  ensure_not_nullptr(self)
+  _QWidget_minimumSize(self.as_widget())
+}
+
+///|
 impl AsWidget with minimumSizeHint(self) {
   ensure_not_nullptr(self)
   _QWidget_minimumSizeHint(self.as_widget())
+}
+
+///|
+impl AsWidget with minimumWidth(self) {
+  ensure_not_nullptr(self)
+  _QWidget_minimumWidth(self.as_widget())
 }
 
 ///|
@@ -368,6 +485,12 @@ impl AsWidget with resize(self, width, height) {
 }
 
 ///|
+impl AsWidget with size(self) {
+  ensure_not_nullptr(self)
+  _QWidget_size(self.as_widget())
+}
+
+///|
 impl AsWidget with setContextMenuPolicy(self, policy) {
   ensure_not_nullptr(self)
   _QWidget_setContextMenuPolicy(self.as_widget(), policy)
@@ -386,9 +509,21 @@ impl AsWidget with setEnabled(self, value) {
 }
 
 ///|
+impl AsWidget with setFixedHeight(self, height) {
+  ensure_not_nullptr(self)
+  _QWidget_setFixedHeight(self.as_widget(), height)
+}
+
+///|
 impl AsWidget with setFixedSize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_setFixedSize(self.as_widget(), width, height)
+}
+
+///|
+impl AsWidget with setFixedWidth(self, width) {
+  ensure_not_nullptr(self)
+  _QWidget_setFixedWidth(self.as_widget(), width)
 }
 
 ///|
@@ -410,15 +545,39 @@ impl AsWidget with setLayout(self, layout) {
 }
 
 ///|
+impl AsWidget with setMaximumHeight(self, height) {
+  ensure_not_nullptr(self)
+  _QWidget_setMaximumHeight(self.as_widget(), height)
+}
+
+///|
 impl AsWidget with setMaximumSize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_setMaximumSize(self.as_widget(), width, height)
 }
 
 ///|
+impl AsWidget with setMaximumWidth(self, width) {
+  ensure_not_nullptr(self)
+  _QWidget_setMaximumWidth(self.as_widget(), width)
+}
+
+///|
+impl AsWidget with setMinimumHeight(self, height) {
+  ensure_not_nullptr(self)
+  _QWidget_setMinimumHeight(self.as_widget(), height)
+}
+
+///|
 impl AsWidget with setMinimumSize(self, width, height) {
   ensure_not_nullptr(self)
   _QWidget_setMinimumSize(self.as_widget(), width, height)
+}
+
+///|
+impl AsWidget with setMinimumWidth(self, width) {
+  ensure_not_nullptr(self)
+  _QWidget_setMinimumWidth(self.as_widget(), width)
 }
 
 ///|
@@ -539,6 +698,12 @@ impl AsWidget with updateGeometry(self) {
 impl AsWidget with windowTitle(self) {
   ensure_not_nullptr(self)
   _QWidget_windowTitle(self.as_widget())
+}
+
+///|
+impl AsWidget with width(self) {
+  ensure_not_nullptr(self)
+  _QWidget_width(self.as_widget())
 }
 
 ///|

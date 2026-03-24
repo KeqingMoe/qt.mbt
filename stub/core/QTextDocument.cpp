@@ -1,4 +1,5 @@
 #include <QAbstractTextDocumentLayout>
+#include <QTextBlock>
 #include <QTextDocument>
 #include <qt.hpp>
 
@@ -37,6 +38,11 @@ QMETHOD(QTextDocument, availableUndoSteps)->Int
     return self->availableUndoSteps();
 }
 
+QMETHOD(QTextDocument, begin)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->begin());
+}
+
 QMETHOD(QTextDocument, blockCount)->Int
 {
     return self->blockCount();
@@ -72,6 +78,31 @@ QMETHOD(QTextDocument, documentMargin)->Double
     return self->documentMargin();
 }
 
+QMETHOD(QTextDocument, end)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->end());
+}
+
+QMETHOD(QTextDocument, findBlock, Int position)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->findBlock(position));
+}
+
+QMETHOD(QTextDocument, findBlockByLineNumber, Int lineNumber)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->findBlockByLineNumber(lineNumber));
+}
+
+QMETHOD(QTextDocument, findBlockByNumber, Int blockNumber)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->findBlockByNumber(blockNumber));
+}
+
+QMETHOD(QTextDocument, firstBlock)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->firstBlock());
+}
+
 QMETHOD(QTextDocument, idealWidth)->Double
 {
     return self->idealWidth();
@@ -105,6 +136,11 @@ QMETHOD(QTextDocument, isUndoAvailable)->Bool
 QMETHOD(QTextDocument, lineCount)->Int
 {
     return self->lineCount();
+}
+
+QMETHOD(QTextDocument, lastBlock)->box<QTextBlock>
+{
+    return box<QTextBlock>::make(self->lastBlock());
 }
 
 QMETHOD(QTextDocument, maximumBlockCount)->Int

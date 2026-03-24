@@ -33,6 +33,10 @@ extern "C" fn _QTextDocument_availableUndoSteps(this : QTextDocument) -> Int = "
 
 ///|
 #borrow(this)
+extern "C" fn _QTextDocument_begin(this : QTextDocument) -> QTextBlock = "QTextDocument_begin"
+
+///|
+#borrow(this)
 extern "C" fn _QTextDocument_blockCount(this : QTextDocument) -> Int = "QTextDocument_blockCount"
 
 ///|
@@ -66,6 +70,35 @@ extern "C" fn _QTextDocument_documentMargin(this : QTextDocument) -> Double = "Q
 
 ///|
 #borrow(this)
+extern "C" fn _QTextDocument_end(this : QTextDocument) -> QTextBlock = "QTextDocument_end"
+
+///|
+#borrow(this, position)
+extern "C" fn _QTextDocument_findBlock(
+  this : QTextDocument,
+  position : Int,
+) -> QTextBlock = "QTextDocument_findBlock"
+
+///|
+#borrow(this, lineNumber)
+extern "C" fn _QTextDocument_findBlockByLineNumber(
+  this : QTextDocument,
+  lineNumber : Int,
+) -> QTextBlock = "QTextDocument_findBlockByLineNumber"
+
+///|
+#borrow(this, blockNumber)
+extern "C" fn _QTextDocument_findBlockByNumber(
+  this : QTextDocument,
+  blockNumber : Int,
+) -> QTextBlock = "QTextDocument_findBlockByNumber"
+
+///|
+#borrow(this)
+extern "C" fn _QTextDocument_firstBlock(this : QTextDocument) -> QTextBlock = "QTextDocument_firstBlock"
+
+///|
+#borrow(this)
 extern "C" fn _QTextDocument_idealWidth(this : QTextDocument) -> Double = "QTextDocument_idealWidth"
 
 ///|
@@ -91,6 +124,10 @@ extern "C" fn _QTextDocument_isUndoAvailable(this : QTextDocument) -> Bool = "QT
 ///|
 #borrow(this)
 extern "C" fn _QTextDocument_lineCount(this : QTextDocument) -> Int = "QTextDocument_lineCount"
+
+///|
+#borrow(this)
+extern "C" fn _QTextDocument_lastBlock(this : QTextDocument) -> QTextBlock = "QTextDocument_lastBlock"
 
 ///|
 #borrow(this)
@@ -276,6 +313,12 @@ pub fn QTextDocument::availableUndoSteps(self : Self) -> Int raise NullptrError 
 }
 
 ///|
+pub fn QTextDocument::begin(self : Self) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_begin(self)
+}
+
+///|
 pub fn QTextDocument::blockCount(self : Self) -> Int raise NullptrError {
   ensure_not_nullptr(self)
   _QTextDocument_blockCount(self)
@@ -347,6 +390,45 @@ pub fn QTextDocument::documentMargin(self : Self) -> Double raise NullptrError {
 }
 
 ///|
+pub fn QTextDocument::end(self : Self) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_end(self)
+}
+
+///|
+pub fn QTextDocument::findBlock(
+  self : Self,
+  position : Int,
+) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_findBlock(self, position)
+}
+
+///|
+pub fn QTextDocument::findBlockByLineNumber(
+  self : Self,
+  lineNumber : Int,
+) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_findBlockByLineNumber(self, lineNumber)
+}
+
+///|
+pub fn QTextDocument::findBlockByNumber(
+  self : Self,
+  blockNumber : Int,
+) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_findBlockByNumber(self, blockNumber)
+}
+
+///|
+pub fn QTextDocument::firstBlock(self : Self) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_firstBlock(self)
+}
+
+///|
 pub fn QTextDocument::idealWidth(self : Self) -> Double raise NullptrError {
   ensure_not_nullptr(self)
   _QTextDocument_idealWidth(self)
@@ -386,6 +468,12 @@ pub fn QTextDocument::isUndoAvailable(self : Self) -> Bool raise NullptrError {
 pub fn QTextDocument::lineCount(self : Self) -> Int raise NullptrError {
   ensure_not_nullptr(self)
   _QTextDocument_lineCount(self)
+}
+
+///|
+pub fn QTextDocument::lastBlock(self : Self) -> QTextBlock raise NullptrError {
+  ensure_not_nullptr(self)
+  _QTextDocument_lastBlock(self)
 }
 
 ///|

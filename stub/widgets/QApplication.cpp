@@ -1,5 +1,7 @@
 #include <QApplication>
 #include <QIcon>
+#include <QPalette>
+#include <QStyle>
 #include <qt.hpp>
 
 QSTATIC(QApplication, new, Array<String> args)->qt<QApplication>
@@ -52,6 +54,16 @@ QMETHOD(QApplication, quit)->void
 QMETHOD(QApplication, setStyleSheet, String styleSheet)->void
 {
     self->setStyleSheet(str::mbt_to_qt(styleSheet));
+}
+
+QMETHOD(QApplication, setStyle, String style)->Bool
+{
+    return Bool::make(self->setStyle(str::mbt_to_qt(style)) != nullptr);
+}
+
+QMETHOD(QApplication, setPalette, box<QPalette> palette)->void
+{
+    self->setPalette(*palette);
 }
 
 QMETHOD(QApplication, setWindowIcon, box<QIcon> icon)->void

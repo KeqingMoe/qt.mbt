@@ -1,3 +1,5 @@
+#include <QCursor>
+#include <QGraphicsEffect>
 #include <QLayout>
 #include <QIcon>
 #include <QMargins>
@@ -15,6 +17,11 @@ QSTATIC(QWidget, new)->qt<QWidget>
 QMETHOD(QWidget, close)->Bool
 {
     return Bool::make(self->close());
+}
+
+QMETHOD(QWidget, adjustSize)->void
+{
+    self->adjustSize();
 }
 
 QMETHOD(QWidget, contextMenuPolicy)->Enum<Qt::ContextMenuPolicy>
@@ -162,6 +169,11 @@ QMETHOD(QWidget, setFocusPolicy, Enum<Qt::FocusPolicy> policy)->void
     self->setFocusPolicy(policy);
 }
 
+QMETHOD(QWidget, setCursor, Enum<Qt::CursorShape> shape)->void
+{
+    self->setCursor(QCursor(static_cast<Qt::CursorShape>(shape)));
+}
+
 QMETHOD(QWidget, setFixedSize, Int width, Int height)->void
 {
     self->setFixedSize(width, height);
@@ -175,6 +187,11 @@ QMETHOD(QWidget, setFixedHeight, Int height)->void
 QMETHOD(QWidget, setFixedWidth, Int width)->void
 {
     self->setFixedWidth(width);
+}
+
+QMETHOD(QWidget, setGraphicsEffect, qt<QGraphicsEffect> effect)->void
+{
+    self->setGraphicsEffect(effect.get());
 }
 
 QMETHOD(QWidget, setInputMethodHints, UInt64 hints)->void

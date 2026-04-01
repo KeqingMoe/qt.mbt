@@ -1,7 +1,13 @@
 ///|
 using @qt {
+  type QBrush,
+  type QColor,
   type QMargins,
   type QMarginsF,
+  type QPalette,
+  type QPainterPath,
+  type QPointF,
+  type QPen,
   type QRect,
   type QRectF,
   type QSize,
@@ -15,6 +21,71 @@ test "QSize" {
   let sz = QSize::new(114, 514)
   assert_eq(sz.width(), 114)
   assert_eq(sz.height(), 514)
+}
+
+///|
+test "QPointF getters and setters" {
+  let point = QPointF::new(1.25, -2.5)
+  assert_eq(point.x(), 1.25)
+  assert_eq(point.y(), -2.5)
+  assert_eq(point.isNull(), false)
+
+  point.setX(3.5)
+  point.setY(4.75)
+
+  assert_eq(point.x(), 3.5)
+  assert_eq(point.y(), 4.75)
+}
+
+///|
+test "QColor, QBrush, and QPen" {
+  let color = QColor::new(1, 2, 3, alpha=4)
+  assert_eq(color.red(), 1)
+  assert_eq(color.green(), 2)
+  assert_eq(color.blue(), 3)
+  assert_eq(color.alpha(), 4)
+
+  color.setRed(10)
+  color.setGreen(20)
+  color.setBlue(30)
+  color.setAlpha(40)
+
+  assert_eq(color.red(), 10)
+  assert_eq(color.green(), 20)
+  assert_eq(color.blue(), 30)
+  assert_eq(color.alpha(), 40)
+
+  let brush = QBrush::newWithColor(color)
+  assert_eq(brush.color().red(), 10)
+  assert_eq(brush.isOpaque(), false)
+
+  brush.setColor(QColor::new(50, 60, 70))
+  assert_eq(brush.color().green(), 60)
+
+  let pen = QPen::newWithColor(color)
+  assert_eq(pen.color().blue(), 30)
+  assert_eq(pen.widthF(), 1.0)
+
+  pen.setColor(QColor::new(80, 90, 100))
+  pen.setWidthF(2.5)
+
+  assert_eq(pen.color().red(), 80)
+  assert_eq(pen.widthF(), 2.5)
+}
+
+///|
+test "QPainterPath geometry" {
+  let path = QPainterPath::new()
+  assert_eq(path.isEmpty(), true)
+
+  path.addRect(QRectF::new(1.0, 2.0, 3.0, 4.0))
+  assert_eq(path.isEmpty(), false)
+
+  let bounds = path.boundingRect()
+  assert_eq(bounds.x(), 1.0)
+  assert_eq(bounds.y(), 2.0)
+  assert_eq(bounds.width(), 3.0)
+  assert_eq(bounds.height(), 4.0)
 }
 
 ///|

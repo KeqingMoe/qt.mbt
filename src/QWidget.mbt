@@ -10,6 +10,10 @@ extern "C" fn _QWidget_close(this : QWidget) -> Bool = "QWidget_close"
 
 ///|
 #borrow(this)
+extern "C" fn _QWidget_adjustSize(this : QWidget) = "QWidget_adjustSize"
+
+///|
+#borrow(this)
 extern "C" fn _QWidget_contextMenuPolicy(this : QWidget) -> ContextMenuPolicy = "QWidget_contextMenuPolicy"
 
 ///|
@@ -127,6 +131,10 @@ extern "C" fn _QWidget_setContextMenuPolicy(
 extern "C" fn _QWidget_setFocusPolicy(this : QWidget, policy : FocusPolicy) = "QWidget_setFocusPolicy"
 
 ///|
+#borrow(this, shape)
+extern "C" fn _QWidget_setCursor(this : QWidget, shape : CursorShape) = "QWidget_setCursor"
+
+///|
 #borrow(this, width, height)
 extern "C" fn _QWidget_setFixedSize(this : QWidget, width : Int, height : Int) = "QWidget_setFixedSize"
 
@@ -137,6 +145,13 @@ extern "C" fn _QWidget_setFixedHeight(this : QWidget, height : Int) = "QWidget_s
 ///|
 #borrow(this, width)
 extern "C" fn _QWidget_setFixedWidth(this : QWidget, width : Int) = "QWidget_setFixedWidth"
+
+///|
+#borrow(this, effect)
+extern "C" fn _QWidget_setGraphicsEffect(
+  this : QWidget,
+  effect : QGraphicsEffect,
+) = "QWidget_setGraphicsEffect"
 
 ///|
 #borrow(this, layout)
@@ -277,6 +292,7 @@ extern "C" fn _QWidget_width(this : QWidget) -> Int = "QWidget_width"
 ///|
 pub(open) trait AsWidget: AsObject {
   as_widget(Self) -> QWidget
+  adjustSize(Self) -> Unit raise NullptrError = _
   close(Self) -> Bool raise NullptrError = _
   contextMenuPolicy(Self) -> ContextMenuPolicy raise NullptrError = _
   contentsMargins(Self) -> QMargins raise NullptrError = _
@@ -301,11 +317,13 @@ pub(open) trait AsWidget: AsObject {
   sizeHint(Self) -> QSize raise NullptrError = _
   setAttribute(Self, attribute : WidgetAttribute, on? : Bool) -> Unit raise NullptrError = _
   setContextMenuPolicy(Self, policy : ContextMenuPolicy) -> Unit raise NullptrError = _
+  setCursor(Self, shape : CursorShape) -> Unit raise NullptrError = _
   setEnabled(Self, value : Bool) -> Unit raise NullptrError = _
   setFixedHeight(Self, height : Int) -> Unit raise NullptrError = _
   setFixedSize(Self, width : Int, height : Int) -> Unit raise NullptrError = _
   setFixedWidth(Self, width : Int) -> Unit raise NullptrError = _
   setFocusPolicy(Self, policy : FocusPolicy) -> Unit raise NullptrError = _
+  setGraphicsEffect(Self, effect : &AsGraphicsEffect) -> Unit raise NullptrError = _
   setInputMethodHints(Self, hints : InputMethodHints) -> Unit raise NullptrError = _
   setLayout(Self, layout : &AsLayout) -> Unit raise NullptrError = _
   setMaximumHeight(Self, height : Int) -> Unit raise NullptrError = _
@@ -344,6 +362,12 @@ pub(open) trait AsWidget: AsObject {
 impl AsWidget with close(self) {
   ensure_not_nullptr(self)
   _QWidget_close(self.as_widget())
+}
+
+///|
+impl AsWidget with adjustSize(self) {
+  ensure_not_nullptr(self)
+  _QWidget_adjustSize(self.as_widget())
 }
 
 ///|
@@ -497,6 +521,12 @@ impl AsWidget with setContextMenuPolicy(self, policy) {
 }
 
 ///|
+impl AsWidget with setCursor(self, shape) {
+  ensure_not_nullptr(self)
+  _QWidget_setCursor(self.as_widget(), shape)
+}
+
+///|
 impl AsWidget with setAttribute(self, attribute, on? = true) {
   ensure_not_nullptr(self)
   _QWidget_setAttribute(self.as_widget(), attribute, on)
@@ -530,6 +560,12 @@ impl AsWidget with setFixedWidth(self, width) {
 impl AsWidget with setFocusPolicy(self, policy) {
   ensure_not_nullptr(self)
   _QWidget_setFocusPolicy(self.as_widget(), policy)
+}
+
+///|
+impl AsWidget with setGraphicsEffect(self, effect) {
+  ensure_not_nullptr(self)
+  _QWidget_setGraphicsEffect(self.as_widget(), effect.as_graphics_effect())
 }
 
 ///|

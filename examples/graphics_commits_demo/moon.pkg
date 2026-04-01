@@ -1,0 +1,9 @@
+import {
+  "KeqingMoe/qt",
+  "moonbitlang/core/env",
+}
+
+options(
+  "is-main": true,
+  link: { "native": { "cc": "clang" } },
+)

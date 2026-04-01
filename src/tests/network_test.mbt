@@ -57,8 +57,8 @@ test "QNetworkAccessManager exposes QObject ancestry and reply deletion toggle" 
   assert_eq(manager.inherits("QObject"), true)
 
   let initial = manager.autoDeleteReplies()
-  manager.setAutoDeleteReplies(not(initial))
-  assert_eq(manager.autoDeleteReplies(), not(initial))
+  manager.setAutoDeleteReplies(!initial)
+  assert_eq(manager.autoDeleteReplies(), !initial)
 
   manager.setAutoDeleteReplies(initial)
   assert_eq(manager.autoDeleteReplies(), initial)
@@ -158,7 +158,7 @@ test "QNetworkAccessManager finished signal can connect and disconnect" {
 
   let conn = manager
     .finished()
-    .connect(reply => seen = seen || not(reply.is_null()))
+    .connect(reply => seen = seen || !reply.is_null())
 
   assert_eq(conn.is_valid(), true)
   assert_eq(conn.disconnect(), true)

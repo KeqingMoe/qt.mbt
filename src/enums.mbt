@@ -57,11 +57,44 @@ pub(all) enum ButtonSymbols {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum ColorRole {
+  WindowText = 0
+  Button = 1
+  Light = 2
+  Midlight = 3
+  Dark = 4
+  Mid = 5
+  Text = 6
+  BrightText = 7
+  ButtonText = 8
+  Base = 9
+  Window = 10
+  Shadow = 11
+  Highlight = 12
+  HighlightedText = 13
+  Link = 14
+  LinkVisited = 15
+  AlternateBase = 16
+  NoRole = 17
+  ToolTipBase = 18
+  ToolTipText = 19
+  PlaceholderText = 20
+  Accent = 21
+} derive(Eq, Show)
+
+///|
 pub(all) enum Corner {
   TopLeft = 0x00000
   TopRight = 0x00001
   BottomLeft = 0x00002
   BottomRight = 0x00003
+} derive(Eq, Show)
+
+///|
+pub(all) enum CacheMode {
+  NoCache = 0
+  ItemCoordinateCache = 1
+  DeviceCoordinateCache = 2
 } derive(Eq, Show)
 
 ///|
@@ -86,11 +119,39 @@ pub(all) enum CursorMoveStyle {
 } derive(Eq, Show)
 
 ///|
+pub(all) enum CursorShape {
+  ArrowCursor = 0
+  UpArrowCursor = 1
+  CrossCursor = 2
+  WaitCursor = 3
+  IBeamCursor = 4
+  SizeVerCursor = 5
+  SizeHorCursor = 6
+  SizeBDiagCursor = 7
+  SizeFDiagCursor = 8
+  SizeAllCursor = 9
+  BlankCursor = 10
+  SplitVCursor = 11
+  SplitHCursor = 12
+  PointingHandCursor = 13
+  ForbiddenCursor = 14
+  OpenHandCursor = 17
+  ClosedHandCursor = 18
+} derive(Eq, Show)
+
+///|
 pub(all) enum Direction {
   LeftToRight = 0
   RightToLeft = 1
   TopToBottom = 2
   BottomToTop = 3
+} derive(Eq, Show)
+
+///|
+pub(all) enum DragMode {
+  NoDrag = 0
+  ScrollHandDrag = 1
+  RubberBandDrag = 2
 } derive(Eq, Show)
 
 ///|
@@ -153,6 +214,31 @@ pub(all) enum IconMode {
 pub(all) enum IconState {
   On = 0
   Off = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum PenCapStyle {
+  FlatCap = 0x00
+  SquareCap = 0x10
+  RoundCap = 0x20
+} derive(Eq, Show)
+
+///|
+pub(all) enum PenJoinStyle {
+  MiterJoin = 0x00
+  BevelJoin = 0x40
+  RoundJoin = 0x80
+  SvgMiterJoin = 0x100
+} derive(Eq, Show)
+
+///|
+pub(all) enum PenStyle {
+  NoPen = 0
+  SolidLine = 1
+  DashLine = 2
+  DotLine = 3
+  DashDotLine = 4
+  DashDotDotLine = 5
 } derive(Eq, Show)
 
 ///|
@@ -276,6 +362,25 @@ pub(all) enum RedirectPolicy {
   NoLessSafe = 1
   SameOrigin = 2
   UserVerified = 3
+} derive(Eq, Show)
+
+///|
+pub(all) enum RenderHint {
+  Antialiasing = 0x01
+  TextAntialiasing = 0x02
+  SmoothPixmapTransform = 0x04
+  VerticalSubpixelPositioning = 0x08
+  LosslessImageRendering = 0x40
+  NonCosmeticBrushPatterns = 0x80
+} derive(Eq, Show)
+
+///|
+pub(all) enum ViewportUpdateMode {
+  FullViewportUpdate = 0
+  MinimalViewportUpdate = 1
+  SmartViewportUpdate = 2
+  NoViewportUpdate = 3
+  BoundingRectViewportUpdate = 4
 } derive(Eq, Show)
 
 ///|
@@ -685,4 +790,11 @@ pub(all) enum TickPosition {
 pub(all) enum ViewMode {
   ListMode = 0
   IconMode = 1
+} derive(Eq, Show)
+
+///|
+pub(all) enum ViewportAnchor {
+  NoAnchor = 0
+  AnchorViewCenter = 1
+  AnchorUnderMouse = 2
 } derive(Eq, Show)

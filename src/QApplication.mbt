@@ -25,6 +25,17 @@ extern "C" fn _QApplication_setStyleSheet(
 ) = "QApplication_setStyleSheet"
 
 ///|
+#borrow(this, style)
+extern "C" fn _QApplication_setStyle(
+  this : QApplication,
+  style : String,
+) -> Bool = "QApplication_setStyle"
+
+///|
+#borrow(this, palette)
+extern "C" fn _QApplication_setPalette(this : QApplication, palette : QPalette) = "QApplication_setPalette"
+
+///|
 #borrow(this, icon)
 extern "C" fn _QApplication_setWindowIcon(this : QApplication, icon : QIcon) = "QApplication_setWindowIcon"
 
@@ -66,6 +77,24 @@ pub fn QApplication::setStyleSheet(
 ) -> Unit raise NullptrError {
   ensure_not_nullptr(self)
   _QApplication_setStyleSheet(self, styleSheet)
+}
+
+///|
+pub fn QApplication::setStyle(
+  self : Self,
+  style : String,
+) -> Bool raise NullptrError {
+  ensure_not_nullptr(self)
+  _QApplication_setStyle(self, style)
+}
+
+///|
+pub fn QApplication::setPalette(
+  self : Self,
+  palette : QPalette,
+) -> Unit raise NullptrError {
+  ensure_not_nullptr(self)
+  _QApplication_setPalette(self, palette)
 }
 
 ///|

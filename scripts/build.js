@@ -1,7 +1,7 @@
 import os from 'os';
 import { execFileSync, spawnSync } from 'child_process';
 
-const output = execFileSync('xmake', {
+const output = execFileSync('xmake', ['-y'], {
   cwd: './stub',
   encoding: 'utf8',
   stdio: ['ignore', 'pipe', 'pipe']

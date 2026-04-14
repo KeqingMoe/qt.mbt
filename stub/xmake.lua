@@ -2,7 +2,7 @@ add_rules("mode.debug", "mode.release")
 add_rules("plugin.compile_commands.autoupdate", {outputdir = "."})
 
 add_repositories("local-repo vendor")
-add_requires("moonbridge")
+add_requires("moonbridge 0.1.0")
 
 target("qt_mbt_stub")
     set_languages("c++23")

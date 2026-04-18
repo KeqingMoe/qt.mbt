@@ -2,7 +2,7 @@
 pub(all) enum ActionPosition {
   Leading = 0
   Trailing = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ActionMenuRole {
@@ -13,28 +13,28 @@ pub(all) enum ActionMenuRole {
   About = 4
   Preferences = 5
   Quit = 6
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ActionPriority {
   Low = 0
   Normal = 128
   High = 256
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum AspectRatioMode {
   Ignore = 0
   Keep = 1
   KeepByExpanding = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum CheckState {
   Unchecked = 0
   PartiallyChecked = 1
   Checked = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ButtonRole {
@@ -47,14 +47,14 @@ pub(all) enum ButtonRole {
   No = 6
   Reset = 7
   Apply = 8
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ButtonSymbols {
   UpDownArrows = 0
   PlusMinus = 1
   NoButtons = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ColorRole {
@@ -80,7 +80,7 @@ pub(all) enum ColorRole {
   ToolTipText = 19
   PlaceholderText = 20
   Accent = 21
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Corner {
@@ -88,20 +88,20 @@ pub(all) enum Corner {
   TopRight = 0x00001
   BottomLeft = 0x00002
   BottomRight = 0x00003
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum CacheMode {
   NoCache = 0
   ItemCoordinateCache = 1
   DeviceCoordinateCache = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum CorrectionMode {
   PreviousValue = 0
   NearestValue = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ContextMenuPolicy {
@@ -110,13 +110,13 @@ pub(all) enum ContextMenuPolicy {
   Actions = 2
   Custom = 3
   Prevent = 4
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum CursorMoveStyle {
   Logical = 0
   Visual = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum CursorShape {
@@ -137,7 +137,7 @@ pub(all) enum CursorShape {
   ForbiddenCursor = 14
   OpenHandCursor = 17
   ClosedHandCursor = 18
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Direction {
@@ -145,14 +145,14 @@ pub(all) enum Direction {
   RightToLeft = 1
   TopToBottom = 2
   BottomToTop = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum DragMode {
   NoDrag = 0
   ScrollHandDrag = 1
   RubberBandDrag = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum FocusPolicy {
@@ -161,7 +161,7 @@ pub(all) enum FocusPolicy {
   Click = 0x2
   Strong = 0xb
   Wheel = 0xf
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum EchoMode {
@@ -169,27 +169,27 @@ pub(all) enum EchoMode {
   NoEcho = 1
   Password = 2
   PasswordEchoOnEdit = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum FieldGrowthPolicy {
   StayAtSizeHint = 0
   Expanding = 1
   AllNonFixed = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Flow {
   LeftToRight = 0
   TopToBottom = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum FrameShadow {
   Plain = 0x0010
   Raised = 0x0020
   Sunken = 0x0030
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum FrameShape {
@@ -200,7 +200,7 @@ pub(all) enum FrameShape {
   HLine = 0x0004
   VLine = 0x0005
   WinPanel = 0x0003
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum IconMode {
@@ -208,20 +208,20 @@ pub(all) enum IconMode {
   Disabled = 1
   Active = 2
   Selected = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum IconState {
   On = 0
   Off = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum PenCapStyle {
   FlatCap = 0x00
   SquareCap = 0x10
   RoundCap = 0x20
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum PenJoinStyle {
@@ -229,7 +229,7 @@ pub(all) enum PenJoinStyle {
   BevelJoin = 0x40
   RoundJoin = 0x80
   SvgMiterJoin = 0x100
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum PenStyle {
@@ -239,26 +239,26 @@ pub(all) enum PenStyle {
   DotLine = 3
   DashDotLine = 4
   DashDotDotLine = 5
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ItemRole {
   Label = 0
   Field = 1
   Spanning = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum LayoutMode {
   SinglePass = 0
   Batched = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum PlainTextEditLineWrapMode {
   NoWrap = 0
   WidgetWidth = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum TextEditLineWrapMode {
@@ -266,14 +266,14 @@ pub(all) enum TextEditLineWrapMode {
   WidgetWidth = 1
   FixedPixelWidth = 2
   FixedColumnWidth = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Movement {
   Static = 0
   Free = 1
   Snap = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum NetworkError {
@@ -311,7 +311,7 @@ pub(all) enum NetworkError {
   OperationNotImplementedError = 402
   ServiceUnavailableError = 403
   UnknownServerError = 499
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum NetworkOperation {
@@ -322,13 +322,13 @@ pub(all) enum NetworkOperation {
   Post = 4
   Delete = 5
   Custom = 6
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Orientation {
   Horizontal = 0x1
   Vertical = 0x2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Policy {
@@ -339,7 +339,7 @@ pub(all) enum Policy {
   MinimumExpanding = 0x3
   Expanding = 0x7
   Ignored = 0xd
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum PolicyFlag {
@@ -347,14 +347,14 @@ pub(all) enum PolicyFlag {
   Expand = 0x2
   Shrink = 0x4
   Ignore = 0x8
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum Priority {
   High = 1
   Normal = 3
   Low = 5
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum RedirectPolicy {
@@ -362,7 +362,7 @@ pub(all) enum RedirectPolicy {
   NoLessSafe = 1
   SameOrigin = 2
   UserVerified = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum RenderHint {
@@ -372,7 +372,7 @@ pub(all) enum RenderHint {
   VerticalSubpixelPositioning = 0x08
   LosslessImageRendering = 0x40
   NonCosmeticBrushPatterns = 0x80
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ViewportUpdateMode {
@@ -381,40 +381,40 @@ pub(all) enum ViewportUpdateMode {
   SmartViewportUpdate = 2
   NoViewportUpdate = 3
   BoundingRectViewportUpdate = 4
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ResizeMode {
   Fixed = 0
   Adjust = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum RowWrapPolicy {
   Dont = 0
   Long = 1
   All = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ScrollBarPolicy {
   AsNeeded = 0
   AlwaysOff = 1
   AlwaysOn = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ScrollMode {
   PerItem = 0
   PerPixel = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum SelectionBehavior {
   Items = 0
   Rows = 1
   Columns = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum SelectionMode {
@@ -423,14 +423,14 @@ pub(all) enum SelectionMode {
   Multi = 2
   Extended = 3
   Contiguous = 4
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum SizeAdjustPolicy {
   Ignored = 0
   Contents = 1
-  OnFirstShow = 2
-} derive(Eq, Show)
+  OnFirstDebug = 2
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum SizeConstraint {
@@ -440,7 +440,7 @@ pub(all) enum SizeConstraint {
   FixedSize = 3
   MaximumSize = 4
   MinAndMaxSize = 5
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum SliderAction {
@@ -452,20 +452,20 @@ pub(all) enum SliderAction {
   ToMinimum = 5
   ToMaximum = 6
   Move = 7
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum StepEnabledFlag {
   None = 0x00
   Up = 0x01
   Down = 0x02
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum StepType {
   Default = 0
   AdaptiveDecimal = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum TextFormat {
@@ -473,7 +473,7 @@ pub(all) enum TextFormat {
   Rich = 1
   Auto = 2
   Markdown = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum TabPosition {
@@ -481,20 +481,20 @@ pub(all) enum TabPosition {
   Bottom = 1
   Left = 2
   Right = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum TabShape {
   Rounded = 0
   Triangular = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ToolButtonPopupMode {
   Delayed = 0
   MenuButton = 1
   Instant = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ToolButtonStyle {
@@ -503,7 +503,7 @@ pub(all) enum ToolButtonStyle {
   TextBesideIcon = 2
   TextUnderIcon = 3
   FollowStyle = 4
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum WidgetAttribute {
@@ -553,8 +553,8 @@ pub(all) enum WidgetAttribute {
   WStateConfigPending = 64
   WStatePolished = 66
   WStateOwnSizePolicy = 68
-  WStateExplicitShowHide = 69
-  ShowModal = 70
+  WStateExplicitDebugHide = 69
+  DebugModal = 70
   MouseNoMask = 71
   NoMousePropagation = 73
   Hover = 74
@@ -567,24 +567,24 @@ pub(all) enum WidgetAttribute {
   NoX11EventCompression = 81
   TintedBackground = 82
   X11OpenGLOverlay = 83
-  AlwaysShowToolTips = 84
+  AlwaysDebugToolTips = 84
   MacOpaqueSizeGrip = 85
   SetStyle = 86
   SetLocale = 87
-  MacShowFocusRect = 88
+  MacDebugFocusRect = 88
   MacNormalSize = 89
   MacSmallSize = 90
   MacMiniSize = 91
   LayoutUsesWidgetRect = 92
   StyledBackground = 93
   CanHostQMdiSubWindowTitleBar = 95
-  MacAlwaysShowToolWindow = 96
+  MacAlwaysDebugToolWindow = 96
   StyleSheet = 97
-  ShowWithoutActivating = 98
+  DebugWithoutActivating = 98
   X11BypassTransientForHint = 99
   NativeWindow = 100
   DontCreateNativeAncestors = 101
-  DontShowOnScreen = 103
+  DontDebugOnScreen = 103
   X11NetWmWindowTypeDesktop = 104
   X11NetWmWindowTypeDock = 105
   X11NetWmWindowTypeToolBar = 106
@@ -609,7 +609,7 @@ pub(all) enum WidgetAttribute {
   TabletTracking = 129
   ContentsMarginsRespectsSafeArea = 130
   StyleSheetTarget = 131
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum WindowType {
@@ -622,7 +622,7 @@ pub(all) enum WindowType {
   Tool = 0x0000000b
   ToolTip = 0x0000000d
   SplashScreen = 0x0000000f
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ThemeIcon {
@@ -773,10 +773,10 @@ pub(all) enum ThemeIcon {
   WeatherFewClouds = 144
   WeatherFewCloudsNight = 145
   WeatherFog = 146
-  WeatherShowers = 147
+  WeatherDebugers = 147
   WeatherSnow = 148
   WeatherStorm = 149
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum TickPosition {
@@ -784,17 +784,17 @@ pub(all) enum TickPosition {
   BothSides = 1
   AboveOrLeft = 2
   BelowOrRight = 3
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ViewMode {
   ListMode = 0
   IconMode = 1
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
 pub(all) enum ViewportAnchor {
   NoAnchor = 0
   AnchorViewCenter = 1
   AnchorUnderMouse = 2
-} derive(Eq, Show)
+} derive(Eq, Debug)

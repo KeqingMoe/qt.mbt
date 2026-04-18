@@ -42,7 +42,7 @@ test "QNetworkRequest raw headers and transfer timeout roundtrip" {
   assert_eq(request.maximumRedirectsAllowed(), 7)
   assert_eq(request.originatingObject().objectName(), "network-owner")
   assert_eq(request.peerVerifyName(), "example.com")
-  assert_eq(request.priority(), High)
+  assert_true(request.priority() is High)
   assert_eq(request.rawHeaderList().length() > 0, true)
   assert_eq(request.rawHeader("Content-Type"), value)
   assert_eq(request.transferTimeout(), 1234)
@@ -64,10 +64,10 @@ test "QNetworkAccessManager exposes QObject ancestry and reply deletion toggle" 
   assert_eq(manager.autoDeleteReplies(), initial)
 
   manager.setRedirectPolicy(Manual)
-  assert_eq(manager.redirectPolicy(), Manual)
+  assert_true(manager.redirectPolicy() is Manual)
 
   manager.setRedirectPolicy(NoLessSafe)
-  assert_eq(manager.redirectPolicy(), NoLessSafe)
+  assert_true(manager.redirectPolicy() is NoLessSafe)
 
   let schemes = manager.supportedSchemes()
   let mut has_http = false
@@ -97,11 +97,11 @@ test "QNetworkAccessManager request methods return reply objects with expected m
   let post_op = post_reply.operation()
   let post_err = post_reply.error()
   assert_eq(post_reply.is_null(), false)
-  assert_eq(post_op, Post)
+  assert_true(post_op is Post)
   assert_eq(post_reply.request().url(), "http://127.0.0.1:1/network-test")
   assert_eq(post_reply.url(), "http://127.0.0.1:1/network-test")
   assert_eq(post_reply.manager().is_null(), false)
-  assert_eq(post_err, NoError)
+  assert_true(post_err is NoError)
   assert_eq(post_reply.contentLength(), 0L)
   assert_eq(post_reply.contentType(), "")
   assert_eq(post_reply.httpStatusCode(), 0)
@@ -137,17 +137,17 @@ test "QNetworkAccessManager request methods return reply objects with expected m
 
   let put_reply = manager.put(request, payload)
   assert_eq(put_reply.is_null(), false)
-  assert_eq(put_reply.operation(), Put)
+  assert_true(put_reply.operation() is Put)
   put_reply.abort()
 
   let delete_reply = manager.deleteResource(request)
   assert_eq(delete_reply.is_null(), false)
-  assert_eq(delete_reply.operation(), Delete)
+  assert_true(delete_reply.operation() is Delete)
   delete_reply.abort()
 
   let custom_reply = manager.sendCustomRequest(request, b"PATCH", payload)
   assert_eq(custom_reply.is_null(), false)
-  assert_eq(custom_reply.operation(), Custom)
+  assert_true(custom_reply.operation() is Custom)
   custom_reply.abort()
 }
 

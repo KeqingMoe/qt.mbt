@@ -848,7 +848,7 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
           answer, thinking, raw, answer_text, reasoning_text, raw_text,
         )
       }
-      status.setText("Network error: \{err}")
+      status.setText("Network error: \{err.to_repr()}")
     })
 
     let finished = reply.finished()
@@ -910,10 +910,10 @@ fn ApiWorkbench::new(args : Array[String]) -> Self raise NullptrError {
           status.setText("Done. HTTP \{status_code} \{reason_phrase}")
         }
       } else if reason_phrase == "" {
-        status.setText("Failed. HTTP \{status_code}, error: \{error}")
+        status.setText("Failed. HTTP \{status_code}, error: \{error.to_repr()}")
       } else {
         status.setText(
-          "Failed. HTTP \{status_code} \{reason_phrase}, error: \{error}",
+          "Failed. HTTP \{status_code} \{reason_phrase}, error: \{error.to_repr()}",
         )
       }
     })
